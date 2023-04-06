@@ -29,7 +29,7 @@ export class SignupPage implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],  
       phone:['', Validators.required],
-      u_type:['',Validators.required],
+     
      
     })
     // this.presentToast('test toast', 'success');

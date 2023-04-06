@@ -1,17 +1,45 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
+    <ion-menu contentId="main-content" type="overlay"> 
       <ion-content>
         <ion-list id="inbox-list">
           <ion-list-header color="danger">Evra Distributor</ion-list-header>
           <!-- <ion-note>evraenergy.com</ion-note> -->
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
               <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
+             
             </ion-item>
-          </ion-menu-toggle>
+            
+          </ion-menu-toggle> 
+          <ion-accordion-group>
+            <ion-accordion value="first">
+              <ion-item slot="header" color="light">
+                <ion-label>First Accordion</ion-label>
+              </ion-item>
+              <div class="ion-padding" slot="content">
+                First Content
+              </div>
+            </ion-accordion>
+            <ion-accordion value="second">
+              <ion-item slot="header" color="light">
+                <ion-label>Second Accordion</ion-label>
+              </ion-item>
+              <div class="ion-padding" slot="content">
+                Second Content
+              </div>
+            </ion-accordion>
+            <ion-accordion value="third">
+              <ion-item slot="header" color="light">
+                <ion-label>Third Accordion</ion-label>
+              </ion-item>
+              <div class="ion-padding" slot="content">
+                Third Content
+              </div>
+            </ion-accordion>
+          </ion-accordion-group>
         </ion-list>
 
         <ion-list id="labels-list">

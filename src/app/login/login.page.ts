@@ -30,7 +30,7 @@ initForm(){
     this.form = this.formb.group({    
       phone: ['7982567755', Validators.required],
       password: ['1111', Validators.required],  
-      u_type:['',Validators.required]
+      
     })
     this.menuCtrl.enable(false);
   }
@@ -69,7 +69,7 @@ initForm(){
   //       // alert(this.response.message)
   //     }
   //     else{
-  //       // localStorage.setItem('user',JSON.stringify(this.response[0]));
+        // localStorage.setItem('user',JSON.stringify(this.response[0]));
   //       // this.api2.menu.next(this.response2);
         
   //       this.router.navigateByUrl('/app/tabs/tab1');
@@ -81,7 +81,13 @@ initForm(){
   //   }
   // })
   this.router.navigateByUrl('/dashboard');
-  Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'You have successfully loged in',  heightAuto: false ,  timer: 3000});
+  Swal.fire({
+            'imageUrl' :'assets/icon/login.gif',
+            'imageHeight':'100px', 
+            'title': 'You have successfully loged in',
+             heightAuto: false , 
+             timer: 3000
+            });
 }
 
 async presentToast(msg: any, color: any) {

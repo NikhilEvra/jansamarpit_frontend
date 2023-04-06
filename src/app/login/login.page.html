@@ -1,11 +1,11 @@
 <ion-content >
-  <div style="height:70%;width:100%;background-image: url(assets/vector/bg_img.jpeg);background-repeat: no-repeat;background-size: 100%;"></div>
+  <div style="height:90%;width:100%;background-image: url(assets/login/logo.jpg);background-repeat: no-repeat;background-size: 100%;"></div>
   <ion-row style="position:absolute; bottom:0px;width:100%">
     <ion-col class="ion-text-center" size="12">
-      <div style="margin:30px;">
+      <div style="margin-top:30px;">
         
         <ion-label color="primary" style="font-weight:bold;">Evra Dealership Support<br></ion-label>
-       <ion-label> Already have an account ? <ion-text color="primary" (click)="openPage('/signup')">Sign Up</ion-text></ion-label>
+       <ion-label> Didn't have an account ? <ion-text color="primary" (click)="openPage('/signup')">Sign Up</ion-text></ion-label>
         <!-- <img src="assets/homepage/menu_icon.svg" > -->
       </div>
     </ion-col>
@@ -16,13 +16,7 @@
     <form [formGroup]="form">
     <ion-toolbar>
       <section class="inputbox">
-        <ion-item lines="none">
-          <ion-select interface="popover" placeholder="Select User Type" formControlName="u_type">
-        <ion-select-option>Employee</ion-select-option>
-        <ion-select-option>Dealer</ion-select-option>
         
-      </ion-select>
-        </ion-item>
         <ion-item lines="none">
           <ion-input type="text"  placeholder="Mobile Number" formControlName="phone"> </ion-input>
           <ion-button slot="end" fill="clear">
@@ -40,7 +34,7 @@
     <ion-toolbar >
       <ion-row >
         <ion-col >
-          <ion-button shape="round" expand="block" (click)="login()" [disabled]="form.invalid">Login <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
+          <ion-button shape="round" expand="block" color="danger" (click)="login()" [disabled]="form.invalid">Login <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
         </ion-col>
       </ion-row>
       <!-- <ion-row >
