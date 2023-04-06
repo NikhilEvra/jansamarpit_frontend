@@ -1,0 +1,65 @@
+.quickLink {
+    .card {
+      box-shadow: none;
+      border:2px solid var(--ion-color-light);
+      width:auto;
+      height:50px;
+      margin:5px;
+      margin-top:0px !important;
+      border-radius: 8px;
+      font-weight: 300;
+    }
+    .text {
+      font-size:80%
+    }
+  }
+  
+  // css example
+  .rectange {
+    height:10px;
+    width:10px;
+    margin:10px;
+    background-color:rgb(255, 157, 0);
+  }
+  .rectange1 {
+    height:10px;
+    width:10px;
+    margin:10px;
+    background-color:green;
+  }
+  
+  .round {
+    height:10px;
+    width:10px;
+    margin:10px;
+    border-radius: 50%;
+    background-color:red;
+  }
+  
+  
+  .arrow-up {
+    width: 10px;
+    height: 20px;
+    margin:10px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+  
+    border-bottom: 5px solid black;
+  }
+  
+  ion-item.cutom {
+    --inner-padding-bottom: 0px;
+    --padding-bottom:0px;
+    ion-label {
+      margin:0px;
+      padding-left:5px;
+    }
+  
+  }
+  
+  ion-modal {
+    --border-radius: 16px;
+  
+  }
+  
+  

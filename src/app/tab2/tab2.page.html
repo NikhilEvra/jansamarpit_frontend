@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Attendance</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-datetime style="margin: 10px"  [multiple]="true" [value]="att1" ></ion-datetime>
+  
+  <ion-card *ngFor="let dat of comment" style="margin:10px;"  [ngStyle]="{'background-color': dat.bg }">
+    <ion-item lines="none" color="none">
+      <ion-label>
+        <h3>{{dat.name}}</h3>
+        <p>{{dat.status}}</p>
+      </ion-label>
+      <ion-button color="primary" size="small" slot="end">{{dat.date}}</ion-button>
+    </ion-item>
+  </ion-card>
+  <!-- <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #A8A8A829;background-color:#F2EAFA; margin:10px">
+    <ion-row>
+      <h5><ion-text color="dark">kata</ion-text> </h5>
+      <apx-chart [series]="series" [chart]="chart" ></apx-chart>
+    </ion-row>
+    
+  </ion-card>
+  
+  <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #A8A8A829;background-color:#F2EAFA; margin:10px">
+    <ion-row>
+      <h5><ion-text color="dark">Kumite</ion-text> </h5>
+      <apx-chart [series]="series" [chart]="chart" ></apx-chart>
+    </ion-row>
+    
+  </ion-card>
+  
+  <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #A8A8A829;background-color:#F2EAFA; margin:10px">
+    <ion-row>
+      <h5><ion-text color="dark">kihon</ion-text> </h5>
+      <apx-chart [series]="series" [chart]="chart" ></apx-chart>
+    </ion-row>
+    
+  </ion-card> -->
+  <div style="height:150px;width:100%;padding:10px">
+    <img src="assets/vector/launch2.jpg" style="height:100%;width:100%">
+  </div>
+
+  
+  <div style="padding-bottom:80px"></div>
+</ion-content>
+

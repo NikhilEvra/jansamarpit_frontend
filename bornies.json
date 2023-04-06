@@ -1,0 +1,14 @@
+{
+  "key_store_name": "bornies.jks",
+  "alias_key_store_name": "bornies_selfdefen",
+  "key_store_password": "Welcome@mobilise@accessHr20191",
+  "first_and_last_name": "accessHr@mobilise",
+  "organizational_unit": "mobilise",
+  "organization": "mobilise",
+  "city": "faridabad",
+  "state": "haryana",
+  "two_later_country": "in",
+  "passphras": "Welcome@mobilise@accessHr20191",
+  "package":"com.hraccess.mbl",
+  "sku":"accesshr10111994"
+}

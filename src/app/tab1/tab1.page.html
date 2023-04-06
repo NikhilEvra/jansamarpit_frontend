@@ -1,0 +1,250 @@
+<ion-header mode="ios">
+  <ion-toolbar >
+    <ion-title class="ion-text-center">
+      <ion-text color="primary" >Bornies</ion-text>
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons> 
+    <!-- <ion-title class="ion-text-center">
+     
+      <ion-text color="primary">Bornies</ion-text>
+    </ion-title> -->
+    <ion-buttons slot="start">
+      <ion-button id="click-trigger">
+        <ion-icon name="keypad-outline"></ion-icon>
+        <!-- <ion-icon name="person-outline" ></ion-icon> -->
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="openPage('/login')">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+     
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scrollEvents="true" [fullscreen]="true">
+ 
+  <ion-popover trigger="click-trigger" triggerAction="click">
+    <ng-template>
+      <ion-item>
+        <ion-label>
+          <h2><ion-text color="primary"><b>Nikhil Chaudhary,</b>  </ion-text></h2>
+          <p>Welcome Back</p>
+        </ion-label>
+        <a href="https://us05web.zoom.us/j/4789871253?pwd=L3J4QVBWSHNueTIvbEtpcFdQTlZIdz09"><ion-button color="primary">Join Class</ion-button></a>
+        <!-- <ion-label slot="end" class="ion-text-right">
+          <p>Last Login</p>
+          <ion-text color="primary" style="font-size:80%;font-weight:530">12-01-2023 | 10:12am</ion-text>
+        </ion-label> -->
+      </ion-item>
+    </ng-template>
+  </ion-popover>
+
+
+  <ion-slides #slides [options]="slideServiceReport" pager="true" >
+    <ion-slide *ngFor="let dat of homeBanner" >
+      <div style="width:100%;height:130px;margin: 5px; ">
+        <img [src]="dat.url" style="height:100%;width:100%;border-radius: 15px;">
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-row>
+    <ion-col class="ion-padding-start">
+      <ion-text><b>Quick Link</b></ion-text>
+    </ion-col>
+  </ion-row>
+
+  <ion-row >
+    <ion-col size="3" *ngFor="let dat of quickLink" class="ion-text-center quickLink"  (click)="openPage(dat.url)">
+      <ion-card class="card" style="height: 50px;">
+        <img [src]="dat.icon">
+      </ion-card>
+      <ion-text class="text" style="font-size: 11px;">{{dat.name}}</ion-text>
+    </ion-col>
+  </ion-row>
+
+  <div class="br"></div>
+
+  <!-- <ion-row>
+    <ion-col class="ion-padding-start" style="display:flex;align-items:center">
+      <ion-text><b>Service Request</b></ion-text>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <ion-button size="small" shape="round" fill="outline" class="ion-text-center">New Request <ion-icon name="add"></ion-icon> </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-slides #slides [options]="slideServiceReport" pager="false" >
+    <ion-slide *ngFor="let dat of service">
+      <ion-card style="width:100%;min-height:100px;border:2px solid var(--ion-color-light);box-shadow: none;margin:0px 5px">
+        <ion-item lines="none">
+          <ion-label>
+            <h2><ion-text color="dark"><b>{{dat.title}}</b></ion-text></h2>
+          </ion-label>
+          <ion-label slot="end" class="ion-text-right">
+            <p>
+              <ion-text style="font-size:80%" color="primary">{{dat.date}}</ion-text>
+            </p>
+            <ion-chip color="success">{{dat.status}}</ion-chip>
+          </ion-label>
+        </ion-item>
+        <ion-row>
+          <div style="display:flex;align-items:center;text-align: left;"> <section class="rectange"></section> {{dat.remark}}</div>
+        </ion-row>
+        <ion-row>
+          <div style="display:flex;align-items:center;text-align: left;"> <section class="round"></section> {{dat.status1}}</div>
+        </ion-row>
+        <ion-row>
+          <div style="display:flex;align-items:center;text-align: left;"> <section class="rectange1"></section> {{dat.status2}}</div>
+        </ion-row>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+  <div class="br"></div> -->
+
+  <ion-row>
+    <ion-col class="ion-padding-start" style="display:flex;align-items:center">
+      <ion-text><b>Our Plans's</b></ion-text>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <ion-button size="small" fill="clear" shape="round" class="ion-text-center">View More <ion-icon name="arrow-forward" slot="end"></ion-icon> </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-slides #slides [options]="slideTodaySpl" pager="false" >
+    <ion-slide *ngFor="let dat of todaySpecial">
+      <ion-card style="width:100%;min-height:100px;border-radius: 8px;margin:5px 5px">
+        <img [src]="dat.image" style="width:100%;height:100px">
+        <ion-item >
+          <ion-text style="font-size:80%;margin-left:3px" color="dark">{{dat.name}}</ion-text>
+          <ion-button size="small" color="danger" slot="end">{{dat.rating}} <ion-icon name="star-outline" slot="end"></ion-icon></ion-button>
+        </ion-item>
+        <ion-item style="--min-height:20px">
+          <ion-text style="font-size:70%">Available</ion-text>
+          <ion-text style="font-size:70%" slot="end">20</ion-text>
+        </ion-item>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- <ion-row>
+    <ion-col class="ion-padding-start" style="display:flex;align-items:center">
+      <ion-text><b>Our Plan's</b></ion-text>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <ion-button size="small" fill="outline" shape="round" class="ion-text-center">Campus <ion-icon name="add" slot="end"></ion-icon> </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-slides #slides [options]="slideLatestCampus" pager="false" >
+    <ion-slide *ngFor="let dat of latestCampus">
+      <ion-card style="width:100%;min-height:100px;border-radius: 8px;margin:5px">
+        <img [src]="dat.image" style="width:100%;height:100px">
+        <ion-item class="ion-no-padding cutom" lines="none">
+        
+          <ion-label>
+            <h3><b>{{dat.title}}</b></h3>
+            <p>{{dat.remark}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-card>
+    </ion-slide>
+  </ion-slides> -->
+
+  <ion-row>
+    <ion-col class="ion-padding-start" style="display:flex;align-items:center">
+      <ion-text><b>Transactions</b></ion-text>
+    </ion-col>
+    <ion-col class="ion-text-right">
+      <ion-button size="small" fill="clear" shape="round" class="ion-text-center">View More <ion-icon name="arrow-forward" slot="end"></ion-icon> </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <div *ngFor="let dat of post">
+    <!-- <ion-button size="small" color="primary" class="ion-padding-start">{{dat.date}}</ion-button> -->
+    <!-- <ion-chip [color]="dat.color"  style="margin-left:16px" class="ion-padding-start">{{dat.date}}</ion-chip> -->
+    <ion-item lines="none"  class="ion-margin-start" style="padding: 5px;--border-radius: 8px;" color="light">
+      <div slot="start"  [ngStyle]="{'background-color': dat.bg }" style="padding:10px;color:var(--ion-color-light);border-radius: 10px;">
+      <ion-label style="text-align: center; padding-left: -10px;"> 12<br>Jan</ion-label>
+      </div>
+      <ion-label>
+        <h3><b>{{dat.title}}</b></h3>
+        <p>{{dat.desc}}</p>
+      </ion-label>
+    </ion-item>
+  </div>
+
+  <ion-row>
+    <ion-col class="ion-padding-start" style="display:flex;align-items:center">
+      <ion-text><b>Your Certificates</b></ion-text>
+    </ion-col>
+  </ion-row>
+
+  <ion-slides #slides [options]="slideAchivement" pager="false" >
+    <ion-slide *ngFor="let dat of achivemnt">
+      <div style="width:100%;border-radius: 8px;margin:10px;border:1px solid var(--ion-color-medium);margin-top:30px;margin-bottom:30px;box-shadow:2px 0px 9px #a89d9d;position:relative">
+        <img src="assets/homepage/achvement.png" style="height:50px;width:50px;margin-top:-25px">
+        <ion-row >
+          <ion-col class="ion-text-center">
+            <ion-text color="medium" style="font-size:60%">{{dat.title}}</ion-text><br>
+            <ion-text color="success" style="font-size:60%">{{dat.date}}</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row >
+          <ion-col class="ion-text-center">
+            <ion-text color="dark" style="font-size:90%;font-weight: 600;">{{dat.name}}</ion-text><br>
+            <ion-text color="medium" style="font-size:60%;font-weight: 600;">{{dat.stream}}</ion-text>
+          </ion-col>
+        </ion-row>
+        <section style="min-height:100px;border-radius: 8px;background-image:url(../../assets/homepage/achivement1.svg);background-repeat: no-repeat;background-size: 100%;display: flex;align-items: center;justify-content: center;">
+          <div>
+            <ion-text color="light">Congratulation!</ion-text><br>
+            <ion-text color="light" style="font-size:60%">By Sytem</ion-text>
+          </div>
+        </section>
+
+       
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+
+<!-- 
+  <ion-row>
+    <ion-col class="ion-padding-start" style="display:flex;align-items:center">
+      <ion-text><b>Birthday's</b></ion-text>
+    </ion-col>
+  </ion-row>
+
+  <ion-slides #slides [options]="slideLatestCampus" pager="false" >
+    <ion-slide *ngFor="let dat of birthday">
+      <ion-card style="width:100%;min-height:50px;border-radius: 8px;margin:5px">
+        <div style="height:70px;width:100%;background-image: url(../../assets/homepage/birthday_bg.svg);background-size:100%;background-repeat: no-repeat;display: flex;align-items: center; justify-content: center; ">
+          <img src="assets/homepage/background_person.png" style="height:30px;width:30px">
+        </div>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <ion-text color="primary" style="font-weight:500;font-size:11px">{{dat.date}}</ion-text><br>
+            <ion-text color="dark" style="font-weight:550;font-size:12px"> Happy Birthday</ion-text><br>
+            <ion-text color="medium" style="font-weight:500;font-size:11px">{{dat.name}}</ion-text><br>
+            <ion-button shape="round" size="small" fill="outline">Wish</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-slide>
+  </ion-slides> -->
+
+  
+  <div style="height:150px;width:100%;padding:10px">
+    <img src="assets/vector/launch2.jpg" style="height:100%;width:100%">
+  </div>
+
+
+  <div style="padding-bottom:80px"></div>
+
+
+</ion-content>
