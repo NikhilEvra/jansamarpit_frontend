@@ -45,28 +45,30 @@ export class SignupPage implements OnInit {
   }
   signup(){
     this.showLoading();
-    // this.httpapi.getuserdata(this.form.value.name ,this.form.value.email, this.form.value.password, this.form.value.phone).subscribe({
-    //   next:(data) => {
-    //     console.log(data);
+    this.httpapi.getuserdata(this.form.value.name ,this.form.value.email, this.form.value.password, this.form.value.phone).subscribe({
+      next:(data) => {
+        console.log(data);
        
-    //     if (data.status) {
-          
-    //       this.presentToast(data.message , 'success' );
-    //       this.router.navigateByUrl('/login');
-    //     } else if(data.status == false){
-    //       this.presentToast(data.message, 'danger');
-    //     }
-    //   },
-    //   error:() => {
-    //     console.log('err');
-    //     this.presentToast('Internal server error' , 'warning' )
-    //   },
-    //   complete:() => {
+        if (data.status) {
+           Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': data.message,  heightAuto: false ,  timer: 3000});
+          // this.presentToast(data.message , 'success' );
+          this.router.navigateByUrl('/login');
+        } else if(data.status == false){
+          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': data.message,  heightAuto: false ,  timer: 3000});
+          // this.presentToast(data.message, 'danger');
+        } 
+      },
+      error:() => {
+        console.log('err');
+         Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
+        // this.presentToast('Internal server error' , 'warning' )
+      },
+      complete:() => {
         
-    //   }
-    // })
-    this.router.navigateByUrl('/login');
-    Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'You have registered successfully!',  heightAuto: false ,  timer: 3000});
+      }
+    })
+    // this.router.navigateByUrl('/login');
+    // Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'You have registered successfully!',  heightAuto: false ,  timer: 3000});
     
   }
   

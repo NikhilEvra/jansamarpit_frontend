@@ -15,9 +15,7 @@
   <ion-footer class="ion-no-border">
     <form [formGroup]="form">
     <ion-toolbar>
-      
       <section class="inputbox">
-        
         <ion-item lines="none">
           <ion-input type="text"  placeholder="Name" formControlName="name"> </ion-input>
           <ion-button slot="end" fill="clear">
@@ -25,21 +23,20 @@
           </ion-button>
         </ion-item>
         <ion-item lines="none">
-          <ion-input type="text"  placeholder="Mobile No" formControlName="phone"> </ion-input>
-          <ion-button slot="end" fill="clear">
-            <ion-icon name="phone-portrait-outline"></ion-icon>
-          </ion-button>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-input type="text"  placeholder="Email Id" formControlName="email"> </ion-input>
+          <ion-input type="email"  placeholder="Email Id" formControlName="email" ngModel email="true"> </ion-input>
           <ion-button slot="end" fill="clear">
         <ion-icon name="mail-outline"></ion-icon>
           </ion-button>
         </ion-item>
         <ion-item lines="none">
+          <ion-input type="number" maxlength="10"  placeholder="Mobile No" formControlName="phone"> </ion-input>
+          <ion-button slot="end" fill="clear">
+            <ion-icon name="phone-portrait-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <ion-item lines="none">
           <ion-input type="password"  placeholder="Password" formControlName="password"> </ion-input>
           <ion-button slot="end" fill="clear">
-       
           </ion-button>
         </ion-item>
 

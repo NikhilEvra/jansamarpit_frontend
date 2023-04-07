@@ -54,6 +54,14 @@ const routes: Routes = [
     path: 'services',
     loadChildren: () => import('./pages/services/services.module').then( m => m.ServicesPageModule)
   },
+  {
+    path: 'feedback',
+    loadChildren: () => import('./pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
+  },
+  {
+    path: 'addcomplaints',
+    loadChildren: () => import('./pages/addcomplaints/addcomplaints.module').then( m => m.AddcomplaintsPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
