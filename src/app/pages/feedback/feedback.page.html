@@ -25,7 +25,7 @@
     <section class="inputbox">
       <ion-text color="danger">Your Designation ?</ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover">
+        <ion-select interface="popover" placeholder="Select option">
           <ion-select-option>Employee</ion-select-option>
           <ion-select-option>Dealer</ion-select-option>
           <ion-select-option>Sub-Dealer</ion-select-option>
@@ -36,7 +36,7 @@
     <section class="inputbox">
       <ion-text color="danger">How many vehicles do you sell ?</ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover">
+        <ion-select interface="popover" placeholder="Select option">
           <ion-select-option>05-10</ion-select-option>
           <ion-select-option>11-15</ion-select-option>
           <ion-select-option>15-20</ion-select-option>
@@ -46,7 +46,7 @@
     <section class="inputbox">
       <ion-text color="danger">How long do you have been with us ?</ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover">
+        <ion-select interface="popover" placeholder="Select option">
           <ion-select-option>1-3 years</ion-select-option>
           <ion-select-option>3-5 years</ion-select-option>
           <ion-select-option>5-7 years</ion-select-option>
@@ -57,7 +57,7 @@
     <section class="inputbox">
       <ion-text color="danger">Do you sell any other electric vehicle ?</ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover">
+        <ion-select interface="popover" placeholder="Select option">
           <ion-select-option>Yes</ion-select-option>
           <ion-select-option>No</ion-select-option>
           
@@ -67,7 +67,7 @@
     <section class="inputbox">
       <ion-text color="danger">Which features of the EVRA Electric Vehicles do you think are most important to customers? </ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover">
+        <ion-select interface="popover" placeholder="Select option">
           <ion-select-option>Range</ion-select-option>
           <ion-select-option>Price</ion-select-option>
           <ion-select-option>Style</ion-select-option>
@@ -79,9 +79,9 @@
       </ion-item>
     </section>
     <section class="inputbox">
-      <ion-text color="danger">    Which of the following administrative areas would you say presents the greatest opportunity for improvement? </ion-text>
+      <ion-text color="danger">Which of the following administrative areas would you say presents the greatest opportunity for improvement? </ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover">
+        <ion-select interface="popover" placeholder="Select option">
           <ion-select-option>Order Processing</ion-select-option>
           <ion-select-option>Transportation</ion-select-option>
           <ion-select-option>Services</ion-select-option>
@@ -164,7 +164,7 @@
     
     <ion-row>
       <ion-col >
-        <ion-button expand="block" color="danger" shape="round">Submit Compalint <ion-icon name="save-outline" slot="end"></ion-icon> </ion-button>
+        <ion-button expand="block" color="danger" shape="round" (click)="submit()">Submit Feedback <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
       </ion-col>
     </ion-row>
   

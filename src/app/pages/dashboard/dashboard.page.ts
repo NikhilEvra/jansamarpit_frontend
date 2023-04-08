@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { App } from '@capacitor/app';
-import { ActionSheetController, MenuController } from '@ionic/angular';
+import { ActionSheetController, LoadingController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +9,6 @@ import { ActionSheetController, MenuController } from '@ionic/angular';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-
   result: any;
   public progress = 0.7;
   USTEMP = localStorage.getItem('user');
@@ -52,21 +51,7 @@ export class DashboardPage implements OnInit {
     slidesPerView: 1.1,
     autoplay: false
   };
-  slideTodaySpl = {
-    initialSlide: 0,
-    slidesPerView: 2,
-    autoplay: false
-  }
-  slideAchivement = {
-    initialSlide: 0,
-    slidesPerView: 1,
-    autoplay: false
-  }
-  slideLatestCampus = {
-    initialSlide: 0,
-    slidesPerView: 3,
-    autoplay: false
-  }
+  
   service: any = [{
     title: 'Inventory',
     date: '13-12-22',
@@ -114,69 +99,6 @@ export class DashboardPage implements OnInit {
     avl: 20
   }]
 
-  latestCampus: any = [{
-    image: 'assets/homepage/latest_campus.jpeg',
-    title: 'Book Fair23',
-    remark: '1000+ author collection'
-  },{
-    image: 'assets/homepage/latest_campus.jpeg',
-    title: 'Science Ex',
-    remark: '1000+ author collection'
-  },{
-    image: 'assets/homepage/latest_campus.jpeg',
-    title: 'Holi Celebration',
-    remark: 'Campus Celebration'
-  },{
-    image: 'assets/homepage/latest_campus.jpeg',
-    title: 'Book Fair23',
-    remark: '1000+ author collection'
-  }]
-
-  post: any = [{
-    date: '12 Jan 2023',
-    title: 'Notice Title',
-    desc: 'This is show description here',
-    bg: 'var(--ion-color-success)',
-    color: 'success',
-    br: '2px solid var(--ion-color-success)'
-  },{
-    date: '12 Jan 2023',
-    title: 'Notice Title',
-    desc: 'This is show description here',
-    bg: 'var(--ion-color-primary)',
-    color: 'primary',
-  },{
-    date: '12 Jan 2023',
-    title: 'Notice Title',
-    desc: 'This is show description here',
-    bg: 'var(--ion-color-danger)',
-    color: 'danger'
-  },{
-    date: '12 Jan 2023',
-    title: 'Notice Title',
-    desc: 'This is show description here',
-    bg: 'var(--ion-color-warning)',
-    color: 'warning',
-  }]
-  achivemnt: any = [{
-    title: 'Student of the Year',
-    date: '12-01-2021',
-    name: 'Aman tyagi',
-    stream: 'BCA II Year',
-    clg: 'Deen Dayal College'
-  },{
-    title: 'Student of the Year',
-    date: '12-01-2021',
-    name: 'Aman tyagi',
-    stream: 'BCA II Year',
-    clg: 'Deen Dayal College'
-  },{
-    title: 'Student of the Year',
-    date: '12-01-2021',
-    name: 'Aman tyagi',
-    stream: 'BCA II Year',
-    clg: 'Deen Dayal College'
-  }]
 
 
   constructor(
@@ -184,6 +106,7 @@ export class DashboardPage implements OnInit {
     private router : Router,
     private actionSheetCtrl : ActionSheetController,
     private menuctrl : MenuController,
+    private loadingCtrl : LoadingController
   ) { 
     console.log(this.USTEMP);
     if (this.USTEMP) {
@@ -194,11 +117,17 @@ export class DashboardPage implements OnInit {
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
+
  ionViewWillEnter(){
+  console.log(this.getuserdata);
   this.menuctrl.enable(true);
+  if (localStorage.getItem("user") === null) {
+    this.router.navigateByUrl('/login');
  }
+ 
+ }
+
   ngOnInit() {
-    
   }
  
   
@@ -237,14 +166,27 @@ export class DashboardPage implements OnInit {
   }
 
   openPage(url : any){
+    this.showLoading();
     this.router.navigateByUrl(url);
   }
 
   land(url : any){
+    this.showLoading();
     this.router.navigateByUrl(url);
   }
 
   logout(){
-    App.exitApp();
+    // App.exitApp();
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
+  }
+
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading please Wait...',
+      duration: 3000,
+    });
+
+    loading.present();
   }
 }

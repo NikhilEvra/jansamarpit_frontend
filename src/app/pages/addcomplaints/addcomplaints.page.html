@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header mode="ios">
   <ion-toolbar color="danger">
     <ion-title>Add complaints</ion-title>
     <ion-buttons>
@@ -11,7 +11,7 @@
   <section class="inputbox">
     <ion-text color="danger">Dealer Name</ion-text>
     <ion-item lines="none">
-    <ion-input type="text" placeholder="Nikhil Chaudhary" readonly=""> </ion-input>
+    <ion-input type="text" placeholder="{{getuserdata.name}}" readonly=""> </ion-input>
     </ion-item>
   </section> <section class="inputbox">
     <ion-text color="danger">Location</ion-text>
@@ -23,7 +23,7 @@
   <section class="inputbox">
     <ion-text color="danger">Your Designation</ion-text>
     <ion-item lines="none">
-      <ion-select interface="popover">
+      <ion-select interface="popover"  placeholder="Select option">
         <ion-select-option>Employee</ion-select-option>
         <ion-select-option>Dealer</ion-select-option>
         <ion-select-option>Sub-Dealer</ion-select-option>
@@ -32,12 +32,14 @@
   </section>
    
   <section class="inputbox">
-    <ion-text color="danger">How many vehicles do you sell</ion-text>
+    <ion-text color="danger">Topic Of Concern</ion-text>
     <ion-item lines="none">
-      <ion-select interface="popover">
-        <ion-select-option>05-10</ion-select-option>
-        <ion-select-option>11-15</ion-select-option>
-        <ion-select-option>15-20</ion-select-option>
+      <ion-select interface="popover" placeholder="Select option">
+        <ion-select-option>Order Processing</ion-select-option>
+        <ion-select-option>Transportion</ion-select-option>
+        <ion-select-option>Services</ion-select-option>
+        <ion-select-option>Spare Parts</ion-select-option>
+        <ion-select-option>Finance</ion-select-option>
       </ion-select>
     </ion-item>
   </section>
@@ -55,7 +57,7 @@
 
   <ion-row>
     <ion-col >
-      <ion-button expand="block" color="danger" shape="round">Submit Compalint <ion-icon name="save-outline" slot="end"></ion-icon> </ion-button>
+      <ion-button expand="block" color="danger" shape="round" (click)="submit()">Submit Compalint <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
     </ion-col>
   </ion-row>
 

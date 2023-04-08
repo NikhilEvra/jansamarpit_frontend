@@ -28,23 +28,21 @@ export class LoginPage implements OnInit {
 
 initForm(){  
     this.form = this.formb.group({    
-      phone: ['7982567755', Validators.required],
-      spassword: ['1111', Validators.required],  
+      phone: ['', Validators.required],
+      spassword: ['', Validators.required],  
       
     })
     this.menuCtrl.enable(false);
   }
 
   ngOnInit() {
-    this.initForm();
-    
+    this.initForm(); 
   }
   ionViewDidLeave(){
     this.loadingCtrl.dismiss();
     this.menuCtrl.enable(true);
   }
-
- 
+  
   
   openPage(url :any){
     this.router.navigateByUrl(url);
@@ -79,9 +77,7 @@ initForm(){
       else{
         localStorage.setItem('user',JSON.stringify(this.response[0]));
         // this.api2.menu.next(this.response2);
-        
         this.router.navigateByUrl('/dashboard');
-        
         Swal.fire({
             'imageUrl' :'assets/icon/login.gif',
             'imageHeight':'100px', 

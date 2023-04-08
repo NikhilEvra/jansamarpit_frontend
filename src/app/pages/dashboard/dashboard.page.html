@@ -16,18 +16,18 @@
 </ion-header>
 
 <ion-content  >
-  <ion-popover trigger="click-trigger" triggerAction="click">
+  <ion-popover trigger="click-trigger" triggerAction="click" >
     <ng-template>
       <ion-item>
         <ion-label>
-          <h2><ion-text color="primary"><b>Nikhil Chaudhary,</b>  </ion-text></h2>
+          <h2><ion-text color="danger"><b>{{getuserdata.name}}</b>  </ion-text></h2>
           <p>Dealer</p>
         </ion-label><br>
        
       </ion-item>
       <ion-item>
         <ion-label (click)="logout()">
-          <h2><ion-text color="primary"><b>Log Out</b>  </ion-text></h2>
+          <h2><ion-text color="danger"><b>Log Out</b>  </ion-text></h2>
          
         </ion-label><br>
        
@@ -63,16 +63,17 @@
 
   <ion-row >
     <ion-col size="6" *ngFor="let dat of quickLink" class="ion-text-center quickLink"  >
-      <ion-card class="card" style="height: 100px;" (click)="land(dat.url)">
+      <ion-card class="card" style="height: 100px;" (click)="land(dat.url)" style = "height: 120px;">
+        
         <ion-card-header color="danger">{{dat.name}}</ion-card-header><br>
         <!-- <img [src]="dat.icon" style="height: 100%;"> -->
-        <ion-text style="text-align: center; font-size:16px;">15/10</ion-text>
+        <ion-text style="font-size : 13px;">Total / Left</ion-text><br>
+        
+        <ion-text style="text-align: center; font-size:12px;">15/10</ion-text>
       </ion-card>
       <!-- <ion-text class="text" style="font-size:16px;">{{dat.name}}</ion-text> -->
     </ion-col>
   </ion-row>
- 
-
 
   <!-- <ion-row >
     <ion-col size="6" *ngFor="let dat of quickLink" class="ion-text-center quickLink"  >

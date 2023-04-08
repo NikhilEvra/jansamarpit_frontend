@@ -12,10 +12,10 @@ export class AppComponent {
     { title: 'Sales', url: '/sales', icon: 'paper-plane' },
     { title: 'Complaints', url: '/complaints', icon: 'heart' },
     { title: 'Services', url: '/services', icon: 'archive' },
-    // { title: 'Trash', url: '/folder/trash', icon: 'trash' },
+    { title: 'Feedback', url: '/feedback', icon: 'trash' },
     // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
   ];
-  public labels = [ 'Feedback', 'Forget Password'];
+  // public labels = [ 'Feedback', 'Forget Password'];
   constructor() {}
 }
 

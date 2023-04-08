@@ -3,8 +3,7 @@
     <ion-buttons>
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>complaints</ion-title>
-  
+    <ion-title>Complaints</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,28 +11,31 @@
   <ion-card >
     <img src="assets/homepage/complaint.jpg"  />  
     <ion-card-content>
-   
       <ion-item>
         <ion-label>Total Complaints</ion-label>
         <ion-text>35</ion-text>
       </ion-item>
       <ion-item>
-        <ion-label>Open </ion-label>
+        <ion-label><ion-button color="danger" (click)="openPage('/opencomplaints')">Open complaints</ion-button> </ion-label>
         <ion-text>10</ion-text>
       </ion-item>
       <ion-item>
-        <ion-label>CLosed</ion-label>
+        <ion-label> <ion-button color="danger">Closed complaints</ion-button></ion-label>
         <ion-text>25</ion-text>
       </ion-item>
     
     </ion-card-content>
   </ion-card>
 
-  <ion-item>
-    <ion-button color="danger" (click)="openPage('/addcomplaints')">Raise complaint</ion-button>
-    <ion-button color="success">Open complaint</ion-button>
-    <ion-button color="secondary">Old complaint</ion-button>
-  </ion-item>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="danger" (click)="openPage('/addcomplaints')">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    
+  </ion-fab>
+
+    
+  
 
 
   <div style="padding-bottom: 80px;"></div>
