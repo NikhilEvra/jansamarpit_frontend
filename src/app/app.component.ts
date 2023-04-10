@@ -13,9 +13,9 @@ export class AppComponent {
     { title: 'Complaints', url: '/complaints', icon: 'heart' },
     { title: 'Services', url: '/services', icon: 'archive' },
     { title: 'Feedback', url: '/feedback', icon: 'trash' },
-    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    { title: 'Update Password', url: '/profile', icon: 'warning'},
   ];
-  // public labels = [ 'Feedback', 'Forget Password'];
+  // public labels = ['Feedback', 'Forget Password'];
   constructor() {}
 }
 

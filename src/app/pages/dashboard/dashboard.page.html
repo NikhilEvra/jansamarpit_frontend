@@ -34,7 +34,7 @@
       </ion-item>
     </ng-template>
   </ion-popover>
-
+  
   <!-- <ion-item>
     <ion-label>
       <h2><ion-text color="primary"><b>Nikhil Chaudhary,</b>  </ion-text></h2>
@@ -47,9 +47,9 @@
   </ion-item> -->
 
 
-  <ion-slides #slides [options]="slideServiceReport" >
+  <ion-slides #slides [options]="slideServiceReport" pager="true" >
     <ion-slide *ngFor="let dat of homeBanner" >
-      <div style="width:100%;height:130px;margin:0px 5px;">
+      <div style="width:100%;height:150px;margin:0px 5px;">
         <img [src]="dat.url" style="height:100%;width:100%;">
       </div>
     </ion-slide>
@@ -67,14 +67,12 @@
         
         <ion-card-header color="danger">{{dat.name}}</ion-card-header><br>
         <!-- <img [src]="dat.icon" style="height: 100%;"> -->
-        <ion-text style="font-size : 13px;">Total / Left</ion-text><br>
-        
+        <ion-text style="font-size : 13px;">{{dat.heading}}</ion-text><br>
         <ion-text style="text-align: center; font-size:12px;">15/10</ion-text>
       </ion-card>
       <!-- <ion-text class="text" style="font-size:16px;">{{dat.name}}</ion-text> -->
     </ion-col>
   </ion-row>
-
   <!-- <ion-row >
     <ion-col size="6" *ngFor="let dat of quickLink" class="ion-text-center quickLink"  >
       <ion-card class="card" style="height: 100px;" (click)="land(dat.url)">

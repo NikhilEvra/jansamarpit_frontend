@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { Camera, CameraResultType } from '@capacitor/camera';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addcomplaints',
@@ -7,9 +9,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./addcomplaints.page.scss'],
 })
 export class AddcomplaintsPage implements OnInit {
+  imagename:any=[];
   USTEMP = localStorage.getItem('user');
   getuserdata:any=[];
-  constructor() {
+  constructor(private router : Router,) {
      console.log(this.USTEMP);
     if (this.USTEMP) {
       this.getuserdata = JSON.parse(this.USTEMP) ;
@@ -26,6 +29,24 @@ export class AddcomplaintsPage implements OnInit {
              heightAuto: false , 
              timer: 3000
             });
+            this.router.navigateByUrl('/complaints');
+  }
+
+  opencam(){
+    const takePicture = async () => {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: true,
+        resultType: CameraResultType.Uri
+      });
+
+      var imageUrl = image.webPath;
+
+      this.imagename = imageUrl;
+      console.log(this.imagename);
+    };
+    
+    takePicture();
   }
 
 

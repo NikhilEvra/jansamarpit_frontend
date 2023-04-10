@@ -66,6 +66,10 @@ const routes: Routes = [
     path: 'opencomplaints',
     loadChildren: () => import('./pages/opencomplaints/opencomplaints.module').then( m => m.OpencomplaintsPageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

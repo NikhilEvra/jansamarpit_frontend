@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,6 @@ export class SignupService {
     formData.append('email', email);
     formData.append('password', password);
     formData.append('phone' , phone);
-    return this.api.post<any>('http://localhost/api/signup.php',  formData);
+    return this.api.post<any>(environment.apiurl + 'signup.php',  formData);
   }
 }

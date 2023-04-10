@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { App } from '@capacitor/app';
 import { ActionSheetController, LoadingController, MenuController } from '@ionic/angular';
+import { LoginService } from 'src/app/service/login/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +22,7 @@ export class DashboardPage implements OnInit {
   result1: any = [];
 
   homeBanner: any = [{
-    url: 'assets/home_banner/banner-6.jpg'
+    url: 'assets/home_banner/banner1.jpg'
   },{
     url: 'assets/home_banner/evra.png'
   }]
@@ -29,21 +31,25 @@ export class DashboardPage implements OnInit {
       icon: 'assets/icon/stocks.avif',
       name: 'Inventory',
       url: '/inventory',
+      heading : 'Total / Left',
     },
     {
       icon: 'assets/icon/sale.jpg',
       name: 'Sales',
       url: '/sales',
+      heading : 'Total / This month',
     },
     {
       icon: 'assets/icon/complaints.avif',
       name: 'Complaints',
       url: '/complaints',
+      heading : 'Open / Closed',
     },
     {
       icon: 'assets/icon/services.avif',
       name: 'Services',
       url : '/services',
+      heading : 'Total / Left',
     },
   ]
   slideServiceReport = {
@@ -99,14 +105,16 @@ export class DashboardPage implements OnInit {
     avl: 20
   }]
 
+  myfun = false;
 
-
+  menu1:any=[];
+  
   constructor(
-   
     private router : Router,
     private actionSheetCtrl : ActionSheetController,
     private menuctrl : MenuController,
-    private loadingCtrl : LoadingController
+    private loadingCtrl : LoadingController,
+    private api2 : LoginService,
   ) { 
     console.log(this.USTEMP);
     if (this.USTEMP) {
@@ -121,13 +129,37 @@ export class DashboardPage implements OnInit {
  ionViewWillEnter(){
   console.log(this.getuserdata);
   this.menuctrl.enable(true);
-  if (localStorage.getItem("user") === null) {
-    this.router.navigateByUrl('/login');
- }
- 
+          if (localStorage.getItem("user") === null) 
+          {
+            Swal.fire({
+                        'imageUrl' :'assets/icon/login.gif',
+                        'imageHeight':'100px', 
+                        'title': 'Please Login Again !',
+                         heightAuto: false , 
+                         timer: 3000
+                        });
+                        
+            this.router.navigateByUrl('/login');
+          }
+
+          // if(this.menu1 === null)
+          // {
+          //   this.router.navigateByUrl('/login');
+          //   console.log("null behaviour");
+          // }else{
+          //   console.log("yes");
+          // }
  }
 
   ngOnInit() {
+  }
+
+  menu(): void{
+    this.api2.menu.subscribe(res => {
+      console.log(res);
+      this.menu1 = res;
+      console.log(this.menu1);
+    });
   }
  
   
@@ -178,6 +210,7 @@ export class DashboardPage implements OnInit {
   logout(){
     // App.exitApp();
     localStorage.clear();
+    this.api2.menu.unsubscribe();
     this.router.navigateByUrl('/login');
   }
 
@@ -189,4 +222,9 @@ export class DashboardPage implements OnInit {
 
     loading.present();
   }
+
+  hide(){
+    this.myfun = !this.myfun;
+  }
+
 }

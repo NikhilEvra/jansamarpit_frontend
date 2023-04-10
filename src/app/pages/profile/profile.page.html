@@ -1,0 +1,56 @@
+<ion-header mode="ios">
+  <ion-toolbar color="danger">
+    <ion-title>Update Password</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <section class="inputbox">
+    <ion-text color="danger">Dealer Name</ion-text>
+    <ion-item lines="none">
+    <ion-input type="text" placeholder="{{getuserdata.name}}" readonly=""> </ion-input>
+    </ion-item>
+  </section> 
+  <section class="inputbox">
+    <ion-text color="danger">Email</ion-text>
+    <ion-item lines="none">
+      <ion-input type="text" placeholder="{{getuserdata.email}}" ></ion-input>
+    </ion-item>
+  </section>
+  <section class="inputbox">
+    <ion-text color="danger">Phone</ion-text>
+    <ion-item lines="none">
+      <ion-input type="text" placeholder="{{getuserdata.phone}}" ></ion-input>
+    </ion-item>
+  </section>
+  <ion-row>
+    <ion-col >
+      <ion-button expand="block" color="danger" shape="round">Update Profile <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
+    </ion-col>
+  </ion-row> -->
+
+  <section class="inputbox">
+    <ion-text color="danger">Old Password</ion-text>
+    <ion-item lines="none">
+    <ion-input type="text" placeholder="Enter Old Password"> </ion-input>
+    </ion-item>
+  </section> 
+  <section class="inputbox">
+    <ion-text color="danger">New Password</ion-text>
+    <ion-item lines="none">
+      <ion-input type="text" placeholder="Enter New Password" ></ion-input>
+    </ion-item>
+  </section>
+  <section class="inputbox">
+    <ion-text color="danger">Confirm New Password</ion-text>
+    <ion-item lines="none">
+      <ion-input type="text" placeholder="Re-enter New Password" ></ion-input>
+    </ion-item>
+  </section>
+  <ion-row>
+    <ion-col >
+      <ion-button expand="block" color="danger" shape="round" (click)="updatepass()">Update Password <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

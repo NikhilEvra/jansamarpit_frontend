@@ -51,6 +51,16 @@
     </ion-item>
   </section>
 
+  
+  <section class="inputbox">
+    <ion-text color="danger">Attachment</ion-text>
+    <ion-item lines="none">
+      <ion-button color="danger"  (click)="opencam()"><ion-icon name="camera" ></ion-icon></ion-button> 
+      <ion-input type="text" placeholder="{{imagename}}" readonly=""> </ion-input>
+    </ion-item>
+  </section>
+
+
   <!-- <ion-button fill="clear">
     <ion-icon size="small" name="attach-outline" slot="start"></ion-icon> Attach Photo
   </ion-button> -->
