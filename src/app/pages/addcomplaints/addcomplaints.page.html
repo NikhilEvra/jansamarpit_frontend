@@ -8,25 +8,26 @@
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="form">
   <section class="inputbox">
     <ion-text color="danger">Dealer Name</ion-text>
     <ion-item lines="none">
-    <ion-input type="text" placeholder="{{getuserdata.name}}" readonly=""> </ion-input>
+    <ion-input type="text" placeholder="{{getuserdata.name}}" readonly="" value="{{getuserdata.name}}" formControlName="name"> </ion-input>
     </ion-item>
   </section> <section class="inputbox">
     <ion-text color="danger">Location</ion-text>
     <ion-item lines="none">
-      <ion-input type="text" placeholder="Enter Location" ></ion-input>
+      <ion-input type="text" placeholder="Enter Location" formControlName="location"></ion-input>
     </ion-item>
   </section>
  
   <section class="inputbox">
     <ion-text color="danger">Your Designation</ion-text>
     <ion-item lines="none">
-      <ion-select interface="popover"  placeholder="Select option">
-        <ion-select-option>Employee</ion-select-option>
-        <ion-select-option>Dealer</ion-select-option>
-        <ion-select-option>Sub-Dealer</ion-select-option>
+      <ion-select interface="popover"  placeholder="Select option" formControlName="designation">
+        <ion-select-option value="Employee">Employee</ion-select-option>
+        <ion-select-option value="Dealer">Dealer</ion-select-option>
+        <ion-select-option value="sub_dealer">Sub-Dealer</ion-select-option>
       </ion-select>
     </ion-item>
   </section>
@@ -34,12 +35,12 @@
   <section class="inputbox">
     <ion-text color="danger">Topic Of Concern</ion-text>
     <ion-item lines="none">
-      <ion-select interface="popover" placeholder="Select option">
-        <ion-select-option>Order Processing</ion-select-option>
-        <ion-select-option>Transportion</ion-select-option>
-        <ion-select-option>Services</ion-select-option>
-        <ion-select-option>Spare Parts</ion-select-option>
-        <ion-select-option>Finance</ion-select-option>
+      <ion-select interface="popover" placeholder="Select option" formControlName="topic" >
+        <ion-select-option value="Order Processing">Order Processing</ion-select-option>
+        <ion-select-option value="Transportation">Transportion</ion-select-option>
+        <ion-select-option value="Services">Services</ion-select-option>
+        <ion-select-option value="Spare Parts">Spare Parts</ion-select-option>
+        <ion-select-option value="Finance">Finance</ion-select-option>
       </ion-select>
     </ion-item>
   </section>
@@ -47,7 +48,7 @@
   <section class="inputbox">
     <ion-text color="danger">Remark</ion-text>
     <ion-item lines="none">
-      <ion-textarea rows="4" placeholder="Enter Remarks..."></ion-textarea>
+      <ion-textarea rows="4" placeholder="Enter Remarks..." formControlName="remark"></ion-textarea>
     </ion-item>
   </section>
 
@@ -56,7 +57,7 @@
     <ion-text color="danger">Attachment</ion-text>
     <ion-item lines="none">
       <ion-button color="danger"  (click)="opencam()"><ion-icon name="camera" ></ion-icon></ion-button> 
-      <ion-input type="text" placeholder="{{imagename}}" readonly=""> </ion-input>
+      <ion-input type="text"  placeholder="{{imagename}}" > </ion-input>
     </ion-item>
   </section>
 
@@ -67,8 +68,8 @@
 
   <ion-row>
     <ion-col >
-      <ion-button expand="block" color="danger" shape="round" (click)="submit()">Submit Compalint <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
+      <ion-button expand="block" color="danger" shape="round" (click)="submit()" [disabled]="form.invalid">Submit Compalint <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
     </ion-col>
   </ion-row>
-
+</form>
 </ion-content>

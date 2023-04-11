@@ -8,27 +8,27 @@
 </ion-header>
 
 <ion-content>
-
   <ion-content>
+    <form [formGroup]="form">
     <section class="inputbox">
       <ion-text color="danger">Dealer Name</ion-text>
       <ion-item lines="none">
-      <ion-input type="text" placeholder="Nikhil Chaudhary" readonly=""> </ion-input>
+      <ion-input type="text" placeholder="Nikhil Chaudhary" value="Nikhil"  readonly="" formControlName="name"> </ion-input>
       </ion-item>
     </section> <section class="inputbox">
       <ion-text color="danger">Location</ion-text>
       <ion-item lines="none">
-        <ion-input type="text" placeholder="Enter Location" ></ion-input>
+        <ion-input type="text" placeholder="Enter Location" formControlName="location" ></ion-input>
       </ion-item>
     </section>
    
     <section class="inputbox">
       <ion-text color="danger">Your Designation ?</ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover" placeholder="Select option">
-          <ion-select-option>Employee</ion-select-option>
-          <ion-select-option>Dealer</ion-select-option>
-          <ion-select-option>Sub-Dealer</ion-select-option>
+        <ion-select interface="popover" placeholder="Select option" formControlName="designation">
+          <ion-select-option value="Employee">Employee</ion-select-option>
+          <ion-select-option value="Dealer">Dealer</ion-select-option>
+          <ion-select-option value="dub_dealer">Sub-Dealer</ion-select-option>
         </ion-select>
       </ion-item>
     </section>
@@ -36,20 +36,20 @@
     <section class="inputbox">
       <ion-text color="danger">How many vehicles do you sell ?</ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover" placeholder="Select option">
-          <ion-select-option>05-10</ion-select-option>
-          <ion-select-option>11-15</ion-select-option>
-          <ion-select-option>15-20</ion-select-option>
+        <ion-select interface="popover" placeholder="Select option" formControlName="no_of_vehicles">
+          <ion-select-option value="05-10">05-10</ion-select-option>
+          <ion-select-option value="11-15">11-15</ion-select-option>
+          <ion-select-option value="15-20">15-20</ion-select-option>
         </ion-select>
       </ion-item>
     </section>
     <section class="inputbox">
       <ion-text color="danger">How long do you have been with us ?</ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover" placeholder="Select option">
-          <ion-select-option>1-3 years</ion-select-option>
-          <ion-select-option>3-5 years</ion-select-option>
-          <ion-select-option>5-7 years</ion-select-option>
+        <ion-select interface="popover" placeholder="Select option" formControlName="duration">
+          <ion-select-option value="1-3">1-3 years</ion-select-option>
+          <ion-select-option value="3-5">3-5 years</ion-select-option>
+          <ion-select-option value="5-7">5-7 years</ion-select-option>
         </ion-select>
       </ion-item>
     </section>
@@ -57,9 +57,9 @@
     <section class="inputbox">
       <ion-text color="danger">Do you sell any other electric vehicle ?</ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover" placeholder="Select option">
-          <ion-select-option>Yes</ion-select-option>
-          <ion-select-option>No</ion-select-option>
+        <ion-select interface="popover" placeholder="Select option" formControlName="any_other_vehicle">
+          <ion-select-option value="yes">Yes</ion-select-option>
+          <ion-select-option value="no">No</ion-select-option>
           
         </ion-select>
       </ion-item>
@@ -67,26 +67,26 @@
     <section class="inputbox">
       <ion-text color="danger">Which features of the EVRA Electric Vehicles do you think are most important to customers? </ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover" placeholder="Select option">
-          <ion-select-option>Range</ion-select-option>
-          <ion-select-option>Price</ion-select-option>
-          <ion-select-option>Style</ion-select-option>
-          <ion-select-option>Top Speed</ion-select-option>
-          <ion-select-option>Safety</ion-select-option>
-          <ion-select-option>Acceleration</ion-select-option>
-          <ion-select-option>Ease of riding</ion-select-option>
+        <ion-select interface="popover" placeholder="Select option" formControlName="features">
+          <ion-select-option value="Range">Range</ion-select-option>
+          <ion-select-option value="Price">Price</ion-select-option>
+          <ion-select-option value="Style">Style</ion-select-option>
+          <ion-select-option value="Top Speed">Top Speed</ion-select-option>
+          <ion-select-option value="Safety">Safety</ion-select-option>
+          <ion-select-option value="Acceleration">Acceleration</ion-select-option>
+          <ion-select-option value="Ease Of riding">Ease of riding</ion-select-option>
         </ion-select>
       </ion-item>
     </section>
     <section class="inputbox">
       <ion-text color="danger">Which of the following administrative areas would you say presents the greatest opportunity for improvement? </ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover" placeholder="Select option">
-          <ion-select-option>Order Processing</ion-select-option>
-          <ion-select-option>Transportation</ion-select-option>
-          <ion-select-option>Services</ion-select-option>
-          <ion-select-option>Spare Parts</ion-select-option>
-          <ion-select-option>Finance</ion-select-option>
+        <ion-select interface="popover" placeholder="Select option" formControlName="improvement">
+          <ion-select-option value="Order Processing">Order Processing</ion-select-option>
+          <ion-select-option value="Transportation">Transportation</ion-select-option>
+          <ion-select-option value="Services">Services</ion-select-option>
+          <ion-select-option value="Spare Parts">Spare Parts</ion-select-option>
+          <ion-select-option value="Finance">Finance</ion-select-option>
           
         </ion-select>
       </ion-item>
@@ -94,26 +94,26 @@
     <section class="inputbox">
       <ion-text color="danger"> If you have any suggestions/problems related to Order Processing, please write it below.</ion-text>
       <ion-item lines="none">
-        <ion-textarea rows="4" placeholder="Write here..."></ion-textarea>
+        <ion-textarea rows="4" placeholder="Write here..." formControlName="p_remark"></ion-textarea>
       </ion-item>
     </section>
     <section class="inputbox">
-      <ion-text color="danger">     If you have any suggestions/problems related to Transportation, please write it below.</ion-text>
+      <ion-text color="danger">If you have any suggestions/problems related to Transportation, please write it below.</ion-text>
       <ion-item lines="none">
-        <ion-textarea rows="4" placeholder="Write here..."></ion-textarea>
+        <ion-textarea rows="4" placeholder="Write here..." formControlName="t_remark"></ion-textarea>
       </ion-item>
     </section>
 
     <section class="inputbox">
       <ion-text color="danger"> If you have any suggestions/problems related to Services, please write it below.</ion-text>
       <ion-item lines="none">
-        <ion-textarea rows="4" placeholder="Write here..."></ion-textarea>
+        <ion-textarea rows="4" placeholder="Write here..." formControlName="s_remark"></ion-textarea>
       </ion-item>
     </section>
     <section class="inputbox">
       <ion-text color="danger">  If you have any suggestions/problems related to Spare Parts, please write it below</ion-text>
       <ion-item lines="none">
-        <ion-textarea rows="4" placeholder="Write here..."></ion-textarea>
+        <ion-textarea rows="4" placeholder="Write here..." formControlName="spare_part_remark"></ion-textarea>
       </ion-item>
     </section>
     <!-- <ion-button fill="clear">
@@ -123,7 +123,7 @@
     <section class="inputbox">
       <ion-text color="danger"> If you have any suggestions/problems related to Finance, please write it below.</ion-text>
       <ion-item lines="none">
-        <ion-textarea rows="4" placeholder="Write here..."></ion-textarea>
+        <ion-textarea rows="4" placeholder="Write here..." formControlName="f_remark"></ion-textarea>
       </ion-item>
     </section>
  
@@ -131,43 +131,23 @@
       <ion-text color="danger">Rate Us</ion-text>
 
       <ion-list lines="none">
-        <ion-radio-group value="ratings">      
-          <ion-item>
-            <ion-label>5 star</ion-label>
-            <ion-radio value="5"></ion-radio>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>4 star</ion-label>
-            <ion-radio  value="4"></ion-radio>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label> 3 star</ion-label>
-            <ion-radio   value="3"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label> 2 star</ion-label>
-            <ion-radio   value="2 "></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label> 1 star</ion-label>
-            <ion-radio  value="a"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
+        <ion-item lines="none">
+          <ion-select interface="popover" placeholder="Select option" formControlName="rating">
+            <ion-select-option value="5">5</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="1">1</ion-select-option>
+          </ion-select>
+        </ion-item>
       </ion-list>
-     
-    </section>
-   
-
-
-    
+    </section>    
     <ion-row>
       <ion-col >
-        <ion-button expand="block" color="danger" shape="round" (click)="submit()">Submit Feedback <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
+        <ion-button expand="block" color="danger" shape="round" (click)="submit()" [disabled]="form.invalid">Submit Feedback <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
       </ion-col>
     </ion-row>
-  
+  </form>
     
     
 </ion-content>
