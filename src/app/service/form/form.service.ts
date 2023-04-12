@@ -36,20 +36,36 @@ export class FormService {
     return this.api.post<any>('http://localhost/api/feedbackform.php',  formData);
   }
 
-  complaintsformdata(name:any, location:any, designation: any, topic : any, remark: any):Observable<any>{
+  complaintsformdata(name:any, location:any, designation: any, topic : any, remark: any, filename:any):Observable<any>{
     const formData = new FormData();
     formData.append('name', name);
     formData.append('location', location);
     formData.append('designation', designation);
     formData.append('topic', topic);
-    formData.append('remark',remark)
-    return this.api.post<any>('http://localhost/api/contactsform.php',  formData);
+    formData.append('remark', remark);
+    formData.append('filename', filename)
+    return this.api.post<any>('http://localhost/api/add_complaints.php',  formData);
   }
 
   //  uploadImg(formData: any ) {
-
   //   return this.api.post('http://localhost/api/file.php',  formData);
   // }
   
+  uploadImg(formData: any ) {
+    return this.api.post('http://localhost/api/file.php',  formData)
+  }
+
+  updatePassformdata(o_pass: any,n_pass: any, r_n_pass:any):Observable<any>{
+    const formData = new FormData();
+    formData.append('o_pass', o_pass);
+    formData.append('n_pass', n_pass);
+    formData.append('r_n_pass', r_n_pass);
+
+    return this.api.post<any>('http://localhost/api/update_pass.php',  formData);
+  }
   
+  getOpenComplaints():Observable<any>{
+    return this.api.get<any>('http://localhost/api/open_complaints.php');
+  }
+
 }

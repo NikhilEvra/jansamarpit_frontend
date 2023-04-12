@@ -57,19 +57,14 @@
     <ion-text color="danger">Attachment</ion-text>
     <ion-item lines="none">
       <ion-button color="danger"  (click)="opencam()"><ion-icon name="camera" ></ion-icon></ion-button> 
-      <ion-input type="text"  placeholder="{{imagename}}" > </ion-input>
+      <ion-input type="text"  placeholder="{{imagename}}" value="{{imagename}}" formControlName="filename" > </ion-input>
     </ion-item>
   </section>
-
-
-  <!-- <ion-button fill="clear">
-    <ion-icon size="small" name="attach-outline" slot="start"></ion-icon> Attach Photo
-  </ion-button> -->
 
   <ion-row>
     <ion-col >
       <ion-button expand="block" color="danger" shape="round" (click)="submit()" [disabled]="form.invalid">Submit Compalint <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
     </ion-col>
   </ion-row>
-</form>
+</form> 
 </ion-content>

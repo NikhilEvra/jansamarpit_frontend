@@ -29,22 +29,24 @@
     </ion-col>
   </ion-row> -->
 
+  <form  [formGroup]="form">
+
   <section class="inputbox">
     <ion-text color="danger">Old Password</ion-text>
     <ion-item lines="none">
-    <ion-input type="text" placeholder="Enter Old Password"> </ion-input>
+    <ion-input type="text" placeholder="Enter Old Password" formControlName="o_pass"> </ion-input>
     </ion-item>
   </section> 
   <section class="inputbox">
     <ion-text color="danger">New Password</ion-text>
     <ion-item lines="none">
-      <ion-input type="text" placeholder="Enter New Password" ></ion-input>
+      <ion-input type="text" placeholder="Enter New Password" formControlName="n_pass" ></ion-input>
     </ion-item>
   </section>
   <section class="inputbox">
     <ion-text color="danger">Confirm New Password</ion-text>
     <ion-item lines="none">
-      <ion-input type="text" placeholder="Re-enter New Password" ></ion-input>
+      <ion-input type="text" placeholder="Re-enter New Password" formControlName="r_n_pass"></ion-input>
     </ion-item>
   </section>
   <ion-row>
@@ -52,5 +54,5 @@
       <ion-button expand="block" color="danger" shape="round" (click)="updatepass()">Update Password <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
     </ion-col>
   </ion-row>
-
+</form>
 </ion-content>

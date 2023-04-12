@@ -8,8 +8,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-card >
- <ion-card-header color="danger" style="text-align: center;">Spare Parts Issue</ion-card-header>  
+  <ion-card *ngFor="let dat of response">
+ <ion-card-header color="danger" style="text-align: center;">{{dat.topic}}</ion-card-header>  
     <ion-card-content>
       <ion-item>
         <ion-label>Complaint Id</ion-label>
@@ -17,17 +17,16 @@
       </ion-item>
       <ion-item>
         <ion-label>Status </ion-label>
-        <ion-text>Open</ion-text>
+        <ion-text>{{dat.Status}}</ion-text>
       </ion-item>
       <ion-item>
         <ion-label>Open Time</ion-label>
         <ion-text>2 Days</ion-text>
       </ion-item>
-    
     </ion-card-content>
   </ion-card>
 
-  <ion-card >
+  <!-- <ion-card >
     <ion-card-header color="danger" style="text-align: center;">Battery Issue</ion-card-header>  
        <ion-card-content>
          <ion-item>
@@ -62,6 +61,6 @@
            </ion-item>
          
          </ion-card-content>
-       </ion-card>
+       </ion-card> -->
 
 </ion-content>
