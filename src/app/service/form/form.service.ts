@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,7 @@ export class FormService {
     formData.append('f_remark',f_remark);
     formData.append('rating',rating);
 
-    return this.api.post<any>('http://localhost/api/feedbackform.php',  formData);
+    return this.api.post<any>(environment.apiurl + 'feedbackform.php',  formData);
   }
 
   complaintsformdata(name:any, location:any, designation: any, topic : any, remark: any, filename:any):Observable<any>{
@@ -44,7 +45,7 @@ export class FormService {
     formData.append('topic', topic);
     formData.append('remark', remark);
     formData.append('filename', filename)
-    return this.api.post<any>('http://localhost/api/add_complaints.php',  formData);
+    return this.api.post<any>(environment.apiurl + 'add_complaints.php',  formData);
   }
 
   //  uploadImg(formData: any ) {
@@ -52,7 +53,7 @@ export class FormService {
   // }
   
   uploadImg(formData: any ) {
-    return this.api.post('http://localhost/api/file.php',  formData)
+    return this.api.post(environment.apiurl + 'file.php',  formData)
   }
 
   updatePassformdata(o_pass: any,n_pass: any, r_n_pass:any):Observable<any>{
@@ -61,11 +62,23 @@ export class FormService {
     formData.append('n_pass', n_pass);
     formData.append('r_n_pass', r_n_pass);
 
-    return this.api.post<any>('http://localhost/api/update_pass.php',  formData);
+    return this.api.post<any>(environment.apiurl + 'update_pass.php',  formData);
   }
   
   getOpenComplaints():Observable<any>{
-    return this.api.get<any>('http://localhost/api/open_complaints.php');
+    return this.api.get<any>(environment.apiurl + 'open_complaints.php');
+  }
+
+  addsaleformdata(name:any, c_name:any, c_mobile: any, location : any, model_name: any, chassis:any,amount : any):Observable<any>{
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('c_name', c_name);
+    formData.append('c_mobile', c_mobile);
+    formData.append('location', location);
+    formData.append('model_name', model_name);
+    formData.append('chassis', chassis);
+    formData.append('amount' , amount);
+    return this.api.post<any>(environment.apiurl + 'customer_sale.php',  formData);
   }
 
 }

@@ -1,0 +1,71 @@
+<ion-header mode="ios">
+  <ion-toolbar color="danger">
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sales Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <section class="inputbox">
+      <ion-text color="danger">Dealer Name</ion-text>
+      <ion-item lines="none">
+      <ion-input type="text" placeholder="{{getuserdata.name}}" readonly="" value="{{getuserdata.name}}" formControlName="name"> </ion-input>
+      </ion-item>
+    </section> 
+    <section class="inputbox">
+      <ion-text color="danger">Customer Name</ion-text>
+      <ion-item lines="none">
+      <ion-input type="text" placeholder="Enter Custsomer Name" formControlName="c_name"></ion-input>
+      </ion-item>
+    </section> 
+    <section class="inputbox">
+      <ion-text color="danger">Customer Contact Number</ion-text>
+      <ion-item lines="none">
+      <ion-input type="text" placeholder="Enter Custsomer Phone Number" formControlName="c_mobile"></ion-input>
+      </ion-item>
+    </section> 
+    
+    <section class="inputbox">
+      <ion-text color="danger">Location</ion-text>
+      <ion-item lines="none">
+        <ion-input type="text" placeholder="Enter Location" formControlName="location"></ion-input>
+      </ion-item>
+    </section>
+    <section class="inputbox">
+      <ion-text color="danger">Model</ion-text>
+      <ion-item lines="none">
+        <ion-select interface="popover"  placeholder="Select Model Name" formControlName="model_name">
+          <ion-select-option value="Scooty">Scooty</ion-select-option>
+          <ion-select-option value="Bike">Bike</ion-select-option>
+          <ion-select-option value="E-rikshaw">E-rikshaw</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </section>
+    <section class="inputbox">
+      <ion-text color="danger">Chassis No</ion-text>
+      <ion-item lines="none">
+        <ion-input type="text" placeholder="Enter Chassis No" formControlName="chassis"></ion-input>
+      </ion-item>
+    </section>
+    
+    <section class="inputbox">
+      <ion-text color="danger">Amount</ion-text>
+      <ion-item lines="none">
+        <ion-input type="number" placeholder="Enter Amount" formControlName="amount"></ion-input>
+      </ion-item>
+    </section>
+  
+    
+  
+  
+    <ion-row>
+      <ion-col >
+        <ion-button expand="block" color="danger" shape="round" (click)="submit()" [disabled]="form.invalid">Submit Compalint <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
+      </ion-col>
+    </ion-row>
+  </form> 
+
+</ion-content>

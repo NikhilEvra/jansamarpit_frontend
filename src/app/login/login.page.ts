@@ -71,7 +71,39 @@ initForm(){
   }
  login(){
   this.showLoading();
-  localStorage.setItem('user',JSON.stringify(this.response[0]));
+  
+        
+  this.api.getlogindata(this.form.value.phone, this.form.value.spassword).subscribe({
+    next:(data) =>{
+      console.log(data);
+      this.response = data;
+     this.response2 = data;
+    },
+    error:() =>{
+      this.loadingCtrl.dismiss();
+      // alert('error occured');
+      Swal.fire({
+        'imageUrl' :'assets/icon/login.gif',
+        'imageHeight':'100px', 
+        'title': 'Internal Server Error',
+         heightAuto: false , 
+         timer: 3000
+        });
+    },
+    complete:() =>{
+   
+      if(this.response.status == false){
+         Swal.fire({
+            'imageUrl' :'assets/icon/login.gif',
+            'imageHeight':'100px', 
+            'title': this.response.message,
+             heightAuto: false , 
+             timer: 3000
+               });
+     
+      }
+      else{
+        localStorage.setItem('user',JSON.stringify(this.response[0]));
         //this.api.menu.next(this.response2);
         this.router.navigateByUrl('/dashboard');
         Swal.fire({
@@ -82,55 +114,18 @@ initForm(){
              timer: 3000
             });
         
-  // this.api.getlogindata(this.form.value.phone, this.form.value.spassword).subscribe({
-  //   next:(data) =>{
-  //     console.log(data);
-  //     this.response = data;
-  //    this.response2 = data;
-  //   },
-  //   error:() =>{
-  //     this.loadingCtrl.dismiss();
-  //     // alert('error occured');
-  //     this.presentToast('Internal Server Error.' , 'Danger');
-  //   },
-  //   complete:() =>{
-   
-  //     if(this.response.status == false){
-  //        Swal.fire({
-  //           'imageUrl' :'assets/icon/login.gif',
-  //           'imageHeight':'100px', 
-  //           'title': this.response.message,
-  //            heightAuto: false , 
-  //            timer: 3000
-  //              });
-  //       // Swal.fire({'title': 'You have successfully log in', heightAuto: false});
-  //       // this.presentToast(this.response.message , 'warning');
-  //       // alert(this.response.message)
-  //     }
-  //     else{
-  //       localStorage.setItem('user',JSON.stringify(this.response[0]));
-  //       //this.api.menu.next(this.response2);
-  //       this.router.navigateByUrl('/dashboard');
-  //       Swal.fire({
-  //           'imageUrl' :'assets/icon/login.gif',
-  //           'imageHeight':'100px', 
-  //           'title': 'You have successfully loged in',
-  //            heightAuto: false , 
-  //            timer: 3000
-  //           });
         
-  //       // this.presentToast('You have successfully log in' , 'success');
-  //     }        
-  //   }
-  // })
-  // this.router.navigateByUrl('/dashboard');
-  // Swal.fire({
-  //           'imageUrl' :'assets/icon/login.gif',
-  //           'imageHeight':'100px', 
-  //           'title': 'You have successfully loged in',
-  //            heightAuto: false , 
-  //            timer: 3000
-  //           });
+      }        
+    }
+  })
+  this.router.navigateByUrl('/dashboard');
+  Swal.fire({
+            'imageUrl' :'assets/icon/login.gif',
+            'imageHeight':'100px', 
+            'title': 'You have successfully loged in',
+             heightAuto: false , 
+             timer: 3000
+            });
 }
 
 async presentToast(msg: any, color: any) {

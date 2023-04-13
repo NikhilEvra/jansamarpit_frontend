@@ -31,7 +31,7 @@ export class AddcomplaintsPage implements OnInit {
 
   Initform(){
     this.form = this.formb.group({    
-      name: ['Nikhi', Validators.required],
+      name: [this.getuserdata.name],
       location: ['', Validators.required],
       designation: ['', Validators.required],  
       topic: ['', Validators.required],

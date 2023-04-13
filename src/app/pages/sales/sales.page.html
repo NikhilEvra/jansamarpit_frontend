@@ -1,33 +1,39 @@
-<ion-header>
+<ion-header mode="ios">
   <ion-toolbar color="danger">
     <ion-buttons>
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>sales</ion-title>
+    <ion-title>Sales</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
     <img alt="Silhouette of mountains" src="assets/homepage/sales.jpg" />
-    <ion-card-header>
-      
-    </ion-card-header>
-  
+    
     <ion-card-content>
       <ion-item>
         <ion-label>Total Sales</ion-label>
         <ion-text>35</ion-text>
       </ion-item>
       <ion-item>
-        <ion-label>Total Scooters Sold</ion-label>
+        <ion-label><ion-button color="danger" >Total scooters sold </ion-button> </ion-label>
         <ion-text>100</ion-text>
       </ion-item>
      
       <ion-item>
-        <ion-label>Total Bikes Sold</ion-label>
+        <ion-label><ion-button color="danger">Total Bikes Sold</ion-button></ion-label>
         <ion-text>15</ion-text>
       </ion-item>
     </ion-card-content>
   </ion-card>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="danger" (click)="openPage('/saleform')">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    
+  </ion-fab>
+
+  
 </ion-content>
