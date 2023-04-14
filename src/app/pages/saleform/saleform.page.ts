@@ -24,7 +24,7 @@ export class SaleformPage implements OnInit {
     console.log(this.USTEMP);
     if (this.USTEMP) {
       this.getuserdata = JSON.parse(this.USTEMP) ;
-    }  
+    }
   }
 
   IonViewDidLeave(){
@@ -47,7 +47,6 @@ export class SaleformPage implements OnInit {
 
   ngOnInit() {
   this.Initform();
-
   }
 
   submit(){
@@ -57,29 +56,24 @@ export class SaleformPage implements OnInit {
       next:(data) => {
         console.log(data);
         this.response = data;
-       
         Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
          this.router.navigateByUrl('/sales');
-       
       },
       error:() => {
         console.log('err');
-       
          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
-     
       },
       complete:() => {
-        
          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
       }
     })
    }
 
    async showLoading() {
-    const loading = await this.loadingCtrl.create({
-      
+    const loading = await this.loadingCtrl.create({ 
       duration: 3000,
     });
     loading.present();
   }
+
 }

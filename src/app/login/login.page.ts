@@ -113,19 +113,15 @@ initForm(){
              heightAuto: false , 
              timer: 3000
             });
+           
+         
+   
         
         
       }        
     }
   })
-  this.router.navigateByUrl('/dashboard');
-  Swal.fire({
-            'imageUrl' :'assets/icon/login.gif',
-            'imageHeight':'100px', 
-            'title': 'You have successfully loged in',
-             heightAuto: false , 
-             timer: 3000
-            });
+
 }
 
 async presentToast(msg: any, color: any) {
@@ -146,9 +142,11 @@ signup(){
 async showLoading() {
   const loading = await this.loadingCtrl.create({
     // message: 'Dismissing after 3 seconds...',
-    // duration: 3000,
+     duration: 3000,
   });
 
   loading.present();
 }
+
+
 }

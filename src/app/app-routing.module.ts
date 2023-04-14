@@ -74,6 +74,10 @@ const routes: Routes = [
     path: 'saleform',
     loadChildren: () => import('./pages/saleform/saleform.module').then( m => m.SaleformPageModule)
   },
+  {
+    path: 'po',
+    loadChildren: () => import('./pages/po/po.module').then( m => m.PoPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

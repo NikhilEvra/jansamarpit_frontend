@@ -3,7 +3,7 @@
     <ion-buttons>
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>inventory</ion-title>
+    <ion-title>Inventory</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +11,6 @@
   <ion-card >
     <img alt="Silhouette of mountains" src="assets/homepage/warehouse.jpg"  />  
     <ion-card-content>
-   
       <ion-item>
         <ion-label>Total Inventory</ion-label>
         <ion-text>35</ion-text>
@@ -30,6 +29,15 @@
       </ion-item>
     </ion-card-content>
   </ion-card>
+
+  <!-- <ion-card *ngFor="let dat of data" (click)="land(dat)">
+    {{dat}}
+  </ion-card> -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="danger" (click)="openPage('/po')">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 
 </ion-content>

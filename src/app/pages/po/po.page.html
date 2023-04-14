@@ -1,0 +1,104 @@
+<ion-header mode="ios">
+  <ion-toolbar color="danger">
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Purchase Order</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <section class="inputbox">
+      <ion-text color="danger">Dealer Name</ion-text>
+      <ion-item lines="none">
+      <ion-input type="text" placeholder="{{getuserdata.name}}" readonly="" value="{{getuserdata.name}}" formControlName="name"> </ion-input>
+      </ion-item>
+    </section> 
+    <section class="inputbox">
+      <ion-text color="danger">Business Name</ion-text>
+      <ion-item lines="none">
+      <ion-input type="text" placeholder="Enter Custsomer Name" formControlName="b_name"></ion-input>
+      </ion-item>
+    </section> 
+    <section class="inputbox">
+      <ion-text color="danger">Buisiness Contact Number</ion-text>
+      <ion-item lines="none">
+      <ion-input type="text" placeholder="Enter Custsomer Phone Number" formControlName="b_mobile"></ion-input>
+      </ion-item>
+    </section> 
+    
+    <section class="inputbox">
+      <ion-text color="danger">Address</ion-text>
+      <ion-item lines="none">
+        <ion-input type="text" placeholder="Enter Location" formControlName="location"></ion-input>
+      </ion-item>
+    </section>
+
+    <section class="inputbox">
+      <ion-text color="danger">Email</ion-text>
+      <ion-item lines="none">
+        <ion-input type="text" placeholder="Enter Email Id" formControlName="email"></ion-input>
+      </ion-item>
+    </section>
+
+    <section class="inputbox">
+      <ion-text color="danger">Vendor Address</ion-text>
+      <ion-item lines="none">
+      <ion-textarea rows="4" placeholder="Evra Energy Private Ltd : Plot No : 12,22 Feet, Bread factory Wali Gali, Indira Complex, sector 87, faridabad, haryana 121002 India." readonly=""></ion-textarea>
+      </ion-item>
+    </section>
+
+    <section class="inputbox">
+      <ion-text color="danger">Vendor GST</ion-text>
+      <ion-item lines="none">
+        <ion-input type="text" placeholder="06AAGCE2678H1ZI" readonly="" ></ion-input>
+      </ion-item>
+    </section>
+     
+    <section class="inputbox">
+      <ion-text color="danger">PO Number</ion-text>
+      <ion-item lines="none">
+        <ion-input type="text" placeholder="Enter PO Number" formControlName="po" ></ion-input>
+      </ion-item>
+    </section>
+
+    <section class="inputbox">
+      <ion-text color="danger">Model</ion-text>
+      <ion-item lines="none">
+        <ion-select interface="popover"  placeholder="Select Model Name" formControlName="model_name"  [(ngModel)]="status1" (ionChange)="changeFun()" >
+          <ion-select-option *ngFor="let data of modelName" >
+            <ion-button>{{data.model}}</ion-button>
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </section>
+
+    <section class="inputbox" >
+      <ion-text color="danger">Unit Price</ion-text>
+      <ion-item lines="none">
+        <ion-input type="text" placeholder="{{dataView}}" value="{{dataView}}" formControlName="chassis" readonly=""></ion-input>
+      </ion-item>
+    </section>
+    
+    <section class="inputbox" >
+      <ion-text color="danger">Quantity</ion-text>
+      <ion-item lines="none">
+        <ion-input type="number" placeholder="Enter Quantity" [(ngModel)]="status2" formControlName="quantity" (ionChange)="changeFun2()"></ion-input>
+      </ion-item>
+    </section>
+    <section class="inputbox">
+      <ion-text color="danger">Amount</ion-text>
+      <ion-item lines="none">
+        <ion-input type="number" placeholder="{{dataView2}}" value="{{dataView2}}" formControlName="amount" readonly=""></ion-input>
+      </ion-item>
+    </section>
+
+    <ion-row>
+      <ion-col >
+        <ion-button expand="block" color="danger" shape="round" (click)="submit()" [disabled]="form.invalid">Submit <ion-icon name="send-outline" slot="end"></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
+  </form> 
+
+</ion-content>
