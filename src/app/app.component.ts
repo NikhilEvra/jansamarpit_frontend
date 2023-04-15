@@ -8,12 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   
   public appPages = [
-    { title: 'Inventory', url: '/inventory', icon: 'mail' },
-    { title: 'Sales', url: '/sales', icon: 'paper-plane' },
-    { title: 'Complaints', url: '/complaints', icon: 'heart' },
-    { title: 'Services', url: '/services', icon: 'archive' },
-    { title: 'Feedback', url: '/feedback', icon: 'trash' },
-    { title: 'Update Password', url: '/profile', icon: 'warning'},
+    { title: 'Inventory', url: '/inventory', icon: 'star-half' },
+    { title: 'Sales', url: '/sales', icon: 'stats-chart' },
+    { title: 'Complaints', url: '/complaints', icon: 'clipboard' },
+    { title: 'Services', url: '/services', icon: 'checkmark-done' },
+    { title: 'Feedback', url: '/feedback', icon: 'file-tray-full' },
+    { title: 'Update Password', url: '/profile', icon: 'settings'},
   ];
   // public labels = ['Feedback', 'Forget Password'];
   constructor() {}

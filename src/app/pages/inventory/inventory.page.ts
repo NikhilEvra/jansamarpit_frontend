@@ -24,4 +24,5 @@ export class InventoryPage implements OnInit {
   //   this.router.navigate(['po',{item:dat}])
 
   // }
+  
 }

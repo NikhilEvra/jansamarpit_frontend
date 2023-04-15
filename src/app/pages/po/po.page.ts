@@ -42,15 +42,15 @@ export class PoPage implements OnInit {
 
   Initform(){
     this.form = this.formb.group({    
-      name: [this.getuserdata.name, Validators.required],
-      b_name: ['',Validators.required],
-      b_mobile:['',Validators.required],
-      location: ['', Validators.required],
+      // name: [this.getuserdata.name, Validators.required],
+      // b_name: ['',Validators.required],
+      // b_mobile:['',Validators.required],
+      // location: ['', Validators.required],
       model_name: ['', Validators.required],  
-      chassis: [this.dataView, Validators.required],
+      unit_price: [this.dataView, Validators.required],
       amount: [this.dataView2, Validators.required],
-      email : ['', Validators.required],
-      po : ['',Validators.required],
+      // email : ['', Validators.required],
+      // po : ['',Validators.required],
       quantity: ['',Validators.required]
     })
   }
@@ -65,16 +65,18 @@ export class PoPage implements OnInit {
   }
 
   submit(){
-
   }
 
-
   changeFun() {
+    this.dataView2 = null;
+    this.status2 = null;
     if (this.status1 == 'scooty') {
       this.dataView ='100000';
+      
     } else if (this.status1 == 'bike') {
       this.dataView = '200000';
     } 
+    this.myfun = true;
   }
 
   changeFun2(){
@@ -85,6 +87,7 @@ export class PoPage implements OnInit {
      }
     console.log(this.status2);
    this.dataView2 = this.status2 * this.dataView;
+   console.log(this.dataView2)
    
 
   }

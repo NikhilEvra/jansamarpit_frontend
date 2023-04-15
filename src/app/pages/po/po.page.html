@@ -9,7 +9,7 @@
 
 <ion-content>
   <form [formGroup]="form">
-    <section class="inputbox">
+    <!-- <section class="inputbox">
       <ion-text color="danger">Dealer Name</ion-text>
       <ion-item lines="none">
       <ion-input type="text" placeholder="{{getuserdata.name}}" readonly="" value="{{getuserdata.name}}" formControlName="name"> </ion-input>
@@ -61,7 +61,7 @@
       <ion-item lines="none">
         <ion-input type="text" placeholder="Enter PO Number" formControlName="po" ></ion-input>
       </ion-item>
-    </section>
+    </section> -->
 
     <section class="inputbox">
       <ion-text color="danger">Model</ion-text>
@@ -77,17 +77,18 @@
     <section class="inputbox" >
       <ion-text color="danger">Unit Price</ion-text>
       <ion-item lines="none">
-        <ion-input type="text" placeholder="{{dataView}}" value="{{dataView}}" formControlName="chassis" readonly=""></ion-input>
+        <ion-input type="text" placeholder="{{dataView}}" value="{{dataView}}" formControlName="unit_price" readonly=""></ion-input>
       </ion-item>
     </section>
     
-    <section class="inputbox" >
+    <section class="inputbox" *ngIf="myfun">
       <ion-text color="danger">Quantity</ion-text>
       <ion-item lines="none">
         <ion-input type="number" placeholder="Enter Quantity" [(ngModel)]="status2" formControlName="quantity" (ionChange)="changeFun2()"></ion-input>
       </ion-item>
     </section>
-    <section class="inputbox">
+
+    <section class="inputbox"  *ngIf="myfun" >
       <ion-text color="danger">Amount</ion-text>
       <ion-item lines="none">
         <ion-input type="number" placeholder="{{dataView2}}" value="{{dataView2}}" formControlName="amount" readonly=""></ion-input>
