@@ -81,4 +81,14 @@ export class FormService {
     return this.api.post<any>(environment.apiurl + 'customer_sale.php',  formData);
   }
 
+  postPodata(name : any,model_name: any, unit_price: any,amount :any ,quantity:any):Observable<any>{
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('model', model_name);
+    formData.append('unit_price', unit_price);
+    formData.append('amount', amount);
+    formData.append('quantity', quantity);
+    return this.api.post<any>(environment.apiurl + 'add_po.php', formData);
+
+  }
 }

@@ -13,15 +13,7 @@ import { App } from '@capacitor/app';
 })
 export class LoginPage implements OnInit {
   form! : FormGroup;
-  response: any=[
-    {
-        "id": "11",
-        "name": "niki",
-        "email": "niki@gmail.com",
-        "password": "1111",
-        "phone": "7982567755"
-    }
-];
+  response: any=[];
   response2:any=[];
   
 
@@ -38,9 +30,7 @@ export class LoginPage implements OnInit {
     private _popoverCtrl : PopoverController,
     
   ) { 
-    this.platform.backButton.subscribeWithPriority(10, () => {
-      App.exitApp();
-    });
+  
   }
 
 
@@ -148,5 +138,15 @@ async showLoading() {
   loading.present();
 }
 
+close(){
+ 
+   App.exitApp();
+  
+}
+// test(){
+//   Swal.fire({ 'title': 'exit app!',  heightAuto: false ,  timer: 3000}).then(()=> {
+//  this.close();
+//  },(error: any) => console.log(error));
+// }
 
 }

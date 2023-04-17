@@ -1,5 +1,6 @@
 <ion-content >
   <div style="height:90%;width:100%;background-image: url(assets/login/logo.jpg);background-repeat: no-repeat;background-size: 100%;"></div>
+ 
   <ion-row style="position:absolute; bottom:0px;width:100%">
     <ion-col class="ion-text-center" size="12">
       <div style="margin-top:30px;">
@@ -37,11 +38,11 @@
           <ion-button shape="round" expand="block" color="danger" (click)="login()" [disabled]="form.invalid">Login <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
         </ion-col>
       </ion-row>
-      <!-- <ion-row >
+      <ion-row >
         <ion-col >
-          <ion-button shape="round" expand="block" (click)="signup()" >Signup  <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
+          <ion-button shape="round" expand="block" (click)="close()" >Exit App  <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
         </ion-col>
-      </ion-row> -->
+      </ion-row>
     </ion-toolbar>
   </form>
   </ion-footer>

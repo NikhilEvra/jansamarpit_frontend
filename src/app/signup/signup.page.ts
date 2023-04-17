@@ -52,15 +52,18 @@ export class SignupPage implements OnInit {
         if (data.status) {
            Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': data.message,  heightAuto: false ,  timer: 3000});
           // this.presentToast(data.message , 'success' );
+        
           this.router.navigateByUrl('/login');
         } else if(data.status == false){
           Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': data.message,  heightAuto: false ,  timer: 3000});
+          
           // this.presentToast(data.message, 'danger');
         } 
       },
       error:() => {
         console.log('err');
          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
+       
         // this.presentToast('Internal server error' , 'warning' )
       },
       complete:() => {
@@ -69,7 +72,7 @@ export class SignupPage implements OnInit {
     })
     // this.router.navigateByUrl('/login');
     // Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'You have registered successfully!',  heightAuto: false ,  timer: 3000});
-    
+
   }
   
   async presentToast(msg: any, color: any) {

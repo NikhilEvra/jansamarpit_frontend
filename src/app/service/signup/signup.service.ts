@@ -18,6 +18,6 @@ export class SignupService {
     formData.append('email', email);
     formData.append('password', password);
     formData.append('phone' , phone);
-    return this.api.post<any>('https://evramedia.com/apifolder/signup.php',  formData);
+    return this.api.post<any>(environment.apiurl + 'signup.php',  formData);
   }
 }

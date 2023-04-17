@@ -78,6 +78,10 @@ const routes: Routes = [
     path: 'po',
     loadChildren: () => import('./pages/po/po.module').then( m => m.PoPageModule)
   },
+  {
+    path: 'poinvoice',
+    loadChildren: () => import('./pages/poinvoice/poinvoice.module').then( m => m.PoinvoicePageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

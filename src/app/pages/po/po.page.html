@@ -1,6 +1,9 @@
 <ion-header mode="ios">
   <ion-toolbar color="danger">
     <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Purchase Order</ion-title>
@@ -9,13 +12,10 @@
 
 <ion-content>
   <form [formGroup]="form">
-    <!-- <section class="inputbox">
-      <ion-text color="danger">Dealer Name</ion-text>
-      <ion-item lines="none">
-      <ion-input type="text" placeholder="{{getuserdata.name}}" readonly="" value="{{getuserdata.name}}" formControlName="name"> </ion-input>
-      </ion-item>
-    </section> 
-    <section class="inputbox">
+
+      <ion-input type="hidden" placeholder="{{getuserdata.id}}" readonly="" value="{{getuserdata.id}}" formControlName="name" > </ion-input>
+     
+      <!-- <section class="inputbox">
       <ion-text color="danger">Business Name</ion-text>
       <ion-item lines="none">
       <ion-input type="text" placeholder="Enter Custsomer Name" formControlName="b_name"></ion-input>
@@ -102,4 +102,5 @@
     </ion-row>
   </form> 
 
+  
 </ion-content>
