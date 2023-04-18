@@ -61,8 +61,6 @@ initForm(){
   }
  login(){
   this.showLoading();
-  
-        
   this.api.getlogindata(this.form.value.phone, this.form.value.spassword).subscribe({
     next:(data) =>{
       console.log(data);
@@ -90,7 +88,6 @@ initForm(){
              heightAuto: false , 
              timer: 3000
                });
-     
       }
       else{
         localStorage.setItem('user',JSON.stringify(this.response[0]));
@@ -139,9 +136,7 @@ async showLoading() {
 }
 
 close(){
- 
    App.exitApp();
-  
 }
 // test(){
 //   Swal.fire({ 'title': 'exit app!',  heightAuto: false ,  timer: 3000}).then(()=> {

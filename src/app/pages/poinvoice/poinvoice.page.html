@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="container mt-6 mb-7">
+  <div class="container mt-6 mb-7" id="htmlData">
     <div class="row justify-content-center">
       <div class="col-lg-12 col-xl-7">
         <div class="card">
@@ -98,10 +98,68 @@
               </div>
             </div>
           </div>
-          <ion-button (click)="print()" color="danger">Print</ion-button>
+          <ion-button (click)="openPDF()" color="danger">Print</ion-button>
 
         </div>
       </div>
     </div>
   </div>
+
+  <!-- <div class="container">
+    <div id="pdfTable" #pdftable="">
+      <h2>Angular HTML To PDF Example</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John</td>
+            <td>Smith</td>
+            <td>john@example.com</td>
+          </tr>
+          <tr>
+            <td>Zalmers</td>
+            <td>Nilsen</td>
+            <td>nilsen@example.com</td>
+          </tr>
+          <tr>
+            <td>Zoller </td>
+            <td>Dooley</td>
+            <td>zoller@example.com</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ion-button color="danger" (click)="exportPDF()"> exportPDF</ion-button>
+   
+  </div> -->
+
+  <!-- <div class="col-md-8" id="htmlData">
+    <table class="table table-bordered">
+        <tr class="table-primary">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+        <tr *ngFor="let user of USERS">
+            <th>{{user.id}}</th>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-md-4 text-right">
+  <ion-button color="danger"  (click)="openPDF()">Download PDF</ion-button>
+
+</div> -->
+
+  
 </ion-content>

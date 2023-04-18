@@ -22,21 +22,27 @@ export class AddcomplaintsPage implements OnInit {
   constructor(private router : Router,
     private formb : FormBuilder,
     private httpapi : FormService,
-    private loadingCtrl : LoadingController) {
+    private loadingCtrl : LoadingController,) {
           console.log(this.USTEMP);
           if (this.USTEMP) {
             this.getuserdata = JSON.parse(this.USTEMP) ;
           }  
   }
 
+  ionViewDidLeave(){
+    this.loadingCtrl.dismiss();
+  }
+
   Initform(){
     this.form = this.formb.group({    
-      name: [this.getuserdata.name],
+      name: [this.getuserdata.id],
       location: ['', Validators.required],
       designation: ['', Validators.required],  
       topic: ['', Validators.required],
       remark: ['', Validators.required],
-      filename : ['']
+      filename : [''],
+      file1: ['']
+      
     })
   }
 
@@ -47,24 +53,21 @@ export class AddcomplaintsPage implements OnInit {
     submit(){
       this.showLoading();
       console.log(this.form.value);  
-      this.httpapi.complaintsformdata(this.form.value.name,this.form.value.location,this.form.value.designation,this.form.value.topic,this.form.value.remark,this.form.value.filename).subscribe({
+      this.httpapi.complaintsformdata(this.form.value.name,this.form.value.location,this.form.value.designation,this.form.value.topic,this.form.value.remark,this.form.value.filename,this.form.value.file1).subscribe({
         next:(data) => {
           console.log(data);
           this.response = data;
-         
           Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
-          this.loadingCtrl.dismiss();
           this.router.navigateByUrl('/opencomplaints');
-         
         },
         error:() => {
           console.log('err');
          
            Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
-           this.loadingCtrl.dismiss();
+           
         },
         complete:() => {
-          this.loadingCtrl.dismiss();
+     
            Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
         }
       })
@@ -85,15 +88,17 @@ export class AddcomplaintsPage implements OnInit {
         allowEditing: true,
         resultType: CameraResultType.Uri
       });
-      
-      var imageUrl = image.webPath;
-      this.imagename = imageUrl;
      
-      console.log(this.imagename);
+    //  console.log(image);
+      var imageUrl = image.webPath;
+      // this.imagename = image;
+      this.imagename = imageUrl;
+      console.log(this.imagename)
+      
+     
+      //console.log(this.imagename);
     };
-   
     takePicture();
-
   }
 
 
@@ -103,7 +108,7 @@ export class AddcomplaintsPage implements OnInit {
     console.log(photo);
     // Create a form data object using the FormData API
     let formData = new FormData();
-    // Add the file that was just added to the form data
+    // Add the file that was just added to the form data 
     formData.append("photo", photo, photo.name);
     this.httpapi.uploadImg(formData).subscribe({ 
       next:(dat) => {
@@ -111,6 +116,8 @@ export class AddcomplaintsPage implements OnInit {
       }
     })
   }
+
+  
 
 
 

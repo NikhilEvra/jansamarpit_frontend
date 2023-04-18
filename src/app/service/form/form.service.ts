@@ -37,14 +37,15 @@ export class FormService {
     return this.api.post<any>(environment.apiurl + 'feedbackform.php',  formData);
   }
 
-  complaintsformdata(name:any, location:any, designation: any, topic : any, remark: any, filename:any):Observable<any>{
+  complaintsformdata(name:any, location:any, designation: any, topic : any, remark: any, filename:any,file1: any):Observable<any>{
     const formData = new FormData();
     formData.append('name', name);
     formData.append('location', location);
     formData.append('designation', designation);
     formData.append('topic', topic);
     formData.append('remark', remark);
-    formData.append('filename', filename)
+    formData.append('photo', filename);
+    formData.append('file1', file1);
     return this.api.post<any>(environment.apiurl + 'add_complaints.php',  formData);
   }
 
