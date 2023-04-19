@@ -66,8 +66,15 @@ export class FormService {
     return this.api.post<any>(environment.apiurl + 'update_pass.php',  formData);
   }
   
-  getOpenComplaints():Observable<any>{
-    return this.api.get<any>(environment.apiurl + 'open_complaints.php');
+  getOpenComplaints(id : any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'open_complaints.php?d_id=' + id);
+  }
+
+  getClosedComplaints(id: any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'closed_complaint.php?d_id=' + id);
+  }
+  getComplaints(id:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'getallcomplaint.php?d_id=' + id);
   }
 
   addsaleformdata(name:any, c_name:any, c_mobile: any, location : any, model_name: any, chassis:any,amount : any):Observable<any>{
@@ -80,6 +87,10 @@ export class FormService {
     formData.append('chassis', chassis);
     formData.append('amount' , amount);
     return this.api.post<any>(environment.apiurl + 'customer_sale.php',  formData);
+  }
+
+  getSales(id:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'getallsale.php?d_id=' + id);
   }
 
   postPodata(name : any,model_name: any, unit_price: any,amount :any ,quantity:any):Observable<any>{

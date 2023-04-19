@@ -34,7 +34,7 @@ export class SaleformPage implements OnInit {
 
   Initform(){
     this.form = this.formb.group({    
-      name: [this.getuserdata.name, Validators.required],
+      name: [this.getuserdata.id, Validators.required],
       c_name: ['',Validators.required],
       c_mobile:['',Validators.required],
       location: ['', Validators.required],

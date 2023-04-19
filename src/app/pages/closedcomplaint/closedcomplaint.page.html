@@ -1,0 +1,36 @@
+<ion-header mode="ios">
+  <ion-toolbar color="danger">
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Closed Complaints</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let dat of response">
+    <ion-card-header color="danger" style="text-align: center;">{{dat.topic}}</ion-card-header>  
+       <ion-card-content>
+         <ion-item>
+           <ion-label>Complaint Id</ion-label>
+           <ion-text>{{dat.complaint_id}}</ion-text>
+         </ion-item>
+         <ion-item>
+           <ion-label>Status </ion-label>
+           <ion-text>{{dat.status}}</ion-text>
+         </ion-item>
+         <ion-item>
+          <ion-label>Closed Date</ion-label>
+          <ion-text>{{dat.close_date}}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Closed  Time</ion-label>
+          <ion-text>{{dat.close_time}}</ion-text>
+        </ion-item>
+       </ion-card-content>
+     </ion-card>
+
+</ion-content>

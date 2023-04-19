@@ -11,20 +11,20 @@
 </ion-header>
 
 <ion-content>
-  <ion-card >
+  <ion-card *ngFor="let dat of response" >
     <img src="assets/homepage/complaint.jpg"  />  
     <ion-card-content>
       <ion-item>
         <ion-label>Total Complaints</ion-label>
-        <ion-text>35</ion-text>
+        <ion-text>{{dat.total}}</ion-text>
       </ion-item>
       <ion-item>
         <ion-label><ion-button color="danger" (click)="openPage('/opencomplaints')">Open complaints</ion-button> </ion-label>
-        <ion-text>10</ion-text>
+        <ion-text>{{dat.Open}}</ion-text>
       </ion-item>
       <ion-item>
-        <ion-label> <ion-button color="danger">Closed complaints</ion-button></ion-label>
-        <ion-text>25</ion-text>
+        <ion-label> <ion-button color="danger" (click)="openPage('/closedcomplaint')">Closed complaints</ion-button></ion-label>
+        <ion-text>{{dat.Closed}}</ion-text>
       </ion-item>
     
     </ion-card-content>

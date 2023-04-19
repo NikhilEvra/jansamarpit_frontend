@@ -82,6 +82,10 @@ const routes: Routes = [
     path: 'poinvoice',
     loadChildren: () => import('./pages/poinvoice/poinvoice.module').then( m => m.PoinvoicePageModule)
   },
+  {
+    path: 'closedcomplaint',
+    loadChildren: () => import('./pages/closedcomplaint/closedcomplaint.module').then( m => m.ClosedcomplaintPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

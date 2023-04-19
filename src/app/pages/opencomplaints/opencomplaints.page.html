@@ -1,9 +1,12 @@
 <ion-header mode="ios">
   <ion-toolbar color="danger">
-    <ion-buttons>
+    <ion-buttons slot="end">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>opencomplaints</ion-title>
+    <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Open Complaints</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,15 +16,19 @@
     <ion-card-content>
       <ion-item>
         <ion-label>Complaint Id</ion-label>
-        <ion-text>0035</ion-text>
+        <ion-text>{{dat.complaint_id}}</ion-text>
       </ion-item>
       <ion-item>
         <ion-label>Status </ion-label>
         <ion-text>{{dat.status}}</ion-text>
       </ion-item>
       <ion-item>
+        <ion-label>Open Date</ion-label>
+        <ion-text>{{dat.c_date}}</ion-text>
+      </ion-item>
+      <ion-item>
         <ion-label>Open Time</ion-label>
-        <ion-text>2 Days</ion-text>
+        <ion-text>{{dat.c_time}}</ion-text>
       </ion-item>
     </ion-card-content>
   </ion-card>

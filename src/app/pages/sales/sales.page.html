@@ -11,21 +11,26 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  
+  <ion-card *ngFor="let dat of response">
     <img alt="Silhouette of mountains" src="assets/homepage/sales.jpg" /> 
     <ion-card-content>
       <ion-item>
         <ion-label>Total Sales</ion-label>
-        <ion-text>35</ion-text>
+        <ion-text>{{dat.total}}</ion-text>
       </ion-item>
       <ion-item>
         <ion-label><ion-button color="danger" >Total scooters sold </ion-button> </ion-label>
-        <ion-text>100</ion-text>
+        <ion-text>{{dat.Bike}}</ion-text>
       </ion-item>
      
       <ion-item>
         <ion-label><ion-button color="danger">Total Bikes Sold</ion-button></ion-label>
-        <ion-text>15</ion-text>
+        <ion-text>{{dat.Scooty}}</ion-text>
       </ion-item>
     </ion-card-content>
   </ion-card>
