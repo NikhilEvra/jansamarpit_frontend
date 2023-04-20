@@ -12,8 +12,13 @@
 
 <ion-content>
   <form [formGroup]="form">
- 
-    <ion-input type="hidden" placeholder="{{getuserdata.id}}" readonly="" value="{{getuserdata.id}}" formControlName="name"> </ion-input>
+    <section class="inputbox">
+      <ion-text color="danger">Dealer Id</ion-text>
+      <ion-item lines="none">
+        <ion-input type="text" placeholder="{{getuserdata.id}}" readonly="" value="{{getuserdata.id}}" formControlName="name"> </ion-input>
+      </ion-item>
+    </section>
+  
   <section class="inputbox">
     <ion-text color="danger">Location</ion-text>
     <ion-item lines="none">
@@ -57,14 +62,14 @@
     <ion-text color="danger">Attachment</ion-text>
     <ion-item lines="none">
       <ion-button color="danger"  (click)="opencam()"><ion-icon name="camera" ></ion-icon></ion-button> 
-      <ion-input type="text"  placeholder="{{imagename}}" value="{{imagename}}" formControlName="filename" > </ion-input>
+      <!-- <ion-input type="text"  placeholder="{{imagename}}" value="{{imagename}}" formControlName="filename" > </ion-input> -->
     </ion-item>
   </section>
   <section class="inputbox">
     <ion-text color="danger">Attachment</ion-text>
     <ion-item lines="none">
       <!-- <ion-button color="danger"  ><ion-icon name="camera" ></ion-icon></ion-button>  -->
-      <input type="file" (change)="uploadPhoto($event)" formControlName="file1"   />
+      <input type="file" (change)="uploadPhoto($event)"   />
     </ion-item>
   </section>
 
@@ -74,4 +79,5 @@
     </ion-col>
   </ion-row>
 </form> 
+
 </ion-content>

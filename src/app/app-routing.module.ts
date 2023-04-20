@@ -86,6 +86,10 @@ const routes: Routes = [
     path: 'closedcomplaint',
     loadChildren: () => import('./pages/closedcomplaint/closedcomplaint.module').then( m => m.ClosedcomplaintPageModule)
   },
+  {
+    path: 'viewcomplaint',
+    loadChildren: () => import('./pages/viewcomplaint/viewcomplaint.module').then( m => m.ViewcomplaintPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

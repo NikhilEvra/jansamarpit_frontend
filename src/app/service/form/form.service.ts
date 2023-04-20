@@ -37,7 +37,7 @@ export class FormService {
     return this.api.post<any>(environment.apiurl + 'feedbackform.php',  formData);
   }
 
-  complaintsformdata(name:any, location:any, designation: any, topic : any, remark: any, filename:any,file1: any):Observable<any>{
+  complaintsformdata(name:any, location:any, designation: any, topic : any, remark: any, filename:any,file: any):Observable<any>{
     const formData = new FormData();
     formData.append('name', name);
     formData.append('location', location);
@@ -45,7 +45,7 @@ export class FormService {
     formData.append('topic', topic);
     formData.append('remark', remark);
     formData.append('photo', filename);
-    formData.append('file1', file1);
+    formData.append('file', file);
     return this.api.post<any>(environment.apiurl + 'add_complaints.php',  formData);
   }
 
@@ -75,6 +75,10 @@ export class FormService {
   }
   getComplaints(id:any):Observable<any>{
     return this.api.get<any>(environment.apiurl + 'getallcomplaint.php?d_id=' + id);
+  }
+
+  getComplaintById(id : any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'getcomplaintbyid.php?c_id=' + id);
   }
 
   addsaleformdata(name:any, c_name:any, c_mobile: any, location : any, model_name: any, chassis:any,amount : any):Observable<any>{

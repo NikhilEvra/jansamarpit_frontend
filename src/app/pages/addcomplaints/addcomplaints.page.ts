@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormService } from 'src/app/service/form/form.service';
 import { LoadingController } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-addcomplaints',
@@ -18,6 +19,9 @@ export class AddcomplaintsPage implements OnInit {
   getuserdata:any=[];
 
   response:any=[];
+  imgname:any=['complaint.jpg'];
+
+  img:any=[environment.apiurl + 'folder/' + this.imgname];
 
   constructor(private router : Router,
     private formb : FormBuilder,
@@ -41,7 +45,7 @@ export class AddcomplaintsPage implements OnInit {
       topic: ['', Validators.required],
       remark: ['', Validators.required],
       filename : [''],
-      file1: ['']
+      file: ['',Validators.required],
       
     })
   }
@@ -53,7 +57,7 @@ export class AddcomplaintsPage implements OnInit {
     submit(){
       this.showLoading();
       console.log(this.form.value);  
-      this.httpapi.complaintsformdata(this.form.value.name,this.form.value.location,this.form.value.designation,this.form.value.topic,this.form.value.remark,this.form.value.filename,this.form.value.file1).subscribe({
+      this.httpapi.complaintsformdata(this.form.value.name,this.form.value.location,this.form.value.designation,this.form.value.topic,this.form.value.remark,this.form.value.filename,this.form.value.file).subscribe({
         next:(data) => {
           console.log(data);
           this.response = data;
@@ -88,14 +92,13 @@ export class AddcomplaintsPage implements OnInit {
         allowEditing: true,
         resultType: CameraResultType.Uri
       });
+      this.form.get('filename')?.setValue(image);
      
-    //  console.log(image);
-      var imageUrl = image.webPath;
+      console.log(image);
+      //var imageUrl = image.webPath;
       // this.imagename = image;
-      this.imagename = imageUrl;
-      console.log(this.imagename)
-      
-     
+      // this.imagename = imageUrl;
+      // console.log(this.imagename);
       //console.log(this.imagename);
     };
     takePicture();
@@ -106,15 +109,16 @@ export class AddcomplaintsPage implements OnInit {
     // Get a reference to the file that has just been added to the input
     const photo = fileChangeEvent.target.files[0];
     console.log(photo);
+    this.form.get('file')?.setValue(photo);
     // Create a form data object using the FormData API
-    let formData = new FormData();
+    // let formData = new FormData();
     // Add the file that was just added to the form data 
-    formData.append("photo", photo, photo.name);
-    this.httpapi.uploadImg(formData).subscribe({ 
-      next:(dat) => {
-        console.log(dat);
-      }
-    })
+    // formData.append("photo", photo, photo.name);
+    // this.httpapi.uploadImg(formData).subscribe({ 
+    //   next:(dat) => {
+    //     console.log(dat);
+    //   }
+    // })
   }
 
   

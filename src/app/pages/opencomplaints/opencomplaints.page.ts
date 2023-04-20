@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { FormService } from 'src/app/service/form/form.service';
 
 @Component({
@@ -12,6 +13,8 @@ export class OpencomplaintsPage implements OnInit {
 
   response:any=[];
   constructor(private api : FormService,
+    private router : Router,
+    
     ) {
       console.log(this.USTEMP);
       if (this.USTEMP) {
@@ -35,10 +38,21 @@ export class OpencomplaintsPage implements OnInit {
      
       },
       complete:() =>{
-     
-            
+ 
       }
     })
+  }
+
+  land(id : any){
+    // console.log(id);
+    // this.router.navigate(['/viewcomplaint'], {queryParams : id});
+    // this.router.navigate(['map'], {queryParams: this.station});
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        id:id
+      }
+    };
+    this.router.navigate(['/viewcomplaint'], navigationExtras);
   }
 
 }
