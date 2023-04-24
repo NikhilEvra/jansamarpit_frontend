@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar color="danger">
     <ion-buttons>
-      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>feedback</ion-title>
+    <ion-buttons slot="end" (click)="openPage('/dashboard')">
+      <ion-icon name="arrow-back" ></ion-icon>Back
+    </ion-buttons>
+    <ion-title>Feedback</ion-title>
   </ion-toolbar>
 </ion-header>
 

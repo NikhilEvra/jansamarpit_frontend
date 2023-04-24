@@ -86,4 +86,8 @@ async showLoading() {
   });
   loading.present();
 }
+
+openPage(url:any){
+  this.router.navigateByUrl(url);
+}
 }

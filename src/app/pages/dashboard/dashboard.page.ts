@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { App } from '@capacitor/app';
 import { ActionSheetController, LoadingController, MenuController } from '@ionic/angular';
+import { FormService } from 'src/app/service/form/form.service';
 import { LoginService } from 'src/app/service/login/login.service';
 import Swal from 'sweetalert2';
 
@@ -49,7 +50,7 @@ export class DashboardPage implements OnInit {
       icon: 'assets/icon/services.avif',
       name: 'Services',
       url : '/services',
-      heading : 'Total / Left',
+      heading : 'Total ',
     },
   ]
   slideServiceReport = {
@@ -58,63 +59,21 @@ export class DashboardPage implements OnInit {
     autoplay: false
   };
   
-  service: any = [{
-    title: 'Inventory',
-    date: '13-12-22',
-    status: '12',
-    remark: 'cleaning not happening on daily basis in my room',
-    status1: 'Resolve-Done',
-    status2: 'Resolve by Jaishankar-Admin manager'
-  },{
-    title: 'Sales',
-    date: '13-12-22',
-    status: '40',
-    remark: 'cleaning not happening on daily basis in my room',
-    status1: 'Resolve-Done',
-    status2: 'Resolve by Jaishankar-Admin manager'
-  },{
-    title: 'Complaints',
-    date: '13-12-22',
-    status: '10',
-    remark: 'cleaning not happening on daily basis in my room',
-    status1: 'Resolve-Done',
-    status2: 'Resolve by Jaishankar-Admin manager'
-  },{
-    title: 'Service',
-    date: '13-12-22',
-    status: 'resolved',
-    remark: 'cleaning not happening on daily basis in my room',
-    status1: 'Resolve-Done',
-    status2: 'Resolve by Jaishankar-Admin manager'
-  }]
-
-  todaySpecial:any =[{
-    image: 'assets/homepage/special_thali.jpeg',
-    name: 'Special Thali',
-    rating: '4.0',
-    avl: 20
-  },{
-    image: 'assets/homepage/special_thali.jpeg',
-    name: 'Special Combo',
-    rating: '3.0',
-    avl: 20
-  },{
-    image: 'assets/homepage/special_thali.jpeg',
-    name: 'Special Thali',
-    rating: '4.0',
-    avl: 20
-  }]
+ 
 
   myfun = false;
 
   menu1:any=[];
-  
+  response:any=[];
+  response2:any=[];
+  response3:any=[];
   constructor(
     private router : Router,
     private actionSheetCtrl : ActionSheetController,
     private menuctrl : MenuController,
     private loadingCtrl : LoadingController,
     private api2 : LoginService,
+    private api : FormService
   ) { 
     console.log(this.USTEMP);
     if (this.USTEMP) {
@@ -152,6 +111,7 @@ export class DashboardPage implements OnInit {
  }
 
   ngOnInit() {
+    this.dashData();
   }
 
   menu(): void{
@@ -226,5 +186,27 @@ export class DashboardPage implements OnInit {
   hide(){
     this.myfun = !this.myfun;
   }
+
+  dashData(){
+    this.api.getdashdata(this.getuserdata.id).subscribe({
+        next:(data) =>{
+          console.log(data);
+          this.response = data[0];
+          this.response2 = data[1];
+          this.response3 = data[2];
+          console.log(this.response);
+          console.log(this.response2);
+          console.log(this.response3);
+          
+        },
+        error:() =>{
+          alert('error');
+       
+        },
+        complete:() =>{
+   
+        }
+      })
+    }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { FormService } from 'src/app/service/form/form.service';
 import Swal from 'sweetalert2';
 
@@ -30,12 +31,18 @@ export class PoPage implements OnInit {
   dataView: any = [];
   status2! : any;
   dataView2:any=[];
-
+  model_name:any=[];
+  form1 :any=['form1'];
+  status3!:any;
+  status4!:any;
+  status5!:any;
+  
   constructor(
     private formb : FormBuilder,
     private router : Router,
     private route : ActivatedRoute,
-    private api : FormService
+    private api : FormService,
+    private modal : ModalController
   ) { 
     console.log(this.USTEMP);
     if (this.USTEMP) {
@@ -56,6 +63,11 @@ export class PoPage implements OnInit {
       // po : ['',Validators.required],
       quantity: ['',Validators.required]
     })
+
+    this.form1 = this.formb.group({
+      quantity: ['', Validators.required],
+      amount:[this.dataView2],
+    })
   }
 
 
@@ -64,7 +76,7 @@ export class PoPage implements OnInit {
     this.Initform();
     // this.getValue= this.route.snapshot.paramMap.get("item")
     // console.log(JSON.parse(this.getValue));
-    console.log(this.name);
+   
   }
 
   submit(){
@@ -88,10 +100,8 @@ export class PoPage implements OnInit {
         // this.presentToast('Internal server error' , 'warning' )
       },
       complete:() => {
-        
       }
     })
-    
   }
 
   changeFun() {
@@ -119,5 +129,40 @@ export class PoPage implements OnInit {
 
   }
 
+  updatevalue(dat :any){
+    this.model_name = dat;
+    this.form1.reset();
+  }
+add(){
+  Swal.fire({'imageUrl' :'assets/icon/success.gif','imageHeight':'100px', 'title': 'Added To cart',  heightAuto: false ,  timer: 3000});
+
+}
+changefun3(dat : any){
+ console.log(dat)
+  if (dat == 'Scooty') {
+    this.dataView ='100000';
+    console.log(this.dataView);
+    
+  } 
+  else if (dat == 'Bike') {
+    this.dataView = '200000';
+    console.log(this.dataView);
+  } 
+}
+
+changefun4(){
+  this.dataView2 = this.status2 * this.dataView;
+  // console.log(this.dataView2);
+}
+
+submit_cart(){
+  console.log(this.form1.value.quantity);
+ 
+  this.form1.reset();
+}
   
+close(){
+  this.modal.dismiss();
+  this.form1.reset();
+}
 }

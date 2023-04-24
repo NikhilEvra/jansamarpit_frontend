@@ -1,5 +1,9 @@
 <ion-header mode="ios">
   <ion-toolbar color="danger">
+    <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+   
     <ion-title>Update Password</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -55,4 +59,11 @@
     </ion-col>
   </ion-row>
 </form>
+
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button color="danger" (click)="openPage('/dashboard')">
+    <ion-icon name="arrow-back"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
 </ion-content>

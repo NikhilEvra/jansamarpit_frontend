@@ -11,24 +11,24 @@
 </ion-header>
 
 <ion-content>
-  <ion-card >
+  <ion-card *ngFor="let dat of response">
     <img alt="Silhouette of mountains" src="assets/homepage/warehouse.jpg"  />  
     <ion-card-content>
       <ion-item>
         <ion-label>Total Inventory</ion-label>
-        <ion-text>35</ion-text>
+        <ion-text>{{dat.total}}</ion-text>
       </ion-item>
       <ion-item>
         <ion-label>Purchase Order</ion-label>
-        <ion-text>100</ion-text>
+        <ion-text>{{dat.po_raised}}</ion-text>
       </ion-item>
       <ion-item>
         <ion-label>Total Scooter</ion-label>
-        <ion-text>12</ion-text>
+        <ion-text>{{dat.scooty}}</ion-text>
       </ion-item>
       <ion-item>
         <ion-label>Total Bikes</ion-label>
-        <ion-text>15</ion-text>
+        <ion-text>{{dat.bike}}</ion-text>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -36,6 +36,7 @@
   <!-- <ion-card *ngFor="let dat of data" (click)="land(dat)">
     {{dat}}
   </ion-card> -->
+  
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button color="danger" (click)="openPage('/po')">
       <ion-icon name="add"></ion-icon>

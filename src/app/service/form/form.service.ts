@@ -105,6 +105,13 @@ export class FormService {
     formData.append('amount', amount);
     formData.append('quantity', quantity);
     return this.api.post<any>(environment.apiurl + 'add_po.php', formData);
+  }
 
+  getInventory(id : any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'inventory_count.php?d_id=' + id);
+  }
+
+  getdashdata(id:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'dashboard_data.php?d_id=' + id);
   }
 }

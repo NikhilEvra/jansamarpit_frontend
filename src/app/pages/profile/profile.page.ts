@@ -18,6 +18,7 @@ export class ProfilePage implements OnInit {
   constructor(private router : Router,
     private formb : FormBuilder,
     private httpapi : FormService,
+    
     ) {  
        console.log(this.USTEMP);
     if (this.USTEMP) {
@@ -99,4 +100,7 @@ export class ProfilePage implements OnInit {
     //     }
     //   })
     //  }
+    openPage(url :any){
+      this.router.navigateByUrl(url);
+    }
 }
