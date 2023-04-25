@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { CartService } from 'src/app/service/cart/cart.service';
 import { FormService } from 'src/app/service/form/form.service';
 import Swal from 'sweetalert2';
 
@@ -33,16 +34,26 @@ export class PoPage implements OnInit {
   dataView2:any=[];
   model_name:any=[];
   form1 :any=['form1'];
-  status3!:any;
+  status3= 0;
   status4!:any;
-  status5!:any;
+  status5=0;
+  status6=0;
+  status7=0;
+  status8=0;
+  status9=0;
+  status10=0;
+  status11=0;
+  status12=0;
+
+  dataView3!:any;
   
   constructor(
     private formb : FormBuilder,
     private router : Router,
     private route : ActivatedRoute,
     private api : FormService,
-    private modal : ModalController
+    private modal : ModalController,
+    private httpapi : CartService
   ) { 
     console.log(this.USTEMP);
     if (this.USTEMP) {
@@ -64,10 +75,7 @@ export class PoPage implements OnInit {
       quantity: ['',Validators.required]
     })
 
-    this.form1 = this.formb.group({
-      quantity: ['', Validators.required],
-      amount:[this.dataView2],
-    })
+   
   }
 
 
@@ -131,12 +139,15 @@ export class PoPage implements OnInit {
 
   updatevalue(dat :any){
     this.model_name = dat;
-    this.form1.reset();
+  // console.log(this.model_name);
+  let navigationExtras: NavigationExtras = {
+    queryParams: {
+      model : dat
+    }
+  };
+  this.router.navigate(['/cart1'], navigationExtras);
   }
-add(){
-  Swal.fire({'imageUrl' :'assets/icon/success.gif','imageHeight':'100px', 'title': 'Added To cart',  heightAuto: false ,  timer: 3000});
 
-}
 changefun3(dat : any){
  console.log(dat)
   if (dat == 'Scooty') {
@@ -150,19 +161,10 @@ changefun3(dat : any){
   } 
 }
 
-changefun4(){
-  this.dataView2 = this.status2 * this.dataView;
-  // console.log(this.dataView2);
-}
 
-submit_cart(){
-  console.log(this.form1.value.quantity);
- 
-  this.form1.reset();
-}
+
+
+
   
-close(){
-  this.modal.dismiss();
-  this.form1.reset();
-}
+
 }

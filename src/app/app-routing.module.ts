@@ -90,6 +90,10 @@ const routes: Routes = [
     path: 'viewcomplaint',
     loadChildren: () => import('./pages/viewcomplaint/viewcomplaint.module').then( m => m.ViewcomplaintPageModule)
   },
+  {
+    path: 'cart1',
+    loadChildren: () => import('./pages/cart/cart1/cart1.module').then( m => m.Cart1PageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

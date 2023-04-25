@@ -61,7 +61,7 @@
       <ion-item lines="none">
         <ion-input type="text" placeholder="Enter PO Number" formControlName="po" ></ion-input>
       </ion-item>
-    </section> -->
+    </section>  -->
 
     <!-- <section class="inputbox">
       <ion-text color="danger">Model</ion-text>
@@ -114,172 +114,18 @@
 
      <ion-row>
       <ion-col size="6">
-        <ion-card (click)="updatevalue('Scooty')" (click)="changefun3('EX1')" (click)="updatevalue('EX1')" id="modal"> 
+        <ion-card (click)="updatevalue('EX1')"> 
           <img src="assets/product/EX1/1.jpg">
         </ion-card>
       </ion-col>
       <ion-col size="6">
-        <ion-card (click)="updatevalue('Bike')" (click)="changefun3('EX2')"  (click)="updatevalue('EX2')" id="modal2">
+        <ion-card   (click)="updatevalue('EX2')" >
           <img src="assets/product/EX2/1.jpg">
         </ion-card>
       </ion-col>
      </ion-row>
      
-     <ion-row>
-      <ion-col size="6">
-        <ion-card (click)="updatevalue('Scooty')" (click)="changefun3('Scooty')" id="modal"> 
-          <img src="assets/product/scooty.jpeg">
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card (click)="updatevalue('Bike')" (click)="changefun3('Bike')" id="modal2">
-          <img src="assets/product/bike.webp">
-        </ion-card>
-      </ion-col>
-     </ion-row>
-     
-     <ion-row>
-      <ion-col size="6">
-        <ion-card (click)="updatevalue('Scooty')" (click)="changefun3('Scooty')" id="modal"> 
-          <img src="assets/product/scooty.jpeg">
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card (click)="updatevalue('Bike')" (click)="changefun3('Bike')" id="modal2">
-          <img src="assets/product/bike.webp">
-        </ion-card>
-      </ion-col>
-     </ion-row>
-  
-  
-  <ion-modal #modal trigger="modal"> 
-    <ng-template>
-      <ion-content>
-        <ion-toolbar color="danger">
-          <ion-title>{{model_name}}</ion-title>
-          <ion-buttons slot="end">
-            <ion-button color="light" (click)="close()">Close</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-        <ion-list lines="none">
-      
-        
-          <ion-item>
-            <ion-label>Model Name</ion-label>
-            <ion-text>{{model_name}}</ion-text>
-          </ion-item>
-          <form [formGroup]="form1">
-          <ion-list [inset]="true">
-            <ion-item>
-              <ion-avatar>
-                <img alt="Silhouette of a person's head" src="assets/product/scooty.jpeg" />
-              </ion-avatar>
-              <ion-label>Yellow</ion-label>
-                <ion-input type="number" placeholder="Enter Quantity" ></ion-input>
-            </ion-item>
-           
-          </ion-list>
-          
-        
-         
-           
-             <!-- <section class="inputbox" >
-              
-              <ion-item lines="none">
-                <ion-input type="number" placeholder="Enter Quantity" formControlName="quantity"  [(ngModel)]="status2" (ionChange)="changefun4()"></ion-input>
-              </ion-item>
-            </section> -->
-            <section class="inputbox" >
-              <ion-text color="danger">Amount</ion-text>
-              <ion-item lines="none">
-                <ion-input type="number" placeholder="{{dataView2}}" value="{{dataView2}}" formControlName="amount" readonly="" ></ion-input>
-              </ion-item>
-            </section>
-            <ion-button color="danger" expand="block" (click)="modal.dismiss()" (click)="submit_cart()" [disabled]="form1.invalid" >Add To Cart</ion-button>
-          </form>
-        </ion-list>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
-
-  <ion-modal #modal2 trigger="modal2" > 
-    <ng-template>
-      <ion-content>
-        <ion-toolbar color="danger">
-          <ion-title>{{model_name}}</ion-title>
-          <ion-buttons slot="end">
-            <ion-button color="light" (click)="close()">Close</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-        <ion-list lines="none">
-         
-        
-           <ion-row>
-            <ion-col size="6">
-              <ion-card>
-                <img src="assets/product/EX2/1.jpg">
-                <section class="inputbox" >
-                  <ion-item lines="none">
-                    <ion-input type="number" placeholder="Quantity"  [(ngModel)]="status2" (ionChange)="changefun4()"></ion-input>
-                  </ion-item>
-                </section>
-           
-              </ion-card>
-             
-            </ion-col>
-            <ion-col size="6">
-              <ion-card>
-                <img src="assets/product/EX2/2.jpg">
-                <section class="inputbox" >
-                  <ion-item lines="none">
-                    <ion-input type="number" placeholder="Quantity"  [(ngModel)]="status3" (ionChange)="changefun4()"></ion-input>
-                  </ion-item>
-                </section>
-              </ion-card>
-
-            </ion-col>
-           </ion-row>
-           <ion-row>
-            <ion-col size="6">
-              <ion-card>
-                <img src="assets/product/EX2/3.jpg">
-                <section class="inputbox" >
-                  <ion-item lines="none">
-                    <ion-input type="number" placeholder="Quantity"  [(ngModel)]="status4" (ionChange)="changefun4()"></ion-input>
-                  </ion-item>
-                </section>
-              </ion-card>
-            </ion-col>
-            <ion-col size="6">
-              <ion-card>
-                <img src="assets/product/EX2/4.jpg">
-                <section class="inputbox" >
-                  <ion-item lines="none">
-                    <ion-input type="number" placeholder="Quantity"  [(ngModel)]="status5" (ionChange)="changefun4()"></ion-input>
-                  </ion-item>
-                </section>
-              </ion-card>
-            </ion-col>
-           </ion-row>
-          <form [formGroup]="form1">
-            <section class="inputbox" >
-              
-              <ion-item lines="none">
-                <ion-input type="number" placeholder="Total Quantity" formControlName="quantity"  [(ngModel)]="status2" (ionChange)="changefun4()"></ion-input>
-              </ion-item>
-            </section>
-            <!-- <section class="inputbox" >
-              <ion-text color="danger">Amount</ion-text>
-              <ion-item lines="none">
-                <ion-input type="number" placeholder="{{dataView2}}" value="{{dataView2}}" formControlName="amount" readonly="" ></ion-input>
-              </ion-item>
-            </section> -->
-            <ion-button color="danger" expand="block" (click)="modal2.dismiss()" (click)="submit_cart()" [disabled]="form1.invalid" >Add To Cart</ion-button>
-          </form>
-        </ion-list>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
+   
   
 
 </ion-content>
