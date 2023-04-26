@@ -6,17 +6,13 @@
     <ion-buttons slot="end">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>cart1</ion-title>
+    <ion-title>Add To Cart</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <form [formGroup]="form">
-
-    <ion-input type="hidden" placeholder="{{getuserdata.id}}" readonly="" value="{{getuserdata.id}}" formControlName="name" > </ion-input>
-   
-   
-
+    <ion-input type="hidden" placeholder="{{getuserdata.id}}" readonly="" value="{{getuserdata.id}}" formControlName="dealerid" > </ion-input>
   <section class="inputbox">
     <ion-text color="danger">Model</ion-text>
     <ion-item lines="none">
@@ -26,38 +22,41 @@
   <section class="inputbox">
     <ion-text color="danger">Model</ion-text>
     <ion-item lines="none">
-      <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color"   >
-        <ion-select-option  >
-          <ion-button>Yellow</ion-button>
+      <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color"  (ionChange)="show()" >
+        <ion-select-option *ngFor="let dat of response" >
+          <ion-button>{{dat.color}}</ion-button>
         </ion-select-option>
       </ion-select>
     </ion-item>
   </section>
 
-  <!-- <section class="inputbox" >
-    <ion-text color="danger">Unit Price</ion-text>
+ <section class="inputbox" *ngIf="myfun" >
+    <ion-text color="danger">Quantity With Battery</ion-text>
     <ion-item lines="none">
-      <ion-input type="text" placeholder="{{dataView}}" value="{{dataView}}" formControlName="unit_price" readonly=""></ion-input>
+      <ion-input type="Number" placeholder="Enter Quantity With Battery" [(ngModel)]="priceWithbatt" formControlName="quantity_with_batt" (ionChange)="calAmount()" ></ion-input>
     </ion-item>
   </section>
-  
-  <section class="inputbox" *ngIf="myfun">
-    <ion-text color="danger">Quantity</ion-text>
+  <section class="inputbox" *ngIf="myfun" >
+    <ion-text color="danger">Quantity Without Battery</ion-text>
     <ion-item lines="none">
-      <ion-input type="number" placeholder="Enter Quantity" [(ngModel)]="status2" formControlName="quantity" (ionChange)="changeFun2()"></ion-input>
+      <ion-input type="Number" placeholder="Enter Quantity Without Battery" [(ngModel)]="priceWithOutbatt" formControlName="quantity_without_batt" (ionChange)="calAmount2()" ></ion-input>
     </ion-item>
   </section>
 
-  <section class="inputbox"  *ngIf="myfun" >
-    <ion-text color="danger">Amount</ion-text>
+  <ion-input type="hidden" placeholder="{{amount}}" readonly="" value="{{amount}}" formControlName="amountWithBatt" > </ion-input>
+  <ion-input type="hidden" placeholder="{{amount2}}" readonly="" value="{{amount2}}" formControlName="amountWithOutBatt" > </ion-input>
+<!-- 
+  <section class="inputbox" *ngIf="myfun" >
+    <ion-text color="danger">Total Amount</ion-text>
     <ion-item lines="none">
-      <ion-input type="number" placeholder="{{dataView2}}" value="{{dataView2}}" formControlName="amount" readonly=""></ion-input>
+      <ion-input type="Number" placeholder="{{total}}" value="{{total}}" formControlName="totalamount" ></ion-input>
     </ion-item>
-  </section> -->
-
+  </section>
+   -->
+   
   <ion-row>
     <ion-col >
-      <ion-button expand="block" color="danger" shape="round"  [disabled]="form.invalid">Submit <ion-icon name="send-outline" slot="end"></ion-icon></ion-button>
+      <ion-button expand="block" color="danger" shape="round" (click)="submit()" [disabled]="form.invalid">Submit <ion-icon name="send-outline" slot="end"></ion-icon></ion-button>
     </ion-col>
   </ion-row> 
 </form> 
