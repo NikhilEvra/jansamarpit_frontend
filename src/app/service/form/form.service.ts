@@ -111,6 +111,14 @@ export class FormService {
     return this.api.get<any>(environment.apiurl + 'inventory_count.php?d_id=' + id);
   }
 
+  getCart(id : any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'cart_count.php?d_id=' + id);
+  }
+
+  getAllCartData(id : any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'get_cart.php?d_id=' + id);
+  }
+
   getdashdata(id:any):Observable<any>{
     return this.api.get<any>(environment.apiurl + 'dashboard_data.php?d_id=' + id);
   }

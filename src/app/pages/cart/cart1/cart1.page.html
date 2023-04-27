@@ -42,7 +42,7 @@
       <ion-input type="Number" placeholder="Enter Quantity Without Battery" [(ngModel)]="priceWithOutbatt" formControlName="quantity_without_batt" (ionChange)="calAmount2()" ></ion-input>
     </ion-item>
   </section>
-
+  <ion-text color="danger">* Minimum quantity 0</ion-text>
   <ion-input type="hidden" placeholder="{{amount}}" readonly="" value="{{amount}}" formControlName="amountWithBatt" > </ion-input>
   <ion-input type="hidden" placeholder="{{amount2}}" readonly="" value="{{amount2}}" formControlName="amountWithOutBatt" > </ion-input>
 <!-- 

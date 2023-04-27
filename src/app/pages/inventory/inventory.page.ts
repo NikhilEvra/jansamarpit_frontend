@@ -13,6 +13,7 @@ export class InventoryPage implements OnInit {
   getuserdata: any=[];
   
   response:any=[];
+  total:any=[];
 
   constructor(
     private router: Router,
@@ -24,6 +25,7 @@ export class InventoryPage implements OnInit {
 
   ngOnInit() {
     this.inventory();
+    this.cart();
     
   }
 
@@ -50,4 +52,21 @@ export class InventoryPage implements OnInit {
         }
       })
     }
+    cart(){
+      this.api.getCart(this.getuserdata.id).subscribe({
+          next:(data) =>{
+            console.log(data);
+            this.total = data;
+          
+          },
+          error:() =>{
+            alert('error');
+         
+          },
+          complete:() =>{
+         
+                
+          }
+        })
+      }
 }

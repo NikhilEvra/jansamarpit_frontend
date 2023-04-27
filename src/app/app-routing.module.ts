@@ -94,6 +94,10 @@ const routes: Routes = [
     path: 'cart1',
     loadChildren: () => import('./pages/cart/cart1/cart1.module').then( m => m.Cart1PageModule)
   },
+  {
+    path: 'cartview',
+    loadChildren: () => import('./pages/cart/cartview/cartview.module').then( m => m.CartviewPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

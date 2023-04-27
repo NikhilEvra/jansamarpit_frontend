@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { env } from 'process';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -25,6 +26,18 @@ export class CartService {
     formData.append('amountWithOutBatt', amountWithOutBatt);
     
     return this.api.post<any>(environment.apiurl + 'add_cart.php',  formData);
+  }
+ 
+  getGrandTotal(id : any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'cart_sum.php?p_id=' + id);
+  }
+
+  podata(dealerid:any , amount:any):Observable<any>{
+    const formdata = new FormData();
+    formdata.append('dealerid',dealerid);
+    formdata.append('amount',amount);
+
+    return this.api.post<any>(environment.apiurl + 'a.php', formdata);
   }
 
 }

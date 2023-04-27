@@ -33,6 +33,16 @@
     </ion-card-content>
   </ion-card>
 
+  <ion-card >
+    <ion-card-header color="danger">Cart</ion-card-header>
+    <ion-card-content>
+      <ion-item>
+     <ion-label>  <ion-button color="danger" (click)="openPage('/cartview')">Total Cart Request</ion-button></ion-label>
+        <ion-text>{{total.total}}</ion-text>
+      </ion-item>
+   
+    </ion-card-content>
+  </ion-card>
   <!-- <ion-card *ngFor="let dat of data" (click)="land(dat)">
     {{dat}}
   </ion-card> -->

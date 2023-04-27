@@ -104,7 +104,6 @@ export class Cart1Page implements OnInit {
          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
       },
       complete:() => {
-   
         this.router.navigateByUrl('/po');
         Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
         // this.loadingCtrl.dismiss();
