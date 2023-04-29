@@ -29,7 +29,7 @@ export class CartService {
   }
  
   getGrandTotal(id : any):Observable<any>{
-    return this.api.get<any>(environment.apiurl + 'cart_sum.php?p_id=' + id);
+    return this.api.get<any>(environment.apiurl + 'cart_sum.php?d_id=' + id);
   }
 
   podata(dealerid:any , amount:any):Observable<any>{
@@ -37,7 +37,13 @@ export class CartService {
     formdata.append('dealerid',dealerid);
     formdata.append('amount',amount);
 
-    return this.api.post<any>(environment.apiurl + 'a.php', formdata);
+    return this.api.post<any>(environment.apiurl + 'add_po.php', formdata);
   }
+  
+  updateCartStatus(id:any):Observable<any>{
+    const formdata = new FormData();
+    formdata.append('id',id);
+    return this.api.post<any>(environment.apiurl + 'status_update.php', formdata);
 
+  }
 }

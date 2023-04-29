@@ -26,6 +26,9 @@ export class CartviewPage implements OnInit {
       this.getuserdata = JSON.parse(this.USTEMP);
     }
   }
+  ionViewDidLeave(){
+    this.cart();
+  }
 
   ngOnInit() {
     this.total();
@@ -63,7 +66,7 @@ export class CartviewPage implements OnInit {
           next:(data) =>{
             console.log(data);
             this.totalamount = data;
-           this.g_total =this.totalamount.grand_total;
+           this.g_total = this.totalamount.grand_total;
            console.log(this.g_total);
            
           },
@@ -82,7 +85,7 @@ export class CartviewPage implements OnInit {
         this.api2.podata(this.form.value.dealerid ,this.form.value.amount).subscribe({
           next:(data) => {
             console.log(data);
-            this.router.navigateByUrl('/inventory');
+            this.router.navigateByUrl('/dashboard');
            
             Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': data.message,  heightAuto: false ,  timer: 3000}); 
           },
@@ -98,5 +101,25 @@ export class CartviewPage implements OnInit {
           }
         })
     
+      }
+      status(id : any){
+        this.api2.updateCartStatus(id).subscribe({
+          next:(data) => {
+            console.log(data);
+            this.router.navigateByUrl('/dashboard');
+           
+            Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': data.message,  heightAuto: false ,  timer: 3000}); 
+          },
+          error:() => {
+            console.log('err');
+           
+             Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
+            
+           
+          },
+          complete:() => {
+           
+          }
+        })
       }
 }
