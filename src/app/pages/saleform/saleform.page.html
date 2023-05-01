@@ -28,6 +28,12 @@
       <ion-input type="number" placeholder="Enter Custsomer Phone Number" formControlName="c_mobile"></ion-input>
       </ion-item>
     </section> 
+    <section class="inputbox">
+      <ion-text color="danger">Alternate Contact Number</ion-text>
+      <ion-item lines="none">
+      <ion-input type="number" placeholder="Enter Custsomer Phone Number" formControlName="a_mobile"></ion-input>
+      </ion-item>
+    </section> 
     
     <section class="inputbox">
       <ion-text color="danger">Location</ion-text>
@@ -46,6 +52,16 @@
       </ion-item>
     </section>
     <section class="inputbox">
+      <ion-text color="danger">Color</ion-text>
+      <ion-item lines="none">
+        <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color">
+          <ion-select-option value="Scooty">Scooty</ion-select-option>
+          <ion-select-option value="Bike">Bike</ion-select-option>
+          <ion-select-option value="E-rikshaw">E-rikshaw</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </section>
+    <section class="inputbox">
       <ion-text color="danger">Chassis No</ion-text>
       <ion-item lines="none">
         <ion-input type="text" placeholder="Enter Chassis No" formControlName="chassis"></ion-input>
@@ -53,7 +69,7 @@
     </section>
     
     <section class="inputbox">
-      <ion-text color="danger">Amount</ion-text>
+      <ion-text color="danger">Amount (inc gst*)</ion-text>
       <ion-item lines="none">
         <ion-input type="number" placeholder="Enter Amount" formControlName="amount"></ion-input>
       </ion-item>
@@ -64,9 +80,14 @@
   
     <ion-row>
       <ion-col >
-        <ion-button expand="block" color="danger" shape="round" (click)="submit()" [disabled]="form.invalid">Submit <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
+        <ion-button expand="block" color="danger" shape="round" (click)="presentAlert()" [disabled]="form.invalid">Submit <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
       </ion-col>
     </ion-row>
   </form> 
+
+
+  <!-- <ion-button (click)="presentAlert()">Click Me</ion-button>
+<p>{{ handlerMessage }}</p>
+<p>{{ roleMessage }}</p> -->
 
 </ion-content>

@@ -13,6 +13,7 @@ export class SalesPage implements OnInit {
   getuserdata: any=[];
 
   response:any=[];
+  total:any=[];
 
   constructor(
     private router: Router,
@@ -25,6 +26,7 @@ export class SalesPage implements OnInit {
 
   ngOnInit() {
     this.sales();
+    this.cart();
   }
 
   ionViewWillEnter(){
@@ -55,6 +57,24 @@ export class SalesPage implements OnInit {
       event.target.complete();
     }, 2000);
   };
+
+  cart(){
+    this.api.getCart(this.getuserdata.id).subscribe({
+        next:(data) =>{
+          console.log(data);
+          this.total = data;
+        
+        },
+        error:() =>{
+          alert('error');
+       
+        },
+        complete:() =>{
+       
+              
+        }
+      })
+    }
 
   }
 

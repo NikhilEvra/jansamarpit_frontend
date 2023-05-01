@@ -58,7 +58,7 @@
   </section>
   <ion-row>
     <ion-col >
-      <ion-button expand="block" color="danger" shape="round" (click)="updatepass()">Update Password <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
+      <ion-button expand="block" color="danger" shape="round" (click)="presentAlert()"  [disabled]="form.invalid">Update Password <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
     </ion-col>
   </ion-row>
 </form>

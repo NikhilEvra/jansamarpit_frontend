@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { FormService } from 'src/app/service/form/form.service';
 import Swal from 'sweetalert2';
 
@@ -12,12 +13,14 @@ import Swal from 'sweetalert2';
 export class ProfilePage implements OnInit {
   USTEMP = localStorage.getItem('user');
   getuserdata:any=[];
-
+  handlerMessage = '';
+  roleMessage = '';
   form! : FormGroup;
 
   constructor(private router : Router,
     private formb : FormBuilder,
     private httpapi : FormService,
+    private alertController: AlertController
     
     ) {  
        console.log(this.USTEMP);
@@ -102,5 +105,32 @@ export class ProfilePage implements OnInit {
     //  }
     openPage(url :any){
       this.router.navigateByUrl(url);
+    }
+
+    async presentAlert() {
+      const alert = await this.alertController.create({
+        header: 'Are You Sure',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              this.handlerMessage = 'Alert canceled';
+            },
+          },
+          {
+            text: 'OK',
+            role: 'confirm',
+            handler: () => {
+              this.updatepass();
+            },
+          },
+        ],
+      });
+  
+      await alert.present();
+  
+      const { role } = await alert.onDidDismiss();
+      this.roleMessage = `Dismissed with role: ${role}`;
     }
 }

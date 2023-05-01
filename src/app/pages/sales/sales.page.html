@@ -17,7 +17,8 @@
 
   
   <ion-card *ngFor="let dat of response">
-    <img alt="Silhouette of mountains" src="assets/homepage/sales.jpg" /> 
+    <!-- <img alt="Silhouette of mountains" src="assets/homepage/sales.jpg" />  -->
+    <ion-card-header color="danger">Customer Sales</ion-card-header>
     <ion-card-content>
       <ion-item>
         <ion-label>Total Sales</ion-label>
@@ -32,15 +33,40 @@
         <ion-label><ion-button color="danger">Total Bikes Sold</ion-button></ion-label>
         <ion-text>{{dat.Scooty}}</ion-text>
       </ion-item>
+      <ion-item>
+        <ion-label><ion-button color="danger">Add Cutomer Sale Info</ion-button></ion-label>
+        <ion-text> 
+          <ion-button color="danger" (click)="openPage('/saleform')">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+          
+        </ion-text>
+      </ion-item>
     </ion-card-content>
   </ion-card>
 
+  <ion-card >
+   
+    <ion-card-header color="danger">Dealer Cart</ion-card-header>
+    <ion-card-content>
+      <ion-item>
+     <ion-label>  <ion-button color="danger" (click)="openPage('/cartview')">Total Cart Request</ion-button></ion-label>
+        <ion-text>{{total.total}}</ion-text>
+      </ion-item>
+   
+    </ion-card-content>
+  </ion-card>
+  <!-- <ion-card *ngFor="let dat of data" (click)="land(dat)">
+    {{dat}}
+  </ion-card> -->
+  
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button color="danger" (click)="openPage('/saleform')">
+    <ion-fab-button color="danger" (click)="openPage('/po')">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
-    
   </ion-fab>
+
+ 
 
   
 </ion-content>
