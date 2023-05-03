@@ -12,7 +12,7 @@
 
 <ion-content>
   <ion-card *ngFor="let dat of response">
-    <ion-card-header color="danger" style="text-align: center;">{{dat.topic}}</ion-card-header>  
+    <ion-card-header color="danger" style="text-align: center;">{{dat.topic}} </ion-card-header>  
        <ion-card-content>
          <ion-item>
            <ion-label>Complaint Id</ion-label>
@@ -30,6 +30,11 @@
           <ion-label>Closed  Time</ion-label>
           <ion-text>{{dat.close_time}}</ion-text>
         </ion-item>
+        <ion-item>
+          <ion-label>Re Open complaint</ion-label>
+          <ion-text><ion-button color="danger" (click)="presentAlert(dat.complaint_id)"> Re open</ion-button></ion-text>
+        </ion-item>
+      
        </ion-card-content>
      </ion-card>
 

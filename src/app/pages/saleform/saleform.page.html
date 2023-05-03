@@ -44,20 +44,17 @@
     <section class="inputbox">
       <ion-text color="danger">Model</ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover"  placeholder="Select Model Name" formControlName="model_name">
-          <ion-select-option value="Scooty">Scooty</ion-select-option>
-          <ion-select-option value="Bike">Bike</ion-select-option>
-          <ion-select-option value="E-rikshaw">E-rikshaw</ion-select-option>
+        <ion-select interface="popover"  placeholder="Select Model Name" formControlName="model_name" [(ngModel)]="modelname" (ionChange)="varient()">
+          <ion-select-option  *ngFor="let dat of models" value="{{dat.name}}">{{dat.name}}</ion-select-option>
         </ion-select>
       </ion-item>
     </section>
-    <section class="inputbox">
+    <section class="inputbox" *ngIf="myfun">
       <ion-text color="danger">Color</ion-text>
       <ion-item lines="none">
         <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color">
-          <ion-select-option value="Scooty">Scooty</ion-select-option>
-          <ion-select-option value="Bike">Bike</ion-select-option>
-          <ion-select-option value="E-rikshaw">E-rikshaw</ion-select-option>
+          <ion-select-option *ngFor="let dat of varientname" value="{{dat.color}}">{{dat.color}}</ion-select-option>
+         
         </ion-select>
       </ion-item>
     </section>

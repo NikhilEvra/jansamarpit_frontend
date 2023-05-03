@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { FormService } from 'src/app/service/form/form.service';
 import Swal from 'sweetalert2';
 
@@ -13,10 +13,14 @@ import Swal from 'sweetalert2';
 export class FeedbackPage implements OnInit {
   form! : FormGroup;
 
+  handlerMessage = '';
+  roleMessage = '';
+
   constructor(private loadingCtrl : LoadingController,
     private router : Router,
     private formb : FormBuilder,
-    private httpapi : FormService) { }
+    private httpapi : FormService,
+    private alertController: AlertController) { }
 
     Initform(){
       this.form = this.formb.group({    
@@ -89,5 +93,33 @@ async showLoading() {
 
 openPage(url:any){
   this.router.navigateByUrl(url);
+}
+
+
+async presentAlert() {
+  const alert = await this.alertController.create({
+    header: 'Are You Sure',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          this.handlerMessage = 'Alert canceled';
+        },
+      },
+      {
+        text: 'OK',
+        role: 'confirm',
+        handler: () => {
+          this.submit();
+        },
+      },
+    ],
+  });
+
+  await alert.present();
+
+  const { role } = await alert.onDidDismiss();
+  this.roleMessage = `Dismissed with role: ${role}`;
 }
 }

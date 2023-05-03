@@ -4,7 +4,7 @@ import { Camera, CameraResultType } from '@capacitor/camera';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormService } from 'src/app/service/form/form.service';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -21,12 +21,16 @@ export class AddcomplaintsPage implements OnInit {
   response:any=[];
   imgname:any=['complaint.jpg'];
 
+  handlerMessage = '';
+  roleMessage = '';
+
   img:any=[environment.apiurl + 'folder/' + this.imgname];
 
   constructor(private router : Router,
     private formb : FormBuilder,
     private httpapi : FormService,
-    private loadingCtrl : LoadingController,) {
+    private loadingCtrl : LoadingController,
+    private alertController: AlertController) {
           console.log(this.USTEMP);
           if (this.USTEMP) {
             this.getuserdata = JSON.parse(this.USTEMP) ;
@@ -121,6 +125,32 @@ export class AddcomplaintsPage implements OnInit {
     // })
   }
 
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Are You Sure',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            this.handlerMessage = 'Alert canceled';
+          },
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+            this.submit();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    this.roleMessage = `Dismissed with role: ${role}`;
+  }
   
 
 

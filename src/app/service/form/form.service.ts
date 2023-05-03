@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { env } from 'process';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -123,5 +124,17 @@ export class FormService {
 
   getdashdata(id:any):Observable<any>{
     return this.api.get<any>(environment.apiurl + 'dashboard_data.php?d_id=' + id);
+  }
+
+  updatecomplaintStatus(id:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'reopencomplaint.php?c_id=' + id);
+  }
+  
+  getAllProduct():Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'get_all_products.php');
+  }
+
+  getVarient(model:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'get_varients.php?p_id=' + model)
   }
 }

@@ -55,8 +55,8 @@ export class DashboardPage implements OnInit {
   ]
   slideServiceReport = {
     initialSlide: 0,
-    slidesPerView: 1.1,
-    autoplay: false
+    // slidesPerView: 1.1,
+    autoplay: true
   };
   
  

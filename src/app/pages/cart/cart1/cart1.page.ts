@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { CartService } from 'src/app/service/cart/cart.service';
 import Swal from 'sweetalert2';
 
@@ -24,13 +24,17 @@ export class Cart1Page implements OnInit {
   amount!:any;
   amount2!:any;
   total!:any;
+
+  handlerMessage = '';
+  roleMessage = '';
  
   constructor(
     private route : ActivatedRoute,
     private formb : FormBuilder,
     private api : CartService,
     private router : Router,
-    private loadingCtrl : LoadingController
+    private loadingCtrl : LoadingController,
+    private alertController: AlertController
   ) { console.log(this.USTEMP);
     if (this.USTEMP) {
       this.getuserdata = JSON.parse(this.USTEMP) ;
@@ -118,5 +122,32 @@ export class Cart1Page implements OnInit {
     });
 
     loading.present();
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Are You Sure',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            this.handlerMessage = 'Alert canceled';
+          },
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+            this.submit();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    this.roleMessage = `Dismissed with role: ${role}`;
   }
 }

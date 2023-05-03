@@ -28,6 +28,10 @@ export class CartviewPage implements OnInit {
   }
   ionViewDidLeave(){
     this.cart();
+    this.total();
+  }
+  ionViewDidEnter(){
+    this.total();
   }
 
   ngOnInit() {
@@ -77,6 +81,10 @@ export class CartviewPage implements OnInit {
           complete:() =>{
             this.Initform();
             console.log(this.g_total);
+            if(this.g_total === null){
+              Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'No Products Added In Cart',  heightAuto: false ,  timer: 3000}); 
+              this.router.navigateByUrl('/sales');
+            }
           }
         })
       }

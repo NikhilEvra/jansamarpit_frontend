@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { AnyMxRecord } from 'dns';
 import { FormService } from 'src/app/service/form/form.service';
 import Swal from 'sweetalert2';
 
@@ -15,6 +16,11 @@ export class SaleformPage implements OnInit {
   USTEMP = localStorage.getItem('user');
   getuserdata:any=[];
   response : any=[];
+  myfun = false;
+  models:any=[];
+  modelname!:any;
+  varientname:any=[];
+
   handlerMessage = '';
   roleMessage = '';
   constructor(
@@ -52,6 +58,7 @@ export class SaleformPage implements OnInit {
 
   ngOnInit() {
   this.Initform();
+  this.model();
   }
 
   submit(){
@@ -108,6 +115,45 @@ export class SaleformPage implements OnInit {
 
     const { role } = await alert.onDidDismiss();
     this.roleMessage = `Dismissed with role: ${role}`;
+  }
+
+  model(){
+    this.httpapi.getAllProduct().subscribe({
+      next:(data) =>{
+        console.log(data);
+        this.models = data;
+       
+       
+      },
+      error:() =>{
+        alert('error');
+     
+      },
+      complete:() =>{
+   
+      }
+    })
+   
+  }
+
+  varient(){
+    this.httpapi.getVarient(this.modelname).subscribe({
+      next:(data) =>{
+        console.log(data);
+      this.varientname = data;
+       
+      },
+      error:() =>{
+        alert('error');
+     
+      },
+      complete:() =>{
+   
+      }
+    })
+   
+    this.myfun = true;
+
   }
 
   
