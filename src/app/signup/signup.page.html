@@ -1,5 +1,5 @@
 <ion-content >
-  <div style="height:100%;width:100%; background-image: url(assets/login/logo.jpg);background-repeat: no-repeat;background-size: 100%;"></div>
+  <div style="height:90%;width:100%; background-image: url(assets/login/logo.jpg);background-repeat: no-repeat;background-size: 100%;"></div>
   <ion-row style="position:absolute; bottom:0px;width:100%">
     <ion-col class="ion-text-center" size="12">
       <div style="margin-top:30px;">
@@ -33,6 +33,14 @@
           <ion-button slot="end" fill="clear">
             <ion-icon name="phone-portrait-outline"></ion-icon>
           </ion-button>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-select interface="popover"  placeholder="Select User Type" formControlName="usertype">
+            <ion-select-option value="C & F">C & F</ion-select-option>
+            <ion-select-option value="Super Stockist">Super Stockist</ion-select-option>
+            <ion-select-option value="Dealer">Dealer</ion-select-option>
+            <ion-select-option value="sub_dealer">Sub-Dealer</ion-select-option>
+          </ion-select>
         </ion-item>
         <ion-item lines="none">
           <ion-input type="password"  placeholder="Password" formControlName="password"> </ion-input>

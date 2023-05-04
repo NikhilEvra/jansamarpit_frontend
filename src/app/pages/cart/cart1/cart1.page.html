@@ -26,7 +26,7 @@
   <section class="inputbox">
     <ion-text color="danger">Color</ion-text>
     <ion-item lines="none">
-      <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color"  (ionChange)="show()" >
+      <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color" [(ngModel)]="varient" (ionChange)="show()" >
         <ion-select-option *ngFor="let dat of response" >
           <ion-button>{{dat.color}}</ion-button>
         </ion-select-option>

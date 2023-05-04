@@ -29,6 +29,7 @@ export class SignupPage implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],  
       phone:['', Validators.required],
+      usertype:['',Validators.required]
      
      
     })
@@ -45,7 +46,7 @@ export class SignupPage implements OnInit {
   }
   signup(){
     this.showLoading();
-    this.httpapi.getuserdata(this.form.value.name ,this.form.value.email, this.form.value.password, this.form.value.phone).subscribe({
+    this.httpapi.getuserdata(this.form.value.name ,this.form.value.email, this.form.value.password, this.form.value.phone, this.form.value.usertype).subscribe({
       next:(data) => {
         console.log(data);
        

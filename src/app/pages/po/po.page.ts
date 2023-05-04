@@ -44,7 +44,8 @@ export class PoPage implements OnInit {
   status10=0;
   status11=0;
   status12=0;
-
+  
+  models:any=[];
   dataView3!:any;
   
   constructor(
@@ -84,6 +85,7 @@ export class PoPage implements OnInit {
     this.Initform();
     // this.getValue= this.route.snapshot.paramMap.get("item")
     // console.log(JSON.parse(this.getValue));
+    this.model();
    
   }
 
@@ -161,7 +163,24 @@ changefun3(dat : any){
   } 
 }
 
-
+model(){
+  this.api.getAllProduct().subscribe({
+    next:(data) =>{
+      console.log(data);
+      this.models = data;
+     
+     
+    },
+    error:() =>{
+      alert('error');
+   
+    },
+    complete:() =>{
+ 
+    }
+  })
+ 
+}
 
 
 

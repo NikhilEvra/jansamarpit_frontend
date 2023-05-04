@@ -112,7 +112,7 @@
        </ion-card-content>
      </ion-card> -->
 
-     <ion-row>
+     <!-- <ion-row>
       <ion-col size="6">
         <ion-card (click)="updatevalue('EX1')"> 
           <ion-card-header color="danger">EX1</ion-card-header>
@@ -154,6 +154,38 @@
         </ion-card>
       </ion-col>
      </ion-row>
-  
+     <ion-row>
+      <ion-col size="6">
+        <ion-card (click)="updatevalue('MINE')"> 
+          <ion-card-header color="danger">MINE</ion-card-header>
+          <img src="assets/product/MINE/Mine-3.jpg">
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card   (click)="updatevalue('SPARKLE(DB)')" >
+          <ion-card-header color="danger">SPERKLE(DB)</ion-card-header>
+          <img src="assets/product/SPARKLE/1.jpg">
+        </ion-card>
+      </ion-col>
+     </ion-row>
+     <ion-row>
+      <ion-col size="6">
+        <ion-card (click)="updatevalue('HELTER')"> 
+          <ion-card-header color="danger">HELTER</ion-card-header>
+          <img src="assets/product/HELTER/1.png">
+        </ion-card>
+      </ion-col>
+      
+     </ion-row>
+   -->
 
+   <ion-row>
+    <ion-col size="6" *ngFor="let dat of models">
+      <ion-card (click)="updatevalue(dat.name)"> 
+        <ion-card-header color="danger">{{dat.name}}</ion-card-header>
+        <img src="https://evramedia.com/apifolder/catalog/{{dat.image}}" style="height: 130px;">
+      </ion-card>
+    </ion-col>
+   
+   </ion-row>
 </ion-content>

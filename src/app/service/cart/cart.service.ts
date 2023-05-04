@@ -46,4 +46,8 @@ export class CartService {
     return this.api.post<any>(environment.apiurl + 'status_update.php', formdata);
 
   }
+
+  getPrice(varient : any, model:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'get_varient_price.php?varient=' + varient + '&m=' + model);
+  }
 }

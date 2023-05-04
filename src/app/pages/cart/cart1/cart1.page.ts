@@ -24,6 +24,8 @@ export class Cart1Page implements OnInit {
   amount!:any;
   amount2!:any;
   total!:any;
+  varient!:any;
+  price:any=[];
 
   handlerMessage = '';
   roleMessage = '';
@@ -71,6 +73,7 @@ export class Cart1Page implements OnInit {
       next:(data) =>{
         console.log(data);
         this.response = data;
+    
        
      
       },
@@ -86,10 +89,25 @@ export class Cart1Page implements OnInit {
   }
 
   show(){
+    this.api.getPrice(this.varient, this.model_name).subscribe({
+      next:(data) =>{
+        console.log(data);
+        this.price = data;
+        console.log(this.price[0].price_wb)
+        
+      },
+      error:() =>{
+        alert('error');
+     
+      },
+      complete:() =>{
+        // this.loadingCtrl.dismiss();
+      }
+    })
     this.myfun = true;
   }
   calAmount(){
-   this.amount = this.priceWithbatt * 100000;
+   this.amount = this.priceWithbatt * this.price[0].price_wb;
   }
   calAmount2(){
     this.amount2 = this.priceWithOutbatt * 90000;

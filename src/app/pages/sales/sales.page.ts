@@ -28,13 +28,16 @@ export class SalesPage implements OnInit {
     this.sales();
     this.cart();
   }
+
   ionViewDidLeave(){
     this.cart();
   }
+  
   ionViewWillEnter(){
     this.sales();
     this.cart();
   }
+
   openPage(url : any){
     this.router.navigateByUrl(url);
   }

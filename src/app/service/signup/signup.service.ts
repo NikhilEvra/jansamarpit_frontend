@@ -12,12 +12,13 @@ export class SignupService {
     private api : HttpClient,
   ) { }
 
-  getuserdata(name : any , email: any, password: any, phone : any):Observable<any> {
+  getuserdata(name : any , email: any, password: any, phone : any,usertype : any):Observable<any> {
     const formData = new FormData();
     formData.append('name', name);
     formData.append('email', email);
     formData.append('password', password);
     formData.append('phone' , phone);
+    formData.append('usertype',usertype)
     return this.api.post<any>(environment.apiurl + 'signup.php',  formData);
   }
 }
