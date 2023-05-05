@@ -26,6 +26,7 @@ export class Cart1Page implements OnInit {
   total!:any;
   varient!:any;
   price:any=[];
+  image:any=[];
 
   handlerMessage = '';
   roleMessage = '';
@@ -73,6 +74,7 @@ export class Cart1Page implements OnInit {
       next:(data) =>{
         console.log(data);
         this.response = data;
+        this.image = this.response[0].banner;
     
        
      
@@ -89,7 +91,7 @@ export class Cart1Page implements OnInit {
   }
 
   show(){
-    this.api.getPrice(this.varient, this.model_name).subscribe({
+    this.api.getPrice(this.varient, this.model_name, this.getuserdata.usertype).subscribe({
       next:(data) =>{
         console.log(data);
         this.price = data;

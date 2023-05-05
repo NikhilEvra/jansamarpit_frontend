@@ -47,7 +47,7 @@ export class CartService {
 
   }
 
-  getPrice(varient : any, model:any):Observable<any>{
-    return this.api.get<any>(environment.apiurl + 'get_varient_price.php?varient=' + varient + '&m=' + model);
+  getPrice(varient : any, model:any, usertype:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'get_varient_price.php?varient=' + varient + '&m=' + model+ '&u_type=' + usertype);
   }
 }

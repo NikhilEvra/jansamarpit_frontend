@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { App } from '@capacitor/app';
 import { ActionSheetController, LoadingController, MenuController } from '@ionic/angular';
+import { AnyARecord } from 'dns';
 import { FormService } from 'src/app/service/form/form.service';
 import { LoginService } from 'src/app/service/login/login.service';
 import Swal from 'sweetalert2';
@@ -168,7 +169,7 @@ export class DashboardPage implements OnInit {
   }
 
   logout(){
-    // App.exitApp();
+    App.exitApp();
     localStorage.clear();
     this.api2.menu.unsubscribe();
     this.router.navigateByUrl('/login');
@@ -209,4 +210,13 @@ export class DashboardPage implements OnInit {
       })
     }
 
+    handleRefresh(event : any) {
+      setTimeout(() => {
+        // Any calls to load data go here
+        this.dashData();
+        event.target.complete();
+      }, 2000);
+    }
+
+   
 }

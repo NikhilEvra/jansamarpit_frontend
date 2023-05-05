@@ -14,7 +14,12 @@
 <ion-content>
 
  
-  <!-- <img src="assets/product/LUSTER/3.png" style="height:25%;width:100%;"> -->
+  <ion-card >
+    <ion-row>
+      <img src="https://evramedia.com/apifolder/catalog/{{image}}" style="height:150px;width:100%;margin:auto; border-radius: 1px;"><br>
+  </ion-row>
+  </ion-card>
+
   <form [formGroup]="form">
     <ion-input type="hidden" placeholder="{{getuserdata.id}}" readonly="" value="{{getuserdata.id}}" formControlName="dealerid" > </ion-input>
   <section class="inputbox">

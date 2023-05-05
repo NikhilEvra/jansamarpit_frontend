@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "424402993716",
+    "project_id": "evra-d899d",
+    "storage_bucket": "evra-d899d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424402993716:android:a208d56d0c98180888c061",
+        "android_client_info": {
+          "package_name": "com.evramedia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "424402993716-42rs498ia5dujmmsk6d1jcdlgtm07ag6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuzb_eIPHHJrMq0bcn2cmonzxV5jOn4L4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "424402993716-42rs498ia5dujmmsk6d1jcdlgtm07ag6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

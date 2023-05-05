@@ -60,6 +60,8 @@ export class SalesPage implements OnInit {
   handleRefresh(event :any) {
     setTimeout(() => {
       // Any calls to load data go here
+      this.sales();
+      this.cart();
       event.target.complete();
     }, 2000);
   };

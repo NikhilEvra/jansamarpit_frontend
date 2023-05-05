@@ -58,4 +58,11 @@ export class ComplaintsPage implements OnInit {
       })
     }
 
+    handleRefresh(event : any) {
+      setTimeout(() => {
+        // Any calls to load data go here
+        this.complaint();
+        event.target.complete();
+      }, 2000);
+    }
 }

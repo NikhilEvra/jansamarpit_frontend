@@ -71,6 +71,7 @@ export class SignupPage implements OnInit {
         
       }
     })
+    this.form.reset();
     // this.router.navigateByUrl('/login');
     // Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'You have registered successfully!',  heightAuto: false ,  timer: 3000});
 

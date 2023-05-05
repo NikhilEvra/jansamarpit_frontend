@@ -11,6 +11,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-card *ngFor="let dat of response" >
     <img src="assets/homepage/complaint.jpg"  />  
     <ion-card-content>
