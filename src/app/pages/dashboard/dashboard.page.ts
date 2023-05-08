@@ -87,7 +87,7 @@ export class DashboardPage implements OnInit {
   }
 
  ionViewWillEnter(){
-  console.log(this.getuserdata);
+  // console.log(this.getuserdata);
   this.menuctrl.enable(true);
           if (localStorage.getItem("user") === null) 
           {

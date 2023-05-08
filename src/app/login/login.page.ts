@@ -43,12 +43,6 @@ initForm(){
     this.menuCtrl.enable(false);
   }
 
-  // ionViewDidEnter(){
-  //   localStorage.clear();
-  // }
-  // ionViewwillEnter(){
-  //   localStorage.clear();
-  // }
   ngOnInit() {
     this.initForm(); 
   }

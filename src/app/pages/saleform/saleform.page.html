@@ -52,9 +52,8 @@
     <section class="inputbox" *ngIf="myfun">
       <ion-text color="danger">Color</ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color">
+        <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color" [(ngModel)]="color" (ionChange)="checkinventory()">
           <ion-select-option *ngFor="let dat of varientname" value="{{dat.color}}">{{dat.color}}</ion-select-option>
-         
         </ion-select>
       </ion-item>
     </section>
@@ -64,16 +63,12 @@
         <ion-input type="text" placeholder="Enter Chassis No" formControlName="chassis"></ion-input>
       </ion-item>
     </section>
-    
     <section class="inputbox">
       <ion-text color="danger">Amount (inc gst*)</ion-text>
       <ion-item lines="none">
         <ion-input type="number" placeholder="Enter Amount" formControlName="amount"></ion-input>
       </ion-item>
     </section>
-  
-    
-  
   
     <ion-row>
       <ion-col >

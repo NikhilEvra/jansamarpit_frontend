@@ -1,0 +1,261 @@
+<ion-header mode="ios">
+  <ion-toolbar color="danger">
+    <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Varient Invenory</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card  *ngIf="model.model == 'EX1'">
+    <ion-card-header color="danger" style="font-weight: bold; text-align: center;">{{model.model}}</ion-card-header>
+    <ion-card-content>
+      <ion-item>
+     <ion-label> Blue </ion-label>
+        <ion-text>{{response.blue}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Red</ion-label>
+        <ion-text>{{response.red}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Grey</ion-label>
+        <ion-text>{{response.grey}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Black</ion-label>
+        <ion-text>{{response.black}}</ion-text>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card  *ngIf="model.model == 'EX2'">
+    <ion-card-header color="danger" style="font-weight: bold; text-align: center;">{{model.model}}</ion-card-header>
+    <ion-card-content>
+      
+      
+      <ion-item>
+     <ion-label> White</ion-label>
+        <ion-text>{{response.white}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Black</ion-label>
+        <ion-text>{{response.black}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Mustard</ion-label>
+        <ion-text>{{response.mustard}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Yellow</ion-label>
+        <ion-text>{{response.yellow}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label> Blue</ion-label>
+           <ion-text>{{response.blue}}</ion-text>
+         </ion-item>
+         <ion-item>
+           <ion-label>Dark Grey</ion-label>
+           <ion-text>{{response.darkgrey}}</ion-text>
+         </ion-item>
+         <ion-item>
+           <ion-label>Light Grey</ion-label>
+           <ion-text>{{response.lightgrey}}</ion-text>
+         </ion-item>
+         <ion-item>
+           <ion-label>Red</ion-label>
+           <ion-text>{{response.red}}</ion-text>
+         </ion-item>
+         <ion-item>
+          <ion-label>Green</ion-label>
+          <ion-text>{{response.green}}</ion-text>
+        </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card  *ngIf="model.model == 'EX2plus'">
+    <ion-card-header color="danger" style="font-weight: bold; text-align: center;">{{model.model}}</ion-card-header>
+    <ion-card-content>
+      <ion-item>
+     <ion-label> Blue </ion-label>
+        <ion-text>{{response.blue}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Red</ion-label>
+        <ion-text>{{response.red}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Silver</ion-label>
+        <ion-text>{{response.silver}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Black</ion-label>
+        <ion-text>{{response.black}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>White</ion-label>
+        <ion-text>{{response.white}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Yellow</ion-label>
+        <ion-text>{{response.yellow}}</ion-text>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card  *ngIf="model.model == 'EX3'">
+    <ion-card-header color="danger" style="font-weight: bold; text-align: center;">{{model.model}}</ion-card-header>
+    <ion-card-content>
+      <ion-item>
+     <ion-label> Blue </ion-label>
+        <ion-text>{{response.blue}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Red</ion-label>
+        <ion-text>{{response.red}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Grey</ion-label>
+        <ion-text>{{response.grey}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Black</ion-label>
+        <ion-text>{{response.black}}</ion-text>
+      </ion-item>
+     
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card  *ngIf="model.model == 'EX3plus'">
+    <ion-card-header color="danger" style="font-weight: bold; text-align: center;">{{model.model}}</ion-card-header>
+    <ion-card-content>
+      <ion-item>
+     <ion-label> Blue </ion-label>
+        <ion-text>{{response.blue}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Red</ion-label>
+        <ion-text>{{response.red}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Orange</ion-label>
+        <ion-text>{{response.orange}}</ion-text>
+      </ion-item>
+    
+     
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card  *ngIf="model.model == 'HELTER'">
+    <ion-card-header color="danger" style="font-weight: bold; text-align: center;">{{model.model}}</ion-card-header>
+    <ion-card-content>
+      <ion-item>
+     <ion-label> Blue </ion-label>
+        <ion-text>{{response.blue}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Red</ion-label>
+        <ion-text>{{response.red}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>SkyBlue</ion-label>
+        <ion-text>{{response.skyblue}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Yellow</ion-label>
+        <ion-text>{{response.yellow}}</ion-text>
+      </ion-item>
+    
+     
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card  *ngIf="model.model == 'MINE'">
+    <ion-card-header color="danger" style="font-weight: bold; text-align: center;">{{model.model}}</ion-card-header>
+    <ion-card-content>
+      <ion-item>
+     <ion-label> White </ion-label>
+        <ion-text>{{response.white}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Red</ion-label>
+        <ion-text>{{response.red}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Silver</ion-label>
+        <ion-text>{{response.silver}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Black</ion-label>
+        <ion-text>{{response.black}}</ion-text>
+      </ion-item>
+    
+     
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card  *ngIf="model.model == 'SPARKLE'">
+    <ion-card-header color="danger" style="font-weight: bold; text-align: center;">{{model.model}}</ion-card-header>
+    <ion-card-content>
+      <ion-item>
+     <ion-label> White </ion-label>
+        <ion-text>{{response.white}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Silver</ion-label>
+        <ion-text>{{response.silver}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Black</ion-label>
+        <ion-text>{{response.black}}</ion-text>
+      </ion-item>
+    
+     
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card  *ngIf="model.model == 'SPARKLE(DB)'">
+    <ion-card-header color="danger" style="font-weight: bold; text-align: center;">{{model.model}}</ion-card-header>
+    <ion-card-content>
+      <ion-item>
+     <ion-label> White </ion-label>
+        <ion-text>{{response.white}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Red</ion-label>
+        <ion-text>{{response.red}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Black</ion-label>
+        <ion-text>{{response.black}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Blue</ion-label>
+        <ion-text>{{response.blue}}</ion-text>
+      </ion-item>
+    
+     
+    </ion-card-content>
+  </ion-card>
+  <ion-card  *ngIf="model.model == 'LUSTER' ">
+    <ion-card-header color="danger" style="font-weight: bold; text-align: center;">{{model.model}}</ion-card-header>
+    <ion-card-content>
+      <ion-item>
+     <ion-label> Green </ion-label>
+        <ion-text>{{response.green}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Yellow</ion-label>
+        <ion-text>{{response.yellow}}</ion-text>
+      </ion-item>
+      
+    
+     
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

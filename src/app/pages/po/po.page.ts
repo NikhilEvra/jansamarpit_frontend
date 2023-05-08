@@ -75,13 +75,10 @@ export class PoPage implements OnInit {
       // po : ['',Validators.required],
       quantity: ['',Validators.required]
     })
-
-   
   }
 
-
   ngOnInit() {
-    console.log(this.getuserdata.id)
+    console.log(this.getuserdata.id);
     this.Initform();
     // this.getValue= this.route.snapshot.paramMap.get("item")
     // console.log(JSON.parse(this.getValue));

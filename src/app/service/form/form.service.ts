@@ -134,7 +134,23 @@ export class FormService {
     return this.api.get<any>(environment.apiurl + 'get_all_products.php');
   }
 
-  getVarient(model:any):Observable<any>{
-    return this.api.get<any>(environment.apiurl + 'get_varients.php?p_id=' + model)
+  getVarient(model : any):Observable<any>{
+    const formData = new FormData();
+    formData.append('model', model);
+    return this.api.post<any>(environment.apiurl + 'get_varients.php', formData);
+  
+  }
+
+  getVarientscount(model : any, d_id : any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'varient_count.php?model=' + model + '&d_id=' + d_id)
+  }
+
+  check(model:any, color:any, id:any):Observable<any>{
+    const formData = new FormData();
+    formData.append('model', model);
+    formData.append('color' ,color);
+    formData.append('d_id',id);
+    return this.api.post<any>(environment.apiurl + 'checkinventory.php', formData)
+    // return this.api.get<any>(environment.apiurl + 'checkinventory.php?model='+ model + '&color=' + color + '&d_id=' + id)
   }
 }

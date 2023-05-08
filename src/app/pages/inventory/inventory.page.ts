@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { FormService } from 'src/app/service/form/form.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class InventoryPage implements OnInit {
 
   constructor(
     private router: Router,
-    private api : FormService
+    private api : FormService,
+    private loadingCtrl : LoadingController,
   ) {  console.log(this.USTEMP);
     if (this.USTEMP) {
       this.getuserdata = JSON.parse(this.USTEMP) ;
@@ -68,5 +70,25 @@ export class InventoryPage implements OnInit {
                 
           }
         })
+      }
+
+      varcount(model : any){
+        let navigationExtras: NavigationExtras = {
+          queryParams: {
+            model : model
+          }
+        };
+        
+        this.router.navigate(['/varientinventory'], navigationExtras);
+        this.showLoading();
+      }
+
+      async showLoading() {
+        const loading = await this.loadingCtrl.create({
+          message: 'Loading please Wait...',
+          duration: 3000,
+        });
+    
+        loading.present();
       }
 }

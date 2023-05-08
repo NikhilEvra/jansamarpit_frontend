@@ -20,6 +20,8 @@ export class SaleformPage implements OnInit {
   models:any=[];
   modelname!:any;
   varientname:any=[];
+  color!:any;
+  test:any=[];
 
   handlerMessage = '';
   roleMessage = '';
@@ -137,6 +139,7 @@ export class SaleformPage implements OnInit {
   }
 
   varient(){
+    console.log(this.modelname);
     this.httpapi.getVarient(this.modelname).subscribe({
       next:(data) =>{
         console.log(data);
@@ -154,6 +157,26 @@ export class SaleformPage implements OnInit {
    
     this.myfun = true;
 
+  }
+
+  checkinventory(){
+    
+    this.test = '(' + this.color + ')' ;
+    this.httpapi.check(this.modelname,this.test, this.getuserdata.id).subscribe({
+      next:(data) =>{
+        console.log(data);
+ 
+       
+      },
+      error:() =>{
+        alert('error');
+     
+      },
+      complete:() =>{
+   
+      }
+    })
+   
   }
 
   
