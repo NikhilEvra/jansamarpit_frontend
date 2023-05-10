@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { FormService } from 'src/app/service/form/form.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class OpencomplaintsPage implements OnInit {
   response:any=[];
   constructor(private api : FormService,
     private router : Router,
+    private loadingCtrl : LoadingController,
     
     ) {
       console.log(this.USTEMP);
@@ -52,7 +54,17 @@ export class OpencomplaintsPage implements OnInit {
         id:id
       }
     };
-    this.router.navigate(['/viewcomplaint'], navigationExtras);
-  }
 
+    this.router.navigate(['/viewcomplaint'], navigationExtras);
+    this.showLoading();
+  }
+  
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading please Wait...',
+      duration: 3000,
+    });
+
+    loading.present();
+  }
 }

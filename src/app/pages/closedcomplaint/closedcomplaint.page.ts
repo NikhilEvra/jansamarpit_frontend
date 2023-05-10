@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { FormService } from 'src/app/service/form/form.service';
 import Swal from 'sweetalert2';
 
@@ -19,6 +19,7 @@ export class ClosedcomplaintPage implements OnInit {
   response:any=[];
   constructor(private api : FormService,
     private alertController: AlertController,
+    private loadingCtrl : LoadingController,
     private router : Router) {
     console.log(this.USTEMP);
       if (this.USTEMP) {
@@ -91,5 +92,14 @@ export class ClosedcomplaintPage implements OnInit {
     
       const { role } = await alert.onDidDismiss();
       this.roleMessage = `Dismissed with role: ${role}`;
+    }
+
+    async showLoading() {
+      const loading = await this.loadingCtrl.create({
+        message: 'Loading please Wait...',
+        duration: 3000,
+      });
+  
+      loading.present();
     }
 }

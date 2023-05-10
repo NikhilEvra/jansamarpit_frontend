@@ -1,0 +1,82 @@
+<ion-header mode="ios">
+  <ion-toolbar color="danger">
+    <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Replacement</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-input type="hidden" placeholder="{{getuserdata.id}}" readonly="" value="{{getuserdata.id}}" formControlName="name"> </ion-input>
+   
+  <section class="inputbox">
+    <ion-text color="danger">Chassis Number</ion-text>
+    <ion-item lines="none">
+    <ion-input type="text" placeholder="Enter Chassis Name" formControlName="chassis"></ion-input>
+    </ion-item>
+  </section> 
+
+  <ion-row>
+    <ion-col >
+      <ion-button expand="block" color="danger" shape="round" (click)="submit()" [disabled]="form.invalid">Submit <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
+    </ion-col>
+  </ion-row>
+</form> 
+
+<div *ngIf="myfun">
+  <ion-card  >
+    <ion-card-header color="danger" style="text-align: center;">{{response.model_name}}-{{response.color}} </ion-card-header>  
+       <ion-card-content>
+         <ion-item>
+           <ion-label>Sale Date</ion-label>
+           <ion-text>{{response.sale_date}}</ion-text>
+         </ion-item>
+         <ion-item>
+           <ion-label>Name </ion-label>
+           <ion-text>{{response.c_name}}</ion-text>
+         </ion-item>
+         <ion-item>
+          <ion-label>Warrany Till</ion-label>
+          <ion-text>{{response.test}}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Model Name</ion-label>
+          <ion-text>{{response.model_name}}</ion-text>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>Replace / Repair</ion-label>
+          <ion-text><ion-button color="danger" (click)="setOpen(true)"> YES</ion-button></ion-text>
+        </ion-item>
+      
+       </ion-card-content>
+     </ion-card>
+</div>
+
+<!-- <ion-button expand="block" (click)="setOpen(true)">Open</ion-button> -->
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar color="danger">
+          <ion-title>Modal</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos
+          reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui. Eaque,
+          dicta.
+        </p>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

@@ -58,7 +58,7 @@ export class DashboardPage implements OnInit {
     initialSlide: 0,
     // slidesPerView: 1.1,
     autoplay: true
-  };
+  }; 
   
  
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { FormService } from 'src/app/service/form/form.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class SalesPage implements OnInit {
 
   constructor(
     private router: Router,
-    private api : FormService
+    private api : FormService,
+    private loadingCtrl : LoadingController,
   ) {
      console.log(this.USTEMP);
     if (this.USTEMP) {
@@ -39,6 +41,7 @@ export class SalesPage implements OnInit {
   }
 
   openPage(url : any){
+    this.showLoading();
     this.router.navigateByUrl(url);
   }
 
@@ -83,6 +86,14 @@ export class SalesPage implements OnInit {
         }
       })
     }
+
+    async showLoading() {
+      const loading = await this.loadingCtrl.create({ 
+        duration: 3000,
+      });
+      loading.present();
+    }
+  
 
   }
 

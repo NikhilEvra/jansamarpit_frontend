@@ -22,6 +22,7 @@ export class SaleformPage implements OnInit {
   varientname:any=[];
   color!:any;
   test:any=[];
+  inventory:any=[];
 
   handlerMessage = '';
   roleMessage = '';
@@ -54,6 +55,10 @@ export class SaleformPage implements OnInit {
       color:['',Validators.required], 
       chassis: ['', Validators.required],
       amount: ['', Validators.required],
+      battery:['',Validators.required],
+      charger:['',Validators.required],
+      motor:['',Validators.required],
+      controller:['',Validators.required],
       // filename : ['']
     })
   }
@@ -67,7 +72,7 @@ export class SaleformPage implements OnInit {
     this.showLoading();
     // console.log(this.form.value);  
     
-    this.httpapi.addsaleformdata(this.form.value.name,this.form.value.c_name,this.form.value.c_mobile,this.form.value.location,this.form.value.model_name,this.form.value.color,this.form.value.chassis, this.form.value.amount, this.form.value.a_mobile).subscribe({
+    this.httpapi.addsaleformdata(this.form.value.name,this.form.value.c_name,this.form.value.c_mobile,this.form.value.location,this.form.value.model_name,this.form.value.color,this.form.value.chassis, this.form.value.amount, this.form.value.a_mobile,this.test,this.form.value.battery,this.form.value.motor,this.form.value.charger,this.form.value.controller).subscribe({
       next:(data) => {
         console.log(data);
         this.response = data;
@@ -160,19 +165,23 @@ export class SaleformPage implements OnInit {
   }
 
   checkinventory(){
-    
     this.test = '(' + this.color + ')' ;
     this.httpapi.check(this.modelname,this.test, this.getuserdata.id).subscribe({
       next:(data) =>{
         console.log(data);
+        this.inventory = data;
  
-       
       },
       error:() =>{
-        alert('error');
+        // alert('error');
      
       },
       complete:() =>{
+        if(this.inventory[0].inventory == '0'){
+          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Inventory Not available Plase raise a po for sale',  heightAuto: false ,  timer: 3000});
+          this.form.reset();
+          this.router.navigateByUrl('/sales');
+        }
    
       }
     })

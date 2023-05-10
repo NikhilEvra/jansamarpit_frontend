@@ -15,9 +15,6 @@ export class LoginPage implements OnInit {
   form! : FormGroup;
   response: any=[];
   response2:any=[];
-  
-
-
 
   constructor(
     private router : Router,

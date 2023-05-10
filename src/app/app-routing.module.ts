@@ -102,6 +102,10 @@ const routes: Routes = [
     path: 'varientinventory',
     loadChildren: () => import('./pages/varientinventory/varientinventory.module').then( m => m.VarientinventoryPageModule)
   },
+  {
+    path: 'repair',
+    loadChildren: () => import('./pages/replace/repair/repair.module').then( m => m.RepairPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

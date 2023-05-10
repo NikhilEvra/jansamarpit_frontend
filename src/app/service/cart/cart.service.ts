@@ -11,8 +11,11 @@ export class CartService {
 
   constructor(private api : HttpClient) { }
 
-  getVarients(p_id : any):Observable<any>{
-    return this.api.get<any>(environment.apiurl + 'get_varients.php?p_id=' + p_id);
+  getVarients(model : any):Observable<any>{
+    const formData = new FormData();
+    formData.append('model', model);
+
+    return this.api.post<any>(environment.apiurl + 'get_varients.php', formData);
   }
 
   postCartData(dealerid:any, model:any, color: any, quantity_with_batt : any, quantity_withOut_batt: any, amountWithOutBatt:any,amountWithBatt: any):Observable<any>{
@@ -49,5 +52,8 @@ export class CartService {
 
   getPrice(varient : any, model:any, usertype:any):Observable<any>{
     return this.api.get<any>(environment.apiurl + 'get_varient_price.php?varient=' + varient + '&m=' + model+ '&u_type=' + usertype);
+  }
+  getVehicleInfo(chassis:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'getvehicleinfo.php?chassis=' + chassis);
   }
 }
