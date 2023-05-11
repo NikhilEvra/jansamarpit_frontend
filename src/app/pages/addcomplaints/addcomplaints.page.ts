@@ -109,21 +109,21 @@ export class AddcomplaintsPage implements OnInit {
   }
 
 
-  uploadPhoto(fileChangeEvent : any) {
-    // Get a reference to the file that has just been added to the input
-    const photo = fileChangeEvent.target.files[0];
-    console.log(photo);
-    this.form.get('file')?.setValue(photo);
-    // Create a form data object using the FormData API
-    // let formData = new FormData();
-    // Add the file that was just added to the form data 
-    // formData.append("photo", photo, photo.name);
-    // this.httpapi.uploadImg(formData).subscribe({ 
-    //   next:(dat) => {
-    //     console.log(dat);
-    //   }
-    // })
-  }
+    uploadPhoto(fileChangeEvent : any) {
+      // Get a reference to the file that has just been added to the input
+      const photo = fileChangeEvent.target.files[0];
+      console.log(photo);
+      this.form.get('file')?.setValue(photo);
+      // Create a form data object using the FormData API
+      // let formData = new FormData();
+      // Add the file that was just added to the form data 
+      // formData.append("photo", photo, photo.name);
+      // this.httpapi.uploadImg(formData).subscribe({ 
+      //   next:(dat) => {
+      //     console.log(dat);
+      //   }
+      // })
+    }
 
   async presentAlert() {
     const alert = await this.alertController.create({

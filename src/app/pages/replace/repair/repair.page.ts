@@ -11,6 +11,7 @@ import { CartService } from 'src/app/service/cart/cart.service';
 })
 export class RepairPage implements OnInit {
   form! : FormGroup;
+  form2! :FormGroup;
   event : any=[];
   USTEMP = localStorage.getItem('user');
   getuserdata:any=[];
@@ -20,11 +21,13 @@ export class RepairPage implements OnInit {
   myfun = false;
   isModalOpen = false;
 
+
   constructor(private route : ActivatedRoute,
     private alertController: AlertController,
     private formb : FormBuilder,
     private httpapi : CartService,
-    private modal : ModalController) { 
+    private modal : ModalController,
+    private formb2 : FormBuilder) { 
     console.log(this.USTEMP);
     if (this.USTEMP) {
       this.getuserdata = JSON.parse(this.USTEMP) ;
@@ -35,7 +38,20 @@ export class RepairPage implements OnInit {
     this.form = this.formb.group({    
       name: [this.getuserdata.id, Validators.required],
       chassis:['',Validators.required],
+      sparepart : [this.event.event,Validators.required],
+      
 
+    })
+
+   
+  }
+  Initform2(){
+    this.form2 = this.formb2.group({
+      name: [this.getuserdata.id,Validators.required],
+      part_no :[this.response.sparepart,Validators.required],
+      warranty_info:[this.response.in_w,Validators.required],
+      file: ['',Validators.required],
+      remark:['',Validators.required]
     })
   }
   ngOnInit() {
@@ -48,6 +64,9 @@ export class RepairPage implements OnInit {
     }
   );
   this.Initform();
+// this.Initform2();
+
+
   }
 
   async presentAlert() {
@@ -65,7 +84,7 @@ export class RepairPage implements OnInit {
           text: 'OK',
           role: 'confirm',
           handler: () => {
-            this.submit();
+            this.sendSparePart();
           },
         },
       ],
@@ -78,7 +97,7 @@ export class RepairPage implements OnInit {
   }
 
   submit(){
-   this.httpapi.getVehicleInfo(this.form.value.chassis).subscribe({
+   this.httpapi.getVehicleInfo(this.form.value.chassis,this.form.value.sparepart).subscribe({
     next:(data)=>{
       console.log(data);
       this.response = data;
@@ -89,16 +108,39 @@ export class RepairPage implements OnInit {
    
     },
     complete:() =>{
-
+      this.Initform2();
     }
    })
   }
 
-  land(){
-  
+  uploadPhoto(fileChangeEvent : any) {
+    // Get a reference to the file that has just been added to the input
+    const photo = fileChangeEvent.target.files[0];
+    console.log(photo);
+    this.form2.get('file')?.setValue(photo);
+ 
   }
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
+
+  sendSparePart(){
+    console.log(this.form2.value)
+   this.httpapi.postsparePart(this.form2.value.name,this.form2.value.part_no,this.form2.value.warranty_info,this.form2.value.file,this.form2.value.remark,this.form.value.chassis,this.response.model_name,
+    this.response.color,this.response.c_name,this.response.sale_date,this.response.warranty).subscribe({
+    next:(data)=>{
+      console.log(data);
+ 
+    },
+    error:() =>{
+      alert('error');
+   
+    },
+    complete:() =>{
+
+    }
+   })
+  }
+  
 }

@@ -240,12 +240,14 @@
       </ion-card> -->
  
 
-  <ion-card >
-    <ion-row>
-      <img src="assets/home_banner/evra.png" style="height:150px;width:100%;margin:auto; border-radius: 1px;"><br>
-  </ion-row>
-  </ion-card>
-  
+      <ion-slides #slides [options]="slideServiceReport" pager="true" autoplay="1000" loop="true" speed="300" >
+        <ion-slide *ngFor="let dat of footerBanner" >
+          <div style="width:100%;height:150px;margin:5px 5px;">
+            <img [src]="dat.url" style="height:100%;width:100%; border-radius: 15px;">
+          </div>
+        </ion-slide>
+      </ion-slides>
+    
   <div style="padding-bottom:80px"></div>
 
 </ion-content>

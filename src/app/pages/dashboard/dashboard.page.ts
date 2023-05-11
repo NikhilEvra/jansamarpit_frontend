@@ -24,9 +24,26 @@ export class DashboardPage implements OnInit {
   result1: any = [];
 
   homeBanner: any = [{
-    url: 'assets/home_banner/banner1.jpg'
+    url: 'https://evramedia.com/apifolder/catalog/ex1_banner.png'
   },{
-    url: 'assets/home_banner/evra.png'
+    url: 'https://evramedia.com/apifolder/catalog/ex2_banner.png'
+  },{
+    url: 'https://evramedia.com/apifolder/catalog/ex2plus_banner.png'
+  },{
+    url: 'https://evramedia.com/apifolder/catalog/ex3_banner.png'
+  },{
+    url: 'https://evramedia.com/apifolder/catalog/mine_banner.png'
+  }]
+  footerBanner: any = [{
+    url: 'https://evramedia.com/apifolder/catalog/ex3plus_banner.png'
+  },{
+    url: 'https://evramedia.com/apifolder/catalog/luster_banner.png'
+  },{
+    url: 'https://evramedia.com/apifolder/catalog/helter_banner.png'
+  },{
+    url: 'https://evramedia.com/apifolder/catalog/sparkle_banner.png'
+  },{
+    url: 'https://evramedia.com/apifolder/catalog/sparkledb_banner.png'
   }]
   quickLink: any = [
     {
