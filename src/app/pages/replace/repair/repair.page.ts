@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { CartService } from 'src/app/service/cart/cart.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-repair',
@@ -20,6 +21,7 @@ export class RepairPage implements OnInit {
   response:any=[];
   myfun = false;
   isModalOpen = false;
+  response2:any=[];
 
 
   constructor(private route : ActivatedRoute,
@@ -27,7 +29,8 @@ export class RepairPage implements OnInit {
     private formb : FormBuilder,
     private httpapi : CartService,
     private modal : ModalController,
-    private formb2 : FormBuilder) { 
+    private formb2 : FormBuilder,
+    private router : Router) { 
     console.log(this.USTEMP);
     if (this.USTEMP) {
       this.getuserdata = JSON.parse(this.USTEMP) ;
@@ -127,11 +130,20 @@ export class RepairPage implements OnInit {
 
   sendSparePart(){
     console.log(this.form2.value)
-   this.httpapi.postsparePart(this.form2.value.name,this.form2.value.part_no,this.form2.value.warranty_info,this.form2.value.file,this.form2.value.remark,this.form.value.chassis,this.response.model_name,
-    this.response.color,this.response.c_name,this.response.sale_date,this.response.warranty).subscribe({
+    this.httpapi.postsparePart(this.form2.value.name,this.form2.value.part_no,this.form2.value.warranty_info,this.form2.value.file,this.form2.value.remark,this.form.value.chassis,this.response.model_name,
+    this.response.color,this.response.c_name,this.response.sale_date,this.response.warranty,this.event.event).subscribe({
     next:(data)=>{
       console.log(data);
- 
+      this.response2 = data;
+      Swal.fire({
+        'imageUrl' :'assets/icon/login.gif',
+        'imageHeight':'100px', 
+        'title': this.response2.message,
+         heightAuto: false , 
+         timer: 3000
+        });
+        this.isModalOpen = false;
+       
     },
     error:() =>{
       alert('error');
