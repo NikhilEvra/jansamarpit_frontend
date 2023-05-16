@@ -33,7 +33,6 @@
     "@capacitor/status-bar": "4.1.1",
     "@ionic/angular": "^6.1.9",
     "apexcharts": "^3.37.1",
-    "cordova-plugin-file-transfer": "^1.7.1",
     "cordova-plugin-inappbrowser": "^5.0.0",
     "html-to-pdfmake": "^2.4.16",
     "ionicons": "^6.0.3",

@@ -188,5 +188,9 @@ export class SaleformPage implements OnInit {
    
   }
 
+  land(){
+    this.router.navigateByUrl('/poinvoice');
+  }
+
   
 }

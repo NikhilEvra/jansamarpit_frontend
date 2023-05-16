@@ -40,13 +40,13 @@ export class CartService {
     formdata.append('dealerid',dealerid);
     formdata.append('amount',amount);
 
-    return this.api.post<any>(environment.apiurl + 'add_po.php', formdata);
+    return this.api.post<any>(environment.apiurl + 'add_po.php' , formdata);
   }
   
   updateCartStatus(id:any):Observable<any>{
     const formdata = new FormData();
     formdata.append('id',id);
-    return this.api.post<any>(environment.apiurl + 'status_update.php', formdata);
+    return this.api.post<any>(environment.apiurl + 'status_update.php' , formdata);
 
   }
 

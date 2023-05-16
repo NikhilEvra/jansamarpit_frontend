@@ -1,13 +1,14 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 
 @Component({
   selector: 'app-poinvoice',
   templateUrl: './poinvoice.page.html',
   styleUrls: ['./poinvoice.page.scss'],
-})
+}) 
 export class PoinvoicePage implements OnInit {
   USERS = [
     {
@@ -49,7 +50,7 @@ export class PoinvoicePage implements OnInit {
   ];
   
   
-  constructor() { }
+  constructor(private iab : InAppBrowser) { }
 
   ngOnInit() {
 //     const doc = new jsPDF();
@@ -76,7 +77,15 @@ export class PoinvoicePage implements OnInit {
     });
   }
 
-
+  openInAppBrow2() {
+    const browser = this.iab.create('https://evramedia.com/apifolder/folder/invoice.php', '_system', 'location=no, zoom=yes ');
+    browser.on('loadstart').subscribe(data => {
+     console.log(data.url);
+     if (data.url === 'https://evramedia.com/') {
+       browser.close();
+     }
+    });
+   }
   
 
 }
