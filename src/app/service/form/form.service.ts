@@ -82,7 +82,8 @@ export class FormService {
     return this.api.get<any>(environment.apiurl + 'getcomplaintbyid.php?c_id=' + id);
   }
 
-  addsaleformdata(name:any, c_name:any, c_mobile: any, location : any, model_name: any,color:any, chassis:any,amount : any, a_mobile:any, test:any,battery:any,motor:any,charger:any,controller:any):Observable<any>{
+  addsaleformdata(name:any, c_name:any, c_mobile: any, location : any, model_name: any,color:any, chassis:any,amount : any, a_mobile:any, test:any,battery:any,motor:any,charger:any,controller:any,
+    city:any,state:any,pan:any):Observable<any>{
     const formData = new FormData();
     formData.append('name', name);
     formData.append('a_mobile', a_mobile);
@@ -98,6 +99,9 @@ export class FormService {
     formData.append('motor',motor);
     formData.append('charger',charger);
     formData.append('controller',controller);
+    formData.append('city',city);
+    formData.append('state',state);
+    formData.append('pan',pan);
     return this.api.post<any>(environment.apiurl + 'customer_sale.php',  formData);
   }
 

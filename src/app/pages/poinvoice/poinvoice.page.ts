@@ -78,7 +78,7 @@ export class PoinvoicePage implements OnInit {
   }
 
   openInAppBrow2() {
-    const browser = this.iab.create('https://evramedia.com/apifolder/folder/invoice.php', '_system', 'location=no, zoom=yes ');
+    const browser = this.iab.create('https://evramedia.com/apifolder/invoice.php', '_system', 'location=no, zoom=yes ');
     browser.on('loadstart').subscribe(data => {
      console.log(data.url);
      if (data.url === 'https://evramedia.com/') {
@@ -86,6 +86,7 @@ export class PoinvoicePage implements OnInit {
      }
     });
    }
+   
   
 
 }

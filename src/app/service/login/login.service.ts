@@ -15,6 +15,6 @@ export class LoginService {
   ) { }
 
   getlogindata(userid: any, pass: any):Observable<any>{
-    return this.api.get<any>('https://evramedia.com/apifolder/login.php?userid=' + userid + '&spassword=' + pass);
+    return this.api.get<any>(environment.apiurl +'login.php?userid=' + userid + '&spassword=' + pass);
   }
 }

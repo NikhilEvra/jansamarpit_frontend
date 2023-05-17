@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AnyMxRecord } from 'dns';
 import { FormService } from 'src/app/service/form/form.service';
@@ -31,7 +32,8 @@ export class SaleformPage implements OnInit {
     private httpapi : FormService,
     private loadingCtrl : LoadingController,
     private router : Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private iab : InAppBrowser,
   ) { 
     console.log(this.USTEMP);
     if (this.USTEMP) {
@@ -59,6 +61,9 @@ export class SaleformPage implements OnInit {
       charger:['',Validators.required],
       motor:['',Validators.required],
       controller:['',Validators.required],
+      city:['',Validators.required],
+      state:['',Validators.required],
+      pan:['',Validators.required]
       // filename : ['']
     })
   }
@@ -72,12 +77,15 @@ export class SaleformPage implements OnInit {
     this.showLoading();
     // console.log(this.form.value);  
     
-    this.httpapi.addsaleformdata(this.form.value.name,this.form.value.c_name,this.form.value.c_mobile,this.form.value.location,this.form.value.model_name,this.form.value.color,this.form.value.chassis, this.form.value.amount, this.form.value.a_mobile,this.test,this.form.value.battery,this.form.value.motor,this.form.value.charger,this.form.value.controller).subscribe({
+    this.httpapi.addsaleformdata(this.form.value.name,this.form.value.c_name,this.form.value.c_mobile,this.form.value.location,this.form.value.model_name,this.form.value.color,this.form.value.chassis, this.form.value.amount, this.form.value.a_mobile,this.test,this.form.value.battery,this.form.value.motor,this.form.value.charger,this.form.value.controller,
+      this.form.value.city,this.form.value.state,this.form.value.pan).subscribe({
       next:(data) => {
         console.log(data);
         this.response = data;
         Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
          this.router.navigateByUrl('/sales');
+         this.openInAppBrow2();
+         
       },
       error:() => {
         console.log('err');
@@ -88,6 +96,7 @@ export class SaleformPage implements OnInit {
       }
     })
     this.form.reset();
+  
    }
 
    async showLoading() {
@@ -191,6 +200,14 @@ export class SaleformPage implements OnInit {
   land(){
     this.router.navigateByUrl('/poinvoice');
   }
-
+  openInAppBrow2() {
+    const browser = this.iab.create('https://evramedia.com/apifolder/invoice.php', '_system', 'location=no, zoom=yes ');
+    browser.on('loadstart').subscribe(data => {
+     console.log(data.url);
+     if (data.url === 'https://evramedia.com/') {
+       browser.close();
+     }
+    });
+   }
   
 }
