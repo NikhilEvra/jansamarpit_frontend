@@ -8,7 +8,7 @@ const routes: Routes = [
   // },
   {
     path: '',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/saleform/saleform.module').then( m => m.SaleformPageModule)
   },
   {
     path: 'signup',

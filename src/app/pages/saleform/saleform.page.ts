@@ -24,6 +24,8 @@ export class SaleformPage implements OnInit {
   color!:any;
   test:any=[];
   inventory:any=[];
+  dealerid:any=['11'];
+  invoiceid:any=['23']
 
   handlerMessage = '';
   roleMessage = '';
@@ -76,7 +78,7 @@ export class SaleformPage implements OnInit {
   submit(){
     this.showLoading();
     // console.log(this.form.value);  
-    
+    this.dealerid = this.form.value.name;
     this.httpapi.addsaleformdata(this.form.value.name,this.form.value.c_name,this.form.value.c_mobile,this.form.value.location,this.form.value.model_name,this.form.value.color,this.form.value.chassis, this.form.value.amount, this.form.value.a_mobile,this.test,this.form.value.battery,this.form.value.motor,this.form.value.charger,this.form.value.controller,
       this.form.value.city,this.form.value.state,this.form.value.pan).subscribe({
       next:(data) => {
@@ -201,13 +203,18 @@ export class SaleformPage implements OnInit {
     this.router.navigateByUrl('/poinvoice');
   }
   openInAppBrow2() {
-    const browser = this.iab.create('https://evramedia.com/apifolder/invoice.php', '_system', 'location=no, zoom=yes ');
+    const browser = this.iab.create('https://evramedia.com/apifolder/invoice.php?id=' + this.dealerid  + '&invoice_id=' + this.invoiceid, '_self', 'location=no, zoom=yes ');
     browser.on('loadstart').subscribe(data => {
      console.log(data.url);
-     if (data.url === 'https://evramedia.com/') {
+     if (data.url === 'https://capacitorjs.com/docs/apis/google-maps') {
        browser.close();
+       this.test1();
      }
     });
+   
    }
-  
+  test1(){
+    alert('working');
+
+  }
 }
