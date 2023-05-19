@@ -24,8 +24,9 @@ export class SaleformPage implements OnInit {
   color!:any;
   test:any=[];
   inventory:any=[];
-  dealerid:any=['11'];
-  invoiceid:any=['23']
+  
+  invoiceid:any=['00039'];
+  response2:any=[];
 
   handlerMessage = '';
   roleMessage = '';
@@ -65,7 +66,8 @@ export class SaleformPage implements OnInit {
       controller:['',Validators.required],
       city:['',Validators.required],
       state:['',Validators.required],
-      pan:['',Validators.required]
+      pan:['',Validators.required],
+      discount:[''],
       // filename : ['']
     })
   }
@@ -77,16 +79,21 @@ export class SaleformPage implements OnInit {
 
   submit(){
     this.showLoading();
+    this.getuserdata.id = this.form.value.name;
+
+   
+    if(!this.form.value.discount){
+      this.form.value.discount = '0'
+    }
     // console.log(this.form.value);  
-    this.dealerid = this.form.value.name;
-    this.httpapi.addsaleformdata(this.form.value.name,this.form.value.c_name,this.form.value.c_mobile,this.form.value.location,this.form.value.model_name,this.form.value.color,this.form.value.chassis, this.form.value.amount, this.form.value.a_mobile,this.test,this.form.value.battery,this.form.value.motor,this.form.value.charger,this.form.value.controller,
+    this.httpapi.addsaleformdata(this.form.value.name,this.form.value.c_name,this.form.value.c_mobile,this.form.value.location,this.form.value.model_name,this.form.value.color,this.form.value.chassis, this.form.value.amount,this.form.value.discount, this.form.value.a_mobile,this.test,this.form.value.battery,this.form.value.motor,this.form.value.charger,this.form.value.controller,
       this.form.value.city,this.form.value.state,this.form.value.pan).subscribe({
       next:(data) => {
         console.log(data);
-        this.response = data;
-        Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
-         this.router.navigateByUrl('/sales');
-         this.openInAppBrow2();
+        this.response2 = data;
+        // Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
+
+      
          
       },
       error:() => {
@@ -94,7 +101,10 @@ export class SaleformPage implements OnInit {
          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
       },
       complete:() => {
+        this.response = this.response2;
          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
+         this.router.navigateByUrl('/sales');
+         this.openInAppBrow2();
       }
     })
     this.form.reset();
@@ -130,9 +140,9 @@ export class SaleformPage implements OnInit {
     });
 
     await alert.present();
-
     const { role } = await alert.onDidDismiss();
     this.roleMessage = `Dismissed with role: ${role}`;
+
   }
 
   model(){
@@ -193,7 +203,6 @@ export class SaleformPage implements OnInit {
           this.form.reset();
           this.router.navigateByUrl('/sales');
         }
-   
       }
     })
    
@@ -202,19 +211,27 @@ export class SaleformPage implements OnInit {
   land(){
     this.router.navigateByUrl('/poinvoice');
   }
+
   openInAppBrow2() {
-    const browser = this.iab.create('https://evramedia.com/apifolder/invoice.php?id=' + this.dealerid  + '&invoice_id=' + this.invoiceid, '_self', 'location=no, zoom=yes ');
+    const browser = this.iab.create('https://evramedia.com/apifolder/invoice.php?id=' + this.getuserdata.id  + '&invoice_id=' + this.invoiceid, '_self', 'location=no, zoom=yes ');
     browser.on('loadstart').subscribe(data => {
      console.log(data.url);
-     if (data.url === 'https://capacitorjs.com/docs/apis/google-maps') {
+     if (data.url === 'https://evramedia.com') {
        browser.close();
        this.test1();
      }
     });
    
    }
-  test1(){
-    alert('working');
 
+  test1(){
+     const browser = this.iab.create('https://evramedia.com/apifolder/print_invoice.php?id=' + this.getuserdata.id  + '&invoice_id=' + this.invoiceid, '_system', 'location=no, zoom=yes ');
+    browser.on('loadstart').subscribe(data => {
+     console.log(data.url);
+     if (data.url === 'https://evramedia.com  ') {
+       browser.close();
+       
+     }
+    });
   }
 }

@@ -82,7 +82,7 @@ export class FormService {
     return this.api.get<any>(environment.apiurl + 'getcomplaintbyid.php?c_id=' + id);
   }
 
-  addsaleformdata(name:any, c_name:any, c_mobile: any, location : any, model_name: any,color:any, chassis:any,amount : any, a_mobile:any, test:any,battery:any,motor:any,charger:any,controller:any,
+  addsaleformdata(name:any, c_name:any, c_mobile: any, location : any, model_name: any,color:any, chassis:any,amount : any,discount:any, a_mobile:any, test:any,battery:any,motor:any,charger:any,controller:any,
     city:any,state:any,pan:any):Observable<any>{
     const formData = new FormData();
     formData.append('name', name);
@@ -94,6 +94,7 @@ export class FormService {
     formData.append('color',color);
     formData.append('chassis', chassis);
     formData.append('amount' , amount);
+    formData.append('discount',discount);
     formData.append('test' , test);
     formData.append('battery',battery);
     formData.append('motor',motor);
@@ -161,5 +162,13 @@ export class FormService {
     formData.append('d_id',id);
     return this.api.post<any>(environment.apiurl + 'checkinventory.php', formData)
     // return this.api.get<any>(environment.apiurl + 'checkinventory.php?model='+ model + '&color=' + color + '&d_id=' + id)
+  }
+
+  getSaleBydealerId(id:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'get_sale_by_dealer.php?d_id=' + id);
+  }
+
+  getSaleById(id:any,d_id:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'get_sale_by_id.php?id=' + id +'&d_id=' + d_id);
   }
 }

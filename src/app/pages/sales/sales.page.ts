@@ -42,6 +42,7 @@ export class SalesPage implements OnInit {
 
   openPage(url : any){
     this.showLoading();
+    this.showLoading();
     this.router.navigateByUrl(url);
   }
 

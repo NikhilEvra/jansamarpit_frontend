@@ -117,6 +117,12 @@ export class Cart1Page implements OnInit {
 
    submit(){
     this.showLoading();
+    // if(!this.form.value.quantity_without_batt){
+    //   this.form.value.quantity_without_batt = '0'
+    // }
+    // if(!this.form.value.quantity_with_batt){
+    //   this.form.value.quantity_with_batt = '0'
+    // }
     console.log(this.form.value);  
     this.api.postCartData(this.form.value.dealerid,this.form.value.model,this.form.value.color,this.form.value.quantity_with_batt,this.form.value.quantity_without_batt,this.form.value.amountWithBatt,this.form.value.amountWithOutBatt).subscribe({
       next:(data) => {

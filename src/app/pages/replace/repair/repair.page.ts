@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { CartService } from 'src/app/service/cart/cart.service';
 import Swal from 'sweetalert2';
 
@@ -30,7 +30,8 @@ export class RepairPage implements OnInit {
     private httpapi : CartService,
     private modal : ModalController,
     private formb2 : FormBuilder,
-    private router : Router) { 
+    private router : Router,
+    private loadingCtrl : LoadingController) { 
     console.log(this.USTEMP);
     if (this.USTEMP) {
       this.getuserdata = JSON.parse(this.USTEMP) ;
@@ -100,6 +101,7 @@ export class RepairPage implements OnInit {
   }
 
   submit(){
+    this.showLoading();
    this.httpapi.getVehicleInfo(this.form.value.chassis,this.form.value.sparepart).subscribe({
     next:(data)=>{
       console.log(data);
@@ -154,5 +156,13 @@ export class RepairPage implements OnInit {
     }
    })
   }
-  
+ 
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading please Wait...',
+      duration: 3000,
+    });
+
+    loading.present();
+  }
 }

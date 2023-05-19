@@ -8,7 +8,7 @@ const routes: Routes = [
   // },
   {
     path: '',
-    loadChildren: () => import('./pages/saleform/saleform.module').then( m => m.SaleformPageModule)
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'signup',
@@ -105,6 +105,10 @@ const routes: Routes = [
   {
     path: 'repair',
     loadChildren: () => import('./pages/replace/repair/repair.module').then( m => m.RepairPageModule)
+  },
+  {
+    path: 'salerecord',
+    loadChildren: () => import('./sales/salerecord/salerecord.module').then( m => m.SalerecordPageModule)
   },
   // {
   //   path: 'tab4',
