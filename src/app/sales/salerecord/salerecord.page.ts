@@ -83,11 +83,22 @@ export class SalerecordPage implements OnInit {
   const browser = this.iab.create('https://evramedia.com/apifolder/print_invoice.php?id=' + this.getuserdata.id  + '&invoice_id=' + invoice, '_system', 'location=no, zoom=yes ');
   browser.on('loadstart').subscribe(data => {
    console.log(data.url);
-   if (data.url === 'https://evramedia.com') {
+   if (data.url == 'https://evramedia.com') {
      browser.close();
-    
    }
   });
  
  }
+
+  // openInAppBrow1(invoice:any) {
+  //   const browser = this.iab.create('https://evramedia.com/apifolder/invoice.php?id=' + this.getuserdata.id  + '&invoice_id=' + invoice, '_self', 'location=no, zoom=yes ');
+  //   browser.on('loadstart').subscribe(data => {
+  //    console.log(data.url);
+  //    if (data.url == 'https://evramedia.com') {
+  //      browser.close();
+  //     //  this.openInAppBrow2(invoice:any);
+  //    }
+  //   }); 
+  //  }
+
 }

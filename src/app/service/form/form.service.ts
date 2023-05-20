@@ -83,7 +83,7 @@ export class FormService {
   }
 
   addsaleformdata(name:any, c_name:any, c_mobile: any, location : any, model_name: any,color:any, chassis:any,amount : any,discount:any, a_mobile:any, test:any,battery:any,motor:any,charger:any,controller:any,
-    city:any,state:any,pan:any):Observable<any>{
+    city:any,state:any,pan:any,dist:any,pincode:any):Observable<any>{
     const formData = new FormData();
     formData.append('name', name);
     formData.append('a_mobile', a_mobile);
@@ -103,6 +103,8 @@ export class FormService {
     formData.append('city',city);
     formData.append('state',state);
     formData.append('pan',pan);
+    formData.append('dist',dist);
+    formData.append('pincode',pincode);
     return this.api.post<any>(environment.apiurl + 'customer_sale.php',  formData);
   }
 

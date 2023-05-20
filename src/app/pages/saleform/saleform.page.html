@@ -22,6 +22,7 @@
       <ion-input type="text" placeholder="Enter Custsomer Name" formControlName="c_name"></ion-input>
       </ion-item>
     </section> 
+    
     <section class="inputbox">
       <ion-text color="danger">Customer Contact Number</ion-text>
       <ion-item lines="none">
@@ -47,18 +48,46 @@
         <ion-input type="text" placeholder="Enter Address" formControlName="location"></ion-input>
       </ion-item>
     </section>
-    <section class="inputbox">
-      <ion-text color="danger">City</ion-text>
-      <ion-item lines="none">
-        <ion-input type="text" placeholder="Enter City Name" formControlName="city"></ion-input>
-      </ion-item>
-    </section>
-    <section class="inputbox">
-      <ion-text color="danger">State</ion-text>
-      <ion-item lines="none">
-        <ion-input type="text" placeholder="Enter State" formControlName="state"></ion-input>
-      </ion-item>
-    </section>
+   
+    <ion-grid>
+      <ion-row>
+        <ion-col> <section class="inputbox">
+          <ion-text color="danger">Tehsil</ion-text>
+          <ion-item lines="none">
+            <ion-input type="text" placeholder="City Tehsil" formControlName="city"></ion-input>
+          </ion-item>
+        </section></ion-col>
+        <ion-col> <section class="inputbox">
+          <ion-text color="danger">District</ion-text>
+          <ion-item lines="none">
+            <ion-input type="text" placeholder="District Name" formControlName="dist"></ion-input>
+          </ion-item>
+        </section></ion-col>
+        
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col> 
+          <section class="inputbox">
+          <ion-text color="danger">State</ion-text>
+          <ion-item lines="none">
+            <ion-input type="text" placeholder="Enter State" formControlName="state"></ion-input>
+          </ion-item>
+        </section>
+      </ion-col>
+        <ion-col>
+          <section class="inputbox">
+            <ion-text color="danger">Pincode</ion-text>
+            <ion-item lines="none">
+              <ion-input type="text" placeholder="Enter Pincode" formControlName="pincode"></ion-input>
+            </ion-item>
+          </section>
+        </ion-col>
+        
+      </ion-row>
+    </ion-grid>
+   
     <section class="inputbox">
       <ion-text color="danger">Model</ion-text>
       <ion-item lines="none">
