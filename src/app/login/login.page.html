@@ -15,7 +15,7 @@
   </ion-content>
   <ion-footer class="ion-no-border">
     <form [formGroup]="form">
-    <ion-toolbar>
+    <!-- <ion-toolbar>
       <section class="inputbox">
         
         <ion-item lines="none">
@@ -43,7 +43,77 @@
           <ion-button shape="round" expand="block" (click)="close()" >Exit App  <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
         </ion-col>
       </ion-row>
+    </ion-toolbar> -->
+    <ion-toolbar>
+      <section class="inputbox">
+        
+        <ion-item lines="none">
+          <ion-input type="text"  placeholder="Mobile Number" formControlName="phone"> </ion-input>
+          <ion-button slot="end" fill="clear">
+        <ion-icon name="mail-outline"></ion-icon>
+        <ion-icon name="phone-portrait-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+       
+      </section>
+    </ion-toolbar>
+    <ion-toolbar >
+      <ion-row >
+        <ion-col >
+          <ion-button shape="round" expand="block" color="danger" (click)="otp()"  (click)="setOpen(true)" [disabled]="form.invalid">Submit <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row >
+        <ion-col >
+          <ion-button shape="round" expand="block" (click)="close()" >Exit App  <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
     </ion-toolbar>
   </form>
+  <!-- <button (click)='startTimer()'>Start Timer</button>
+<button (click)='pauseTimer()'>Pause</button>
+
+<p>{{timeLeft}} Seconds Left....</p> -->
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <!-- <ion-toolbar color="danger">
+      
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar> -->
+    </ion-header>
+    <ion-content >
+      <div style="height:55%;width:100%;">
+      <img src="assets/login/logo.jpg"></div>
+      <form [formGroup]="form2">
+  <section class="inputbox">
+    <ion-text color="danger">Enter Otp</ion-text>
+    <ion-item lines="none">
+      <ion-input type="number"  placeholder="Enter Otp" maxlength="4" max="4" formControlName="otp"> </ion-input>
+      <ion-button slot="end" fill="clear">
+        <ion-text>{{timeLeft}}</ion-text>
+      </ion-button>
+    </ion-item>
+  </section>
+
+  <ion-row >
+    <ion-col >
+      <ion-button color="danger" shape="round" expand="block" (click)="checkOtp()" [disabled]="form2.invalid">Submit <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-slides #slides [options]="slideServiceReport" pager="true" autoplay="1000" loop="true" speed="300" >
+    <ion-slide *ngFor="let dat of homeBanner" >
+      <div style="width:100%;height:150px;margin:5px 5px;">
+        <img [src]="dat.url" style="height:100%;width:100%; border-radius: 15px;">
+      </div>
+    </ion-slide>
+  </ion-slides>
+  </form>
+  </ion-content>
+   
+  </ng-template>
+</ion-modal>
   </ion-footer>
   

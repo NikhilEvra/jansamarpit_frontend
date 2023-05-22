@@ -17,4 +17,14 @@ export class LoginService {
   getlogindata(userid: any, pass: any):Observable<any>{
     return this.api.get<any>(environment.apiurl +'login.php?userid=' + userid + '&spassword=' + pass);
   }
+  sendOtp(phone : any ):Observable<any> {
+    const formData = new FormData();
+    formData.append('phone', phone);
+  
+    return this.api.post<any>(environment.apiurl + 'otp.php',  formData);
+  }
+  ValidateOtp(phone:any,otp:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl +'validate_otp.php?phone=' + phone + '&otp=' + otp);
+
+  }
 }
