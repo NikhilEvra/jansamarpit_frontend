@@ -12,7 +12,25 @@ import Swal from 'sweetalert2';
 })
 export class SignupPage implements OnInit {
   form! :FormGroup;
+  form2! :FormGroup;
+  response:any=[];
+  response2:any=[];
+  response3:any=[];
+  response4:any=[];
   
+  isModalOpen = false;
+
+  homeBanner: any = [{
+    url: 'https://evramedia.com/apifolder/catalog/13.png'
+  },{
+    url: 'https://evramedia.com/apifolder/catalog/14.png'
+  }]
+
+  slideServiceReport = {
+    initialSlide: 0,
+    // slidesPerView: 1.1,
+    autoplay: true
+  }; 
 
   constructor(
     private router : Router,
@@ -27,7 +45,7 @@ export class SignupPage implements OnInit {
     this.form = this.formb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required],  
+      // password: ['', Validators.required],  
       phone:['', Validators.required],
       usertype:['',Validators.required]
      
@@ -35,9 +53,14 @@ export class SignupPage implements OnInit {
     })
     // this.presentToast('test toast', 'success');
   }
-
+  initForm2(){  
+    this.form2 = this.formb.group({    
+      otp: ['', Validators.required],      
+    })
+  }
   ngOnInit() {
     this.initForm();
+    this.initForm2();
     this.menuCtrl.enable(false);
   }
   ionViewDidLeave(){
@@ -45,36 +68,42 @@ export class SignupPage implements OnInit {
     this.menuCtrl.enable(false);
   }
   signup(){
-    this.showLoading();
-    this.httpapi.getuserdata(this.form.value.name ,this.form.value.email, this.form.value.password, this.form.value.phone, this.form.value.usertype).subscribe({
+    this.httpapi.getuserdata(this.form.value.name ,this.form.value.email,  this.form.value.phone, this.form.value.usertype).subscribe({
       next:(data) => {
         console.log(data);
+        this.response = data;
        
-        if (data.status) {
-           Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': data.message,  heightAuto: false ,  timer: 3000});
-          // this.presentToast(data.message , 'success' );
-        
-          this.router.navigateByUrl('/login');
-        } else if(data.status == false){
-          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': data.message,  heightAuto: false ,  timer: 3000});
-          
-          // this.presentToast(data.message, 'danger');
-        } 
+      
       },
       error:() => {
         console.log('err');
          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
        
-        // this.presentToast('Internal server error' , 'warning' )
       },
       complete:() => {
+        this.response2 = this.response;
+        if(this.response2.status == false){
+          Swal.fire({                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+             'imageUrl' :'assets/icon/login.gif',
+             'imageHeight':'100px', 
+             'title': this.response2.message,
+              heightAuto: false , 
+              timer: 3000
+                });
+       }
+       else{
+        
+        this.setOpen(true);
+        
+                   
+       }  
         
       }
     })
-    this.form.reset();
-    // this.router.navigateByUrl('/login');
-    // Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'You have registered successfully!',  heightAuto: false ,  timer: 3000});
-
+   
+    
+   
+   
   }
   
   async presentToast(msg: any, color: any) {
@@ -101,4 +130,66 @@ export class SignupPage implements OnInit {
     this.router.navigateByUrl(url);
   }
 
+  timeLeft: number = 120;
+  interval:any;
+
+startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.timeLeft = 120;
+      }
+    },1000)
+  }
+
+  pauseTimer() {
+    clearInterval(this.interval);
+  }
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+    this.startTimer();
+  setTimeout(() => {
+    this.isModalOpen = false;
+    window.location.reload();
+  }, 120000);
+
+  }
+ 
+checkOtp(){
+  // console.log(this.form.value.phone);
+  this.isModalOpen = false;
+  this.httpapi.validateOtp(this.form.value.phone, this.form2.value.otp).subscribe({
+    next:(data) => {
+      console.log(data);
+      this.response3 = data
+     
+    
+    },
+    error:() => {
+      console.log('err');
+       Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
+     
+    },
+    complete:() => {
+      this.response4 = this.response3;
+      if(this.response4.status == false){
+        Swal.fire({
+           'imageUrl' :'assets/icon/login.gif',
+           'imageHeight':'100px', 
+           'title': this.response4.message,
+            heightAuto: false , 
+            timer: 3000
+              });
+     } else{
+      // this.isModalOpen = false;
+      this.router.navigateByUrl('/login');
+     }
+
+    }
+  })
+ 
+  
+}
 }

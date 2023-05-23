@@ -48,7 +48,7 @@
       <section class="inputbox">
         
         <ion-item lines="none">
-          <ion-input type="text"  placeholder="Mobile Number" formControlName="phone"> </ion-input>
+          <ion-input type="number"  placeholder="Mobile Number" formControlName="phone"> </ion-input>
           <ion-button slot="end" fill="clear">
         <ion-icon name="mail-outline"></ion-icon>
         <ion-icon name="phone-portrait-outline"></ion-icon>
@@ -60,7 +60,7 @@
     <ion-toolbar >
       <ion-row >
         <ion-col >
-          <ion-button shape="round" expand="block" color="danger" (click)="otp()"  (click)="setOpen(true)" [disabled]="form.invalid">Submit <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
+          <ion-button shape="round" expand="block" color="danger" (click)="otp()"  [disabled]="form.invalid">Submit <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
         </ion-col>
       </ion-row>
       <ion-row >

@@ -16,6 +16,8 @@ export class LoginPage implements OnInit {
   form2!:FormGroup;
   response: any=[];
   response2:any=[];
+  response3: any=[];
+  response4:any=[];
   isModalOpen = false;
   homeBanner: any = [{
     url: 'https://evramedia.com/apifolder/catalog/13.png'
@@ -124,28 +126,42 @@ initForm(){
 }
 
 otp(){
-  // this.api.sendOtp(this.form.value.phone).subscribe({
-  //   next:(data) =>{
-  //     console.log(data);
+  this.api.sendOtp(this.form.value.phone).subscribe({
+    next:(data) =>{
+      console.log(data);
      
-  //     this.response = data;
-  //    this.response2 = data;
-  //   },
-  //   error:() =>{
+    this.response3 = data;
+  
+    },
+    error:() =>{
      
-  //     Swal.fire({
-  //       'imageUrl' :'assets/icon/login.gif',
-  //       'imageHeight':'100px', 
-  //       'title': 'Internal Server Error',
-  //        heightAuto: false , 
-  //        timer: 3000
-  //       });
-  //   },
-  //   complete:() =>{
+      Swal.fire({
+        'imageUrl' :'assets/icon/login.gif',
+        'imageHeight':'100px', 
+        'title': 'Internal Server Error',
+         heightAuto: false , 
+         timer: 3000
+        });
+    },
+    complete:() =>{
+      this.response4 = this.response3;
+      if(this.response4.status == false){
+        Swal.fire({
+           'imageUrl' :'assets/icon/login.gif',
+           'imageHeight':'100px', 
+           'title': this.response4.message,
+            heightAuto: false , 
+            timer: 3000
+              });
+          } 
+            else{
+              this.setOpen(true)
+            }
+    
    
      
-  //   }
-  // })
+    }
+  })
 
 }
 
@@ -213,7 +229,6 @@ setTimeout(() => {
 
 checkOtp(){
   this.showLoading();
-  
   this.isModalOpen = false;
    this.api.ValidateOtp(this.form.value.phone,this.form2.value.otp).subscribe({
     next:(data) =>{
