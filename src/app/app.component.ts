@@ -14,7 +14,7 @@ export class AppComponent {
     { title: 'Complaints', url: '/complaints', icon: 'clipboard' },
     { title: 'Services', url: '/services', icon: 'checkmark-done' },
     { title: 'Feedback', url: '/feedback', icon: 'file-tray-full' },
-    { title: 'Update Password', url: '/profile', icon: 'settings'},
+    // { title: 'Update Password', url: '/profile', icon: 'settings'},
   ];
   // public labels = ['Feedback', 'Forget Password'];
   constructor() {}

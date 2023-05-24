@@ -86,7 +86,7 @@ export class FeedbackPage implements OnInit {
 async showLoading() {
   const loading = await this.loadingCtrl.create({
     // message: 'Dismissing after 3 seconds...',
-    // duration: 3000,
+    duration: 3000,
   });
   loading.present();
 }

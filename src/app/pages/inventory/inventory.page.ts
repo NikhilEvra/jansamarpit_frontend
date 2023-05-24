@@ -42,7 +42,6 @@ export class InventoryPage implements OnInit {
           this.response = data;
           console.log(this.response);
          
-        
         },
         error:() =>{
           alert('error');

@@ -33,8 +33,7 @@ export class DashboardPage implements OnInit {
     url: 'https://evramedia.com/apifolder/catalog/ex3_banner.png'
   },{
     url: 'https://evramedia.com/apifolder/catalog/mine_banner.png'
-  }]
-  footerBanner: any = [{
+  },{
     url: 'https://evramedia.com/apifolder/catalog/ex3plus_banner.png'
   },{
     url: 'https://evramedia.com/apifolder/catalog/luster_banner.png'
@@ -45,6 +44,7 @@ export class DashboardPage implements OnInit {
   },{
     url: 'https://evramedia.com/apifolder/catalog/sparkledb_banner.png'
   }]
+  footerBanner: any = []
   quickLink: any = [
     {
       icon: 'assets/icon/stocks.avif',
