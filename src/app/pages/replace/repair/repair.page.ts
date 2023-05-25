@@ -44,6 +44,7 @@ export class RepairPage implements OnInit {
       chassis:['',Validators.required],
       sparepart : [this.event.event,Validators.required],
       
+      
 
     })
 
@@ -55,7 +56,9 @@ export class RepairPage implements OnInit {
       part_no :[this.response.sparepart,Validators.required],
       warranty_info:[this.response.in_w,Validators.required],
       file: ['',Validators.required],
-      remark:['',Validators.required]
+      remark:['',Validators.required],
+      docked:['',Validators.required],
+      courier:['',Validators.required]
     })
   }
   ngOnInit() {
@@ -132,7 +135,7 @@ export class RepairPage implements OnInit {
 
   sendSparePart(){
     console.log(this.form2.value)
-    this.httpapi.postsparePart(this.form2.value.name,this.form2.value.part_no,this.form2.value.warranty_info,this.form2.value.file,this.form2.value.remark,this.form.value.chassis,this.response.model_name,
+    this.httpapi.postsparePart(this.form2.value.name,this.form2.value.part_no,this.form2.value.warranty_info,this.form2.value.file,this.form2.value.remark,this.form2.value.docked,this.form2.value.courier,this.form.value.chassis,this.response.model_name,
     this.response.color,this.response.c_name,this.response.sale_date,this.response.warranty,this.event.event).subscribe({
     next:(data)=>{
       console.log(data);

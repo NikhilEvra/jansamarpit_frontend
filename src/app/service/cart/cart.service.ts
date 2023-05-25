@@ -57,7 +57,7 @@ export class CartService {
     return this.api.get<any>(environment.apiurl + 'getvehicleinfo.php?chassis=' + chassis + '&sparepart='+ sparepart);
   }
 
-  postsparePart(name:any,part_no:any,warranty_info:any,file:any,remark:any,chassis:any,model:any,color:any,c_name:any,sale_date:any,warranty:any,event: any):Observable<any>{
+  postsparePart(name:any,part_no:any,warranty_info:any,file:any,remark:any,docked:any,courier:any,chassis:any,model:any,color:any,c_name:any,sale_date:any,warranty:any,event: any):Observable<any>{
     const formData = new FormData();
     formData.append('dealerid', name);
     formData.append('part_no', part_no);
@@ -70,7 +70,9 @@ export class CartService {
     formData.append('c_name', c_name);
     formData.append('sale_date',sale_date);
     formData.append('warranty',warranty);
-    formData.append('event', event)
+    formData.append('event', event);
+    formData.append('docked',docked);
+    formData.append('courier', courier)
  
     return this.api.post<any>(environment.apiurl + 'replace.php',  formData);
   }
