@@ -28,6 +28,8 @@ export class SaleformPage implements OnInit {
   invoiceid:any=['00039'];
   response2:any=[];
 
+
+
   handlerMessage = '';
   roleMessage = '';
   constructor(
@@ -57,7 +59,7 @@ export class SaleformPage implements OnInit {
       c_mobile:['',Validators.required],
       location: ['', Validators.required],
       model_name: ['', Validators.required], 
-      color:['',Validators.required], 
+      color:[this.varientname,Validators.required], 
       chassis: ['', Validators.required],
       amount: ['', Validators.required],
       battery:['',Validators.required],
@@ -69,7 +71,8 @@ export class SaleformPage implements OnInit {
       pan:['',Validators.required],
       discount:[''],
       dist:['',Validators.required],  
-      pincode:['',Validators.required]
+      pincode:['',Validators.required],
+      email:['',Validators.required]
       // filename : ['']
     })
   }
@@ -89,7 +92,7 @@ export class SaleformPage implements OnInit {
     }
     // console.log(this.form.value);  
     this.httpapi.addsaleformdata(this.form.value.name,this.form.value.c_name,this.form.value.c_mobile,this.form.value.location,this.form.value.model_name,this.form.value.color,this.form.value.chassis, this.form.value.amount,this.form.value.discount, this.form.value.a_mobile,this.test,this.form.value.battery,this.form.value.motor,this.form.value.charger,this.form.value.controller,
-      this.form.value.city,this.form.value.state,this.form.value.pan,this.form.value.dist,this.form.value.pincode).subscribe({
+      this.form.value.city,this.form.value.state,this.form.value.pan,this.form.value.dist,this.form.value.pincode,this.form.value.email).subscribe({
       next:(data) => {
         console.log(data);
         this.response2 = data;
@@ -168,7 +171,7 @@ export class SaleformPage implements OnInit {
 
   varient(){
     console.log(this.modelname);
-    this.httpapi.getVarient(this.modelname).subscribe({
+    this.httpapi.getVarient(this.modelname,this.getuserdata.id).subscribe({
       next:(data) =>{
         console.log(data);
       this.varientname = data;
@@ -201,9 +204,13 @@ export class SaleformPage implements OnInit {
       },
       complete:() =>{
         if(this.inventory[0].inventory == '0'){
+          this.modelname = null;
+          this.varientname = null;
+          this.color = null;
           Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Inventory Not available Plase raise a po for sale',  heightAuto: false ,  timer: 3000});
-          this.form.reset();
-          this.router.navigateByUrl('/sales');
+          // this.form.value.color.reset();
+          // this.form.reset();
+          // this.router.navigateByUrl('/sales');
         }
       }
     })
@@ -234,5 +241,9 @@ export class SaleformPage implements OnInit {
        
      }
     });
+  }
+
+  re(){
+    
   }
 }

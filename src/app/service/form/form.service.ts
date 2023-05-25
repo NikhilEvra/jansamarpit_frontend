@@ -83,7 +83,7 @@ export class FormService {
   }
 
   addsaleformdata(name:any, c_name:any, c_mobile: any, location : any, model_name: any,color:any, chassis:any,amount : any,discount:any, a_mobile:any, test:any,battery:any,motor:any,charger:any,controller:any,
-    city:any,state:any,pan:any,dist:any,pincode:any):Observable<any>{
+    city:any,state:any,pan:any,dist:any,pincode:any,email:any):Observable<any>{
     const formData = new FormData();
     formData.append('name', name);
     formData.append('a_mobile', a_mobile);
@@ -105,6 +105,7 @@ export class FormService {
     formData.append('pan',pan);
     formData.append('dist',dist);
     formData.append('pincode',pincode);
+    formData.append('email',email);
     return this.api.post<any>(environment.apiurl + 'customer_sale.php',  formData);
   }
 
@@ -146,9 +147,10 @@ export class FormService {
     return this.api.get<any>(environment.apiurl + 'get_all_products.php');
   }
 
-  getVarient(model : any):Observable<any>{
+  getVarient(model : any,id:any):Observable<any>{
     const formData = new FormData();
     formData.append('model', model);
+    formData.append('id', id);
     return this.api.post<any>(environment.apiurl + 'get_varients.php', formData);
   
   }

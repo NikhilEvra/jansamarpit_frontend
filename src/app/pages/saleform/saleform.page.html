@@ -36,9 +36,15 @@
       </ion-item>
     </section> 
     <section class="inputbox">
+      <ion-text color="danger">Customer Email Address</ion-text>
+      <ion-item lines="none">
+      <ion-input type="email" placeholder="Enter Custsomer Email Address" formControlName="email"></ion-input>
+      </ion-item>
+    </section> 
+    <section class="inputbox">
       <ion-text color="danger">PAN Card Number</ion-text>
       <ion-item lines="none">
-      <ion-input type="number" placeholder="Enter Custsomer PAN Number" formControlName="pan"></ion-input>
+      <ion-input type="text" placeholder="Enter Custsomer PAN Number" formControlName="pan"></ion-input>
       </ion-item>
     </section> 
     
@@ -152,7 +158,7 @@
         <ion-button expand="block" color="danger" shape="round" (click)="presentAlert()" [disabled]="form.invalid">Submit <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
       </ion-col>
     </ion-row>
-
+   
   </form> 
 
 
