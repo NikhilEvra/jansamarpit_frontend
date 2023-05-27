@@ -110,6 +110,10 @@ const routes: Routes = [
     path: 'salerecord',
     loadChildren: () => import('./sales/salerecord/salerecord.module').then( m => m.SalerecordPageModule)
   },
+  {
+    path: 'replaceitems',
+    loadChildren: () => import('./pages/replace/replaceitems/replaceitems.module').then( m => m.ReplaceitemsPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

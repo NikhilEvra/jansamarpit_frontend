@@ -16,6 +16,8 @@ export class SalerecordPage implements OnInit {
  response:any=[];
  response2:any=[];
  isModalOpen = false;
+
+ item2:any=[];
   constructor(
     private httpapi : FormService,
     private router :Router,
@@ -100,5 +102,6 @@ export class SalerecordPage implements OnInit {
   //    }
   //   }); 
   //  }
+
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  FormBuilder, FormGroup,  Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { CartService } from 'src/app/service/cart/cart.service';
@@ -22,6 +22,13 @@ export class RepairPage implements OnInit {
   myfun = false;
   isModalOpen = false;
   response2:any=[];
+  partnername!:any;
+  show=false;
+  checked!:any;
+  docket!:any;
+  c_p!:any;
+  docket2!:any;
+  c_p2!:any;
 
 
   constructor(private route : ActivatedRoute,
@@ -57,8 +64,11 @@ export class RepairPage implements OnInit {
       warranty_info:[this.response.in_w,Validators.required],
       file: ['',Validators.required],
       remark:['',Validators.required],
-      docked:['',Validators.required],
-      courier:['',Validators.required]
+      
+      courier:['',Validators.required],
+ 
+      docked:[''],
+      courier_partner:['']
     })
   }
   ngOnInit() {
@@ -134,30 +144,42 @@ export class RepairPage implements OnInit {
   }
 
   sendSparePart(){
-    console.log(this.form2.value)
-    this.httpapi.postsparePart(this.form2.value.name,this.form2.value.part_no,this.form2.value.warranty_info,this.form2.value.file,this.form2.value.remark,this.form2.value.docked,this.form2.value.courier,this.form.value.chassis,this.response.model_name,
-    this.response.color,this.response.c_name,this.response.sale_date,this.response.warranty,this.event.event).subscribe({
-    next:(data)=>{
-      console.log(data);
-      this.response2 = data;
-      Swal.fire({
-        'imageUrl' :'assets/icon/login.gif',
-        'imageHeight':'100px', 
-        'title': this.response2.message,
-         heightAuto: false , 
-         timer: 3000
-        });
-        this.isModalOpen = false;
-       
-    },
-    error:() =>{
-      alert('error');
-   
-    },
-    complete:() =>{
-
+    console.log(this.form2.value);
+    console.log(this.form2.value.courier_partner);
+    if(this.c_p2 === '1' && !this.form2.value.courier_partner){
+      alert('plase fill Courier partner name');
+      return;
     }
-   })
+    if(this.docket2 === '1' && !this.form2.value.docked){
+      alert('plase fill Docket Number');
+      return;
+    } 
+    else{
+      this.httpapi.postsparePart(this.form2.value.name,this.form2.value.part_no,this.form2.value.warranty_info,this.form2.value.file,this.form2.value.remark,this.form2.value.docked,this.form2.value.courier,this.form.value.chassis,this.response.model_name,
+        this.response.color,this.response.c_name,this.response.sale_date,this.response.warranty,this.event.event,this.form2.value.courier_partner).subscribe({
+        next:(data)=>{
+          console.log(data);
+          this.response2 = data;
+          Swal.fire({
+            'imageUrl' :'assets/icon/login.gif',
+            'imageHeight':'100px', 
+            'title': this.response2.message,
+             heightAuto: false , 
+             timer: 3000
+            });
+            this.isModalOpen = false;
+           
+        },
+        error:() =>{
+          alert('error');
+       
+        },
+        complete:() =>{
+    
+        }
+       })
+    }
+   
   }
  
   async showLoading() {
@@ -168,4 +190,23 @@ export class RepairPage implements OnInit {
 
     loading.present();
   }
+
+  check(){
+    if(this.partnername === 'Others'){
+      this.show = true;
+      this.c_p2 = '1';
+      this.docket2 = '1';
+    } 
+    else if(this.partnername === 'Self'){
+      this.show = false;
+      this.c_p2 = '0';
+      this.docket2 = '0';
+    }
+
+    // console.log(this.partnername);
+    // console.log(this.c_p);
+  }
+
+  
+
 }

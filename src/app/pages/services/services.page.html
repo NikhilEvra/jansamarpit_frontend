@@ -58,4 +58,28 @@
      
     </ion-card-content>
   </ion-card>
+
+
+  <ion-card >
+    <ion-card-header color="danger" style="font-weight: bold; text-align: center;">Request Raised</ion-card-header>
+    <ion-card-content>
+      <ion-item>
+     <ion-label> Total request : </ion-label>
+        <ion-text>        {{response.total}}
+        </ion-text>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>View All request :</ion-label>
+           <ion-text>
+             <ion-button color="danger" (click)="goto('replaceitems')">
+               <ion-icon name="arrow-redo-outline"></ion-icon>
+             </ion-button>
+           </ion-text>
+         </ion-item>
+       
+    
+     
+    </ion-card-content>
+    </ion-card>
 </ion-content>

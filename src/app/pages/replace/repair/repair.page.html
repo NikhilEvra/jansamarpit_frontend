@@ -95,24 +95,36 @@
           <ion-input type="text" placeholder="{{response.in_w}}" formControlName="warranty_info" value="{{response.in_w}}" readonly=""></ion-input>
           </ion-item>
         </section> 
+       
+      
+        
+        <section class="inputbox">
+          <ion-text color="danger">Courier Partner </ion-text>
+          <ion-item lines="none">
+            <ion-select interface="popover"  placeholder="Select Courier Partner" formControlName="courier" [(ngModel)]="partnername" (ionChange)="check()" >
+              <ion-select-option  value="Self">Self</ion-select-option>
+              <ion-select-option  value="Others">Others</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </section>
+        <section class="inputbox" *ngIf="show">
+          <ion-text color="danger">Courier Partner Name</ion-text>
+          <ion-item lines="none">
+            <ion-input type="text" placeholder="Courier Partner name" formControlName="courier_partner" [(ngModel)]="c_p"></ion-input>
+          </ion-item>
+        </section>
+
+        <section class="inputbox" *ngIf="show">
+          <ion-text color="danger">Docket Number</ion-text>
+          <ion-item lines="none">
+            <ion-input type="text" placeholder="Enter Docket Number" formControlName="docked" [(ngModel)]="docket"></ion-input>
+          </ion-item>
+        </section>
+
         <section class="inputbox">
           <ion-text color="danger">Remark</ion-text>
           <ion-item lines="none">
             <ion-textarea rows="4" maxlength="200" placeholder="Enter Remarks..." formControlName="remark"></ion-textarea>
-          </ion-item>
-        </section>
-        <section class="inputbox">
-          <ion-text color="danger">Docket Number</ion-text>
-          <ion-item lines="none">
-            <ion-input type="text" placeholder="Enter Docket Number" formControlName="docked"></ion-input>
-            <!-- <ion-textarea rows="4" maxlength="200" ></ion-textarea> -->
-          </ion-item>
-        </section>
-        <section class="inputbox">
-          <ion-text color="danger">Courier Partner Name</ion-text>
-          <ion-item lines="none">
-            <ion-input type="text" placeholder="Courier Partner name" formControlName="courier"></ion-input>
-            <!-- <ion-textarea rows="4" maxlength="200" ></ion-textarea> -->
           </ion-item>
         </section>
         <section class="inputbox">
