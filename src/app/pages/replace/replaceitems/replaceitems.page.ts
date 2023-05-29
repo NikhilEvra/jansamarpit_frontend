@@ -13,7 +13,19 @@ export class ReplaceitemsPage implements OnInit {
   USTEMP = localStorage.getItem('user');
   getuserdata:any=[];
   response:any=[];
-  test:any=[]
+  test:any=[];
+  test2:any=[];
+  part_name:any=[];
+  cour : any=[];
+  c_p:any=[];
+  chassis_no:any=[];
+  docket:any=[];
+  remarks:any=[];
+  w_info:any=[];
+  w:any=[];
+  s_d:any=[];
+  photo:any=[];
+
   constructor(
     private httpapi : ReplaceserviceService,
     private router :Router,
@@ -26,6 +38,12 @@ export class ReplaceitemsPage implements OnInit {
   ngOnInit() {
     this.getdata();
   }
+  ionViewDidLeave(){
+    this.isModalOpen=false;
+  }
+  ionViewWillLeave(){
+    this.isModalOpen=false;
+  }
 
   getdata(){
     this.httpapi.getAllitems(this.getuserdata.id).subscribe({
@@ -33,14 +51,12 @@ export class ReplaceitemsPage implements OnInit {
         console.log(data);
         this.response = data;
        
-       
       },
       error:() =>{
         alert('error');
-     
       },
       complete:() =>{
-   
+
       }
     })
    
@@ -49,8 +65,21 @@ export class ReplaceitemsPage implements OnInit {
     this.isModalOpen = isOpen;
   }
 
-  open(id:any){
+  open(id:any,model:any,partname:any,courier:any,courier_partner:any,chassis:any,docked:any,remark:any,warranty_info:any,warranty:any,sale_date:any,file:any){
+
     this.isModalOpen = true;
     this.test = id;
+    this.test2 = model;
+    this.part_name = partname;
+    this.cour = courier;
+    this.c_p = courier_partner;
+    this.chassis_no = chassis;
+    this.docket= docked;
+    this.remarks= remark;
+    this.w_info=warranty_info;
+    this.w = warranty;
+    this.s_d = sale_date;
+    this.photo = file;
+
   }
 }
