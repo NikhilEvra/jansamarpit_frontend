@@ -114,6 +114,14 @@ const routes: Routes = [
     path: 'replaceitems',
     loadChildren: () => import('./pages/replace/replaceitems/replaceitems.module').then( m => m.ReplaceitemsPageModule)
   },
+  {
+    path: 'viewpo',
+    loadChildren: () => import('./pages/viewpo/viewpo.module').then( m => m.ViewpoPageModule)
+  },
+  {
+    path: 'viewpobyid',
+    loadChildren: () => import('./pages/viewpobyid/viewpobyid.module').then( m => m.ViewpobyidPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

@@ -1,0 +1,51 @@
+<ion-header mode="ios">
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>View PO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<!--    
+  <ion-card *ngFor="let dat of response2">
+    <ion-card-header color="danger" style="text-align: center;">{{dat.model}}</ion-card-header>
+     <ion-card-content>
+       <ion-item>
+         <ion-label>PO ID:</ion-label>
+         <ion-text>{{dat.po_id}}</ion-text>
+       </ion-item>
+     
+       
+     </ion-card-content>
+   </ion-card> -->
+
+   <ion-card >
+    <ion-card-header color="danger" style="font-weight: bold; text-align: center;">Open Purchase Orders</ion-card-header>
+    <ion-card-content>
+      <ion-item *ngFor="let dat of response2">
+        <!-- <ion-text>
+          <ion-button color="danger" (click)="land(dat.po_id)">
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
+        </ion-text> -->
+      
+     <ion-label> {{dat.po_id}} </ion-label>
+        <ion-text>
+          <ion-button color="danger" (click)="land(dat.po_id)">
+            <ion-icon name="arrow-redo-outline"></ion-icon>  
+          </ion-button>
+        </ion-text>
+      </ion-item>
+   
+    
+     
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

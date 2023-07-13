@@ -90,4 +90,8 @@ export class InventoryPage implements OnInit {
     
         loading.present();
       }
+
+      viewpo(){
+        this.router.navigateByUrl('/viewpo');
+      }
 }

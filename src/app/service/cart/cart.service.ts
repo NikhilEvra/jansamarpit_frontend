@@ -18,7 +18,7 @@ export class CartService {
     return this.api.post<any>(environment.apiurl + 'get_varients.php', formData);
   }
 
-  postCartData(dealerid:any, model:any, color: any, quantity_with_batt : any, quantity_withOut_batt: any, amountWithOutBatt:any,amountWithBatt: any):Observable<any>{
+  postCartData(dealerid:any, model:any, color: any, quantity_with_batt : any, quantity_withOut_batt: any,amountWithBatt: any, amountWithOutBatt:any):Observable<any>{
     const formData = new FormData();
     formData.append('dealerid', dealerid);
     formData.append('model', model);
@@ -76,5 +76,17 @@ export class CartService {
     formData.append('courier_partner',courier_partner);
  
     return this.api.post<any>(environment.apiurl + 'replace.php',  formData);
+  }
+
+  getAllCartData(id : any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'view_dealer_cart_po.php?d_id=' + id);
+  }
+
+  getAllpo(id : any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'get_dealer_po.php?d_id=' + id);
+  }
+
+  get_po_by_id(id : any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'get_po_by_id.php?po_id=' + id);
   }
 }
