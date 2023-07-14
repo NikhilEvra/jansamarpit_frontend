@@ -175,4 +175,13 @@ export class FormService {
   getSaleById(id:any,d_id:any):Observable<any>{
     return this.api.get<any>(environment.apiurl + 'get_sale_by_id.php?id=' + id +'&d_id=' + d_id);
   }
+
+  send_pay(dealerid:any,remarks:any,trans_detail:any,po_id:any):Observable<any>{
+    const formData = new FormData();
+    formData.append('dealerid', dealerid);
+    formData.append('remarks' ,remarks);
+    formData.append('trans_details', trans_detail);
+    formData.append('po_id',po_id);
+    return this.api.post<any>(environment.apiurl + 'dealer_pay_details.php', formData)
+  }
 }

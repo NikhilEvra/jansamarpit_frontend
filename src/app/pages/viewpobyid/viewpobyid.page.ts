@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/service/cart/cart.service';
+import { FormService } from 'src/app/service/form/form.service';
 
 @Component({
   selector: 'app-viewpobyid',
@@ -16,7 +17,8 @@ export class ViewpobyidPage implements OnInit {
   response:any=[];
   constructor(private route : ActivatedRoute,
     private formb : FormBuilder,
-    private api : CartService) { 
+    private api : CartService,
+    private api2 : FormService) { 
       console.log(this.USTEMP);
       if (this.USTEMP) {
         this.getuserdata = JSON.parse(this.USTEMP);
@@ -64,6 +66,20 @@ export class ViewpobyidPage implements OnInit {
     }
 
     submit(){
-      console.log(this.form.value)
+      // console.log(this.form.value);
+      this.api2.send_pay(this.form.value.dealerid,this.form.value.remarks,this.form.value.trans_detail,this.poid.id).subscribe({
+        next:(data) =>{
+          console.log(data);
+          this.response = data;
+         
+        },
+        error:() =>{
+          alert('error');
+       
+        },
+        complete:() =>{
+       
+        }
+      })
     }
 }

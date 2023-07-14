@@ -122,6 +122,14 @@ const routes: Routes = [
     path: 'viewpobyid',
     loadChildren: () => import('./pages/viewpobyid/viewpobyid.module').then( m => m.ViewpobyidPageModule)
   },
+  {
+    path: 'spinner',
+    loadChildren: () => import('./spinner/spinner.module').then( m => m.SpinnerPageModule)
+  },
+  {
+    path: 'interceptor',
+    loadChildren: () => import('./interceptor/interceptor.module').then( m => m.InterceptorPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
