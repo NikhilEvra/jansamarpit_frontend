@@ -71,9 +71,10 @@ export class SalerecordPage implements OnInit {
         alert('error');
       },
       complete:() =>{
+        this.isModalOpen = isOpen;
       }
     })
-    this.isModalOpen = isOpen;
+    
     // console.log(id);
 
   }

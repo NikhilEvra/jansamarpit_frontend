@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let item of response; let index"  (click)="fire(true, item.id)">
+  <!-- <ion-card *ngFor="let item of response; let index"  (click)="fire(true, item.id)">
     <ion-card-header color="danger" style="text-align: center;" >Name :{{item.c_name}} </ion-card-header>  
        <ion-card-content>
          <ion-item>
@@ -23,10 +23,36 @@
  
     <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+    </ion-infinite-scroll> -->
 
 
 
+    <ion-card >
+      <ion-card-header color="danger" style="font-weight: bold; text-align: center;">Sales Records</ion-card-header>
+      <ion-card-content>
+        <ion-item  *ngFor="let item of response;  index as i">
+          <!-- <ion-text>
+            <ion-button color="danger" (click)="land(dat.po_id)">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+          </ion-text> -->
+         
+       <ion-label>Invoice Id: {{item.invoice}}</ion-label>
+         
+        
+
+          <ion-text>
+            <ion-button color="danger" (click)="fire(true, item.id)" >
+              <ion-icon name="arrow-redo-outline"></ion-icon>  
+            </ion-button>
+          </ion-text>
+        </ion-item>
+     
+      
+       
+      </ion-card-content>
+    </ion-card>
+  
   
 
     

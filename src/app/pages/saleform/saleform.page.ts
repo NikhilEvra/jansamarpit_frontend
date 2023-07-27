@@ -91,7 +91,9 @@ export class SaleformPage implements OnInit {
       this.form.value.discount = '0'
     }
     // console.log(this.form.value);  
-    this.httpapi.addsaleformdata(this.form.value.name,this.form.value.c_name,this.form.value.c_mobile,this.form.value.location,this.form.value.model_name,this.form.value.color,this.form.value.chassis, this.form.value.amount,this.form.value.discount, this.form.value.a_mobile,this.test,this.form.value.battery,this.form.value.motor,this.form.value.charger,this.form.value.controller,
+    this.httpapi.addsaleformdata(this.form.value.name,this.form.value.c_name,this.form.value.c_mobile,this.form.value.location,this.form.value.model_name,
+      this.form.value.color,this.form.value.chassis, this.form.value.amount,this.form.value.discount, this.form.value.a_mobile,this.test,this.form.value.battery,
+      this.form.value.motor,this.form.value.charger,this.form.value.controller,
       this.form.value.city,this.form.value.state,this.form.value.pan,this.form.value.dist,this.form.value.pincode,this.form.value.email).subscribe({
       next:(data) => {
         console.log(data);

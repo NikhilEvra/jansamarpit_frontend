@@ -54,8 +54,12 @@
   <section class="inputbox">
     <ion-text color="danger">Remark</ion-text>
     <ion-item lines="none">
-      <ion-textarea rows="4" maxlength="200" placeholder="Enter Remarks..." formControlName="remark"></ion-textarea>
+      <ion-textarea rows="4" maxlength="200" placeholder="Enter Remarks..."  (input)="onRemarkInput()" formControlName="remark"></ion-textarea>
+  
     </ion-item>
+    <p class="text-end" style="size: 5px;">
+      Characters left: {{ remainingCharacters }}
+    </p>
   </section>
 
   

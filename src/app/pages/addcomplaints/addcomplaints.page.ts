@@ -24,6 +24,7 @@ export class AddcomplaintsPage implements OnInit {
   handlerMessage = '';
   roleMessage = '';
 
+  remainingCharacters: number = 200; 
   img:any=[environment.apiurl + 'folder/' + this.imgname];
 
   constructor(private router : Router,
@@ -154,5 +155,18 @@ export class AddcomplaintsPage implements OnInit {
   
 
 
+  onRemarkInput() {
+    const remarkControl = this.form.get('remark');
+
+    if (remarkControl) {
+      const value = remarkControl.value;
+      const maxLength = 200;
+
+      this.remainingCharacters = maxLength - value.length;
+      if (value.length > maxLength) {
+        remarkControl.setValue(value.slice(0, maxLength));
+      }
+    }
+  }
 
 }

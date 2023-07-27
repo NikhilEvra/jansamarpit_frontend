@@ -67,10 +67,11 @@ export class ViewpoPage implements OnInit {
     }
 
   
-      land(id : any){
+      land(id : any,status:any){
         let navigationExtras: NavigationExtras = {
           queryParams: {
-            id : id
+            id : id,
+            status : status,
           }
         };
         this.showLoading()

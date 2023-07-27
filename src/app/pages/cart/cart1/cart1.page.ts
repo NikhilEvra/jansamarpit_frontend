@@ -38,10 +38,12 @@ export class Cart1Page implements OnInit {
     private router : Router,
     private loadingCtrl : LoadingController,
     private alertController: AlertController
-  ) { console.log(this.USTEMP);
+  ) 
+  { console.log(this.USTEMP);
     if (this.USTEMP) {
       this.getuserdata = JSON.parse(this.USTEMP) ;
-    }}
+    }
+  }
 
   Initform(){
     this.form = this.formb.group({    
@@ -50,7 +52,7 @@ export class Cart1Page implements OnInit {
      color : ['',Validators.required],
      quantity_with_batt: ['',Validators.required],
      quantity_without_batt:['',Validators.required],
-    //  totalamount:[this.total, Validators.required],
+    // totalamount:[this.total, Validators.required],
     amountWithOutBatt:[this.amount2],
     amountWithBatt:[this.amount],
     })

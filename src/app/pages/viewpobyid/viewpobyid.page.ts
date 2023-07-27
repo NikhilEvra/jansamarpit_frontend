@@ -15,6 +15,8 @@ export class ViewpobyidPage implements OnInit {
   form!:FormGroup;
   poid:any=[];
   response:any=[];
+
+  hide=false;
   constructor(private route : ActivatedRoute,
     private formb : FormBuilder,
     private api : CartService,
@@ -41,6 +43,9 @@ export class ViewpobyidPage implements OnInit {
      
     }
   );
+  if(this.poid.status == 'Dealer'){
+    this.hide = true;
+  }
   this.Initform();
   this.get_po();
   }
