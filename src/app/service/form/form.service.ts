@@ -184,4 +184,8 @@ export class FormService {
     formData.append('po_id',po_id);
     return this.api.post<any>(environment.apiurl + 'dealer_pay_details.php', formData)
   }
+
+  getpodashcount(id:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'po_dash_data.php?d_id=' + id);
+  }
 }

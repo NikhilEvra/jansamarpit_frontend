@@ -114,6 +114,22 @@
       </ion-card>
     </ion-col>
   </ion-row>
+  <ion-row >
+    <ion-col size="6" class="ion-text-center quickLink"  >
+      <ion-card class="card" style="height: 100px;" style = "height: 120px;"*ngFor="let dat of response4" (click)="land('/viewpo')">
+        <ion-card-header color="danger">PO</ion-card-header><br>
+        <ion-text style="font-size : 13px;">Open/Pending</ion-text><br>
+        <ion-text style="text-align: center; font-size:12px;">{{dat.po_open}}/{{dat.po_pending}}</ion-text>
+      </ion-card>
+    </ion-col>
+    <ion-col size="6" class="ion-text-center quickLink"  >
+      <ion-card class="card" style="height: 100px;" style = "height: 120px;" (click)="land('/services')">
+        <ion-card-header color="danger">Advertisement</ion-card-header><br>
+        <ion-text style="font-size : 13px;">Total</ion-text><br>
+        <ion-text style="text-align: center; font-size:12px;">4</ion-text>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 
   <!-- <ion-row >
     <ion-col size="6" *ngFor="let dat of quickLink" class="ion-text-center quickLink"  >

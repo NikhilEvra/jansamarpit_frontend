@@ -83,7 +83,7 @@ export class CartviewPage implements OnInit {
             console.log(this.g_total);
             if(this.g_total === null){
               Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'No Products Added In Cart',  heightAuto: false ,  timer: 3000}); 
-              this.router.navigateByUrl('/sales');
+              this.router.navigateByUrl('/viewpo');
             }
           }
         })
@@ -93,7 +93,7 @@ export class CartviewPage implements OnInit {
         this.api2.podata(this.form.value.dealerid ,this.form.value.amount).subscribe({
           next:(data) => {
             console.log(data);
-            this.router.navigateByUrl('/dashboard');
+            this.router.navigateByUrl('/viewpo');
            
             Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': data.message,  heightAuto: false ,  timer: 3000}); 
           },
@@ -114,7 +114,7 @@ export class CartviewPage implements OnInit {
         this.api2.updateCartStatus(id).subscribe({
           next:(data) => {
             console.log(data);
-            this.router.navigateByUrl('/dashboard');
+            this.router.navigateByUrl('/viewpo');
            
             Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': data.message,  heightAuto: false ,  timer: 3000}); 
           },

@@ -114,7 +114,7 @@ export class Cart1Page implements OnInit {
    this.amount = this.priceWithbatt * this.price[0].price_wb;
   }
   calAmount2(){
-    this.amount2 = this.priceWithOutbatt * 90000;
+    this.amount2 = this.priceWithOutbatt * this.price[0].price_wb;
    }
 
    submit(){
@@ -136,7 +136,7 @@ export class Cart1Page implements OnInit {
          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
       },
       complete:() => {
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/viewpo');
         Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
         // this.loadingCtrl.dismiss();
       }

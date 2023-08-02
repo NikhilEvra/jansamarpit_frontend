@@ -85,6 +85,7 @@ export class DashboardPage implements OnInit {
   response:any=[];
   response2:any=[];
   response3:any=[];
+  response4:any=[];
   constructor(
     private router : Router,
     private actionSheetCtrl : ActionSheetController,
@@ -212,9 +213,11 @@ export class DashboardPage implements OnInit {
           this.response = data[0];
           this.response2 = data[1];
           this.response3 = data[2];
+          this.response4 = data[3];
           console.log(this.response);
           console.log(this.response2);
           console.log(this.response3);
+          console.log(this.response4);
           
         },
         error:() =>{

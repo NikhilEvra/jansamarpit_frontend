@@ -31,10 +31,10 @@
         <ion-label>Amount:</ion-label>
         <ion-text>{{dat.withput_gst}}</ion-text>
       </ion-item>
-      <ion-item>
+      <!-- <ion-item>
         <ion-label>Inc GST:</ion-label>
         <ion-text>{{dat.total}}</ion-text>
-      </ion-item>
+      </ion-item> -->
       <ion-item>
         <ion-label>Action:</ion-label>
         <ion-text><ion-button color="danger" (click)="status(dat.id)">Delete</ion-button></ion-text>
@@ -43,14 +43,14 @@
     </ion-card-content>
   </ion-card>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button color="danger" id="open-modal">
+    <ion-fab-button color="danger" id="cart">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
   
 
-  <ion-modal #modal trigger="open-modal">
+  <ion-modal #modal trigger="cart">
     <ng-template>
       <ion-content>
         <ion-toolbar color="danger">
