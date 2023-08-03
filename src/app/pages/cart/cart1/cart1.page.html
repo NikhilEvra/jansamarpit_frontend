@@ -31,11 +31,29 @@
   <section class="inputbox">
     <ion-text color="danger">Color</ion-text>
     <ion-item lines="none">
-      <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color" [(ngModel)]="varient" (ionChange)="show()" >
+      <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color" [(ngModel)]="varient"  >
         <ion-select-option *ngFor="let dat of response" >
           <ion-button>{{dat.color}}</ion-button>
         </ion-select-option>
       </ion-select>
+    </ion-item>
+  </section>
+
+  <section class="inputbox">
+    <ion-text color="danger">Battery Type</ion-text>
+    <ion-item lines="none">
+      <ion-select interface="popover"  placeholder="Select Battery Type" formControlName="battery"  (ionChange)="show()" >
+        <ion-select-option >
+          <ion-button>L-ION</ion-button>
+          
+        </ion-select-option>
+        <ion-select-option >
+          <ion-button>Lead Acid</ion-button>
+          
+        </ion-select-option>
+        
+      </ion-select>
+      
     </ion-item>
   </section>
 
@@ -45,13 +63,13 @@
       <ion-input type="Number" placeholder="Enter Quantity With Battery" [(ngModel)]="priceWithbatt" formControlName="quantity_with_batt" (ionChange)="calAmount()" ></ion-input>
     </ion-item>
   </section>
-  <section class="inputbox" *ngIf="myfun" >
+  <section class="inputbox" *ngIf="myfun" > 
     <ion-text color="danger">Quantity Without Battery</ion-text>
     <ion-item lines="none">
       <ion-input type="Number" placeholder="Enter Quantity Without Battery" [(ngModel)]="priceWithOutbatt" formControlName="quantity_without_batt" (ionChange)="calAmount2()" ></ion-input>
     </ion-item>
   </section>
-  <ion-text color="danger">* Minimum quantity 0</ion-text>
+  <!-- <ion-text color="danger">* Minimum quantity 0</ion-text> -->
   <ion-input type="hidden" placeholder="{{amount}}" readonly="" value="{{amount}}" formControlName="amountWithBatt" > </ion-input>
   <ion-input type="hidden" placeholder="{{amount2}}" readonly="" value="{{amount2}}" formControlName="amountWithOutBatt" > </ion-input>
 <!-- 

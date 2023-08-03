@@ -50,8 +50,16 @@ export class CartService {
 
   }
 
-  getPrice(varient : any, model:any, usertype:any):Observable<any>{
-    return this.api.get<any>(environment.apiurl + 'get_varient_price.php?varient=' + varient + '&m=' + model + '&u_type=' + usertype);
+  getPrice(varient : any, model:any, usertype:any,battery:any):Observable<any>{
+    const formData = new FormData();
+    formData.append('varient', varient);
+    formData.append('model', model);
+    formData.append('usertype', usertype);
+    formData.append('battery', battery);
+
+ 
+    return this.api.post<any>(environment.apiurl + 'get_varient_price.php',  formData);
+    // return this.api.get<any>(environment.apiurl + 'get_varient_price.php?varient=' + varient + '&m=' + model + '&u_type=' + usertype + '&battery=' + battery);
   }
   getVehicleInfo(chassis:any, sparepart:any):Observable<any>{
     return this.api.get<any>(environment.apiurl + 'getvehicleinfo.php?chassis=' + chassis + '&sparepart='+ sparepart);
@@ -88,5 +96,12 @@ export class CartService {
 
   get_po_by_id(id : any):Observable<any>{
     return this.api.get<any>(environment.apiurl + 'get_po_by_id.php?po_id=' + id);
+  }
+
+  checkmodelinv(model:any):Observable<any>{
+    const formdata = new FormData();
+    formdata.append('model',model);
+    return this.api.post<any>(environment.apiurl + 'company_model_inv_check.php' , formdata);
+
   }
 }

@@ -138,13 +138,24 @@ export class PoPage implements OnInit {
 
   updatevalue(dat :any){
     this.model_name = dat;
-  // console.log(this.model_name);
-  let navigationExtras: NavigationExtras = {
-    queryParams: {
-      model : dat
+    if(this.model_name == 'HELTER'){
+      Swal.fire({'imageUrl' :'assets/vector/commingsoon.gif','imageHeight':'100px',  heightAuto: false ,  timer: 3000});
+
     }
-  };
-  this.router.navigate(['/cart1'], navigationExtras);
+   else if(this.model_name == 'LUSTER'){
+    Swal.fire({'imageUrl' :'assets/vector/commingsoon.gif','imageHeight':'100px',  heightAuto: false ,  timer: 3000});
+
+    }
+    else{
+        // console.log(this.model_name);
+        let navigationExtras: NavigationExtras = {
+          queryParams: {
+            model : dat
+          }
+        };
+        this.router.navigate(['/cart1'], navigationExtras);
+    }
+  
   }
 
 changefun3(dat : any){

@@ -30,6 +30,8 @@ export class Cart1Page implements OnInit {
 
   handlerMessage = '';
   roleMessage = '';
+
+  modelinv:any=[]
  
   constructor(
     private route : ActivatedRoute,
@@ -50,8 +52,9 @@ export class Cart1Page implements OnInit {
      dealerid: [this.getuserdata.id, Validators.required],
      model : [this.model_name,Validators.required],
      color : ['',Validators.required],
-     quantity_with_batt: ['',Validators.required],
-     quantity_without_batt:['',Validators.required],
+     battery:['',Validators.required],
+     quantity_with_batt: [this.priceWithbatt],
+     quantity_without_batt:[this.priceWithbatt],
     // totalamount:[this.total, Validators.required],
     amountWithOutBatt:[this.amount2],
     amountWithBatt:[this.amount],
@@ -65,10 +68,42 @@ export class Cart1Page implements OnInit {
       this.model_name = this.model.model;
     }
   );
-  
+  this.amount = '0';
+  this.amount2 = '0';
+
   this.Initform();
-  this.getdata();
+  // this.getdata();
+      this.checkinv();
   }
+
+  checkinv(){
+    
+    this.api.checkmodelinv(this.model_name).subscribe({
+      next:(data) =>{
+        console.log(data);
+       
+    this.modelinv = data;
+    // console.log(this.modelinv.messasge);
+       
+     
+      },
+      error:() =>{
+        alert('error');
+     
+      },
+      complete:() =>{
+        // this.loadingCtrl.dismiss();
+        if(this.modelinv.status == 400){
+    Swal.fire({'imageUrl' :'assets/vector/commingsoon.gif','imageHeight':'100px', 'title': this.modelinv.message,  heightAuto: false ,  timer: 3000});
+    this.router.navigateByUrl('/po');
+
+        }
+        this.getdata();
+      }
+    })
+    
+  }
+
 
   getdata(){
     this.showLoading();
@@ -93,7 +128,14 @@ export class Cart1Page implements OnInit {
   }
 
   show(){
-    this.api.getPrice(this.varient, this.model_name, this.getuserdata.usertype).subscribe({
+  //  if(this.form.value.battery == 'L-ION'){
+  //   alert('yes')
+  //  }
+  this.priceWithbatt=null;
+  this.priceWithOutbatt=null;
+
+    // console.log(this.form.value.battery)
+    this.api.getPrice(this.varient, this.model_name, this.getuserdata.usertype,this.form.value.battery).subscribe({
       next:(data) =>{
         console.log(data);
         this.price = data;
@@ -105,10 +147,12 @@ export class Cart1Page implements OnInit {
      
       },
       complete:() =>{
+        this.myfun = true;
+      
         // this.loadingCtrl.dismiss();
       }
     })
-    this.myfun = true;
+    
   }
   calAmount(){
    this.amount = this.priceWithbatt * this.price[0].price_wb;
@@ -119,13 +163,17 @@ export class Cart1Page implements OnInit {
 
    submit(){
     this.showLoading();
-    // if(!this.form.value.quantity_without_batt){
-    //   this.form.value.quantity_without_batt = '0'
-    // }
-    // if(!this.form.value.quantity_with_batt){
-    //   this.form.value.quantity_with_batt = '0'
-    // }
+    if(!this.form.value.quantity_without_batt){
+      this.form.value.quantity_without_batt = '0'
+      this.amount = '0';
+   
+    }
+    if(!this.form.value.quantity_with_batt){
+      this.form.value.quantity_with_batt = '0';
+      this.amount2 = '0';
+     }
     console.log(this.form.value);  
+     
     this.api.postCartData(this.form.value.dealerid,this.form.value.model,this.form.value.color,this.form.value.quantity_with_batt,this.form.value.quantity_without_batt,this.form.value.amountWithBatt,this.form.value.amountWithOutBatt).subscribe({
       next:(data) => {
         console.log(data);
@@ -136,6 +184,7 @@ export class Cart1Page implements OnInit {
          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
       },
       complete:() => {
+        this.form.reset();
         this.router.navigateByUrl('/viewpo');
         Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
         // this.loadingCtrl.dismiss();
