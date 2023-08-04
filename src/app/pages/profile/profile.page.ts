@@ -16,6 +16,7 @@ export class ProfilePage implements OnInit {
   handlerMessage = '';
   roleMessage = '';
   form! : FormGroup;
+  userprofile:any=[];
 
   constructor(private router : Router,
     private formb : FormBuilder,
@@ -40,6 +41,7 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.Initform();
+    this.getprofile();
   }
 
   ionViewWillEnter(){
@@ -132,5 +134,23 @@ export class ProfilePage implements OnInit {
   
       const { role } = await alert.onDidDismiss();
       this.roleMessage = `Dismissed with role: ${role}`;
+    }
+
+    getprofile(){
+      this.httpapi.profiledata(this.getuserdata.id).subscribe({
+            next:(data) => {
+              console.log(data);
+              this.userprofile = data[0];
+              // console.log(this.userprofile)
+             
+            },
+            error:() => {
+              console.log('err');
+        
+               Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
+            },
+            complete:() => {
+            }
+          })
     }
 }

@@ -24,7 +24,7 @@
   <ion-popover trigger="click-trigger" triggerAction="click" >
     <ng-template>
       <ion-item>
-        <ion-label>
+        <ion-label (click)="redirect('/profile')">
           <h2><ion-text color="danger"><b>{{getuserdata.name}}</b>  </ion-text></h2>
           <p>{{getuserdata.usertype}}</p>
         </ion-label><br>

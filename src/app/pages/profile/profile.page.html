@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
    
-    <ion-title>Update Password</ion-title>
+    <ion-title>Profile</ion-title>
     <ion-buttons slot="end" (click)="openPage('/dashboard')">
       <ion-icon name="arrow-back" ></ion-icon>Back
     </ion-buttons>
@@ -12,6 +12,33 @@
 </ion-header>
 
 <ion-content>
+  <ion-card >
+    <ion-card-header color="danger" style="text-align: center;">Dealer Profile</ion-card-header>  
+       <ion-card-content>
+        <ion-accordion-group [multiple]="true" [value]="['first']">
+          <ion-accordion value="first">
+            <ion-item slot="header">
+              <ion-label>Dealership Name</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">{{userprofile.dealership_name}}</div>
+          </ion-accordion>
+          <ion-accordion value="second">
+            <ion-item slot="header">
+              <ion-label>Second Accordion</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">Second Content</div>
+          </ion-accordion>
+          <ion-accordion value="third">
+            <ion-item slot="header">
+              <ion-label>Third Accordion</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">Third Content</div>
+          </ion-accordion>
+        </ion-accordion-group>
+       </ion-card-content>
+     </ion-card>
+   
+  
   <!-- <section class="inputbox">
     <ion-text color="danger">Dealer Name</ion-text>
     <ion-item lines="none">
@@ -36,7 +63,7 @@
     </ion-col>
   </ion-row> -->
 
-  <form  [formGroup]="form">
+  <!-- <form  [formGroup]="form">
 
   <section class="inputbox">
     <ion-text color="danger">Old Password</ion-text>
@@ -61,7 +88,7 @@
       <ion-button expand="block" color="danger" shape="round" (click)="presentAlert()"  [disabled]="form.invalid">Update Password <ion-icon name="send-outline" slot="end"></ion-icon> </ion-button>
     </ion-col>
   </ion-row>
-</form>
+</form> -->
 
 <ion-fab slot="fixed" vertical="bottom" horizontal="end">
   <ion-fab-button color="danger" (click)="openPage('/dashboard')">

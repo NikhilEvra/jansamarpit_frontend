@@ -11,11 +11,9 @@
 </ion-header>
 
 <ion-content>
+
   <form [formGroup]="form">
- 
       <ion-input type="hidden" placeholder="{{getuserdata.id}}" readonly="" value="{{getuserdata.id}}" formControlName="name"> </ion-input>
-     
-    
     <section class="inputbox">
       <ion-text color="danger">Customer Name</ion-text>
       <ion-item lines="none">
@@ -29,32 +27,35 @@
       <ion-input type="number" placeholder="Enter Custsomer Phone Number" formControlName="c_mobile"></ion-input>
       </ion-item>
     </section> 
+
     <section class="inputbox">
       <ion-text color="danger">Alternate Contact Number</ion-text>
       <ion-item lines="none">
       <ion-input type="number" placeholder="Enter Custsomer Phone Number" formControlName="a_mobile"></ion-input>
       </ion-item>
     </section> 
+
     <section class="inputbox">
       <ion-text color="danger">Customer Email Address</ion-text>
       <ion-item lines="none">
       <ion-input type="email" placeholder="Enter Custsomer Email Address" formControlName="email"></ion-input>
       </ion-item>
     </section> 
+
     <section class="inputbox">
       <ion-text color="danger">PAN Card Number</ion-text>
       <ion-item lines="none">
       <ion-input type="text" placeholder="Enter Custsomer PAN Number" formControlName="pan"></ion-input>
       </ion-item>
     </section> 
-    
+
     <section class="inputbox">
       <ion-text color="danger">Address</ion-text>
       <ion-item lines="none">
         <ion-input type="text" placeholder="Enter Address" formControlName="location"></ion-input>
       </ion-item>
     </section>
-   
+
     <ion-grid>
       <ion-row>
         <ion-col> <section class="inputbox">
@@ -72,6 +73,7 @@
       </ion-col>
       </ion-row>
     </ion-grid>
+
     <ion-grid>
       <ion-row>
         <ion-col> 
@@ -82,6 +84,7 @@
           </ion-item>
         </section>
       </ion-col>
+
         <ion-col>
           <section class="inputbox">
             <ion-text color="danger">Pincode</ion-text>
@@ -90,62 +93,69 @@
             </ion-item>
           </section>
         </ion-col>
-        
       </ion-row>
     </ion-grid>
-   
+
     <section class="inputbox">
       <ion-text color="danger">Model</ion-text>
       <ion-item lines="none">
         <ion-select interface="popover"  placeholder="Select Model Name" formControlName="model_name" [(ngModel)]="modelname" (ionChange)="varient()">
-          <ion-select-option  *ngFor="let dat of models" value="{{dat.name}}">{{dat.name}}</ion-select-option>
+          <ion-select-option  *ngFor="let dat of models" value="{{dat.model}}">{{dat.model}}</ion-select-option>
         </ion-select>
       </ion-item>
     </section>
+
     <section class="inputbox" *ngIf="myfun">
       <ion-text color="danger">Color</ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color" [(ngModel)]="color" (ionChange)="checkinventory()">
+        <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color" [(ngModel)]="color">
           <ion-select-option *ngFor="let dat of varientname" value="{{dat.color}}">{{dat.color}}</ion-select-option>
         </ion-select>
       </ion-item>
     </section>
+
     <section class="inputbox">
       <ion-text color="danger">Chassis Number</ion-text>
       <ion-item lines="none">
         <ion-input type="text" placeholder="Enter Chassis No" formControlName="chassis"></ion-input>
       </ion-item>
     </section>
+
     <section class="inputbox">
       <ion-text color="danger">Battery Number</ion-text>
       <ion-item lines="none">
         <ion-input type="text" placeholder="Enter Battery Number" formControlName="battery"></ion-input>
       </ion-item>
     </section>
+
     <section class="inputbox">
       <ion-text color="danger">Motor Number</ion-text>
       <ion-item lines="none">
         <ion-input type="text" placeholder="Enter Motor Number" formControlName="motor"></ion-input>
       </ion-item>
     </section>
+
     <section class="inputbox">
       <ion-text color="danger">Charger Number</ion-text>
       <ion-item lines="none">
         <ion-input type="text" placeholder="Enter Charger Number" formControlName="charger"></ion-input>
       </ion-item>
     </section>
+
     <section class="inputbox">
       <ion-text color="danger">Controller Number</ion-text>
       <ion-item lines="none">
         <ion-input type="text" placeholder="Enter Controller Number" formControlName="controller"></ion-input>
       </ion-item>
     </section>
+
     <section class="inputbox">
       <ion-text color="danger">Discount</ion-text>
       <ion-item lines="none">
         <ion-input type="number" placeholder="Enter Discount" formControlName="discount"></ion-input>
       </ion-item>
     </section>
+    
     <section class="inputbox">
       <ion-text color="danger">Amount (inc gst*)</ion-text>
       <ion-item lines="none">

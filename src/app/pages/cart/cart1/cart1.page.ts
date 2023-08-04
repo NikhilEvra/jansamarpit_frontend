@@ -94,7 +94,7 @@ export class Cart1Page implements OnInit {
       complete:() =>{
         // this.loadingCtrl.dismiss();
         if(this.modelinv.status == 400){
-    Swal.fire({'imageUrl' :'assets/vector/commingsoon.gif','imageHeight':'100px', 'title': this.modelinv.message,  heightAuto: false ,  timer: 3000});
+    Swal.fire({'title': 'Out Of Stock!',  heightAuto: false ,  timer: 3000});
     this.router.navigateByUrl('/po');
 
         }

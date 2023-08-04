@@ -139,11 +139,11 @@ export class PoPage implements OnInit {
   updatevalue(dat :any){
     this.model_name = dat;
     if(this.model_name == 'HELTER'){
-      Swal.fire({'imageUrl' :'assets/vector/commingsoon.gif','imageHeight':'100px',  heightAuto: false ,  timer: 3000});
+      Swal.fire({ 'title': 'Out Of Stock!',  heightAuto: false ,  timer: 3000});
 
     }
    else if(this.model_name == 'LUSTER'){
-    Swal.fire({'imageUrl' :'assets/vector/commingsoon.gif','imageHeight':'100px',  heightAuto: false ,  timer: 3000});
+    Swal.fire({ 'title': 'Out Of Stock!',   heightAuto: false ,  timer: 3000});
 
     }
     else{

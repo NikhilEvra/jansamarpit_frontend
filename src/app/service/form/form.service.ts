@@ -147,11 +147,14 @@ export class FormService {
     return this.api.get<any>(environment.apiurl + 'get_all_products.php');
   }
 
+  getAllProduct_with_inv(d_id:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'dealer_model_inv.php?d_id=' + d_id);
+  }
   getVarient(model : any,id:any):Observable<any>{
     const formData = new FormData();
     formData.append('model', model);
     formData.append('id', id);
-    return this.api.post<any>(environment.apiurl + 'get_varients.php', formData);
+    return this.api.post<any>(environment.apiurl + 'dealer_varients_inv.php', formData);
   
   }
 
@@ -187,5 +190,9 @@ export class FormService {
 
   getpodashcount(id:any):Observable<any>{
     return this.api.get<any>(environment.apiurl + 'po_dash_data.php?d_id=' + id);
+  }
+
+  profiledata(id:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'dealer_profile.php?u_id=' + id);
   }
 }

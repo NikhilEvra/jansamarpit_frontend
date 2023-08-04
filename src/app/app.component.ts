@@ -13,6 +13,7 @@ export class AppComponent {
     { title: 'Sales', url: '/sales', icon: 'stats-chart' },
     { title: 'Complaints', url: '/complaints', icon: 'clipboard' },
     { title: 'Services', url: '/services', icon: 'checkmark-done' },
+    { title: 'Purchase Order', url: '/viewpo', icon: 'cart' },
     { title: 'Feedback', url: '/feedback', icon: 'file-tray-full' },
     // { title: 'Update Password', url: '/profile', icon: 'settings'},
   ];

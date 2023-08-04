@@ -28,6 +28,8 @@ export class SaleformPage implements OnInit {
   invoiceid:any=['00039'];
   response2:any=[];
 
+  modelwithinv:any=[]
+
 
 
   handlerMessage = '';
@@ -153,7 +155,7 @@ export class SaleformPage implements OnInit {
   }
 
   model(){
-    this.httpapi.getAllProduct().subscribe({
+    this.httpapi.getAllProduct_with_inv( this.getuserdata.id).subscribe({
       next:(data) =>{
         console.log(data);
         this.models = data;
@@ -165,6 +167,7 @@ export class SaleformPage implements OnInit {
      
       },
       complete:() =>{
+
    
       }
     })

@@ -38,7 +38,7 @@ export class ViewpoPage implements OnInit {
     }
 
   ngOnInit() {
-    this.showLoading();
+    // this.showLoading();
     // this.cart();
     this.get_po();
     this.cart_total();

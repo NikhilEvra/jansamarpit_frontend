@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { App } from '@capacitor/app';
-import { ActionSheetController, LoadingController, MenuController } from '@ionic/angular';
+import { ActionSheetController, LoadingController, MenuController, PopoverController } from '@ionic/angular';
 import { AnyARecord } from 'dns';
 import { FormService } from 'src/app/service/form/form.service';
 import { LoginService } from 'src/app/service/login/login.service';
@@ -92,7 +92,8 @@ export class DashboardPage implements OnInit {
     private menuctrl : MenuController,
     private loadingCtrl : LoadingController,
     private api2 : LoginService,
-    private api : FormService
+    private api : FormService,
+    private popovercontroller : PopoverController,
   ) { 
     console.log(this.USTEMP);
     if (this.USTEMP) {
@@ -238,5 +239,11 @@ export class DashboardPage implements OnInit {
       }, 2000);
     }
 
+    
+redirect(url:any){
+  
+  this.popovercontroller.dismiss();
+  this.router.navigateByUrl(url);
+}
    
 }
