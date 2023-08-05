@@ -131,6 +131,7 @@ export class DashboardPage implements OnInit {
  }
 
   ngOnInit() {
+    this.showLoading();
     this.dashData();
   }
 
@@ -208,6 +209,7 @@ export class DashboardPage implements OnInit {
   }
 
   dashData(){
+   
     this.api.getdashdata(this.getuserdata.id).subscribe({
         next:(data) =>{
           console.log(data);
@@ -222,7 +224,7 @@ export class DashboardPage implements OnInit {
           
         },
         error:() =>{
-          alert('error');
+          console.log('error');
        
         },
         complete:() =>{

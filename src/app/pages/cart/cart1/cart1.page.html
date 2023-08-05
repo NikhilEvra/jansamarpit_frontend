@@ -31,7 +31,7 @@
   <section class="inputbox">
     <ion-text color="danger">Color</ion-text>
     <ion-item lines="none">
-      <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color" [(ngModel)]="varient"  >
+      <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color" [(ngModel)]="varient" (ionChange)="showbatterytype()" >
         <ion-select-option *ngFor="let dat of response" >
           <ion-button>{{dat.color}}</ion-button>
         </ion-select-option>
@@ -39,16 +39,16 @@
     </ion-item>
   </section>
 
-  <section class="inputbox">
+  <section class="inputbox" *ngIf="myfun2">
     <ion-text color="danger">Battery Type</ion-text>
     <ion-item lines="none">
       <ion-select interface="popover"  placeholder="Select Battery Type" formControlName="battery"  (ionChange)="show()" >
         <ion-select-option >
-          <ion-button>L-ION</ion-button>
+          <ion-button>Lithium ion</ion-button>
           
         </ion-select-option>
         <ion-select-option >
-          <ion-button>Lead Acid</ion-button>
+          <ion-button>Lead acid</ion-button>
           
         </ion-select-option>
         

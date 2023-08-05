@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
    
-    <ion-title>Profile</ion-title>
+    <ion-title>Dealer Profile</ion-title>
     <ion-buttons slot="end" (click)="openPage('/dashboard')">
       <ion-icon name="arrow-back" ></ion-icon>Back
     </ion-buttons>
@@ -13,26 +13,63 @@
 
 <ion-content>
   <ion-card >
-    <ion-card-header color="danger" style="text-align: center;">Dealer Profile</ion-card-header>  
+    <ion-card-header color="danger" style="text-align: center;">{{userprofile.user_type}} ID : {{getuserdata.id}}</ion-card-header>  
        <ion-card-content>
         <ion-accordion-group [multiple]="true" [value]="['first']">
           <ion-accordion value="first">
             <ion-item slot="header">
-              <ion-label>Dealership Name</ion-label>
+              <ion-label>{{userprofile.user_type}}ship Name</ion-label>
             </ion-item>
             <div class="ion-padding" slot="content">{{userprofile.dealership_name}}</div>
           </ion-accordion>
-          <ion-accordion value="second">
+          <ion-accordion >
             <ion-item slot="header">
-              <ion-label>Second Accordion</ion-label>
+              <ion-label>Outlet Code</ion-label>
             </ion-item>
-            <div class="ion-padding" slot="content">Second Content</div>
+            <div class="ion-padding" slot="content">{{userprofile.outlet_code}}</div>
           </ion-accordion>
-          <ion-accordion value="third">
+          <ion-accordion >
             <ion-item slot="header">
-              <ion-label>Third Accordion</ion-label>
+              <ion-label>Address</ion-label>
             </ion-item>
-            <div class="ion-padding" slot="content">Third Content</div>
+            <div class="ion-padding" slot="content">{{userprofile.address}}</div>
+          </ion-accordion>
+          <ion-accordion >
+            <ion-item slot="header">
+              <ion-label>Email</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">{{userprofile.email}}</div>
+          </ion-accordion>
+          <ion-accordion >
+            <ion-item slot="header">
+              <ion-label>Phone</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">{{userprofile.phone}}</div>
+          </ion-accordion>
+          <ion-accordion >
+            <ion-item slot="header">
+              <ion-label>GST</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">{{userprofile.gst}}</div>
+          </ion-accordion>
+          <ion-accordion >
+            <ion-item slot="header">
+              <ion-label>PAN</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">{{userprofile.pan}}</div>
+          </ion-accordion>
+
+          <ion-accordion >
+            <ion-item slot="header">
+              <ion-label>Security Deposit</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">INR {{userprofile.s_deposit}}</div>
+          </ion-accordion>
+          <ion-accordion >
+            <ion-item slot="header">
+              <ion-label>Credit Limit</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">INR {{userprofile.credit_limit}}</div>
           </ion-accordion>
         </ion-accordion-group>
        </ion-card-content>

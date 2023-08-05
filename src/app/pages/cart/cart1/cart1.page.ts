@@ -31,7 +31,8 @@ export class Cart1Page implements OnInit {
   handlerMessage = '';
   roleMessage = '';
 
-  modelinv:any=[]
+  modelinv:any=[];
+  myfun2 = false;
  
   constructor(
     private route : ActivatedRoute,
@@ -226,5 +227,8 @@ export class Cart1Page implements OnInit {
 
     const { role } = await alert.onDidDismiss();
     this.roleMessage = `Dismissed with role: ${role}`;
+  }
+  showbatterytype(){
+  this.myfun2 = true;
   }
 }

@@ -66,18 +66,20 @@ export class AddcomplaintsPage implements OnInit {
         next:(data) => {
           console.log(data);
           this.response = data;
-          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
-          this.router.navigateByUrl('/opencomplaints');
+           Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
+       
         },
         error:() => {
           console.log('err');
          
-           Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
+            Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
            
         },
         complete:() => {
-     
-           Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
+        this.form.reset();
+            Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
+           this.router.navigateByUrl('/opencomplaints');
+          this.loadingCtrl.dismiss();
         }
       })
      }
