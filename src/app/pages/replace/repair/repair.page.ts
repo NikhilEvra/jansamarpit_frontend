@@ -155,11 +155,11 @@ export class RepairPage implements OnInit {
       return;
     } 
     else{
-      this.httpapi.postsparePart(this.form2.value.name,this.form2.value.part_no,this.form2.value.warranty_info,this.form2.value.file,this.form2.value.remark,this.form2.value.docked,this.form2.value.courier,this.form.value.chassis,this.response.model_name,
-        this.response.color,this.response.c_name,this.response.sale_date,this.response.warranty,this.event.event,this.form2.value.courier_partner).subscribe({
+      this.httpapi.postsparePart(this.form2.value.name,this.form2.value.part_no,this.form2.value.warranty_info,this.form2.value.file,this.form2.value.remark,this.form2.value.docked,this.form2.value.courier,this.form.value.chassis,
+        this.response.model_name,this.response.color,this.response.c_name,this.response.sale_date,this.response.warranty,this.event.event,this.form2.value.courier_partner).subscribe({
         next:(data)=>{
           console.log(data);
-          this.response2 = data;
+          this.response2 = data; 
           Swal.fire({
             'imageUrl' :'assets/icon/login.gif',
             'imageHeight':'100px', 

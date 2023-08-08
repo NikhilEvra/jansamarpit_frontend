@@ -130,6 +130,10 @@ const routes: Routes = [
     path: 'interceptor',
     loadChildren: () => import('./interceptor/interceptor.module').then( m => m.InterceptorPageModule)
   },
+  {
+    path: 'ad-dash',
+    loadChildren: () => import('./advertisement/ad-dash/ad-dash.module').then( m => m.AdDashPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

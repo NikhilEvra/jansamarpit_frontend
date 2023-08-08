@@ -83,6 +83,7 @@ export class SalerecordPage implements OnInit {
  }
 
  openInAppBrow2(invoice:any) {
+  this.isModalOpen = false;
   const browser = this.iab.create('https://evramedia.com/apifolder/print_invoice.php?id=' + this.getuserdata.id  + '&invoice_id=' + invoice, '_system', 'location=no, zoom=yes ');
   browser.on('loadstart').subscribe(data => {
    console.log(data.url);
