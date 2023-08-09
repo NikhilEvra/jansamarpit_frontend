@@ -95,6 +95,17 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+    <section class="inputbox">
+      <ion-text color="danger">Battery Type</ion-text>
+      <ion-item lines="none">
+        <ion-select interface="popover"  placeholder="Select Battery Type" formControlName="battery_type" (ionChange)="update_model_varient()">
+          <ion-select-option value="Lithium ion">Lithium Ion</ion-select-option>
+          <ion-select-option value="Lead acid">Lead Acid</ion-select-option>
+
+        </ion-select>
+      </ion-item>
+    </section>
+
 
     <section class="inputbox">
       <ion-text color="danger">Model</ion-text>
@@ -108,7 +119,7 @@
     <section class="inputbox" *ngIf="myfun">
       <ion-text color="danger">Color</ion-text>
       <ion-item lines="none">
-        <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color" [(ngModel)]="color">
+        <ion-select interface="popover"  placeholder="Select Model Name" formControlName="color" [(ngModel)]="color" (ionChange)="getprice()">
           <ion-select-option *ngFor="let dat of varientname" value="{{dat.color}}">{{dat.color}}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -159,7 +170,7 @@
     <section class="inputbox">
       <ion-text color="danger">Amount (inc gst*)</ion-text>
       <ion-item lines="none">
-        <ion-input type="number" placeholder="Enter Amount" formControlName="amount"></ion-input>
+        <ion-input type="number" placeholder="Enter Amount" formControlName="amount" value="{{selling_price.price}}" readonly=""></ion-input>
       </ion-item>
     </section>
   

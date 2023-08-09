@@ -28,8 +28,9 @@ export class SaleformPage implements OnInit {
   invoiceid:any=['00039'];
   response2:any=[];
 
-  modelwithinv:any=[]
+  modelwithinv:any=[];
 
+  selling_price:any=[];
 
 
   handlerMessage = '';
@@ -63,7 +64,7 @@ export class SaleformPage implements OnInit {
       model_name: ['', Validators.required], 
       color:[this.varientname,Validators.required], 
       chassis: ['', Validators.required],
-      amount: ['', Validators.required],
+      amount: [this.selling_price.price, Validators.required],
       battery:['',Validators.required],
       charger:['',Validators.required],
       motor:['',Validators.required],
@@ -74,12 +75,14 @@ export class SaleformPage implements OnInit {
       discount:[''],
       dist:['',Validators.required],  
       pincode:['',Validators.required],
-      email:['',Validators.required]
+      email:['',Validators.required],
+      battery_type:['',Validators.required]
       // filename : ['']
     })
   }
 
   ngOnInit() {
+    
   this.Initform();
   this.model();
   }
@@ -254,4 +257,29 @@ export class SaleformPage implements OnInit {
   re(){
     
   }
+  update_model_varient(){
+    this.modelname = null;
+    this.color = null;
+   this.selling_price.price = 0;
+
+  }
+  getprice(){
+    // console.log(this.modelname,this.color,this.form.value.battery_type)
+    this.httpapi.get_customer_sale_price(this.modelname,this.color,this.form.value.battery_type).subscribe({
+      next:(data) =>{
+        console.log(data);
+         this.selling_price = data[0];
+       
+      },
+      error:() =>{
+        // alert('error');
+     
+      },
+      complete:() =>{
+        
+        
+      }
+    })
+  }
+
 }

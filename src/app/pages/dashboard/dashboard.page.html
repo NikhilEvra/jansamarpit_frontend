@@ -86,7 +86,7 @@
       <ion-card class="card" style="height: 100px;" style = "height: 120px;"*ngFor="let dat of response" (click)="land('/inventory')"> 
         <ion-card-header color="danger">Inventory</ion-card-header><br>
         <ion-text style="font-size : 13px;">Total</ion-text><br>
-        <ion-text style="text-align: center; font-size:12px;">{{dat.total}}</ion-text>
+        <ion-text style="text-align: center; font-size:12px;">{{dat.grand_total}}</ion-text>
       </ion-card>
     </ion-col>
       <ion-col size="6" class="ion-text-center quickLink" >
@@ -264,6 +264,14 @@
   
   <div style="padding-bottom:80px"></div>
 
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <a href="tel:7982567755" class="button button-positive">
+      <ion-fab-button color="danger" >
+        <ion-icon name="call-outline"></ion-icon>
+      </ion-fab-button>
+    </a>
+  
+  </ion-fab>
 </ion-content>
 <!-- <ion-footer #footer>
   <ion-toolbar>

@@ -11,28 +11,17 @@
 </ion-header>
 
 <ion-content>
-  <ion-card  *ngIf="model.model == 'EX1'">
+  <ion-card  >
     <ion-card-header color="danger" style="font-weight: bold; text-align: center;">{{model.model}}</ion-card-header>
     <ion-card-content>
-      <ion-item>
-     <ion-label> Blue </ion-label>
-        <ion-text>{{response.blue}}</ion-text>
+      <ion-item *ngFor="let dat of response">
+     <ion-label> {{dat.color}} </ion-label>
+        <ion-text>{{dat.inventory}}</ion-text>
       </ion-item>
-      <ion-item>
-        <ion-label>Red</ion-label>
-        <ion-text>{{response.red}}</ion-text>
-      </ion-item>
-      <ion-item>
-        <ion-label>Grey</ion-label>
-        <ion-text>{{response.grey}}</ion-text>
-      </ion-item>
-      <ion-item>
-        <ion-label>Black</ion-label>
-        <ion-text>{{response.black}}</ion-text>
-      </ion-item>
+  
     </ion-card-content>
   </ion-card>
-
+<!-- 
   <ion-card  *ngIf="model.model == 'EX2'">
     <ion-card-header color="danger" style="font-weight: bold; text-align: center;">{{model.model}}</ion-card-header>
     <ion-card-content>
@@ -256,6 +245,6 @@
     
      
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 
 </ion-content>

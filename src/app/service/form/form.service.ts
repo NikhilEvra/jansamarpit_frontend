@@ -159,7 +159,11 @@ export class FormService {
   }
 
   getVarientscount(model : any, d_id : any):Observable<any>{
-    return this.api.get<any>(environment.apiurl + 'varient_count.php?model=' + model + '&d_id=' + d_id)
+    const formData = new FormData();
+    formData.append('model', model);
+   
+    formData.append('d_id',d_id);
+    return this.api.post<any>(environment.apiurl + 'dealer_color_inv.php', formData);
   }
 
   check(model:any, color:any, id:any):Observable<any>{
@@ -194,5 +198,15 @@ export class FormService {
 
   profiledata(id:any):Observable<any>{
     return this.api.get<any>(environment.apiurl + 'dealer_profile.php?u_id=' + id);
+  }
+
+  get_customer_sale_price(model:any,color:any,battery_type:any):Observable<any>{
+    const formData = new FormData();
+    formData.append('model', model);
+    formData.append('color' ,color);
+    formData.append('battery' ,battery_type);
+
+
+    return this.api.post<any>(environment.apiurl + 'get_customer_sales_price.php', formData)
   }
 }

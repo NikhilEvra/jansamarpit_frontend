@@ -11,18 +11,22 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let dat of response">
-    <img alt="Silhouette of mountains" src="https://evramedia.com/apifolder/catalog/14.png"  />  
+
+  <ion-card>
+  <img alt="Silhouette of mountains" src="https://evramedia.com/apifolder/catalog/14.png"  />  
+   
     <ion-card-content>
-      <ion-item>
-        <ion-label>Total Inventory</ion-label>
-        <ion-text>{{dat.total}}</ion-text>
+      <ion-item  *ngFor="let dat of response" >
+        <ion-label><ion-button color="danger" (click)="varcount(dat.model)">{{dat.model}}</ion-button></ion-label>
+        <ion-text>{{dat.inventory}}</ion-text>
       </ion-item>
+
+    
       <!-- <ion-item>
      <ion-label>  <ion-button color="danger" (click)="viewpo()" >Purchase Order</ion-button> </ion-label>
         <ion-text>{{dat.po_raised}}</ion-text>
       </ion-item> -->
-      <ion-item>
+      <!-- <ion-item>
         <ion-label><ion-button color="danger" (click)="varcount('EX1')">EX1</ion-button></ion-label>
         <ion-text>{{dat.ex1}}</ion-text>
       </ion-item>
@@ -61,7 +65,7 @@
       <ion-item>
         <ion-label><ion-button color="danger" (click)="varcount('LUSTER')">LUSTER</ion-button></ion-label>
         <ion-text>{{dat.luster}}</ion-text>
-      </ion-item>
+      </ion-item> -->
     </ion-card-content>
   </ion-card>
   <!-- <a href="assets/home_banner/evra.png" download><ion-button color="danger">download</ion-button></a> -->
