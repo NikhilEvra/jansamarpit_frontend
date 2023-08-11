@@ -86,6 +86,8 @@ export class DashboardPage implements OnInit {
   response2:any=[];
   response3:any=[];
   response4:any=[];
+  response5:any=[];
+
   constructor(
     private router : Router,
     private actionSheetCtrl : ActionSheetController,
@@ -213,10 +215,11 @@ export class DashboardPage implements OnInit {
     this.api.getdashdata(this.getuserdata.id).subscribe({
         next:(data) =>{
           console.log(data);
-          this.response = data[0];
+          this.response =  data[0];
           this.response2 = data[1];
           this.response3 = data[2];
           this.response4 = data[3];
+          this.response5 = data[4];
           console.log(this.response);
           console.log(this.response2);
           console.log(this.response3);

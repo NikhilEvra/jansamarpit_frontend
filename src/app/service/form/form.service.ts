@@ -209,4 +209,60 @@ export class FormService {
 
     return this.api.post<any>(environment.apiurl + 'get_customer_sales_price.php', formData)
   }
+
+
+  requestcallformdata(data:any):Observable<any>{
+    const formData = new FormData();
+    formData.append('d_id', data.name);
+    formData.append('location', data.location);
+    formData.append('designation', data.designation);
+    formData.append('topic',data.topic);
+    formData.append('remark', data.remark);
+    formData.append('dealership', data.dealership_name);
+
+
+    return this.api.post<any>(environment.apiurl + 'add_call_request.php',  formData);
+  }
+
+  mobile_van_date(data:any):Observable<any>{
+    const formData = new FormData();
+    formData.append('d_id', data.name);
+    formData.append('location', data.location);
+    formData.append('dealership_name', data.dealership_name);
+    formData.append('date', data.date);
+    formData.append('endingdate', data.endingdate);
+
+
+    return this.api.post<any>(environment.apiurl + 'add_mobile_van_date.php',  formData);
+  }
+
+  advertisement_name(){
+    return this.api.get<any>(environment.apiurl + 'get_dealer_ads.php' );
+  }
+  adv_select(data:any):Observable<any>{
+    const formData = new FormData();
+    formData.append('d_id', data.name);
+    formData.append('advertisement', data.advertisement);
+  
+    return this.api.post<any>(environment.apiurl + 'update_dealer_ads_type.php',  formData);
+  }
+
+  advertisement_dashdash_data(d_id:any):Observable<any>{
+    const formData = new FormData();
+    formData.append('d_id', d_id);
+
+  
+    return this.api.post<any>(environment.apiurl + 'advertisement_module_dash_data.php',  formData);
+  }
+
+  adv_reimbursement(data:any):Observable<any>{
+    const formData = new FormData();
+    formData.append('d_id', data.name);
+    formData.append('advertisement', data.advertisement);
+    formData.append('amount', data.amount);
+    formData.append('file', data.file);
+
+  
+    return this.api.post<any>(environment.apiurl + 'dealer_reimbursement.php',  formData);
+  }
 }

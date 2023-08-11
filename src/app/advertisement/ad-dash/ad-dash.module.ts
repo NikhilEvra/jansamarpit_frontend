@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { CommonModule, DatePipe } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,8 +13,10 @@ import { AdDashPage } from './ad-dash.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AdDashPageRoutingModule
+    AdDashPageRoutingModule,
+    ReactiveFormsModule
   ],
-  declarations: [AdDashPage]
+  declarations: [AdDashPage],
+  providers:[DatePipe]
 })
 export class AdDashPageModule {}

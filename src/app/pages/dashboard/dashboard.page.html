@@ -116,17 +116,17 @@
   </ion-row>
   <ion-row >
     <ion-col size="6" class="ion-text-center quickLink"  >
-      <ion-card class="card" style="height: 100px;" style = "height: 120px;"*ngFor="let dat of response4" (click)="land('/viewpo')">
+      <ion-card class="card" style="height: 100px;" style = "height: 120px;" *ngFor="let dat of response4" (click)="land('/viewpo')">
         <ion-card-header color="danger">PO</ion-card-header><br>
         <ion-text style="font-size : 13px;">Open/Pending</ion-text><br>
         <ion-text style="text-align: center; font-size:12px;">{{dat.po_open}}/{{dat.po_pending}}</ion-text>
       </ion-card>
     </ion-col>
     <ion-col size="6" class="ion-text-center quickLink"  >
-      <ion-card class="card" style="height: 100px;" style = "height: 120px;" (click)="land('/ad-dash')">
+      <ion-card class="card" style="height: 100px;" style = "height: 120px;" *ngFor="let dat of response5" (click)="land('/ad-dash')">
         <ion-card-header color="danger">Advertisement</ion-card-header><br>
-        <ion-text style="font-size : 13px;">Total</ion-text><br>
-        <ion-text style="text-align: center; font-size:12px;">4</ion-text>
+        <ion-text style="font-size : 13px;">Budget</ion-text><br>
+        <ion-text style="text-align: center; font-size:12px;">{{dat.adv_bal}}</ion-text>
       </ion-card>
     </ion-col>
   </ion-row>
@@ -262,15 +262,56 @@
             <img src="https://evramedia.com/apifolder/catalog/14.png" style="height:100%;width:100%; border-radius: 15px;">
           </div>
   
+
+
+          <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.30" >
+            <ng-template>
+              <ion-content>
+                <ion-toolbar color="danger">
+                  <ion-title>Customer Care</ion-title>
+                 
+                </ion-toolbar>
+                <ion-list>
+
+                  <ion-card-content>
+                    <a href="tel:9795955955" class="button button-positive">
+                    <ion-item>
+                      <ion-label><ion-button color="danger">Call</ion-button></ion-label>
+                      <ion-text><ion-icon name="call"></ion-icon></ion-text>
+                    </ion-item>
+                    </a>
+                    <ion-item  (click)="openPage('/requestcallback')" (click)="modal.dismiss()">
+                      <ion-label><ion-button color="danger" >Request call back</ion-button> </ion-label>
+                      <ion-text><ion-icon name="arrow-back-circle"></ion-icon></ion-text>
+                    </ion-item>
+                    <!-- <ion-item>
+                      <ion-label> <ion-button color="danger" (click)="openPage('/closedcomplaint')">Request Call back</ion-button></ion-label>
+                      <ion-text>f</ion-text>
+                    </ion-item> -->
+                  
+                  </ion-card-content>
+                       
+                </ion-list>
+              </ion-content>
+            </ng-template>
+          </ion-modal>
+
+
+
+          
+
+
   <div style="padding-bottom:80px"></div>
 
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <a href="tel:7982567755" class="button button-positive">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end"  id="open-modal" expand="block">
+    <!-- <a href="tel:7982567755" class="button button-positive">
       <ion-fab-button color="danger" >
         <ion-icon name="call-outline"></ion-icon>
       </ion-fab-button>
-    </a>
-  
+    </a> -->
+    <ion-fab-button color="danger" >
+      <ion-icon name="call-outline"></ion-icon>
+    </ion-fab-button>
   </ion-fab>
 </ion-content>
 <!-- <ion-footer #footer>

@@ -134,6 +134,10 @@ const routes: Routes = [
     path: 'ad-dash',
     loadChildren: () => import('./advertisement/ad-dash/ad-dash.module').then( m => m.AdDashPageModule)
   },
+  {
+    path: 'requestcallback',
+    loadChildren: () => import('./pages/requestcallback/requestcallback.module').then( m => m.RequestcallbackPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
