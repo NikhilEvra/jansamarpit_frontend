@@ -43,7 +43,7 @@ export class ViewpobyidPage implements OnInit {
      
     }
   );
-  if(this.poid.status == 'Dealer'){
+  if(this.poid.status == 'Dealer' && this.poid.p_status != 'Po Disapproved'){
     this.hide = true;
   }
   this.Initform();

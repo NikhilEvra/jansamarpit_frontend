@@ -139,8 +139,8 @@ export class FormService {
     return this.api.get<any>(environment.apiurl + 'dashboard_data.php?d_id=' + id);
   }
 
-  updatecomplaintStatus(id:any):Observable<any>{
-    return this.api.get<any>(environment.apiurl + 'reopencomplaint.php?c_id=' + id);
+  updatecomplaintStatus(id:any,d_id:any):Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'reopencomplaint.php?c_id=' + id + '&d_id='+ d_id) ;
   }
   
   getAllProduct():Observable<any>{

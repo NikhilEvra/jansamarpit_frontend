@@ -49,7 +49,7 @@ export class ClosedcomplaintPage implements OnInit {
 
     reopen(id : any){
       // alert(id);
-      this.api.updatecomplaintStatus(id).subscribe({
+      this.api.updatecomplaintStatus(id,this.getuserdata.id).subscribe({
         next:(data) => {
           console.log(data);
           this.router.navigateByUrl('/dashboard');
