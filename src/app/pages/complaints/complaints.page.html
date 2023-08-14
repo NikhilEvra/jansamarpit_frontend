@@ -6,7 +6,7 @@
     <ion-buttons>
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Complaints</ion-title>
+    <ion-title>Tickets</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -18,15 +18,15 @@
     <img src="assets/homepage/complaint.jpg"  />  
     <ion-card-content>
       <ion-item>
-        <ion-label>Total Complaints</ion-label>
+        <ion-label>Total Tickets</ion-label>
         <ion-text>{{dat.total}}</ion-text>
       </ion-item>
       <ion-item>
-        <ion-label><ion-button color="danger" (click)="openPage('/opencomplaints')">Open complaints</ion-button> </ion-label>
+        <ion-label><ion-button color="danger" (click)="openPage('/opencomplaints')">Open Tickets</ion-button> </ion-label>
         <ion-text>{{dat.Open}}</ion-text>
       </ion-item>
       <ion-item>
-        <ion-label> <ion-button color="danger" (click)="openPage('/closedcomplaint')">Closed complaints</ion-button></ion-label>
+        <ion-label> <ion-button color="danger" (click)="openPage('/closedcomplaint')">Closed Tickets</ion-button></ion-label>
         <ion-text>{{dat.Closed}}</ion-text>
       </ion-item>
     

@@ -16,15 +16,23 @@ export class FeedbackPage implements OnInit {
   handlerMessage = '';
   roleMessage = '';
 
+  USTEMP = localStorage.getItem('user');
+  getuserdata:any=[];
+
   constructor(private loadingCtrl : LoadingController,
     private router : Router,
     private formb : FormBuilder,
     private httpapi : FormService,
-    private alertController: AlertController) { }
+    private alertController: AlertController) {
+      console.log(this.USTEMP);
+    if (this.USTEMP) {
+      this.getuserdata = JSON.parse(this.USTEMP) ;
+    }
+     }
 
     Initform(){
       this.form = this.formb.group({    
-        name: ['nikhil', Validators.required],
+        name: [this.getuserdata.id, Validators.required],
         location: ['', Validators.required],
         designation: ['', Validators.required],  
         no_of_vehicles: ['', Validators.required],
@@ -60,6 +68,7 @@ export class FeedbackPage implements OnInit {
        
         if (data.status) {
            Swal.fire({'imageUrl' :'assets/icon/success.gif','imageHeight':'100px', 'title': data.message,  heightAuto: false ,  timer: 3000});
+           this.form.reset();
         
           this.router.navigateByUrl('/dashboard');
           
@@ -72,11 +81,14 @@ export class FeedbackPage implements OnInit {
       error:() => {
         console.log('err');
         this.loadingCtrl.dismiss();
+        this.form.reset();
          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
         
        
       },
       complete:() => {
+        this.form.reset();
+
        
       }
     })

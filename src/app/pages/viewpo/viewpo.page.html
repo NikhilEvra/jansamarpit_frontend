@@ -11,6 +11,11 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
   <div style="width:97%;height:150px;margin:5px 5px;">
     <img src="https://evramedia.com/apifolder/catalog/14.png" style="height:100%;width:100%; border-radius: 15px;">
   </div>

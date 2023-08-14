@@ -115,8 +115,8 @@ export class SaleformPage implements OnInit {
       complete:() => {
         this.response = this.response2;
          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
-        //  this.form.reset();
-        //  this.router.navigateByUrl('/salerecord');
+         this.form.reset();
+        this.router.navigateByUrl('/salerecord');
         
         //  this.openInAppBrow2();
         

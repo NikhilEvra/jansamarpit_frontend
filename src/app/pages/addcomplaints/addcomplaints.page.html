@@ -1,6 +1,6 @@
 <ion-header mode="ios">
   <ion-toolbar color="danger">
-    <ion-title>Add Complaints</ion-title>
+    <ion-title>Log New Ticket</ion-title>
     <ion-buttons slot="end">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -17,12 +17,9 @@
         <ion-input type="hidden" placeholder="{{getuserdata.id}}" readonly="" value="{{getuserdata.id}}" formControlName="name"> </ion-input>
       
   
-  <section class="inputbox">
-    <ion-text color="danger">Address</ion-text>
-    <ion-item lines="none">
-      <ion-input type="text" placeholder="{{getuserdata.address}}"  readonly="" value="{{getuserdata.address}}" formControlName="location"></ion-input>
-    </ion-item>
-  </section>
+
+      <ion-input type="hidden" placeholder="{{getuserdata.address}}"  readonly="" value="{{getuserdata.address}}" formControlName="location"></ion-input>
+    
 
   <ion-input type="hidden" placeholder="{{getuserdata.usertype}}" readonly="" value="{{getuserdata.usertype}}" formControlName="designation"> </ion-input>
   <!-- <section class="inputbox">

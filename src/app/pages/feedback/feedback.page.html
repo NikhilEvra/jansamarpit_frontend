@@ -13,12 +13,10 @@
 <ion-content>
   <ion-content>
     <form [formGroup]="form">
-    <section class="inputbox">
-      <ion-text color="danger">Dealer Name</ion-text>
-      <ion-item lines="none">
-      <ion-input type="text" placeholder="Nikhil Chaudhary" value="Nikhil"  readonly="" formControlName="name"> </ion-input>
-      </ion-item>
-    </section> <section class="inputbox">
+    
+      <ion-input type="hidden" placeholder="" value="{{getuserdata.id}}"  readonly="" formControlName="name"> </ion-input>
+      
+  <section class="inputbox">
       <ion-text color="danger">Location</ion-text>
       <ion-item lines="none">
         <ion-input type="text" placeholder="Enter Location" formControlName="location" ></ion-input>

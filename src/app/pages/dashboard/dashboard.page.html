@@ -91,7 +91,7 @@
     </ion-col>
       <ion-col size="6" class="ion-text-center quickLink" >
       <ion-card class="card" style="height: 100px;" style = "height: 120px;" *ngFor="let dat of response2" (click)="land('/complaints')">
-        <ion-card-header color="danger">Complaints</ion-card-header><br>
+        <ion-card-header color="danger">Tickets</ion-card-header><br>
         <ion-text style="font-size : 13px;">Open/Closed</ion-text><br>
         <ion-text style="text-align: center; font-size:12px;">{{dat.Open}}/{{dat.Closed}}</ion-text>
       </ion-card>

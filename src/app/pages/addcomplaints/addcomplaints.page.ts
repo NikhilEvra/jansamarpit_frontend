@@ -50,7 +50,7 @@ export class AddcomplaintsPage implements OnInit {
       topic: ['', Validators.required],
       remark: ['', Validators.required],
       filename : [''],
-      file: ['',Validators.required],
+      file: [''],
       
     })
   }

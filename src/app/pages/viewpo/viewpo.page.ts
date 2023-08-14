@@ -68,7 +68,7 @@ export class ViewpoPage implements OnInit {
         complete:() =>{
 
           this.open = this.response2[0][0];
-          // console.log(this.open)
+          // console.log(this.open)    
           this.disapproved = this.response2[1][0];
           this.popending = this.response2[2][0];
           this.closed = this.response2[3][0];
@@ -119,7 +119,10 @@ export class ViewpoPage implements OnInit {
         setTimeout(() => {
           // Any calls to load data go here
          
-          this.cart_total();
+          
+          this.get_po();
+    this.cart_total();
+    this.po_data_count();
           event.target.complete();
         }, 2000);
       };
@@ -171,4 +174,6 @@ export class ViewpoPage implements OnInit {
             }
           })
         }
+
+     
 }
