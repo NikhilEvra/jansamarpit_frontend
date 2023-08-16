@@ -24,6 +24,8 @@ export class AddcomplaintsPage implements OnInit {
   handlerMessage = '';
   roleMessage = '';
 
+  clickedImage:any;
+
   remainingCharacters: number = 200; 
   img:any=[environment.apiurl + 'folder/' + this.imgname];
 
@@ -102,11 +104,12 @@ export class AddcomplaintsPage implements OnInit {
       this.form.get('filename')?.setValue(image);
      
       console.log(image);
-      //var imageUrl = image.webPath;
+      // var imageUrl = image.webPath;
       // this.imagename = image;
       // this.imagename = imageUrl;
       // console.log(this.imagename);
-      //console.log(this.imagename);
+     
+      
     };
     takePicture();
   }

@@ -139,17 +139,20 @@ this.edate = res;
       next:(data) => {
         console.log(data);
         this.response = data;
+        this.form.reset();
          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
      
       },
       error:() => {
         console.log('err');
-       
+        this.form.reset();
           Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
          
       },
       complete:() => {
       this.form.reset();
+      this.Initform();
+      this.get_dash_data();
           Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
          this.isModalOpen = false;
        
@@ -245,6 +248,7 @@ this.edate = res;
       this.form2.reset();
           Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response2.message,  heightAuto: false ,  timer: 3000});
          this.isModalOpen2 = false;
+         this.get_dash_data();
       }
     });
   }

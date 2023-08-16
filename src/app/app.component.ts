@@ -11,7 +11,7 @@ export class AppComponent {
     { title: 'Dashboard', url: '/dashboard', icon: 'home' },
     { title: 'Inventory', url: '/inventory', icon: 'star-half' },
     { title: 'Sales', url: '/sales', icon: 'stats-chart' },
-    { title: 'Complaints', url: '/complaints', icon: 'clipboard' },
+    { title: 'Tickets', url: '/complaints', icon: 'clipboard' },
     { title: 'Services', url: '/services', icon: 'checkmark-done' },
     { title: 'Purchase Order', url: '/viewpo', icon: 'cart' },
     { title: 'Feedback', url: '/feedback', icon: 'file-tray-full' },
