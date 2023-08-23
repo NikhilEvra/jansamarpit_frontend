@@ -138,6 +138,18 @@ const routes: Routes = [
     path: 'requestcallback',
     loadChildren: () => import('./pages/requestcallback/requestcallback.module').then( m => m.RequestcallbackPageModule)
   },
+  {
+    path: 'insurance',
+    loadChildren: () => import('./pages/insurance/insurance.module').then( m => m.InsurancePageModule)
+  },
+  {
+    path: 'finance',
+    loadChildren: () => import('./pages/finance/finance.module').then( m => m.FinancePageModule)
+  },
+  {
+    path: 'sparepart-catalog',
+    loadChildren: () => import('./pages/sparepart-catalog/sparepart-catalog.module').then( m => m.SparepartCatalogPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

@@ -18,7 +18,7 @@ export class CartService {
     return this.api.post<any>(environment.apiurl + 'get_varients.php', formData);
   }
 
-  postCartData(dealerid:any, model:any, color: any, quantity_with_batt : any, quantity_withOut_batt: any,amountWithBatt: any, amountWithOutBatt:any):Observable<any>{
+  postCartData(dealerid:any, model:any, color: any, quantity_with_batt : any, quantity_withOut_batt: any,amountWithBatt: any, amountWithOutBatt:any,unit_price:any):Observable<any>{
     const formData = new FormData();
     formData.append('dealerid', dealerid);
     formData.append('model', model);
@@ -27,6 +27,8 @@ export class CartService {
     formData.append('quantity_without_batt', quantity_withOut_batt);
     formData.append('amountWithBatt', amountWithBatt);
     formData.append('amountWithOutBatt', amountWithOutBatt);
+    formData.append('unit_price', unit_price);
+
     
     return this.api.post<any>(environment.apiurl + 'add_cart.php',  formData);
   }
@@ -104,4 +106,25 @@ export class CartService {
     return this.api.post<any>(environment.apiurl + 'company_model_inv_check.php' , formdata);
 
   }
+
+  get_spareparts(user_type:any,zone:any,model:any):Observable<any>{
+    const formdata = new FormData();
+    formdata.append('user_type',user_type);
+    formdata.append('zone',zone);
+    formdata.append('model',model);
+    return this.api.post<any>(environment.apiurl + 'get_spareparts.php' , formdata);
+
+  }
+  post_sparepart_cart(data:any,price:any):Observable<any>{
+    const formdata = new FormData();
+    formdata.append('model',data.model);
+    formdata.append('unit_price',price);
+    formdata.append('quantity',data.quantity);
+    formdata.append('item',data.item_name);
+    formdata.append('t_price',data.t_price);
+
+    return this.api.post<any>(environment.apiurl + 'dsfgdsfgdfgdfgdf.php' , formdata);
+
+  }
+
 }

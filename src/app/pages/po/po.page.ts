@@ -192,6 +192,29 @@ model(){
 
 
 
+updatevalue2(dat :any){
+  this.model_name = dat;
+  if(this.model_name == 'HELTER'){
+    Swal.fire({ 'title': 'Out Of Stock!',  heightAuto: false ,  timer: 3000});
+
+  }
+ else if(this.model_name == 'LUSTER'){
+  Swal.fire({ 'title': 'Out Of Stock!',   heightAuto: false ,  timer: 3000});
+
+  }
+  else{
+      // console.log(this.model_name);
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          model : dat
+        }
+      };
+      this.router.navigate(['/sparepart-catalog'], navigationExtras);
+      // this.router.navigateByUrl('/sparepart-catalog');
+  }
+
+}
+
   
 
 }

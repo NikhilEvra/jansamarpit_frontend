@@ -168,9 +168,7 @@ export class ViewpoPage implements OnInit {
               // console.log(this.pocount2)
               this.pocount3 = this.pocount[1][0].po_pending;
               this.pocount4 = this.pocount[3][0].po_disapproved;
-
-           
-                  
+                 
             }
           })
         }

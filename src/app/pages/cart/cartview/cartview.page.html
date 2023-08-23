@@ -16,17 +16,17 @@
    <ion-card-header color="danger" style="text-align: center;">{{dat.model}}</ion-card-header>
     <ion-card-content>
       <ion-item>
-        <ion-label>Color:</ion-label>
+        <ion-label>Model:</ion-label>
         <ion-text>{{dat.varient}}</ion-text>
       </ion-item>
-      <ion-item>
+      <!-- <ion-item>
         <ion-label>Quantity With Battery:</ion-label>
         <ion-text>{{dat.quantity_with_batt}}</ion-text>
       </ion-item>
       <ion-item>
         <ion-label>Quantity Without Battery:</ion-label>
         <ion-text>{{dat.quantity_without_batt}}</ion-text>
-      </ion-item>
+      </ion-item> -->
       <ion-item>
         <ion-label>Amount:</ion-label>
         <ion-text>{{dat.withput_gst}}</ion-text>
@@ -48,13 +48,11 @@
     </ion-fab-button>
   </ion-fab>
 
-  
-
   <ion-modal #modal trigger="cart">
     <ng-template>
       <ion-content>
         <ion-toolbar color="danger">
-          <ion-title >Raise PO</ion-title>
+          <ion-title >Raise Purchase Order</ion-title>
           <ion-buttons slot="end">
             <ion-button color="light" (click)="modal.dismiss()">Close</ion-button>
           </ion-buttons>

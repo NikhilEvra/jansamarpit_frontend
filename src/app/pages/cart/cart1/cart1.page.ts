@@ -33,7 +33,7 @@ export class Cart1Page implements OnInit {
 
   modelinv:any=[];
   myfun2 = false;
- 
+ unit_price : any=[];
   constructor(
     private route : ActivatedRoute,
     private formb : FormBuilder,
@@ -140,7 +140,8 @@ export class Cart1Page implements OnInit {
       next:(data) =>{
         console.log(data);
         this.price = data;
-        console.log(this.price[0].price_wb)
+        console.log(this.price[0].price_wb);
+        this.unit_price = this.price[0].price_wb;
         
       },
       error:() =>{
@@ -175,7 +176,7 @@ export class Cart1Page implements OnInit {
      }
     console.log(this.form.value);  
      
-    this.api.postCartData(this.form.value.dealerid,this.form.value.model,this.form.value.color,this.form.value.quantity_with_batt,this.form.value.quantity_without_batt,this.form.value.amountWithBatt,this.form.value.amountWithOutBatt).subscribe({
+    this.api.postCartData(this.form.value.dealerid,this.form.value.model,this.form.value.color,this.form.value.quantity_with_batt,this.form.value.quantity_without_batt,this.form.value.amountWithBatt,this.form.value.amountWithOutBatt,this.unit_price).subscribe({
       next:(data) => {
         console.log(data);
         this.response = data;
@@ -184,10 +185,11 @@ export class Cart1Page implements OnInit {
         console.log('err');
          Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
       },
-      complete:() => {
+      complete:() => {  
         this.form.reset();
+        Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title':'Added To Cart',  heightAuto: false ,  timer: 3000});
         this.router.navigateByUrl('/viewpo');
-        Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': this.response.message,  heightAuto: false ,  timer: 3000});
+
         // this.loadingCtrl.dismiss();
       }
     })

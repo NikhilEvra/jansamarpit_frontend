@@ -28,4 +28,10 @@ export class LoginService {
     return this.api.get<any>(environment.apiurl +'validate_otp.php?phone=' + phone + '&otp=' + otp);
   }
   
+  get_finance_list():Observable<any>{
+    return this.api.get<any>(environment.apiurl +'finance_partners.php');
+  }
+  get_insurance_list():Observable<any>{
+    return this.api.get<any>(environment.apiurl +'insurance_partners.php');
+  }
 }

@@ -1,0 +1,30 @@
+<ion-header mode="ios">
+  <ion-toolbar color="danger">
+    <ion-title>Finance Partners</ion-title>
+    <ion-buttons slot="start"> 
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card >
+    <img src="assets/homepage/finance1.png"  />  
+    <ion-card-content>
+      
+      <ion-item *ngFor="let dat of response index as i">
+        <!-- <ion-label></ion-label> -->
+        <ion-text>{{i + 1 }}</ion-text> : &nbsp;
+        <ion-text>{{dat.name}}</ion-text>
+
+        
+      </ion-item>
+      
+    
+    
+    </ion-card-content>
+  </ion-card>
+</ion-content>

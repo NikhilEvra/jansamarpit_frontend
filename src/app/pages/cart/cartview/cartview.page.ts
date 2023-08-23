@@ -93,9 +93,10 @@ export class CartviewPage implements OnInit {
         this.api2.podata(this.form.value.dealerid ,this.form.value.amount).subscribe({
           next:(data) => {
             console.log(data);
+            this.form.reset();
             this.router.navigateByUrl('/viewpo');
            
-            Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': data.message,  heightAuto: false ,  timer: 3000}); 
+            Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Purchase Order Raised Successfully',  heightAuto: false ,  timer: 3000}); 
           },
           error:() => {
             console.log('err');

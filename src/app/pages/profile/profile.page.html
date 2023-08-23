@@ -30,9 +30,20 @@
           </ion-accordion>
           <ion-accordion >
             <ion-item slot="header">
+              <ion-label>Zone</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">{{userprofile.zone}}-Zone</div>
+          </ion-accordion>
+          <ion-accordion >
+            <ion-item slot="header">
               <ion-label>Address</ion-label>
             </ion-item>
-            <div class="ion-padding" slot="content">{{userprofile.address}}</div>
+            <div class="ion-padding" slot="content"> {{userprofile.address}} , &nbsp; {{userprofile.pincode}},&nbsp; {{userprofile.district}},&nbsp; {{userprofile.state}}</div>
+            <!-- <div class="ion-padding" slot="content"></div>
+            <div class="ion-padding" slot="content"></div>
+            <div class="ion-padding" slot="content"></div> -->
+
+
           </ion-accordion>
           <ion-accordion >
             <ion-item slot="header">
@@ -44,7 +55,8 @@
             <ion-item slot="header">
               <ion-label>Phone</ion-label>
             </ion-item>
-            <div class="ion-padding" slot="content">{{userprofile.phone}}</div>
+            <div class="ion-padding" slot="content">Number :{{userprofile.phone}}<br>Alternative Number :{{userprofile.alt_phone}}</div>
+
           </ion-accordion>
           <ion-accordion >
             <ion-item slot="header">
@@ -71,9 +83,29 @@
             </ion-item>
             <div class="ion-padding" slot="content">INR {{userprofile.credit_limit}}</div>
           </ion-accordion>
+          <ion-accordion >
+            <ion-item slot="header">
+              <ion-label>Signature</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content"><img src="{{userprofile.signature_upload}}"></div>
+          </ion-accordion>
+
+          <ion-accordion >
+            <ion-item slot="header">
+              <ion-label>Bank Details</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">Account Number : {{userprofile.Account_num}}<br>IFSC code : {{userprofile.ifsc_code}}<br>
+            Account Type : {{userprofile.account_type}}</div>
+            <div class="ion-padding" slot="content">Cancelled Cheque : <img src="{{userprofile.upload_cancel_cheque}}"></div>
+
+          </ion-accordion>
+         
+      
         </ion-accordion-group>
        </ion-card-content>
      </ion-card>
+
+  <div style="padding-bottom:80px"></div>
    
   
   <!-- <section class="inputbox">
