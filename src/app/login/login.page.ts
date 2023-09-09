@@ -5,13 +5,38 @@ import { LoadingController, MenuController, Platform, PopoverController, ToastCo
 import { LoginService } from '../service/login/login.service';
 import Swal from 'sweetalert2';
 import { App } from '@capacitor/app';
+import { Vibration } from '@ionic-native/vibration/ngx';
+
+// import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+
+import { Camera, CameraResultType } from '@capacitor/camera';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
+  
 })
 export class LoginPage implements OnInit {
+
+  // clickedImage: any;
+  // options: CameraOptions = {
+  //   quality: 30,
+  //   destinationType: this.camera.DestinationType.DATA_URL,
+  //   encodingType: this.camera.EncodingType.JPEG,
+  //   mediaType: this.camera.MediaType.PICTURE
+  // }
+
+  addlanguageList=[
+    {code:"en",title:"english",text:"english"},
+    {code:"hi",title:"hindi",text:"हिंदी"},
+
+  ]
+  uploadImageData:any;
+  imagename:any=[];
+
+
   form! : FormGroup;
   form2!:FormGroup;
   response: any=[];
@@ -31,6 +56,8 @@ export class LoginPage implements OnInit {
   }; 
   
 
+  imageSource:any=[];
+
   constructor(
     private router : Router,
     private formb: FormBuilder,
@@ -40,8 +67,13 @@ export class LoginPage implements OnInit {
     private menuCtrl : MenuController,
     private platform : Platform,
     private _popoverCtrl : PopoverController,
+    private vibration: Vibration,
+    private translate : TranslateService
+    // private camera: Camera
     
   ) { 
+    this.translate.setDefaultLang('en');
+    this.translate.addLangs(['en','hi']);
   
   }
 
@@ -278,4 +310,60 @@ checkOtp(){
  
 }
 
+invokeVibration(durationInMs: any) {
+  this.vibration.vibrate(durationInMs);
+}
+vibratePattern(pattern: any) {
+  this.vibration.vibrate(pattern);
+}
+reovkeVibration() {
+  this.vibration.vibrate(0);
+}
+
+// captureImage() {
+//   this.camera.getPicture(this.options).then((imageData) => {
+//     // imageData is either a base64 encoded string or a file URI
+//     // If it's base64 (DATA_URL):
+//     let base64Image = 'data:image/jpeg;base64,' + imageData;
+//     this.clickedImage = base64Image;
+//   }, (err) => {
+//     console.log(err);
+//     // Handle error
+//   });
+// }
+// readFile(file: any) {
+//   const reader = new FileReader();
+//   reader.onload = () => {
+//       const formData = new FormData();
+//       const imgBlob = new Blob([reader.result], {
+//           type: file.type
+//       });
+//       formData.append('file', imgBlob, file.name);
+//       this.uploadImageData(formData);
+//   };
+//   reader.readAsArrayBuffer(file);
+// }
+
+opencam(){
+  const takePicture = async () => {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      resultType: CameraResultType.Base64,
+      // saveToGallery:true 
+    });
+    // this.form.get('filename')?.setValue(image);
+   
+    this.imageSource =  'data:image/jpeg;base64,' + image.base64String;
+    console.log(this.imageSource);
+ 
+   
+     
+  };
+  takePicture();
+}
+
+OnlanguageChange(event:any){
+this.translate.use(event.target.value ?  event.target.value : "en")
+}
 }

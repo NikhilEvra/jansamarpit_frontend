@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { App } from '@capacitor/app';
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 import { ActionSheetController, LoadingController, MenuController, PopoverController } from '@ionic/angular';
 import { AnyARecord } from 'dns';
 import { FormService } from 'src/app/service/form/form.service';
@@ -17,6 +18,9 @@ export class DashboardPage implements OnInit {
   result: any;
   public progress = 0.7;
   USTEMP = localStorage.getItem('user');
+
+  Text: any = [];
+
 
   getuserdata: any=[];
 
@@ -99,11 +103,21 @@ export class DashboardPage implements OnInit {
     private api2 : LoginService,
     private api : FormService,
     private popovercontroller : PopoverController,
+    private textToSpeech: TextToSpeech
   ) { 
     console.log(this.USTEMP);
     if (this.USTEMP) {
       this.getuserdata = JSON.parse(this.USTEMP) ;
     } 
+
+    this.Text = [
+      'Hello Evra Team',
+      "Nikhil Chaudhary Full stak Developer",
+      'Deepak Angular Developer and punit angular developer',
+      'Ankit Php backend developer',
+      'Gaurav Server Manager cum backend developer',
+
+    ];
   }
 
   setOpen(isOpen: boolean) {
@@ -122,7 +136,7 @@ export class DashboardPage implements OnInit {
                          heightAuto: false , 
                          timer: 3000
                         });
-                        
+                         
             this.router.navigateByUrl('/login');
           }
 
@@ -250,11 +264,16 @@ export class DashboardPage implements OnInit {
       }, 2000);
     }
 
-    
 redirect(url:any){
   
   this.popovercontroller.dismiss();
   this.router.navigateByUrl(url);
 }
-   
+
+convertTextToSpeech(text: any) {
+  this.textToSpeech
+    .speak(text)
+    .then(() => console.log('Done'))
+    .catch((reason: any) => console.log(reason));
+}
 }

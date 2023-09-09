@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  // {
-  //   path: 'signup',
-  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  // },
   {
     path: '',
+    loadChildren: () => import('./login1/login1.module').then( m => m.Login1PageModule)
+
+  },
+  {
+    path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
@@ -149,6 +150,10 @@ const routes: Routes = [
   {
     path: 'sparepart-catalog',
     loadChildren: () => import('./pages/sparepart-catalog/sparepart-catalog.module').then( m => m.SparepartCatalogPageModule)
+  },
+  {
+    path: 'login1',
+    loadChildren: () => import('./login1/login1.module').then( m => m.Login1PageModule)
   },
   // {
   //   path: 'tab4',

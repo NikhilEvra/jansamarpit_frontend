@@ -14,13 +14,14 @@
 
    
   <ion-card *ngFor="let dat of response">
-    <ion-card-header color="danger" style="text-align: center;">{{dat.model}} / {{dat.varient}}</ion-card-header>
-     <ion-card-content>
+    
+    
+     <ion-card-content *ngIf="!dat.spare_part_id">
+      <ion-card-header color="danger" style="text-align: center;">{{dat.model}} / {{dat.varient}}</ion-card-header>
        <ion-item>
          <ion-label>Quantity With Battery:</ion-label>
          <ion-text>{{dat.quantity_with_batt}}</ion-text>
        </ion-item>
-     
        <ion-item>
         <ion-label>Quantity Without Battery:</ion-label>
         <ion-text>{{dat.quantity_without_batt}}</ion-text>
@@ -35,14 +36,43 @@
       </ion-item>
       <ion-item>
         <ion-label>Total :</ion-label>
-        <ion-text>{{dat.withput_gst}}</ion-text>
-      </ion-item>
-      <ion-item>
-        <ion-label>Grand Total :</ion-label>
         <ion-text>{{dat.total}}</ion-text>
       </ion-item>
+      <!-- <ion-item>
+        <ion-label>Grand Total :</ion-label>
+        <ion-text>{{dat.total}}</ion-text>
+      </ion-item> -->
      </ion-card-content>
+
+     
+
+    
    </ion-card>
+
+   <ion-card *ngFor="let dat of response" >
+  
+    <ion-card-content *ngIf="dat.spare_part_id">
+    <ion-card-header color="danger" style="text-align: center;">{{dat.model}} / {{dat.varient}}</ion-card-header>
+
+      <ion-item>
+        <ion-label>Quantity :</ion-label>
+        <ion-text>{{dat.spare_part_qty}}</ion-text>
+      </ion-item>
+  
+     <ion-item>
+       <ion-label>Total :</ion-label>
+       <ion-text>{{dat.total}}</ion-text>
+     </ion-item>
+     <!-- <ion-item>
+       <ion-label>Grand Total :</ion-label>
+       <ion-text>{{dat.total}}</ion-text>
+     </ion-item> -->
+    </ion-card-content>
+
+    
+   </ion-card>
+
+
 <br><br>
 
 

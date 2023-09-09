@@ -1,11 +1,10 @@
 <ion-content >
-  <div style="height:90%;width:100%; background-image: url(assets/login/logo.jpg);background-repeat: no-repeat;background-size: 100%;"></div>
   <ion-row style="position:absolute; bottom:0px;width:100%">
     <ion-col class="ion-text-center" size="12">
       <div style="margin-top:30px;">
         
         <ion-label color="primary" style="font-weight:bold;">
-       Already have an account ?  <ion-text color="dark" (click)="openPage('/login')">Login</ion-text></ion-label>
+       Already have an account ?  <ion-text color="dark" (click)="openPage('/login1')">Login</ion-text></ion-label>
         <!-- <img src="assets/homepage/menu_icon.svg" > -->
       </div>
     </ion-col>
@@ -35,11 +34,10 @@
           </ion-button>
         </ion-item>
         <ion-item lines="none">
-          <ion-select interface="popover"  placeholder="Select User Type" formControlName="usertype">
-            <ion-select-option value="C & F">C & F</ion-select-option>
-            <ion-select-option value="Super Stockist">Super Stockist</ion-select-option>
-            <ion-select-option value="Dealer">Dealer</ion-select-option>
-            <ion-select-option value="Sub_Dealer">Sub-Dealer</ion-select-option>
+          <ion-select interface="popover"  placeholder="Select User Type" formControlName="admin">
+            <ion-select-option value="Rajesh Nagar">Rajesh Nagar</ion-select-option>
+            <ion-select-option value="Krishan Pal">Krishan Pal</ion-select-option>
+   
           </ion-select>
         </ion-item>
         <!-- <ion-item lines="none">
@@ -54,7 +52,7 @@
     <ion-toolbar >
       <ion-row >
         <ion-col >
-          <ion-button shape="round" expand="block" color="danger" (click)="signup()" [disabled]="form.invalid">Sign up <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
+          <ion-button shape="round" expand="block" color="primary" (click)="signup()" [disabled]="form.invalid">Sign up <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
         </ion-col>
       </ion-row>
     
@@ -74,8 +72,8 @@
         </ion-toolbar> -->
       </ion-header>
       <ion-content >
-        <div style="height:55%;width:100%;">
-        <img src="assets/login/logo.jpg"></div>
+        <!-- <div style="height:55%;width:100%;">
+        <img src="assets/login/logo.jpg"></div> -->
         <form [formGroup]="form2">
     <section class="inputbox">
       <ion-text color="danger">Enter Otp</ion-text>

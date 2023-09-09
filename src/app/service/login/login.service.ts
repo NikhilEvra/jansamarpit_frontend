@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LoginService {
+  dat:any=[]
   public menu = new BehaviorSubject([]);
 
   constructor(
@@ -34,4 +35,19 @@ export class LoginService {
   get_insurance_list():Observable<any>{
     return this.api.get<any>(environment.apiurl +'insurance_partners.php');
   }
+
+  send_file(file:any):Observable<any> {
+    
+    return this.api.post<any>('sdfsdfsdf.php',  file);
+  }
+
+  sendOtp1(phone : any ):Observable<any> {
+    return this.api.post<any>('http://localhost:3000/api/v1/auth/login',  phone);
+  }
+
+  validate_otp(data:any):Observable<any>{
+    return this.api.post<any>('http://localhost:3000/api/v1/auth/otp-verification'  , data );
+
+  }
+  
 }

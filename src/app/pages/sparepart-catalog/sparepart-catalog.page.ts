@@ -15,6 +15,7 @@ export class SparepartCatalogPage implements OnInit {
   model:any=[];
   model_name:any=[];
 
+  s_id:any=[];
    isModalOpen = false;
    form!:FormGroup;
 
@@ -80,6 +81,8 @@ export class SparepartCatalogPage implements OnInit {
     getdata(item:any,i:any){
       this.i_name = item;
       this.price = this.spareparts[i].dealer_price;
+      this.s_id = this.spareparts[i].id;
+
       this.form = this.formb.group({
         quantity:['',Validators.required],
         model:[this.model_name],
@@ -91,7 +94,7 @@ export class SparepartCatalogPage implements OnInit {
 
     submit(){
       console.log(this.form.value);
-      this.api.post_sparepart_cart(this.form.value,this.price).subscribe({
+      this.api.post_sparepart_cart(this.form.value,this.price,this.getuserdata.id,this.s_id).subscribe({
         next:(data) => {
           console.log(data);
           this.response = data;

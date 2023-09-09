@@ -11,6 +11,9 @@
 </ion-header>
 
 <ion-content>
+  <div style="width:97%;height:150px;margin:5px 5px;">
+    <img src="https://evramedia.com/apifolder/catalog/14.png" style="height:100%;width:100%; border-radius: 15px;">
+  </div>
   <form [formGroup]="form">
 
       <ion-input type="hidden" placeholder="{{getuserdata.id}}" readonly="" value="{{getuserdata.id}}" formControlName="name" > </ion-input>
@@ -180,24 +183,23 @@
    -->
 
    <ion-row>
-    <ion-col size="12">
-      <ion-card > 
-        <ion-card-header color="danger" id="cart">Spareparts catalog</ion-card-header>
-    
+   
+
+    <ion-col size="6">
+      <ion-card  id="cart"> 
+        <ion-card-header color="danger">Spareparts </ion-card-header>
+        <img src="assets/product/sparepart.jpg" style="height: 120px;">
+      </ion-card>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card  id="product_cart"> 
+        <ion-card-header color="danger">Product </ion-card-header>
+        <img src="assets/product/MINE/Mine-5.jpg" style="height: 120px;">
       </ion-card>
     </ion-col>
    
    </ion-row>
 
-   <ion-row>
-    <ion-col size="6" *ngFor="let dat of models">
-      <ion-card (click)="updatevalue(dat.name)"> 
-        <ion-card-header color="danger">{{dat.name}}</ion-card-header>
-        <img src="https://evramedia.com/apifolder/catalog/{{dat.image}}" style="height: 130px;">
-      </ion-card>
-    </ion-col>
-   
-   </ion-row>
 
 
    
@@ -213,6 +215,28 @@
         <ion-row>
           <ion-col size="6" *ngFor="let dat of models">
             <ion-card (click)="updatevalue2(dat.name)" (click)="modal.dismiss()"> 
+              <ion-card-header color="danger">{{dat.name}}</ion-card-header>
+              <img src="https://evramedia.com/apifolder/catalog/{{dat.image}}" style="height: 130px;">
+            </ion-card>
+          </ion-col>
+         
+         </ion-row>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal #modal2 trigger="product_cart">
+    <ng-template>
+      <ion-content>
+        <ion-toolbar color="danger">
+          <ion-title >Raise Purchase Order</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="light" (click)="modal2.dismiss()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+        <ion-row>
+          <ion-col size="6" *ngFor="let dat of models">
+            <ion-card (click)="updatevalue(dat.name)" (click)="modal2.dismiss()"> 
               <ion-card-header color="danger">{{dat.name}}</ion-card-header>
               <img src="https://evramedia.com/apifolder/catalog/{{dat.image}}" style="height: 130px;">
             </ion-card>

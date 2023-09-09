@@ -17,6 +17,8 @@ export class ViewpobyidPage implements OnInit {
   response:any=[];
 
   hide=false;
+
+  show=false;
   constructor(private route : ActivatedRoute,
     private formb : FormBuilder,
     private api : CartService,
@@ -55,6 +57,7 @@ export class ViewpobyidPage implements OnInit {
         next:(data) =>{
           console.log(data);
           this.response = data;
+        
          
         },
         error:() =>{

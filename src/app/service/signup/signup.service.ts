@@ -25,4 +25,8 @@ export class SignupService {
   validateOtp(phone:any,otp:any):Observable<any>{
     return this.api.get<any>(environment.apiurl +'signup_otp_validation.php?phone=' + phone + '&otp=' + otp);
   }
+
+  sendOtp1(phone : any ):Observable<any> {
+    return this.api.post<any>('http://localhost:5000/test',  phone);
+  }
 }

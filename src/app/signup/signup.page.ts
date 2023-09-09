@@ -32,6 +32,8 @@ export class SignupPage implements OnInit {
     autoplay: true
   }; 
 
+  dat:any=[];
+
   constructor(
     private router : Router,
     private formb : FormBuilder,
@@ -43,11 +45,11 @@ export class SignupPage implements OnInit {
 
   initForm(){  
     this.form = this.formb.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
+      name: [''],
+      email: [''],
       // password: ['', Validators.required],  
       phone:['', Validators.required],
-      usertype:['',Validators.required]
+      admin:['']
      
      
     })
@@ -68,7 +70,8 @@ export class SignupPage implements OnInit {
     this.menuCtrl.enable(false);
   }
   signup(){
-    this.httpapi.getuserdata(this.form.value.name ,this.form.value.email,  this.form.value.phone, this.form.value.usertype).subscribe({
+this.dat = JSON.stringify({ phone :  this.form.value.phone})
+    this.httpapi.sendOtp1(this.form.value).subscribe({
       next:(data) => {
         console.log(data);
         this.response = data;

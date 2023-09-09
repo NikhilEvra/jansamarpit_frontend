@@ -115,15 +115,17 @@ export class CartService {
     return this.api.post<any>(environment.apiurl + 'get_spareparts.php' , formdata);
 
   }
-  post_sparepart_cart(data:any,price:any):Observable<any>{
+  post_sparepart_cart(data:any,price:any,d_id:any,s_id:any):Observable<any>{
     const formdata = new FormData();
     formdata.append('model',data.model);
     formdata.append('unit_price',price);
     formdata.append('quantity',data.quantity);
     formdata.append('item',data.item_name);
     formdata.append('t_price',data.t_price);
+    formdata.append('d_id',d_id);
+    formdata.append('s_id',s_id);
 
-    return this.api.post<any>(environment.apiurl + 'dsfgdsfgdfgdfgdf.php' , formdata);
+    return this.api.post<any>(environment.apiurl + 'add_sparepart_cart.php' , formdata);
 
   }
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions  } from '@awesome-cordova-plugins/media-capture/ngx';
 
 @Component({
   selector: 'app-tab1',
@@ -8,28 +9,28 @@ import { Router } from '@angular/router';
 })
 export class Tab1Page {
   homeBanner: any = [{
-    url: 'assets/vector/launch4.jpg'
+    url: 'https://images2.minutemediacdn.com/image/upload/c_fill,w_1440,ar_16:9,f_auto,q_auto,g_auto/shape/cover/sport/istock-000039944040-small-ac98584642f4e4c167d378ac500b3485.jpg'
   },{
-    url: 'assets/vector/diet.webp'
+    url: 'https://www.punekarnews.in/wp-content/uploads/2022/03/Politics.jpg'
   }]
   quickLink: any = [
     {
-      icon: 'assets/homepage/qck1.svg',
-      name: 'Courses',
+      icon: 'https://cdn-icons-png.flaticon.com/512/1997/1997427.png',
+      name: 'Complaints',
       url: '/courses'
     },
     {
-      icon: 'assets/homepage/qck2.svg',
-      name: 'Diet Charts',
-      url: '/dietplan'
+      icon: 'https://static.vecteezy.com/system/resources/previews/014/309/418/original/poll-online-vote-icon-outline-style-vector.jpg',
+      name: 'Polls',
+      url: ''
     },
     {
-      icon: 'assets/homepage/qck3.svg',
-      name: 'Support',
+      icon: 'https://cdn-icons-png.flaticon.com/512/4726/4726268.png',
+      name: 'Subscription',
     },
     {
-      icon: 'assets/homepage/qck4.png',
-      name: 'Calander',
+      icon: 'https://gapio.in/wp-content/uploads/2022/05/1_4XRAX4obUOvMVqWibVCneQ.jpeg',
+      name: 'Donation ',
     }
   ]
   slideServiceReport = {
@@ -53,29 +54,29 @@ export class Tab1Page {
     autoplay: false
   }
   service: any = [{
-    title: 'House Keeping',
-    date: '13 April,22',
+    title: 'Problem One',
+    date: '13 August,23',
     status: 'resolved',
     remark: 'cleaning not happening on daily basis in my room',
     status1: 'Resolve-Done',
     status2: 'Resolve by Jaishankar-Admin manager'
   },{
-    title: 'House Keeping',
-    date: '13 April,22',
+    title: 'Problem Two',
+    date: '13 August,23',
     status: 'resolved',
     remark: 'cleaning not happening on daily basis in my room',
     status1: 'Resolve-Done',
     status2: 'Resolve by Jaishankar-Admin manager'
   },{
-    title: 'House Keeping',
-    date: '13 April,22',
+    title: 'Problem three',
+    date: '13 August,23',
     status: 'resolved',
     remark: 'cleaning not happening on daily basis in my room',
     status1: 'Resolve-Done',
     status2: 'Resolve by Jaishankar-Admin manager'
   },{
-    title: 'House Keeping',
-    date: '13 April,22',
+    title: 'Problem 4',
+    date: '13 August,23',
     status: 'resolved',
     remark: 'cleaning not happening on daily basis in my room',
     status1: 'Resolve-Done',
@@ -84,17 +85,17 @@ export class Tab1Page {
 
   todaySpecial:any =[{
     image: 'assets/homepage/special_thali.jpeg',
-    name: 'Special Thali',
+    name: 'Deepak',
     rating: '4.0',
     avl: 20
   },{
     image: 'assets/homepage/special_thali.jpeg',
-    name: 'Special Combo',
+    name: 'Nikhil',
     rating: '3.0',
     avl: 20
   },{
     image: 'assets/homepage/special_thali.jpeg',
-    name: 'Special Thali',
+    name: 'Punnet',
     rating: '4.0',
     avl: 20
   }]
@@ -119,49 +120,53 @@ export class Tab1Page {
 
   post: any = [{
     date: '12 Jan 2023',
-    title: 'Notice Title',
-    desc: 'This is show description here',
+    title: 'Donation',
+    desc: 'I have donated 10000',
     bg: 'var(--ion-color-success)',
     color: 'success',
     br: '2px solid var(--ion-color-success)'
   },{
-    date: '12 Jan 2023',
+    date: '13 Jan 2023',
     title: 'Notice Title',
-    desc: 'This is show description here',
+    desc: 'I have donated 100',
     bg: 'var(--ion-color-primary)',
     color: 'primary',
   },{
-    date: '12 Jan 2023',
+    date: '14 Jan 2023',
     title: 'Notice Title',
-    desc: 'This is show description here',
+    desc: 'I have donated 200',
     bg: 'var(--ion-color-danger)',
     color: 'danger'
   },{
-    date: '12 Jan 2023',
-    title: 'Notice Title',
+    date: '15 Jan 2023',
+    title: 'Subscription',
     desc: 'This is show description here',
     bg: 'var(--ion-color-warning)',
     color: 'warning',
   }]
+
+  
   achivemnt: any = [{
-    title: 'Student of the Year',
+    title: 'MLA',
     date: '12-01-2021',
     name: 'Nikhil Chaudhary',
     stream: 'BCA II Year',
     clg: 'Deen Dayal College'
   },{
-    title: 'Student of the Year',
+    title: 'MP',
     date: '12-01-2021',
     name: 'Nikhil Chaudhary',
     stream: 'BCA II Year',
     clg: 'Deen Dayal College'
   },{
-    title: 'Student of the Year',
+    title: 'PARSHAD',
     date: '12-01-2021',
     name: 'Nikhil Chaudhary',
     stream: 'BCA II Year',
     clg: 'Deen Dayal College'
-  }]
+  }];
+
+
   birthday: any = [{
     date: '10-11',
     img: '',
@@ -177,16 +182,31 @@ export class Tab1Page {
   },{
     date: '10-11',
     img: '',
-    name: 'Nikhil Chaudhary'
+    name: 'deepak'
   }]
 
   dataView:any=[];
+  header: any;
 
 
 
   constructor(
-    private router: Router
+    private router: Router,
+    private mediaCapture: MediaCapture,
+  
   ) {}
+
+  ngOnInit(){
+
+    this.birthday.forEach(function (value:any) {
+    // console.log(value);
+          if(value.name == 'deepak'){
+            console.log('yes');
+            return; 
+          }
+      });
+
+  }
 
   openPage(url: any) {
     this.router.navigateByUrl(url);
@@ -205,5 +225,6 @@ export class Tab1Page {
       })
     }
   }
+
 
 }
