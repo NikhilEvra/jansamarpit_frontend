@@ -27,6 +27,6 @@ export class SignupService {
   }
 
   sendOtp1(phone : any ):Observable<any> {
-    return this.api.post<any>('http://localhost:5000/test',  phone);
+    return this.api.post<any>('http://localhost:3000/api/v1/auth/signup',  phone);
   }
 }

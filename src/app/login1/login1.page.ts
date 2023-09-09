@@ -57,6 +57,21 @@ isModalOpen = false;
       
     })
   }
+
+  timeLeft: number = 120;
+  interval:any;
+
+startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.timeLeft = 120;
+      }
+    },1000)
+  }
+
+
   submit(){
   console.log(this.form.value);
 
@@ -83,6 +98,10 @@ isModalOpen = false;
     },
     complete:() =>{
       this.isModalOpen = true;
+      this.startTimer();
+      setTimeout(() => {
+        this.isModalOpen = false;
+      }, 120000);
       Swal.fire({
         'imageUrl' :'assets/icon/login.gif',
         'imageHeight':'100px', 
@@ -95,22 +114,25 @@ isModalOpen = false;
   })
 
   }
+ 
+
+
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
+   
   }
 
-  validate_otp(){
-    //  console.log(this.form.value,this.form2.value);
-    //  console.log(this.form2.value.otp);
-    
+  validate_otp(){    
      console.log(JSON.stringify({ phone:this.form.value.phone, otp: this.form2.value.otp }));
-this.dat1 = JSON.stringify({ phone:this.form.value.phone, otp: this.form2.value.otp })
+     // this.dat1 = JSON.stringify({ phone:this.form.value.phone, otp: this.form2.value.otp });
+     this.dat1 =  {"phone":this.form.value.phone,
+     "otp":this.form2.value.otp};
+
     this.api.validate_otp(this.dat1).subscribe({
       next:(data) =>{
         console.log(data);   
         this.res2 = data;
        
-     
       },
       error:() =>{
        
@@ -122,15 +144,15 @@ this.dat1 = JSON.stringify({ phone:this.form.value.phone, otp: this.form2.value.
            timer: 3000
           });
       },
+
       complete:() =>{
         Swal.fire({
           'imageUrl' :'assets/icon/login.gif',
           'imageHeight':'100px', 
-          'title': this.res.message,
+          'title': this.res2.message,
            heightAuto: false , 
            timer: 3000
           });
-       
       }
     })
   
@@ -139,4 +161,5 @@ this.dat1 = JSON.stringify({ phone:this.form.value.phone, otp: this.form2.value.
   redirect(url:any){
     this.router.navigateByUrl(url);
   }
+
 }

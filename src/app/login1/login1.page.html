@@ -8,19 +8,29 @@
   
   <ion-slides #slides pager="true" autoplay="1000" loop="true" speed="300" >
     <ion-slide *ngFor="let dat of loginbanner" >
-      <div style="width:100%;height:500px;margin:2px 2px;">
-        <img [src]="dat.url" style="height:90%;width:100%; border-radius: 15px;">
+      <div style="width:100%;height:500px;">
+        <img [src]="dat.url" style="height:80%;width:100%; border-radius: 15px;">
         <br>
-        {{dat.heading}}
+        <ion-label color="primary" style="font-weight:bold;">  {{dat.heading}} <br></ion-label>
+
+      
       </div>
     
     </ion-slide>
   </ion-slides>
-  <p (click)="redirect('/signup')">signup</p>
+
+  <ion-row >
+    <ion-col class="ion-text-center" size="12">
+      <div >
+        <ion-label color="primary" style="font-weight:bold;">Jansamarpit <br></ion-label>
+       <ion-label> Didn't have an account ? <ion-text color="primary" (click)="redirect('/signup')">Sign Up</ion-text></ion-label>
+      </div>
+    </ion-col>
+  </ion-row>
+
   <form [formGroup]="form">
 
   <section class="inputbox">
-    <!-- <ion-text color="primary">Phone</ion-text> -->
     <ion-item lines="none">
       <ion-input type="text" placeholder="Enter Mobile Number" formControlName="phone"></ion-input>
     </ion-item>
@@ -61,6 +71,9 @@
           <!-- <ion-text color="primary">Phone</ion-text> -->
           <ion-item lines="none">
             <ion-input type="number" placeholder="Enter Otp" formControlName="otp"></ion-input>
+            <ion-button slot="end" fill="clear">
+              <ion-text>{{timeLeft}}</ion-text>
+            </ion-button>
           </ion-item>
         </section>
 

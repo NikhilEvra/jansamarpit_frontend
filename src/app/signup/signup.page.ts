@@ -17,6 +17,8 @@ export class SignupPage implements OnInit {
   response2:any=[];
   response3:any=[];
   response4:any=[];
+
+  dat1 : any=[];
   
   isModalOpen = false;
 
@@ -24,7 +26,17 @@ export class SignupPage implements OnInit {
     url: 'https://evramedia.com/apifolder/catalog/13.png'
   },{
     url: 'https://evramedia.com/apifolder/catalog/14.png'
-  }]
+  }];
+
+  loginbanner:any=[{
+    url:'https://img.freepik.com/free-vector/sign-page-abstract-concept-illustration_335657-2242.jpg?w=2000',
+    heading:'Lets build nation'
+  },{
+    url:'https://img.freepik.com/free-vector/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security-people-entering-login-password-safety-measures_335657-3530.jpg',
+    heading:'Come for '
+
+  }
+];
 
   slideServiceReport = {
     initialSlide: 0,
@@ -51,10 +63,9 @@ export class SignupPage implements OnInit {
       phone:['', Validators.required],
       admin:['']
      
-     
     })
-    // this.presentToast('test toast', 'success');
   }
+
   initForm2(){  
     this.form2 = this.formb.group({    
       otp: ['', Validators.required],      
@@ -70,7 +81,7 @@ export class SignupPage implements OnInit {
     this.menuCtrl.enable(false);
   }
   signup(){
-this.dat = JSON.stringify({ phone :  this.form.value.phone})
+// this.dat = JSON.stringify({ phone :  this.form.value.phone})
     this.httpapi.sendOtp1(this.form.value).subscribe({
       next:(data) => {
         console.log(data);
@@ -97,15 +108,12 @@ this.dat = JSON.stringify({ phone :  this.form.value.phone})
        else{
         
         this.setOpen(true);
-        
+         
                    
        }  
         
       }
     })
-   
-    
-   
    
   }
   
@@ -155,7 +163,6 @@ startTimer() {
     this.startTimer();
   setTimeout(() => {
     this.isModalOpen = false;
-    window.location.reload();
   }, 120000);
 
   }
@@ -163,12 +170,12 @@ startTimer() {
 checkOtp(){
   // console.log(this.form.value.phone);
   this.isModalOpen = false;
+  this.dat1 = {"phone":this.form.value.phone, "otp" : this.form2.value.otp}
   this.httpapi.validateOtp(this.form.value.phone, this.form2.value.otp).subscribe({
     next:(data) => {
       console.log(data);
       this.response3 = data
      
-    
     },
     error:() => {
       console.log('err');
