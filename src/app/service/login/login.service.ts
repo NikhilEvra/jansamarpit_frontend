@@ -46,7 +46,7 @@ export class LoginService {
   }
 
   validate_otp(data:any):Observable<any>{
-    return this.api.post<any>('http://localhost:3000/api/v1/auth/otp-verification'  , data );
+    return this.api.post<any>(environment.apiurl + 'otp-verification'  , data );
 
   }
   

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions  } from '@awesome-cordova-plugins/media-capture/ngx';
+import { App } from '@capacitor/app';
 
 @Component({
   selector: 'app-tab1',
@@ -188,13 +189,19 @@ export class Tab1Page {
   dataView:any=[];
   header: any;
 
+  USTEMP = localStorage.getItem('user');
 
+  getuserdata: any=[];
 
   constructor(
     private router: Router,
     private mediaCapture: MediaCapture,
   
-  ) {}
+  ) {
+    if (this.USTEMP) {
+      this.getuserdata = JSON.parse(this.USTEMP) ;
+    } 
+  }
 
   ngOnInit(){
 
@@ -226,5 +233,10 @@ export class Tab1Page {
     }
   }
 
+  logout(){
+    App.exitApp();
+    localStorage.clear();
+    this.router.navigateByUrl('/login1');
+  }
 
 }

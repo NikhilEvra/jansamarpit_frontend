@@ -1,7 +1,7 @@
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
@@ -16,6 +16,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     ExploreContainerComponentModule,
     Tab2PageRoutingModule,
     NgApexchartsModule, 
+    ReactiveFormsModule
   ],
   declarations: [Tab2Page]
 })

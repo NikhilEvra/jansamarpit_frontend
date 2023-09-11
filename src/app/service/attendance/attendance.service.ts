@@ -16,4 +16,7 @@ export class AttendanceService {
     return this.http.get<any>(environment.apiurl + 'attendance.php');
   }
 
+  add_complaints(data:any):Observable<any>{
+    return this.http.post<any>(environment.apiurl + 'add_complaints' , data);
+  }
 }

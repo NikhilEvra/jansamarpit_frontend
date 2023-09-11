@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-@Injectable({
+@Injectable({ 
   providedIn: 'root'
 })
 export class SignupService {
@@ -12,7 +12,7 @@ export class SignupService {
     private api : HttpClient,
   ) { }
 
-  getuserdata(name : any , email: any,  phone : any,usertype : any):Observable<any> {
+  getuserdata(name : any , email: any,  phone : any,usertype : any):Observable<any> {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
     const formData = new FormData();
     formData.append('name', name);
     formData.append('email', email);
@@ -22,11 +22,11 @@ export class SignupService {
     return this.api.post<any>(environment.apiurl + 'signup.php',  formData);
   }
 
-  validateOtp(phone:any,otp:any):Observable<any>{
-    return this.api.get<any>(environment.apiurl +'signup_otp_validation.php?phone=' + phone + '&otp=' + otp);
+  validateOtp(phone:any):Observable<any>{
+    return this.api.post<any>(environment.apiurl + 'otp-verification',  phone);
   }
 
   sendOtp1(phone : any ):Observable<any> {
-    return this.api.post<any>('http://localhost:3000/api/v1/auth/signup',  phone);
+    return this.api.post<any>(environment.apiurl + 'signup',  phone);
   }
 }

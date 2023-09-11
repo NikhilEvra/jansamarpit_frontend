@@ -8,19 +8,13 @@
 </ion-header>
 <ion-content>
 
-   <section class="inputbox">
-    <ion-text color="primary">Category</ion-text>
-    <ion-item lines="none">
-      <ion-select interface="popover">
-        <ion-select-option>Govt Support</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </section>
+
+  <form [formGroup]="form">
 
   <section class="inputbox">
     <ion-text color="primary">Priority</ion-text>
     <ion-item lines="none">
-      <ion-select interface="popover">
+      <ion-select interface="popover" formControlName="priority">
         <ion-select-option>High</ion-select-option>
         <ion-select-option>Medium</ion-select-option>
         <ion-select-option>Low</ion-select-option>
@@ -29,24 +23,42 @@
   </section>
 
   <section class="inputbox">
-    <ion-text color="primary">Remark</ion-text>
+    <ion-text color="primary">State</ion-text>
     <ion-item lines="none">
-      <ion-textarea rows="4" placeholder="Enter Remarks..."></ion-textarea>
+      <ion-select interface="popover" formControlName="state">
+        <ion-select-option>Haryana</ion-select-option>
+      </ion-select>
     </ion-item>
   </section>
 
-<ion-button fill="clear">
+  <section class="inputbox">
+    <ion-text color="primary">City</ion-text>
+    <ion-item lines="none">
+      <ion-select interface="popover" formControlName="city">
+        <ion-select-option>Faridabad</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </section>
+
+  <section class="inputbox">
+    <ion-text color="primary">Remark</ion-text>
+    <ion-item lines="none">
+      <ion-textarea rows="4" placeholder="Enter Remarks..." formControlName="remarks"></ion-textarea>
+    </ion-item>
+  </section>
+
+<!-- <ion-button fill="clear">
     <ion-icon size="small" name="attach-outline" slot="start"></ion-icon> Attach Photo
-  </ion-button> 
+  </ion-button>  -->
 
     <ion-row>
     <ion-col >
-      <ion-button expand="block" shape="round">Submit Compalint <ion-icon name="save-outline" slot="end"></ion-icon> </ion-button>
+      <ion-button expand="block" shape="round" (click)="submit()" [disabled]="form.invalid" >Submit Compalint <ion-icon name="save-outline" slot="end"></ion-icon> </ion-button>
     </ion-col>
   </ion-row>
 
   
-  
+  </form>
   
   <div style="height:150px;width:100%;padding:10px">
     <img src="https://www.callcentrehelper.com/images/stories/2021/08/complaints-427941316-760.gif" style="height:100%;width:100%">

@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiurl : 'https://evramedia.com/apifolder/',
+  apiurl : 'http://localhost:3000/api/v1/auth/',
   
 };

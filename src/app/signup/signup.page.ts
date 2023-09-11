@@ -171,10 +171,11 @@ checkOtp(){
   // console.log(this.form.value.phone);
   this.isModalOpen = false;
   this.dat1 = {"phone":this.form.value.phone, "otp" : this.form2.value.otp}
-  this.httpapi.validateOtp(this.form.value.phone, this.form2.value.otp).subscribe({
+  this.httpapi.validateOtp(this.dat1).subscribe({
     next:(data) => {
       console.log(data);
-      this.response3 = data
+      this.response3 = data;
+      console.log(this.response3.data[0])
      
     },
     error:() => {
@@ -183,19 +184,32 @@ checkOtp(){
      
     },
     complete:() => {
-      this.response4 = this.response3;
-      if(this.response4.status == false){
-        Swal.fire({
+      this.response4 = this.response3.data[0];
+
+       localStorage.setItem('user',JSON.stringify(this.response4));
+       //this.api.menu.next(this.response2);
+       this.isModalOpen = false;
+       this.router.navigateByUrl('/app/tabs/tab1');
+       Swal.fire({
            'imageUrl' :'assets/icon/login.gif',
            'imageHeight':'100px', 
-           'title': this.response4.message,
+           'title': 'You have successfully loged in',
             heightAuto: false , 
             timer: 3000
-              });
-     } else{
-      // this.isModalOpen = false;
-      this.router.navigateByUrl('/login');
-     }
+           });
+
+    //   if(this.response4.status == false){
+    //     Swal.fire({
+    //        'imageUrl' :'assets/icon/login.gif',
+    //        'imageHeight':'100px', 
+    //        'title': this.response4.message,
+    //         heightAuto: false , 
+    //         timer: 3000
+    //           });
+    //  } else{
+    //   // this.isModalOpen = false;
+    //   this.router.navigateByUrl('/login');
+    //  }
 
     }
   })

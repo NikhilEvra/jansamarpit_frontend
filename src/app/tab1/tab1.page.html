@@ -13,7 +13,7 @@
     </ion-title> -->
   
     <ion-buttons slot="end">
-      <ion-button (click)="openPage('/login1')">
+      <ion-button (click)="logout()">
         <ion-icon name="log-out-outline"></ion-icon>
       </ion-button>
      
@@ -32,7 +32,7 @@
 
   <ion-item>
     <ion-label>
-      <h2><ion-text color="primary"><b>Nikhil Chaudhary,</b>  </ion-text></h2>
+      <h2><ion-text color="primary"><b>{{getuserdata.name}},</b>  </ion-text></h2>
       <p>Welcome Back</p>
     </ion-label>
     <ion-label slot="end" class="ion-text-right">
@@ -74,7 +74,7 @@
     </ion-col>
   </ion-row> -->
 
-  <ion-slides #slides [options]="slideServiceReport" pager="false" >
+  <!-- <ion-slides #slides [options]="slideServiceReport" pager="false" >
     <ion-slide *ngFor="let dat of service">
       <ion-card style="width:100%;min-height:100px;border:2px solid var(--ion-color-light);box-shadow: none;margin:0px 5px">
         <ion-item lines="none">
@@ -104,7 +104,6 @@
 
   <ion-row>
     <ion-col class="ion-padding-start" style="display:flex;align-items:center">
-      <!-- <ion-text><b>Resolved Problems</b></ion-text> -->
     </ion-col>
     <ion-col class="ion-text-right">
       <ion-button size="small" fill="clear" shape="round" class="ion-text-center">View More <ion-icon name="arrow-forward" slot="end"></ion-icon> </ion-button>
@@ -119,13 +118,10 @@
           <ion-text style="font-size:80%;margin-left:3px" color="dark">{{dat.name}}</ion-text>
           <ion-button size="small" color="danger" slot="end">{{dat.rating}} <ion-icon name="star-outline" slot="end"></ion-icon></ion-button>
         </ion-item>
-        <!-- <ion-item style="--min-height:20px">
-          <ion-text style="font-size:70%">Available</ion-text>
-          <ion-text style="font-size:70%" slot="end">20</ion-text>
-        </ion-item> -->
+     
       </ion-card>
     </ion-slide>
-  </ion-slides>
+  </ion-slides> -->
 
   <!-- <ion-row>
     <ion-col class="ion-padding-start" style="display:flex;align-items:center">
@@ -216,7 +212,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-slides #slides [options]="slideLatestCampus" pager="false" >
+  <!-- <ion-slides #slides [options]="slideLatestCampus" pager="false" >
     <ion-slide *ngFor="let dat of birthday">
       <ion-card style="width:100%;min-height:50px;border-radius: 8px;margin:5px">
         <div style="height:70px;width:100%;background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmAD4xufpjqqFwsalkBDdefslsdotLRi-SYw&usqp=CAU);background-size:100%;background-repeat: no-repeat;display: flex;align-items: center; justify-content: center; ">
@@ -225,14 +221,14 @@
         <ion-row>
           <ion-col class="ion-text-center">
             <ion-text color="primary" style="font-weight:500;font-size:11px">{{dat.date}}</ion-text><br>
-            <!-- <ion-text color="dark" style="font-weight:550;font-size:12px"> Vote</ion-text><br> -->
+            <ion-text color="dark" style="font-weight:550;font-size:12px"> Vote</ion-text><br>
             <ion-text color="medium" style="font-weight:500;font-size:11px">{{dat.name}}</ion-text><br>
             <ion-button shape="round" size="small" fill="outline">VOTE</ion-button>
           </ion-col>
         </ion-row>
       </ion-card>
     </ion-slide>
-  </ion-slides>
+  </ion-slides> -->
 
   
   <div style="height:150px;width:100%;padding:10px">

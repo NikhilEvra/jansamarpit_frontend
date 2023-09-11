@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-   apiurl : 'https://evramedia.com/apifolder/',
+   apiurl : 'http://localhost:3000/api/v1/auth/',
   // apiurl : 'https://evramedia.com/apifolder/',
 };
 

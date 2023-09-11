@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AttendanceService } from '../service/attendance/attendance.service';
+import { FormBuilder, FormGroup, FormGroupName, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tab2',
@@ -25,16 +26,33 @@ export class Tab2Page {
     bg: '#EFFCFA',
   }];
   dayvalue:any=['21','22'];
+  form! :FormGroup;
+  
  
+  USTEMP = localStorage.getItem('user');
 
+  getuserdata: any=[];
   constructor(
     private api : AttendanceService,
-  ) {}
+    private formb  : FormBuilder
+  ) {
+    if (this.USTEMP) {
+      this.getuserdata = JSON.parse(this.USTEMP) ;
+    } 
+  }
 
   ngOnInit() {
-    // this.chart1();
-    this.getattendance();
+this.initform();
+  }
 
+  initform(){
+    this.form = this.formb.group({
+      name:[this.getuserdata.name],
+      priority:['',Validators.required],
+      state:['',Validators.required],
+      city:['',Validators.required],
+      remarks:['',Validators.required],
+    })
   }
   getattendance(){
      
@@ -57,10 +75,11 @@ export class Tab2Page {
       // this.presentToast('Internal Server Error.' , 'Danger');
     },
     complete:() =>{
-   
+
         
     }
   })
+
   }
 
   // chart1() : void{
@@ -76,5 +95,22 @@ export class Tab2Page {
   //   };
 
   // }
+
+  submit(){    
+  this.api.add_complaints(this.form.value).subscribe({
+    next:(data) =>{
+      console.log(data)
+     
+    },
+    error:() =>{
+    
+    },
+    complete:() =>{
+
+        
+    }
+  })
+
+  }
 
 }
