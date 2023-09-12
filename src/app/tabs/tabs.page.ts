@@ -12,8 +12,19 @@ export class TabsPage {
   binaryData:any=[];
 
   form! :FormGroup;
-dat:any=[]
-   
+dat:any=[];
+isModalOpen = false;
+quickLink: any = [
+
+  {
+    icon: 'https://cdn-icons-png.flaticon.com/512/4726/4726268.png',
+    name: 'Subscription',
+  },
+  {
+    icon: 'https://gapio.in/wp-content/uploads/2022/05/1_4XRAX4obUOvMVqWibVCneQ.jpeg',
+    name: 'Donation ',
+  }
+]
     constructor(
       private formb : FormBuilder,
       private api : LoginService
@@ -70,6 +81,9 @@ dat:any=[]
   
   }
   
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
 
 
 }

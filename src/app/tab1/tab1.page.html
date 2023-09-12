@@ -3,8 +3,11 @@
     <ion-title class="ion-text-center">
       <ion-text color="primary" >JANSAMARPIT</ion-text>
     </ion-title>
+   
     <ion-buttons slot="start">
-      <ion-button></ion-button>
+      <ion-button id="click-trigger">
+        <ion-icon name="language-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
  
     <!-- <ion-title class="ion-text-center">
@@ -23,7 +26,34 @@
 
 <ion-content scrollEvents="true" [fullscreen]="true" >
  
-  
+  <ion-popover trigger="click-trigger" triggerAction="click" >
+    <ng-template>
+      <ion-radio-group  (ionChange)="OnlanguageChange($event)">
+        <ion-item *ngFor="let lat of addlanguageList">
+          <ion-label> {{lat.text}}</ion-label>
+          <ion-radio mode="ios" value="{{lat.code}}"></ion-radio>
+        </ion-item>
+        
+      </ion-radio-group>
+    </ng-template>
+  </ion-popover>
+<!--   
+  <ion-list> 
+    <ion-radio-group  (ionChange)="OnlanguageChange($event)">
+      <ion-item *ngFor="let lat of addlanguageList">
+        <ion-label> {{lat.text}}</ion-label>
+        <ion-radio mode="ios" value="{{lat.code}}"></ion-radio>
+      </ion-item>
+      
+    </ion-radio-group>
+  </ion-list>
+   -->
+  <ion-text translate >
+    site.Title 
+  </ion-text>
+  <ion-text translate >
+    site.description
+  </ion-text>
   <ion-popover trigger="click-trigger" triggerAction="click">
     <ng-template>
       

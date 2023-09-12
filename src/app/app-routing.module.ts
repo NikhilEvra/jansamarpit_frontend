@@ -148,10 +148,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/finance/finance.module').then( m => m.FinancePageModule)
   },
   {
-    path: 'sparepart-catalog',
-    loadChildren: () => import('./pages/sparepart-catalog/sparepart-catalog.module').then( m => m.SparepartCatalogPageModule)
-  },
-  {
     path: 'login1',
     loadChildren: () => import('./login1/login1.module').then( m => m.Login1PageModule)
   },

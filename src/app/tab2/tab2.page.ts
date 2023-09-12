@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AttendanceService } from '../service/attendance/attendance.service';
 import { FormBuilder, FormGroup, FormGroupName, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -34,7 +36,8 @@ export class Tab2Page {
   getuserdata: any=[];
   constructor(
     private api : AttendanceService,
-    private formb  : FormBuilder
+    private formb  : FormBuilder,
+    private router : Router
   ) {
     if (this.USTEMP) {
       this.getuserdata = JSON.parse(this.USTEMP) ;
@@ -106,6 +109,16 @@ this.initform();
     
     },
     complete:() =>{
+      this.form.reset();
+
+      this.router.navigateByUrl('/app/tabs/tab1');
+      Swal.fire({
+          'imageUrl' :'assets/icon/login.gif',
+          'imageHeight':'100px', 
+          'title': 'You Have Successfully Raised A Complaint',
+           heightAuto: false , 
+           timer: 3000
+          });
 
         
     }

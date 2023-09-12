@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions  } from '@awesome-cordova-plugins/media-capture/ngx';
 import { App } from '@capacitor/app';
+import { PopoverController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tab1',
@@ -192,12 +194,21 @@ export class Tab1Page {
   USTEMP = localStorage.getItem('user');
 
   getuserdata: any=[];
+  addlanguageList=[
+    {code:"en",title:"english",text:"english"},
+    {code:"hi",title:"hindi",text:"हिंदी"},
 
+  ]
   constructor(
     private router: Router,
     private mediaCapture: MediaCapture,
-  
+    private translate : TranslateService,
+    private popovercontroller : PopoverController
+    // private camera: Camera
+    
   ) {
+    this.translate.setDefaultLang('en');
+    this.translate.addLangs(['en','hi']);
     if (this.USTEMP) {
       this.getuserdata = JSON.parse(this.USTEMP) ;
     } 
@@ -238,5 +249,11 @@ export class Tab1Page {
     localStorage.clear();
     this.router.navigateByUrl('/login1');
   }
+
+  OnlanguageChange(event:any){
+    this.translate.use(event.target.value ?  event.target.value : "en");
+  this.popovercontroller.dismiss();
+
+    }
 
 }
