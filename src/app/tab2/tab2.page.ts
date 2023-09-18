@@ -3,6 +3,7 @@ import { AttendanceService } from '../service/attendance/attendance.service';
 import { FormBuilder, FormGroup, FormGroupName, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Camera, CameraResultType } from '@capacitor/camera';
 
 @Component({
   selector: 'app-tab2',
@@ -34,6 +35,7 @@ export class Tab2Page {
   USTEMP = localStorage.getItem('user');
 
   getuserdata: any=[];
+  imageSource:any=[];
   constructor(
     private api : AttendanceService,
     private formb  : FormBuilder,
@@ -55,6 +57,7 @@ this.initform();
       state:['',Validators.required],
       city:['',Validators.required],
       remarks:['',Validators.required],
+      file:[this.imageSource]
     })
   }
   getattendance(){
@@ -100,6 +103,7 @@ this.initform();
   // }
 
   submit(){    
+    console.log(this.form.value);
   this.api.add_complaints(this.form.value).subscribe({
     next:(data) =>{
       console.log(data)
@@ -125,5 +129,22 @@ this.initform();
   })
 
   }
-
+  opencam(){
+    const takePicture = async () => {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.Base64,
+        // saveToGallery:true 
+      });
+      // this.form.get('filename')?.setValue(image);
+     
+      this.imageSource =  'data:image/jpeg;base64,' + image.base64String;
+      console.log(this.imageSource);
+   
+     
+       
+    };
+    takePicture();
+  }
 }

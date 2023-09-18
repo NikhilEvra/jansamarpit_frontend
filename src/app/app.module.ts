@@ -16,11 +16,11 @@ import { AwesomeCordovaNativePlugin } from '@awesome-cordova-plugins/core';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core'; 
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 
-import { MediaCapture} from '@awesome-cordova-plugins/media-capture/ngx';
+
 
 export function createTranslateLoader(http:HttpClient){
   return new TranslateHttpLoader(http, './assets/i18n/', '.json'); 
@@ -30,7 +30,7 @@ export function createTranslateLoader(http:HttpClient){
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },InAppBrowser, TextToSpeech,AwesomeCordovaNativePlugin,Vibration,Camera,MediaCapture,
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },InAppBrowser, TextToSpeech,AwesomeCordovaNativePlugin,Vibration,Camera,
     {
       provide: HTTP_INTERCEPTORS, useClass: InterceptorPage, multi: true
     },

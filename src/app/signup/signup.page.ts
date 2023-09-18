@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoadingController, MenuController, ToastController } from '@ionic/angular';
 import { SignupService } from '../service/signup/signup.service';
 import Swal from 'sweetalert2';
+import { Country, State, City }  from 'country-state-city';
 
 @Component({
   selector: 'app-signup',
@@ -45,7 +46,7 @@ export class SignupPage implements OnInit {
   }; 
 
   dat:any=[];
-
+country:any=[];
   constructor(
     private router : Router,
     private formb : FormBuilder,
@@ -61,7 +62,8 @@ export class SignupPage implements OnInit {
       email: [''],
       // password: ['', Validators.required],  
       phone:['', Validators.required],
-      admin:['']
+      admin:[''],
+      country:['']
      
     })
   }
@@ -72,9 +74,16 @@ export class SignupPage implements OnInit {
     })
   }
   ngOnInit() {
+//     console.log(Country.getAllCountries())
+// console.log(State.getAllStates())
+// console.log(City.getAllCities())
+
     this.initForm();
     this.initForm2();
     this.menuCtrl.enable(false);
+
+    this.country = Country.getAllCountries();
+    console.log(this.country)
   }
   ionViewDidLeave(){
     this.loadingCtrl.dismiss();

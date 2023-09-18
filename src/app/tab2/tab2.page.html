@@ -46,10 +46,10 @@
       <ion-textarea rows="4" placeholder="Enter Remarks..." formControlName="remarks"></ion-textarea>
     </ion-item>
   </section>
-
-<!-- <ion-button fill="clear">
+<ion-input type="text" formControlName="file" value="{{imageSource}}" placeholder="{{imageSource}}"></ion-input>
+<ion-button fill="clear"  (click)="opencam()"  >
     <ion-icon size="small" name="attach-outline" slot="start"></ion-icon> Attach Photo
-  </ion-button>  -->
+  </ion-button> 
 
     <ion-row>
     <ion-col >

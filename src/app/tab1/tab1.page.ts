@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions  } from '@awesome-cordova-plugins/media-capture/ngx';
+// import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions  } from '@awesome-cordova-plugins/media-capture/ngx';
 import { App } from '@capacitor/app';
 import { PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
@@ -15,7 +15,8 @@ export class Tab1Page {
     url: 'https://images2.minutemediacdn.com/image/upload/c_fill,w_1440,ar_16:9,f_auto,q_auto,g_auto/shape/cover/sport/istock-000039944040-small-ac98584642f4e4c167d378ac500b3485.jpg'
   },{
     url: 'https://www.punekarnews.in/wp-content/uploads/2022/03/Politics.jpg'
-  }]
+  }];
+
   quickLink: any = [
     {
       icon: 'https://cdn-icons-png.flaticon.com/512/1997/1997427.png',
@@ -35,7 +36,8 @@ export class Tab1Page {
       icon: 'https://gapio.in/wp-content/uploads/2022/05/1_4XRAX4obUOvMVqWibVCneQ.jpeg',
       name: 'Donation ',
     }
-  ]
+  ];
+  
   slideServiceReport = {
     initialSlide: 0,
     slidesPerView: 1.1,
@@ -55,7 +57,8 @@ export class Tab1Page {
     initialSlide: 0,
     slidesPerView: 2.8,
     autoplay: false
-  }
+  };
+  
   service: any = [{
     title: 'Problem One',
     date: '13 August,23',
@@ -201,7 +204,7 @@ export class Tab1Page {
   ]
   constructor(
     private router: Router,
-    private mediaCapture: MediaCapture,
+    // private mediaCapture: MediaCapture,
     private translate : TranslateService,
     private popovercontroller : PopoverController
     // private camera: Camera
@@ -252,7 +255,7 @@ export class Tab1Page {
 
   OnlanguageChange(event:any){
     this.translate.use(event.target.value ?  event.target.value : "en");
-  this.popovercontroller.dismiss();
+  // this.popovercontroller.dismiss();
 
     }
 

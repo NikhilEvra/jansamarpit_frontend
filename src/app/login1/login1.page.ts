@@ -77,41 +77,41 @@ startTimer() {
 
 // this.dat = JSON.stringify(this.form.value);
 
+  this.router.navigateByUrl('/app/tabs/tab1');
   
-  
-  this.api.sendOtp1(this.form.value).subscribe({
-    next:(data) =>{
-      console.log(data);   
-      this.res = data;
+  // this.api.sendOtp1(this.form.value).subscribe({
+  //   next:(data) =>{
+  //     console.log(data);   
+  //     this.res = data;
      
    
-    },
-    error:() =>{
+  //   },
+  //   error:() =>{
      
-      Swal.fire({
-        'imageUrl' :'assets/icon/login.gif',
-        'imageHeight':'100px', 
-        'title': 'Invalid Phone Number',
-         heightAuto: false , 
-         timer: 3000
-        });
-    },
-    complete:() =>{
-      this.isModalOpen = true;
-      this.startTimer();
-      setTimeout(() => {
-        this.isModalOpen = false;
-      }, 120000);
-      Swal.fire({
-        'imageUrl' :'assets/icon/login.gif',
-        'imageHeight':'100px', 
-        'title': this.res.message,
-         heightAuto: false , 
-         timer: 3000
-        });
+  //     Swal.fire({
+  //       'imageUrl' :'assets/icon/login.gif',
+  //       'imageHeight':'100px', 
+  //       'title': 'Invalid Phone Number',
+  //        heightAuto: false , 
+  //        timer: 3000
+  //       });
+  //   },
+  //   complete:() =>{
+  //     this.isModalOpen = true;
+  //     this.startTimer();
+  //     setTimeout(() => {
+  //       this.isModalOpen = false;
+  //     }, 120000);
+  //     Swal.fire({
+  //       'imageUrl' :'assets/icon/login.gif',
+  //       'imageHeight':'100px', 
+  //       'title': this.res.message,
+  //        heightAuto: false , 
+  //        timer: 3000
+  //       });
      
-    }
-  })
+  //   }
+  // })
 
   }
  
