@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Evra</string>
-    <string name="title_activity_main">Evra</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="app_name">Jansamarpit</string>
+    <string name="title_activity_main">Jansamarpit</string>
+    <string name="package_name">io.jansamarpit.com</string>
+    <string name="custom_url_scheme">io.jansamarpit.com</string>
 </resources>
