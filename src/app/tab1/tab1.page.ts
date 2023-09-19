@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 // import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions  } from '@awesome-cordova-plugins/media-capture/ngx';
 import { App } from '@capacitor/app';
-import { PopoverController } from '@ionic/angular';
+import { Platform, PopoverController } from '@ionic/angular';
+
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -21,7 +22,7 @@ export class Tab1Page {
     {
       icon: 'https://cdn-icons-png.flaticon.com/512/1997/1997427.png',
       name: 'Complaints',
-      url: '/courses'
+      url: '/mycomplaints'
     },
     {
       icon: 'https://static.vecteezy.com/system/resources/previews/014/309/418/original/poll-online-vote-icon-outline-style-vector.jpg',
@@ -206,8 +207,9 @@ export class Tab1Page {
     private router: Router,
     // private mediaCapture: MediaCapture,
     private translate : TranslateService,
-    private popovercontroller : PopoverController
-    // private camera: Camera
+    private popovercontroller : PopoverController,
+    // private camera: Camera,
+    public platform: Platform
     
   ) {
     this.translate.setDefaultLang('en');
@@ -215,6 +217,9 @@ export class Tab1Page {
     if (this.USTEMP) {
       this.getuserdata = JSON.parse(this.USTEMP) ;
     } 
+
+
+
   }
 
   ngOnInit(){

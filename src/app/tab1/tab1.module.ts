@@ -15,7 +15,9 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
-    TranslateModule
+    TranslateModule,
+    
+    
   ],
   declarations: [Tab1Page]
 })

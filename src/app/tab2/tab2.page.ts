@@ -57,7 +57,8 @@ this.initform();
       state:['',Validators.required],
       city:['',Validators.required],
       remarks:['',Validators.required],
-      file:[this.imageSource]
+      file:[this.imageSource],
+      user_id:[this.getuserdata.u_id],
     })
   }
   getattendance(){
@@ -103,7 +104,7 @@ this.initform();
   // }
 
   submit(){    
-    console.log(this.form.value);
+  console.log(this.form.value);
   this.api.add_complaints(this.form.value).subscribe({
     next:(data) =>{
       console.log(data)
@@ -141,9 +142,7 @@ this.initform();
      
       this.imageSource =  'data:image/jpeg;base64,' + image.base64String;
       console.log(this.imageSource);
-   
-     
-       
+          
     };
     takePicture();
   }
