@@ -8,7 +8,14 @@
 </ion-header>
 
 <ion-content>
+  <ion-text translate >
+    site.Title 
+  </ion-text>
+  <ion-text translate >
+    site.description
+  </ion-text>
 
+  
   <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #A8A8A829;background-color:#F2EAFA; margin:10px" *ngFor="let dat of mycomplaints">
     <ion-row>
       <ion-col >
@@ -24,7 +31,6 @@
             {{dat.name}}  
         </ion-button>
       </ion-col>
-     
       <ion-col class="ion-text-right">
         <ion-button size="small" shape="round">Approved</ion-button>
       </ion-col>

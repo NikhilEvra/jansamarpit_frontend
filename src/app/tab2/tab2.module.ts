@@ -7,6 +7,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     ExploreContainerComponentModule,
     Tab2PageRoutingModule,
     NgApexchartsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule,
   ],
   declarations: [Tab2Page]
 })

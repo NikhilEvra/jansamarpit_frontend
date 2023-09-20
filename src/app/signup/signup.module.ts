@@ -14,7 +14,9 @@ import { SignupPage } from './signup.page';
     FormsModule,
     IonicModule,
     SignupPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+    
 
   ],
   declarations: [SignupPage]

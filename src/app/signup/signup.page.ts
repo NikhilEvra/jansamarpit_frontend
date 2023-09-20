@@ -23,6 +23,9 @@ export class SignupPage implements OnInit {
   
   isModalOpen = false;
 
+  currentStep = 1;
+totalSteps = 2;
+
   homeBanner: any = [{
     url: 'https://evramedia.com/apifolder/catalog/13.png'
   },{
@@ -30,7 +33,7 @@ export class SignupPage implements OnInit {
   }];
 
   loginbanner:any=[{
-    url:'https://img.freepik.com/free-vector/sign-page-abstract-concept-illustration_335657-2242.jpg?w=2000',
+    url:'assets/login/logo-4.jpg',
     heading:'Lets build nation'
   },{
     url:'https://img.freepik.com/free-vector/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security-people-entering-login-password-safety-measures_335657-3530.jpg',
@@ -46,7 +49,10 @@ export class SignupPage implements OnInit {
   }; 
 
   dat:any=[];
-country:any=[];
+  country:any=[];
+  states:any=[];
+  cities:any=[];
+  co:any=[];
   constructor(
     private router : Router,
     private formb : FormBuilder,
@@ -60,11 +66,13 @@ country:any=[];
     this.form = this.formb.group({
       name: [''],
       email: [''],
-      // password: ['', Validators.required],  
-      phone:['', Validators.required],
+      phone:['',Validators.required],
       admin:[''],
-      country:['']
-     
+      country:['INDIA'],
+      state:[''],
+      city:[''],
+
+
     })
   }
 
@@ -74,7 +82,7 @@ country:any=[];
     })
   }
   ngOnInit() {
-//     console.log(Country.getAllCountries())
+// console.log(Country.getAllCountries())
 // console.log(State.getAllStates())
 // console.log(City.getAllCities())
 
@@ -83,7 +91,18 @@ country:any=[];
     this.menuCtrl.enable(false);
 
     this.country = Country.getAllCountries();
-    console.log(this.country)
+    console.log(this.country);
+    this.co = this.country.name;
+    
+    this.states = State.getAllStates();
+    // console.log(this.states)
+    this.cities = City.getAllCities();
+    // const strs = ['valval', 'bal', 'gal', 'dalval'];
+    // const result = strs.filter(s => s.includes('val'));
+    
+    // console.log(strs);
+    // console.log(result);
+
   }
   ionViewDidLeave(){
     this.loadingCtrl.dismiss();
@@ -117,8 +136,7 @@ country:any=[];
        else{
         
         this.setOpen(true);
-         
-                   
+                            
        }  
         
       }
@@ -225,4 +243,17 @@ checkOtp(){
  
   
 }
+
+nextStep() {
+  if (this.currentStep < this.totalSteps) {
+    this.currentStep++;
+  }
+}
+
+previousStep() {
+  if (this.currentStep > 1) {
+    this.currentStep--;
+  }
+}
+
 }
