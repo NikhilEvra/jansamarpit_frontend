@@ -62,9 +62,9 @@
           </ion-item>
 
           <ion-item lines="none">
-            <!-- <ion-select placeholder="Select Your State" formControlName="state">
-              <ion-select-option  *ngFor="let dat of states">{{dat.name}}</ion-select-option>
-            </ion-select> -->
+            <ion-select placeholder="Select Your State" formControlName="state" (ionChange)="getcity()">
+              <ion-select-option  *ngFor="let dat of st">{{dat.name}}</ion-select-option>
+            </ion-select>
           </ion-item>
 
           <ion-item lines="none">
@@ -99,7 +99,9 @@
   <ion-toolbar >
     <ion-row >
       <ion-col >
-        <ion-button shape="round" expand="block" color="primary" (click)="nextStep()" *ngIf="currentStep < totalSteps">Next <ion-icon name="arrow-forward-outline" slot="end"></ion-icon></ion-button>
+        <ion-button shape="round" expand="block" color="primary" (click)="nextStep()" *ngIf="currentStep < totalSteps">Next  <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-toolbar>

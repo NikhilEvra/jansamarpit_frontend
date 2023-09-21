@@ -20,7 +20,7 @@ export class SignupPage implements OnInit {
   response4:any=[];
 
   dat1 : any=[];
-  
+
   isModalOpen = false;
 
   currentStep = 1;
@@ -53,6 +53,9 @@ totalSteps = 2;
   states:any=[];
   cities:any=[];
   co:any=[];
+  st:any=[];
+  ci:any=[];
+  ci2:any=[];
   constructor(
     private router : Router,
     private formb : FormBuilder,
@@ -79,8 +82,9 @@ totalSteps = 2;
   initForm2(){  
     this.form2 = this.formb.group({    
       otp: ['', Validators.required],      
-    })
+    });
   }
+
   ngOnInit() {
 // console.log(Country.getAllCountries())
 // console.log(State.getAllStates())
@@ -91,56 +95,85 @@ totalSteps = 2;
     this.menuCtrl.enable(false);
 
     this.country = Country.getAllCountries();
-    console.log(this.country);
+    // console.log(this.country);
     this.co = this.country.name;
     
     this.states = State.getAllStates();
-    // console.log(this.states)
-    this.cities = City.getAllCities();
-    // const strs = ['valval', 'bal', 'gal', 'dalval'];
-    // const result = strs.filter(s => s.includes('val'));
+    // console.log(this.states);
+    // var s = this.country;
+    // const result = this.country.filter((s: { isoCode: string | string[]; }) => s.isoCode.includes('IN'));
+
+      this.st = this.states.filter((s: {
+      countryCode: any; isoCode: string | string[]; 
+      }) => s.countryCode.includes('IN'));
+
+      console.log(this.st);
+
+
+      this.cities = City.getAllCities();
+
+      this.ci = this.cities.filter((s: {
+      countryCode: any; isoCode: string | string[]; 
+      }) => s.countryCode.includes('IN'));
+      // console.log(this.ci)
+
+      this.ci2 = this.ci.filter((s: {
+        stateCode: any; isoCode: string | string[]; 
+        }) => s.stateCode.includes('HR'));
+        console.log(this.ci2);
+        
+    // const strs = [{
+    //   a:'val'
+    // },{
+    //   a:'uoo'
+    // },{
+    //   a:'val1'
+    // }];
+    // // const result = strs.filter(s => s.a.includes('val'));
     
     // console.log(strs);
     // console.log(result);
 
   }
+
   ionViewDidLeave(){
     this.loadingCtrl.dismiss();
     this.menuCtrl.enable(false);
   }
+
   signup(){
 // this.dat = JSON.stringify({ phone :  this.form.value.phone})
-    this.httpapi.sendOtp1(this.form.value).subscribe({
-      next:(data) => {
-        console.log(data);
-        this.response = data;
+console.log(this.form.value);
+    // this.httpapi.sendOtp1(this.form.value).subscribe({
+    //   next:(data) => {
+    //     console.log(data);
+    //     this.response = data;
        
-      
-      },
-      error:() => {
-        console.log('err');
-         Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
+    //   },
+    //   error:() => {
+    //     console.log('err');
+    //      Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
        
-      },
-      complete:() => {
-        this.response2 = this.response;
-        if(this.response2.status == false){
-          Swal.fire({                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-             'imageUrl' :'assets/icon/login.gif',
-             'imageHeight':'100px', 
-             'title': this.response2.message,
-              heightAuto: false , 
-              timer: 3000
-                });
-       }
-       else{
+    //   },
+    //   complete:() => {
+    //     this.response2 = this.response;
+    //     if(this.response2.status == false){
+    //       Swal.fire({                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+    //          'imageUrl' :'assets/icon/login.gif',
+    //          'imageHeight':'100px', 
+    //          'title': this.response2.message,
+    //           heightAuto: false , 
+    //           timer: 3000
+    //             });
+    //    }
+    //    else{
         
-        this.setOpen(true);
+    //     this.setOpen(true);
                             
-       }  
+    //    }  
         
-      }
-    })
+    //   }
+    // })
    
   }
   
@@ -254,6 +287,10 @@ previousStep() {
   if (this.currentStep > 1) {
     this.currentStep--;
   }
+}
+
+getcity(){
+
 }
 
 }
