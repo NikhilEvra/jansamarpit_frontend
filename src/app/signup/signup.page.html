@@ -49,6 +49,16 @@
       </section>
 
     </ion-toolbar>
+    <ion-toolbar >
+      <ion-row >
+        <ion-col >
+          <ion-button shape="round" expand="block" color="primary" (click)="nextStep()" *ngIf="currentStep < totalSteps">Next  <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+        
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  
     </div>
     <div *ngIf="currentStep === 2">
       <ion-toolbar>
@@ -68,9 +78,9 @@
           </ion-item>
 
           <ion-item lines="none">
-            <!-- <ion-select placeholder="Select Your City" formControlName="city">
-              <ion-select-option  *ngFor="let dat of cities">{{dat.name}}</ion-select-option>
-            </ion-select> -->
+            <ion-select placeholder="Select Your City" formControlName="city">
+              <ion-select-option  *ngFor="let dat of ci2 ">{{dat.name}}</ion-select-option>
+            </ion-select>
           </ion-item>
 
 
@@ -83,12 +93,52 @@
             <ion-button shape="round" expand="block" color="primary"  (click)="previousStep()" *ngIf="currentStep > 1">Previous <ion-icon name="arrow-back-outline" slot="end"></ion-icon></ion-button>
           </ion-col>
           <ion-col >
-            <ion-button shape="round" expand="block" color="primary" (click)="signup()" [disabled]="form.invalid">Next <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
+            <ion-button shape="round" expand="block" color="primary" (click)="nextStep()" *ngIf="currentStep < totalSteps" >Next <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
           </ion-col>
         </ion-row>
       </ion-toolbar>
    
   </div>
+  <div *ngIf="currentStep === 3">
+    <ion-toolbar>
+      <section class="inputbox">
+   
+        <ion-item lines="none">
+          <ion-select placeholder="Select Identity Proof" formControlName="id">
+            <ion-select-option  *ngFor="let dat of id">{{dat.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-input type="hidden" formControlName="file" value="{{imageSource}}" placeholder="{{imageSource}}"></ion-input>
+          <ion-button fill="clear"  (click)="opencam()"  >
+              <ion-icon size="small" name="attach-outline" slot="start"></ion-icon> Attach Front Photo
+            </ion-button> 
+        </ion-item>
+
+        <ion-item lines="none">
+        <ion-input type="hidden" formControlName="file" value="{{imageSource2}}" placeholder="{{imageSource2}}"></ion-input>
+          <ion-button fill="clear"  (click)="opencam()"  >
+              <ion-icon size="small" name="attach-outline" slot="start"></ion-icon> Attach Back Photo
+            </ion-button> 
+        </ion-item>
+
+
+      </section>
+
+    </ion-toolbar>
+    <ion-toolbar >
+      <ion-row >
+        <ion-col >
+          <ion-button shape="round" expand="block" color="primary"  (click)="previousStep()" *ngIf="currentStep > 1">Previous <ion-icon name="arrow-back-outline" slot="end"></ion-icon></ion-button>
+        </ion-col>
+        <ion-col >
+          <ion-button shape="round" expand="block" color="primary" (click)="signup()" [disabled]="form.invalid">Next <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+ 
+</div>
   </form>
   
 
@@ -96,15 +146,6 @@
   <!-- Add more steps as needed -->
 
   <!-- Navigation buttons -->
-  <ion-toolbar >
-    <ion-row >
-      <ion-col >
-        <ion-button shape="round" expand="block" color="primary" (click)="nextStep()" *ngIf="currentStep < totalSteps">Next  <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
-      
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-toolbar>
 
   <!-- <div>
     <button (click)="previousStep()" *ngIf="currentStep > 1">Previous</button>

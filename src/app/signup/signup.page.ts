@@ -5,6 +5,7 @@ import { LoadingController, MenuController, ToastController } from '@ionic/angul
 import { SignupService } from '../service/signup/signup.service';
 import Swal from 'sweetalert2';
 import { Country, State, City }  from 'country-state-city';
+import { Camera, CameraResultType } from '@capacitor/camera';
 
 @Component({
   selector: 'app-signup',
@@ -24,7 +25,7 @@ export class SignupPage implements OnInit {
   isModalOpen = false;
 
   currentStep = 1;
-totalSteps = 2;
+  totalSteps = 3;
 
   homeBanner: any = [{
     url: 'https://evramedia.com/apifolder/catalog/13.png'
@@ -48,6 +49,13 @@ totalSteps = 2;
     autoplay: true
   }; 
 
+  id:any=[{
+    name:'Adhar Card'
+  },{
+    name:'DL'
+  },{
+    name:'Pan Card'
+  }]
   dat:any=[];
   country:any=[];
   states:any=[];
@@ -56,6 +64,11 @@ totalSteps = 2;
   st:any=[];
   ci:any=[];
   ci2:any=[];
+  st2:any=[];
+
+  imageSource:any=[];
+  imageSource2:any=[];
+
   constructor(
     private router : Router,
     private formb : FormBuilder,
@@ -74,6 +87,9 @@ totalSteps = 2;
       country:['INDIA'],
       state:[''],
       city:[''],
+      id:[''],
+      file:[this.imageSource],
+      file2:[this.imageSource2]
 
 
     })
@@ -117,10 +133,10 @@ totalSteps = 2;
       }) => s.countryCode.includes('IN'));
       // console.log(this.ci)
 
-      this.ci2 = this.ci.filter((s: {
-        stateCode: any; isoCode: string | string[]; 
-        }) => s.stateCode.includes('HR'));
-        console.log(this.ci2);
+      // this.ci2 = this.ci.filter((s: {
+      //   stateCode: any; isoCode: string | string[]; 
+      //   }) => s.stateCode.includes('HR'));
+      //   console.log(this.ci2);
         
     // const strs = [{
     //   a:'val'
@@ -290,7 +306,34 @@ previousStep() {
 }
 
 getcity(){
+  this.st2 = this.st.filter((s: {
+    name: any; isoCode: string | string[]; 
+    }) => s.name.includes(this.form.value.state));
 
+    console.log(this.st2[0].isoCode);
+
+  this.ci2 = this.ci.filter((s: {
+    stateCode: any; isoCode: string | string[]; 
+    }) => s.stateCode.includes(this.st2[0].isoCode));
+    console.log(this.ci2);
+
+}
+
+opencam(){
+  const takePicture = async () => {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.Base64,
+      // saveToGallery:true 
+    });
+    // this.form.get('filename')?.setValue(image);
+   
+    this.imageSource =  'data:image/jpeg;base64,' + image.base64String;
+    console.log(this.imageSource);
+        
+  };
+  takePicture();
 }
 
 }
