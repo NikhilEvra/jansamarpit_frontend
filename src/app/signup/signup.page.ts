@@ -50,9 +50,9 @@ export class SignupPage implements OnInit {
   }; 
 
   id:any=[{
-    name:'Adhar Card'
+    name:'Adhaar Card'
   },{
-    name:'DL'
+    name:'Driving Licence'
   },{
     name:'Pan Card'
   }]
@@ -68,6 +68,10 @@ export class SignupPage implements OnInit {
 
   imageSource:any=[];
   imageSource2:any=[];
+  myfun = false;
+
+  im1 = false;
+  im2 = false;
 
   constructor(
     private router : Router,
@@ -80,16 +84,16 @@ export class SignupPage implements OnInit {
 
   initForm(){  
     this.form = this.formb.group({
-      name: [''],
-      email: [''],
+      name: ['',Validators.required],
+      email: ['',Validators.required],
       phone:['',Validators.required],
-      admin:[''],
+      // admin:['',Validators.required],
       country:['INDIA'],
-      state:[''],
-      city:[''],
-      id:[''],
-      file:[this.imageSource],
-      file2:[this.imageSource2]
+      state:['',Validators.required],
+      city:['',Validators.required],
+      id:['',Validators.required],
+      file:[this.imageSource,Validators.required],
+      file2:[this.imageSource2,Validators.required]
 
 
     })
@@ -138,17 +142,7 @@ export class SignupPage implements OnInit {
       //   }) => s.stateCode.includes('HR'));
       //   console.log(this.ci2);
         
-    // const strs = [{
-    //   a:'val'
-    // },{
-    //   a:'uoo'
-    // },{
-    //   a:'val1'
-    // }];
-    // // const result = strs.filter(s => s.a.includes('val'));
-    
-    // console.log(strs);
-    // console.log(result);
+  
 
   }
 
@@ -159,37 +153,37 @@ export class SignupPage implements OnInit {
 
   signup(){
 // this.dat = JSON.stringify({ phone :  this.form.value.phone})
-console.log(this.form.value);
-    // this.httpapi.sendOtp1(this.form.value).subscribe({
-    //   next:(data) => {
-    //     console.log(data);
-    //     this.response = data;
+    console.log(this.form.value);
+    this.httpapi.sendOtp1(this.form.value).subscribe({
+      next:(data) => {
+        console.log(data);
+        this.response = data;
        
-    //   },
-    //   error:() => {
-    //     console.log('err');
-    //      Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
+      },
+      error:() => {
+        console.log('err');
+         Swal.fire({'imageUrl' :'assets/icon/login.gif','imageHeight':'100px', 'title': 'Internal Server Error!',  heightAuto: false ,  timer: 3000});
        
-    //   },
-    //   complete:() => {
-    //     this.response2 = this.response;
-    //     if(this.response2.status == false){
-    //       Swal.fire({                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-    //          'imageUrl' :'assets/icon/login.gif',
-    //          'imageHeight':'100px', 
-    //          'title': this.response2.message,
-    //           heightAuto: false , 
-    //           timer: 3000
-    //             });
-    //    }
-    //    else{
+      },
+      complete:() => {
+        this.response2 = this.response;
+        if(this.response2.status == false){
+          Swal.fire({                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+             'imageUrl' :'assets/icon/login.gif',
+             'imageHeight':'100px', 
+             'title': this.response2.message,
+              heightAuto: false , 
+              timer: 3000
+                });
+       }
+       else{
         
-    //     this.setOpen(true);
+        this.setOpen(true);
                             
-    //    }  
+       }  
         
-    //   }
-    // })
+      }
+    })
    
   }
   
@@ -317,6 +311,8 @@ getcity(){
     }) => s.stateCode.includes(this.st2[0].isoCode));
     console.log(this.ci2);
 
+    this.myfun = true;
+
 }
 
 opencam(){
@@ -331,9 +327,49 @@ opencam(){
    
     this.imageSource =  'data:image/jpeg;base64,' + image.base64String;
     console.log(this.imageSource);
-        
+   
+  if(this.imageSource !) {
+    this.im1 = true;
+ }
   };
   takePicture();
+
 }
+
+opencam2(){
+  const takePicture = async () => {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.Base64,
+      // saveToGallery:true 
+    });
+    // this.form.get('filename')?.setValue(image);
+   
+    this.imageSource2 =  'data:image/jpeg;base64,' + image.base64String;
+    console.log(this.imageSource2);
+    if(this.imageSource2 !) {
+      this.im2 = true;
+   }
+  };
+
+  takePicture();
+
+}
+
+check_state(){
+  if(!this.form.value.state){
+    Swal.fire({
+      'imageUrl' :'assets/icon/login.gif',
+      'imageHeight':'100px', 
+      'title': 'Please Select Your State First',
+       heightAuto: false , 
+       timer: 3000
+      });
+  }
+}
+
+
+
 
 }

@@ -1,7 +1,7 @@
 <ion-header mode="ios">
   <ion-toolbar >
     <ion-title class="ion-text-center">
-      <ion-text color="primary" >JANSAMARPIT</ion-text>
+      <ion-text color="primary" translate>site.appname</ion-text>
     </ion-title>
    
     <ion-buttons slot="start">
@@ -48,12 +48,13 @@
     </ion-radio-group>
   </ion-list>
    -->
-  <ion-text translate >
+   
+  <!-- <ion-text translate >
     site.Title 
   </ion-text>
   <ion-text translate >
     site.description
-  </ion-text>
+  </ion-text> -->
   <ion-popover trigger="click-trigger" triggerAction="click">
     <ng-template>
       
@@ -63,10 +64,10 @@
   <ion-item>
     <ion-label>
       <h2><ion-text color="primary"><b>{{getuserdata.name}},</b>  </ion-text></h2>
-      <p>Welcome Back</p>
+      <p translate style="font-weight: bold;">site.welcomeback</p>
     </ion-label>
     <ion-label slot="end" class="ion-text-right">
-      <p>Last Login</p>
+      <p translate style="font-weight: bold;">site.lastlogin</p>
       <ion-text color="primary" style="font-size:80%;font-weight:530">12-01-2023 | 10:12am</ion-text>
     </ion-label>
   </ion-item>
@@ -84,12 +85,29 @@
     </ion-col>
   </ion-row>
 
-  <ion-row >
+  <!-- <ion-row >
     <ion-col size="6" *ngFor="let dat of quickLink" class="ion-text-center quickLink"  (click)="openPage(dat.url)">
       <ion-card class="card" style="height: 120px;">
         <img [src]="dat.icon">
       </ion-card>
       <ion-text class="text" style="font-size: 11px;">{{dat.name}}</ion-text>
+    </ion-col>
+  </ion-row> -->
+
+  <ion-row >
+    <ion-col size="6"  class="ion-text-center quickLink"  (click)="openPage('/mycomplaints')" >
+      <ion-card class="card" style="height: 120px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/1997/1997427.png">
+      </ion-card>
+      <ion-text class="text" style="font-size: 11px; font-weight: bold;" translate>  
+        site.quicklink1 
+      </ion-text>
+    </ion-col>
+    <ion-col size="6"  class="ion-text-center quickLink"   >
+      <ion-card class="card" style="height: 120px;">
+        <img src="https://static.vecteezy.com/system/resources/previews/014/309/418/original/poll-online-vote-icon-outline-style-vector.jpg">
+      </ion-card>
+      <ion-text class="text" style="font-size: 11px;" translate>site.quicklink2</ion-text>
     </ion-col>
   </ion-row>
 

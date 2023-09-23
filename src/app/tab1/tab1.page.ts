@@ -202,7 +202,10 @@ export class Tab1Page {
     {code:"en",title:"english",text:"english"},
     {code:"hi",title:"hindi",text:"हिंदी"},
 
-  ]
+  ];
+
+  img1:any=['https://hist1.latestly.com/wp-content/uploads/2022/09/PM-Modi1.jpg'];
+
   constructor(
     private router: Router,
     // private mediaCapture: MediaCapture,

@@ -2,6 +2,18 @@
     "site":
     {
         "Title":"नमस्ते निखिल",
-        "description": "आपने पाठ का अनुवाद किया"
+        "description": "आपने पाठ का अनुवाद किया",
+        "quicklink1":"शिकायतों",
+        "quicklink2":"मतदान",
+        "quickimg2":"https://hist1.latestly.com/wp-content/uploads/2022/09/PM-Modi1.jpg",
+        "appname":"जनसमर्पित",
+        "lastlogin":"आखरी लॉगइन",
+        "welcomeback":"वापसी पर स्वागत है",
+        "tab1":"डैशबोर्ड",
+        "tab2":"शिकायत",
+        "tab3":"मतदान",
+        "tab4":"तकनीकी त्रुटि"
+
+
     }
 }

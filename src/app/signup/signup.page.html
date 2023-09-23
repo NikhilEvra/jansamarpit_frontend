@@ -34,7 +34,7 @@
           </ion-button>
         </ion-item>
         <ion-item lines="none">
-          <ion-input type="email"  placeholder="Email Id" formControlName="email" ngModel email="true"> </ion-input>
+          <ion-input type="email"  placeholder="Email Id" formControlName="email"  email="true"> </ion-input>
           <ion-button slot="end" fill="clear">
         <ion-icon name="mail-outline"></ion-icon>
           </ion-button>
@@ -69,18 +69,29 @@
               <ion-select-option  *ngFor="let dat of country">{{dat.name}}</ion-select-option>
             </ion-select> -->
             <ion-input type="text"  placeholder="Country" formControlName="country"> </ion-input>
+            <ion-button slot="end" fill="clear">
+            <ion-icon name="globe-outline"></ion-icon>
+               
+            </ion-button>
           </ion-item>
 
           <ion-item lines="none">
             <ion-select placeholder="Select Your State" formControlName="state" (ionChange)="getcity()">
               <ion-select-option  *ngFor="let dat of st">{{dat.name}}</ion-select-option>
             </ion-select>
+            <ion-button slot="end" fill="clear">
+              <ion-icon name="list-outline"></ion-icon>
+                
+              </ion-button>
           </ion-item>
 
-          <ion-item lines="none">
-            <ion-select placeholder="Select Your City" formControlName="city">
+          <ion-item lines="none"  *ngIf="myfun">
+            <ion-select placeholder="Select Your City" formControlName="city" >
               <ion-select-option  *ngFor="let dat of ci2 ">{{dat.name}}</ion-select-option>
             </ion-select>
+            <ion-button slot="end" fill="clear">
+              <ion-icon name="business-outline"></ion-icon>
+            </ion-button>
           </ion-item>
 
 
@@ -109,16 +120,22 @@
           </ion-select>
         </ion-item>
 
-        <ion-item lines="none">
-          <ion-input type="hidden" formControlName="file" value="{{imageSource}}" placeholder="{{imageSource}}"></ion-input>
-          <ion-button fill="clear"  (click)="opencam()"  >
+        <ion-item lines="none"  (click)="opencam()">
+         
+        <ion-text *ngIf="im1" color="success">Uploaded</ion-text>
+         
+          <ion-input type="hidden" formControlName="file" value="{{imageSource}}" placeholder="{{imageSource}}" ></ion-input>
+       
+          <ion-button fill="clear"   >
               <ion-icon size="small" name="attach-outline" slot="start"></ion-icon> Attach Front Photo
             </ion-button> 
         </ion-item>
 
-        <ion-item lines="none">
-        <ion-input type="hidden" formControlName="file" value="{{imageSource2}}" placeholder="{{imageSource2}}"></ion-input>
-          <ion-button fill="clear"  (click)="opencam()"  >
+        <ion-item lines="none" (click)="opencam2()" >
+        <ion-text *ngIf="im2" color="success">Uploaded</ion-text>
+
+        <ion-input type="hidden" formControlName="file2" value="{{imageSource2}}" placeholder="{{imageSource2}}"></ion-input>
+          <ion-button fill="clear"   >
               <ion-icon size="small" name="attach-outline" slot="start"></ion-icon> Attach Back Photo
             </ion-button> 
         </ion-item>
@@ -133,7 +150,7 @@
           <ion-button shape="round" expand="block" color="primary"  (click)="previousStep()" *ngIf="currentStep > 1">Previous <ion-icon name="arrow-back-outline" slot="end"></ion-icon></ion-button>
         </ion-col>
         <ion-col >
-          <ion-button shape="round" expand="block" color="primary" (click)="signup()" [disabled]="form.invalid">Next <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
+          <ion-button shape="round" expand="block" color="primary" (click)="signup()" [disabled]="form.invalid">Submit <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
         </ion-col>
       </ion-row>
     </ion-toolbar>
