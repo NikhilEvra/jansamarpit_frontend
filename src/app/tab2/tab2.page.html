@@ -19,48 +19,53 @@
     <ion-input type="hidden" formControlName="user_id" placeholder="{{getuserdata.u_id}}" value="{{getuserdata.u_id}}"></ion-input>
 
   <section class="inputbox">
-    <ion-text color="primary">Priority</ion-text>
+    <ion-text color="primary" translate>site.priority</ion-text>
     <ion-item lines="none">
       <ion-select interface="popover" formControlName="priority" placeholder="Select Priority ">
-        <ion-select-option  >High</ion-select-option>
-        <ion-select-option>Medium</ion-select-option>
-        <ion-select-option>Low</ion-select-option>
+        <ion-select-option  translate>site.priority1</ion-select-option>
+        <ion-select-option translate>site.priority2</ion-select-option>
+        <ion-select-option translate >site.priority3</ion-select-option>
       </ion-select>
     </ion-item>
   </section>
 
   <section class="inputbox">
-    <ion-text color="primary">State</ion-text>
+    <ion-text color="primary" translate>site.state</ion-text>
     <ion-item lines="none">
-      <ion-select interface="popover" formControlName="state" placeholder="Select Your State ">
-        <ion-select-option>Haryana</ion-select-option>
+      <ion-select placeholder="Select Your State" formControlName="state" (ionChange)="getcity()">
+        <ion-select-option  *ngFor="let dat of st">{{dat.name}}</ion-select-option>
       </ion-select>
     </ion-item>
+   
+
   </section>
 
-  <section class="inputbox">
-    <ion-text color="primary">City</ion-text>
+  <section class="inputbox"  *ngIf="myfun">
+    <ion-text color="primary" translate>site.city</ion-text>
     <ion-item lines="none">
-      <ion-select interface="popover" formControlName="city" placeholder="Select Your City ">
-        <ion-select-option>Faridabad</ion-select-option>
+      <ion-select placeholder="Select Your City" formControlName="city" >
+        <ion-select-option  *ngFor="let dat of ci2 ">{{dat.name}}</ion-select-option>
       </ion-select>
     </ion-item>
   </section>
 
   <section class="inputbox">
-    <ion-text color="primary">Remark</ion-text>
+    <ion-text color="primary" translate>site.remarks</ion-text>
     <ion-item lines="none">
       <ion-textarea rows="4" placeholder="Enter Remarks..." formControlName="remarks"></ion-textarea>
     </ion-item>
   </section>
-<ion-input type="text" formControlName="file" value="{{imageSource}}" placeholder="{{imageSource}}"></ion-input>
+<ion-input type="hidden" formControlName="file" value="{{imageSource}}" placeholder="{{imageSource}}"></ion-input>
 <ion-button fill="clear"  (click)="opencam()"  >
-    <ion-icon size="small" name="attach-outline" slot="start"></ion-icon> Attach Photo
+    <ion-icon size="small" name="attach-outline" slot="start"></ion-icon><ion-text translate>site.attachment</ion-text>
   </ion-button> 
+  <ion-text *ngIf="im2" color="success" translate >site.uploaded</ion-text>
 
     <ion-row>
     <ion-col >
-      <ion-button expand="block" shape="round" (click)="submit()" [disabled]="form.invalid" >Submit Compalint <ion-icon name="save-outline" slot="end"></ion-icon> </ion-button>
+      <ion-button expand="block" shape="round" (click)="submit()" [disabled]="form.invalid" >
+      <ion-text translate>site.submitcomplaint</ion-text> 
+       </ion-button>
     </ion-col>
   </ion-row>
 

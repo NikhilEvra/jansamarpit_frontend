@@ -1,12 +1,13 @@
 <ion-header mode="ios">
-  <ion-toolbar >
+  <ion-toolbar color="primary">
     <ion-title class="ion-text-center">
-      <ion-text color="primary" translate>site.appname</ion-text>
+      <ion-text translate>site.appname</ion-text>
     </ion-title>
    
     <ion-buttons slot="start">
       <ion-button id="click-trigger">
-        <ion-icon name="language-outline"></ion-icon>
+        <img src="assets/icon/languages.png" style="height: 30px;">
+
       </ion-button>
     </ion-buttons>
  
@@ -107,11 +108,11 @@
       <ion-card class="card" style="height: 120px;">
         <img src="https://static.vecteezy.com/system/resources/previews/014/309/418/original/poll-online-vote-icon-outline-style-vector.jpg">
       </ion-card>
-      <ion-text class="text" style="font-size: 11px;" translate>site.quicklink2</ion-text>
+      <ion-text class="text" style="font-size: 11px; font-weight: bold;" translate>site.quicklink2</ion-text>
     </ion-col>
   </ion-row>
 
-  <div class="br"></div>
+  <!-- <div class="br"></div> -->
 
   <!-- <ion-row>
     <ion-col class="ion-padding-start" style="display:flex;align-items:center">
@@ -195,9 +196,8 @@
     </ion-slide>
   </ion-slides> -->
 
-  <ion-row>
+  <!-- <ion-row>
     <ion-col class="ion-padding-start" style="display:flex;align-items:center">
-      <!-- <ion-text><b>Transactions</b></ion-text> -->
     </ion-col>
     <ion-col class="ion-text-right">
       <ion-button size="small" fill="clear" shape="round" class="ion-text-center">View More <ion-icon name="arrow-forward" slot="end"></ion-icon> </ion-button>
@@ -205,8 +205,7 @@
   </ion-row>
 
   <div *ngFor="let dat of post">
-    <!-- <ion-button size="small" color="primary" class="ion-padding-start">{{dat.date}}</ion-button> -->
-    <!-- <ion-chip [color]="dat.color"  style="margin-left:16px" class="ion-padding-start">{{dat.date}}</ion-chip> -->
+
     <ion-item lines="none"  class="ion-margin-start" style="padding: 5px;--border-radius: 8px;" color="light">
       <div slot="start"  [ngStyle]="{'background-color': dat.bg }" style="padding:10px;color:var(--ion-color-light);border-radius: 10px;">
       <ion-label style="text-align: center; padding-left: -10px;"> 12<br>Jan</ion-label>
@@ -216,15 +215,15 @@
         <p>{{dat.desc}}</p>
       </ion-label>
     </ion-item>
-  </div>
+  </div> -->
 
-  <ion-row>
+  <!-- <ion-row>
     <ion-col class="ion-padding-start" style="display:flex;align-items:center">
-      <!-- <ion-text><b>Winners</b></ion-text> -->
+     
     </ion-col>
-  </ion-row>
+  </ion-row> -->
 
-  <ion-slides #slides [options]="slideAchivement" pager="false" >
+  <!-- <ion-slides #slides [options]="slideAchivement" pager="false" >
     <ion-slide *ngFor="let dat of achivemnt">
       <div style="width:100%;border-radius: 8px;margin:10px;border:1px solid var(--ion-color-medium);margin-top:30px;margin-bottom:30px;box-shadow:2px 0px 9px #a89d9d;position:relative">
         <img src="assets/homepage/achvement.png" style="height:50px;width:50px;margin-top:-25px">
@@ -237,7 +236,6 @@
         <ion-row >
           <ion-col class="ion-text-center">
             <ion-text color="dark" style="font-size:90%;font-weight: 600;">{{dat.name}}</ion-text><br>
-            <!-- <ion-text color="medium" style="font-size:60%;font-weight: 600;">{{dat.stream}}</ion-text> -->
           </ion-col>
         </ion-row>
         <section style="min-height:100px;border-radius: 8px;background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmAD4xufpjqqFwsalkBDdefslsdotLRi-SYw&usqp=CAU);background-repeat: no-repeat;background-size: 100%;display: flex;align-items: center;justify-content: center;">
@@ -250,7 +248,7 @@
        
       </div>
     </ion-slide>
-  </ion-slides>
+  </ion-slides> -->
 
   
   <ion-row>

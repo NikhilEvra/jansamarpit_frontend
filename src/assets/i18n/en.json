@@ -12,7 +12,23 @@
         "tab1":"Dashboard",
         "tab2":"Complaints",
         "tab3":"Poll",
-        "tab4":"Technical Error"
+        "tab4":"Technical Error",
+        "volunteer":"Your Volunteer",
+        "priority":"Priority",
+        "state":"State",
+        "city":"City",
+        "remarks":"Remarks",
+        "attachment":"Attachment",
+        "priority1":"High",
+        "priority2":"Medium",
+        "priority3":"Low",
+        "submitcomplaint":"Submit Compalint",
+        "profile":"My Profile",
+        "uploaded":"Uploaded",
+        "mycomplaints":"My Complaints"
+
+
+
 
 
 

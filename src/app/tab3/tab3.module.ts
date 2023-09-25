@@ -7,6 +7,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab3PageRoutingModule } from './tab3-routing.module';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     ExploreContainerComponentModule,
     Tab3PageRoutingModule,
     NgApexchartsModule, 
+    TranslateModule
   ],
   declarations: [Tab3Page]
 })

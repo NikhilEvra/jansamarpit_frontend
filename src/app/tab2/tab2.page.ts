@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormGroupName, Validators } from '@angular/form
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType } from '@capacitor/camera';
+import { Country, State, City }  from 'country-state-city';
 
 @Component({
   selector: 'app-tab2',
@@ -30,12 +31,23 @@ export class Tab2Page {
   }];
   dayvalue:any=['21','22'];
   form! :FormGroup;
-  
+  im2 = false;
  
   USTEMP = localStorage.getItem('user');
 
   getuserdata: any=[];
   imageSource:any=[];
+  country:any=[];
+  states:any=[];
+  cities:any=[];
+  co:any=[];
+  st:any=[];
+  ci:any=[];
+  ci2:any=[];
+  st2:any=[];
+
+  myfun = false;
+
   constructor(
     private api : AttendanceService,
     private formb  : FormBuilder,
@@ -48,6 +60,28 @@ export class Tab2Page {
 
   ngOnInit() {
 this.initform();
+
+this.country = Country.getAllCountries();
+// console.log(this.country);
+this.co = this.country.name;
+
+this.states = State.getAllStates();
+// console.log(this.states);
+// var s = this.country;
+// const result = this.country.filter((s: { isoCode: string | string[]; }) => s.isoCode.includes('IN'));
+
+  this.st = this.states.filter((s: {
+  countryCode: any; isoCode: string | string[]; 
+  }) => s.countryCode.includes('IN'));
+
+  console.log(this.st);
+
+
+  this.cities = City.getAllCities();
+
+  this.ci = this.cities.filter((s: {
+  countryCode: any; isoCode: string | string[]; 
+  }) => s.countryCode.includes('IN'));
   }
 
   initform(){
@@ -142,8 +176,26 @@ this.initform();
      
       this.imageSource =  'data:image/jpeg;base64,' + image.base64String;
       console.log(this.imageSource);
-          
+      if(this.imageSource !) {
+        this.im2 = true;
+     }
     };
     takePicture();
+  }
+
+  getcity(){
+    this.st2 = this.st.filter((s: {
+      name: any; isoCode: string | string[]; 
+      }) => s.name.includes(this.form.value.state));
+  
+      console.log(this.st2[0].isoCode);
+  
+    this.ci2 = this.ci.filter((s: {
+      stateCode: any; isoCode: string | string[]; 
+      }) => s.stateCode.includes(this.st2[0].isoCode));
+      console.log(this.ci2);
+  
+      this.myfun = true;
+    
   }
 }

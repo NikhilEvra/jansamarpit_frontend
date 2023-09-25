@@ -22,20 +22,14 @@ const routes: Routes = [
     path: 'app',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  {
-    path: 'dashboard',
-    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
-  },
+  
  
   {
     path: 'test',
     loadChildren: () => import('./test/test.module').then( m => m.TestPageModule)
   },
 
-  {
-    path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
-  },
+ 
  
   {
     path: 'spinner',
@@ -44,10 +38,6 @@ const routes: Routes = [
   {
     path: 'interceptor',
     loadChildren: () => import('./interceptor/interceptor.module').then( m => m.InterceptorPageModule)
-  },
-  {
-    path: 'ad-dash',
-    loadChildren: () => import('./advertisement/ad-dash/ad-dash.module').then( m => m.AdDashPageModule)
   },
  
   {
