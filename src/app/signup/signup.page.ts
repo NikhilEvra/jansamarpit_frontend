@@ -55,7 +55,12 @@ export class SignupPage implements OnInit {
     name:'Driving Licence'
   },{
     name:'Pan Card'
+  },{
+    name:'Passport'
+  },{
+    name:'Voter Card'
   }]
+  
   dat:any=[];
   country:any=[];
   states:any=[];
@@ -93,7 +98,8 @@ export class SignupPage implements OnInit {
       city:['',Validators.required],
       id:['',Validators.required],
       file:[this.imageSource,Validators.required],
-      file2:[this.imageSource2,Validators.required]
+      file2:[this.imageSource2,Validators.required],
+      address:['',Validators.required]
 
 
     })

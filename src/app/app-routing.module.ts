@@ -48,6 +48,10 @@ const routes: Routes = [
     path: 'mycomplaints',
     loadChildren: () => import('./pages/mycomplaints/mycomplaints.module').then( m => m.MycomplaintsPageModule)
   },
+  {
+    path: 'volunteer',
+    loadChildren: () => import('./pages/volunteer/volunteer.module').then( m => m.VolunteerPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

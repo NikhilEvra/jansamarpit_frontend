@@ -47,24 +47,35 @@
 
 <ion-modal [isOpen]="isModalOpen" [initialBreakpoint]="0.5"  [backdropDismiss]="false" >
   <ng-template>
-    <ion-header>
-      <ion-toolbar color="light">
-        <ion-title color="primary" translate>site.profile</ion-title>
+    <ion-header >
+      <ion-toolbar color="light" color="primary">
+        <ion-title  translate>site.volunteer</ion-title>
         <ion-icon name="close-outline" (click)="setOpen(false)"></ion-icon>
-        
       </ion-toolbar>
-   
     </ion-header>
-    <ion-content class="ion-padding">
+    <ion-content class="ion-padding" >
      
+      <ion-row >
+        <ion-col class="ion-text-center quickLink"  >
+        
+          <ion-text class="text" style="font-size: 16px;" color="primary">You havent selected any volunteer yet!<br>
+          click below and select 
+        </ion-text>
+        </ion-col>
+      
+      </ion-row>
+
   <ion-row >
-    <ion-col size="6" *ngFor="let dat of quickLink" class="ion-text-center quickLink"  >
-      <ion-card class="card" style="height: 120px;">
+    <ion-col size="6" class="ion-text-center quickLink"  (click)="redirect()">
+      <ion-card class="card"  *ngFor="let dat of quickLink" >
         <img [src]="dat.icon">
       </ion-card>
-      <ion-text class="text" style="font-size: 11px;">{{dat.name}}</ion-text>
     </ion-col>
+  
   </ion-row>
+
+ 
+
 
     </ion-content>
   </ng-template>

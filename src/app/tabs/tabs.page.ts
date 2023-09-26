@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraResultType } from '@capacitor/camera';
 import { LoginService } from '../service/login/login.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
@@ -17,17 +18,14 @@ isModalOpen = false;
 quickLink: any = [
 
   {
-    icon: 'https://cdn-icons-png.flaticon.com/512/4726/4726268.png',
-    name: 'Subscription',
-  },
-  {
-    icon: 'https://gapio.in/wp-content/uploads/2022/05/1_4XRAX4obUOvMVqWibVCneQ.jpeg',
-    name: 'Donation ',
+    icon: 'https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg',
+    name: 'Profile',
   }
 ]
     constructor(
       private formb : FormBuilder,
-      private api : LoginService
+      private api : LoginService,
+      private router : Router
     ) {}
    
     initForm(){  
@@ -37,6 +35,9 @@ quickLink: any = [
     }
     ngOnInit() {
       this.initForm();
+    }
+    ionViewDidLeave(){
+      console.log('leave')
     }
     
   opencam(){
@@ -85,5 +86,18 @@ quickLink: any = [
     this.isModalOpen = isOpen;
   }
 
+  redirect(){
+    // console.log('yes')
+    this.router.navigateByUrl('/volunteer');
+
+    this.isModalOpen = false;
+    // console.log(this.isModalOpen)
+    // if(this.isModalOpen = false){
+    //   alert('y')
+    // this.router.navigateByUrl('/volunteer');
+
+    // }
+
+  }
 
 }

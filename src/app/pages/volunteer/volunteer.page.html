@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title  translate>site.choosevolunteer</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row >
+    <ion-col size="6" class="ion-text-center quickLink" *ngFor="let dat of volunteerdata" >
+      <ion-card class="card"   >
+        <img [src]="dat.img">
+      </ion-card>
+      <ion-text class="text" style="font-size: 11px;" color="primary">
+        {{dat.name}}
+      </ion-text>
+    </ion-col>
+  
+  </ion-row>
+
+
+</ion-content>

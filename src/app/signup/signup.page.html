@@ -68,10 +68,9 @@
             <!-- <ion-select placeholder="Select Your Country" formControlName="country">
               <ion-select-option  *ngFor="let dat of country">{{dat.name}}</ion-select-option>
             </ion-select> -->
-            <ion-input type="text"  placeholder="Country" formControlName="country"> </ion-input>
+            <ion-input type="text"  placeholder="Country" formControlName="country" readonly> </ion-input>
             <ion-button slot="end" fill="clear">
             <ion-icon name="globe-outline"></ion-icon>
-               
             </ion-button>
           </ion-item>
 
@@ -89,6 +88,14 @@
             <ion-select placeholder="Select Your City" formControlName="city" >
               <ion-select-option  *ngFor="let dat of ci2 ">{{dat.name}}</ion-select-option>
             </ion-select>
+            <ion-button slot="end" fill="clear">
+              <ion-icon name="business-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+
+
+          <ion-item lines="none"  *ngIf="myfun">
+            <ion-input type="email"  placeholder="Enter Your Address" formControlName="address"  > </ion-input>
             <ion-button slot="end" fill="clear">
               <ion-icon name="business-outline"></ion-icon>
             </ion-button>
