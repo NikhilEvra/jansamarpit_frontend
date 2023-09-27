@@ -14,8 +14,8 @@
   <ion-row style="position:absolute; bottom:0px;width:100%">
     <ion-col class="ion-text-center" size="12">
       <div >
-        <ion-label color="primary" style="font-weight:bold;">
-       Already have an account ?  <ion-text color="dark" (click)="openPage('/login1')">Login</ion-text></ion-label>
+        <ion-label color="primary" style="font-weight:bold;" translate >
+    site.haveaccount  <ion-text color="dark" (click)="openPage('/login1')" translate >site.login</ion-text></ion-label>
         <!-- <img src="assets/homepage/menu_icon.svg" > -->
       </div>
     </ion-col>
@@ -52,7 +52,7 @@
     <ion-toolbar >
       <ion-row >
         <ion-col >
-          <ion-button shape="round" expand="block" color="primary" (click)="nextStep()" *ngIf="currentStep < totalSteps">Next  <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+          <ion-button shape="round" expand="block" color="primary" (click)="nextStep()" *ngIf="currentStep < totalSteps" translate>site.next  <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
         
           </ion-button>
         </ion-col>
@@ -94,12 +94,7 @@
           </ion-item>
 
 
-          <ion-item lines="none"  *ngIf="myfun">
-            <ion-input type="email"  placeholder="Enter Your Address" formControlName="address"  > </ion-input>
-            <ion-button slot="end" fill="clear">
-              <ion-icon name="business-outline"></ion-icon>
-            </ion-button>
-          </ion-item>
+         
 
 
         </section>
@@ -108,16 +103,58 @@
       <ion-toolbar >
         <ion-row >
           <ion-col >
-            <ion-button shape="round" expand="block" color="primary"  (click)="previousStep()" *ngIf="currentStep > 1">Previous <ion-icon name="arrow-back-outline" slot="end"></ion-icon></ion-button>
+            <ion-button shape="round" expand="block" color="primary"  (click)="previousStep()" *ngIf="currentStep > 1" translate >site.previous  <ion-icon name="arrow-back-outline" slot="end"></ion-icon></ion-button>
           </ion-col>
           <ion-col >
-            <ion-button shape="round" expand="block" color="primary" (click)="nextStep()" *ngIf="currentStep < totalSteps" >Next <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
+            <ion-button shape="round" expand="block" color="primary" (click)="nextStep()" *ngIf="currentStep < totalSteps" translate >site.next <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
           </ion-col>
         </ion-row>
       </ion-toolbar>
    
   </div>
   <div *ngIf="currentStep === 3">
+    <ion-toolbar>
+      <section class="inputbox">
+   
+        <ion-item lines="none" >
+          <ion-input type="email"  placeholder="House Number" formControlName="address"  > </ion-input>
+          <ion-button slot="end" fill="clear">
+            <ion-icon name="business-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+
+        <ion-item lines="none" >
+          <ion-input type="email"  placeholder="Line 2" formControlName="address2"  > </ion-input>
+          <ion-button slot="end" fill="clear">
+            <ion-icon name="business-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+
+
+        <ion-item lines="none" >
+          <ion-input type="number"  placeholder="Enter Pin Code" formControlName="pincode"  > </ion-input>
+          <ion-button slot="end" fill="clear">
+            <ion-icon name="business-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+
+
+      </section>
+
+    </ion-toolbar>
+    <ion-toolbar >
+      <ion-row >
+        <ion-col >
+          <ion-button shape="round" expand="block" color="primary"  (click)="previousStep()" *ngIf="currentStep > 1" translate>site.previous <ion-icon name="arrow-back-outline" slot="end"></ion-icon></ion-button>
+        </ion-col>
+        <ion-col >
+          <ion-button shape="round" expand="block" color="primary" (click)="nextStep()" *ngIf="currentStep < totalSteps" translate >site.next <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+ 
+</div>
+  <div *ngIf="currentStep === 4">
     <ion-toolbar>
       <section class="inputbox">
    
@@ -129,21 +166,23 @@
 
         <ion-item lines="none"  (click)="opencam()">
          
-        <ion-text *ngIf="im1" color="success">Uploaded</ion-text>
+        <ion-text *ngIf="im1" color="success" translate >site.uploaded</ion-text>
          
           <ion-input type="hidden" formControlName="file" value="{{imageSource}}" placeholder="{{imageSource}}" ></ion-input>
        
           <ion-button fill="clear"   >
-              <ion-icon size="small" name="attach-outline" slot="start"></ion-icon> Attach Front Photo
+              <ion-icon size="small" name="attach-outline" slot="start"></ion-icon> 
+              <ion-text translate>site.attachfront</ion-text>
             </ion-button> 
         </ion-item>
 
         <ion-item lines="none" (click)="opencam2()" >
-        <ion-text *ngIf="im2" color="success">Uploaded</ion-text>
+        <ion-text *ngIf="im2" color="success" translate>site.uploaded</ion-text>
 
         <ion-input type="hidden" formControlName="file2" value="{{imageSource2}}" placeholder="{{imageSource2}}"></ion-input>
           <ion-button fill="clear"   >
-              <ion-icon size="small" name="attach-outline" slot="start"></ion-icon> Attach Back Photo
+              <ion-icon size="small" name="attach-outline" slot="start"></ion-icon>
+              <ion-text translate>site.attachback</ion-text>
             </ion-button> 
         </ion-item>
 
@@ -154,10 +193,10 @@
     <ion-toolbar >
       <ion-row >
         <ion-col >
-          <ion-button shape="round" expand="block" color="primary"  (click)="previousStep()" *ngIf="currentStep > 1">Previous <ion-icon name="arrow-back-outline" slot="end"></ion-icon></ion-button>
+          <ion-button shape="round" expand="block" color="primary"  (click)="previousStep()" *ngIf="currentStep > 1" translate >site.previous  <ion-icon name="arrow-back-outline" slot="end"></ion-icon></ion-button>
         </ion-col>
         <ion-col >
-          <ion-button shape="round" expand="block" color="primary" (click)="signup()" [disabled]="form.invalid">Submit <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
+          <ion-button shape="round" expand="block" color="primary" (click)="signup()" [disabled]="form.invalid" translate >site.submit <ion-icon name="log-in-outline" slot="end"></ion-icon></ion-button>
         </ion-col>
       </ion-row>
     </ion-toolbar>
@@ -210,7 +249,7 @@
 
         <ion-row>
           <ion-col >
-            <ion-button expand="block" shape="round" (click)="checkOtp()" [disabled]="form2.invalid">Submit  </ion-button>
+            <ion-button expand="block" shape="round" (click)="checkOtp()" [disabled]="form2.invalid" translate >site.submit  </ion-button>
           </ion-col>
         </ion-row>
       </form>

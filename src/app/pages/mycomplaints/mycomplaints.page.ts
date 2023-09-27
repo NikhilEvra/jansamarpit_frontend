@@ -9,16 +9,23 @@ import Swal from 'sweetalert2';
 })
 export class MycomplaintsPage implements OnInit {
 mycomplaints:any=[];
+USTEMP = localStorage.getItem('user');
+getuserdata: any=[];
+
   constructor(
     private api : ComplaintService,
-  ) { }
+  ) {  if (this.USTEMP) {
+    this.getuserdata = JSON.parse(this.USTEMP) ;
+  } }
 
   ngOnInit() {
     this.complaints();
   }
 
   complaints(){
-  this.api.get_complaints().subscribe({
+
+    const dat = {'u_id' : this.getuserdata.u_id};
+  this.api.get_complaints(dat).subscribe({
     next:(data) =>{
       console.log(data); 
       this.mycomplaints = data;  
@@ -27,7 +34,7 @@ mycomplaints:any=[];
       Swal.fire({
         'imageUrl' :'assets/icon/login.gif',
         'imageHeight':'100px', 
-        'title': 'Invalid Phone Number',
+        'title': 'Internal server error',
          heightAuto: false , 
          timer: 3000
         });

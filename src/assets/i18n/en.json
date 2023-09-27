@@ -26,7 +26,26 @@
         "profile":"My Profile",
         "uploaded":"Uploaded",
         "mycomplaints":"My Complaints",
-        "choosevolunteer":"Volunteer"
+        "choosevolunteer":"Volunteer",
+        "signup":"Sign Up",
+        "didnthaveaccount":"Didn't have an account ?",
+        "submit":"Submit",
+        "previous":"Previous",
+        "next":"Next",
+        "attachfront":"Attach Front Photo",
+        "attachback":"Attach Back Photo",
+        "haveaccount":"Already have an account ?",
+        "login":"Login",
+        "changelanguage":"Change Language",
+        "approved":"Approved",
+        "active":"Active",
+        "inactive":"In Active"
+
+
+
+
+
+        
 
 
 

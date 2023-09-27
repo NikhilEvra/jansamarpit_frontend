@@ -8,7 +8,7 @@
   
   <ion-slides #slides pager="true" autoplay="1000" loop="true" speed="300" >
     <ion-slide *ngFor="let dat of loginbanner" >
-      <div style="width:100%;height:500px;">
+      <div style="width:100%;height:450px;">
         <img [src]="dat.url" style="height:80%;width:100%; border-radius: 15px;">
         <br>
         <ion-label color="primary" style="font-weight:bold;">  {{dat.heading}} <br></ion-label>
@@ -18,12 +18,28 @@
     
     </ion-slide>
   </ion-slides>
+  
+  <!-- <ion-button id="click-trigger">
+    <img src="assets/icon/languages.png" style="height: 30px;">
 
+  </ion-button> -->
+  <ion-popover trigger="click-trigger1" triggerAction="click" >
+    <ng-template>
+      <ion-radio-group  (ionChange)="OnlanguageChange($event)">
+        <ion-item *ngFor="let lat of addlanguageList">
+          <ion-label> {{lat.text}}</ion-label>
+          <ion-radio mode="ios" value="{{lat.code}}"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ng-template>
+  </ion-popover>
   <ion-row >
     <ion-col class="ion-text-center" size="12">
       <div >
-        <ion-label color="primary" style="font-weight:bold;">Jansamarpit <br></ion-label>
-       <ion-label> Didn't have an account ? <ion-text color="primary" (click)="redirect('/signup')">Sign Up</ion-text></ion-label>
+        <ion-label color="primary" style="font-weight:bold;" translate >site.appname<br>
+           <ion-text color="primary" id="click-trigger1" translate >site.changelanguage   <img src="assets/icon/languages.png" style="height: 20px;"></ion-text>
+          <br></ion-label>
+       <ion-label translate > site.didnthaveaccount <ion-text color="primary" (click)="redirect('/signup')" translate >site.signup</ion-text></ion-label>
       </div>
     </ion-col>
   </ion-row>
@@ -39,7 +55,7 @@
 
   <ion-row>
     <ion-col >
-      <ion-button expand="block" shape="round" (click)="submit()" [disabled]="form.invalid" >Submit  <ion-spinner color="light" *ngIf="show"></ion-spinner></ion-button>
+      <ion-button expand="block" shape="round" (click)="submit()" [disabled]="form.invalid" translate >site.submit  <ion-spinner color="light" *ngIf="show"></ion-spinner></ion-button>
     </ion-col>
   </ion-row>
   </form>
@@ -79,7 +95,7 @@
 
         <ion-row>
           <ion-col >
-            <ion-button expand="block" shape="round" (click)="validate_otp()" [disabled]="form2.invalid">Submit  </ion-button>
+            <ion-button expand="block" shape="round" (click)="validate_otp()" [disabled]="form2.invalid" translate >site.submit  </ion-button>
           </ion-col>
         </ion-row>
       </form>

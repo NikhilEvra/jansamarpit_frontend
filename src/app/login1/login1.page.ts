@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { LoginService } from '../service/login/login.service';
+import { ActionSheetController, AlertController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login1',
@@ -30,16 +32,32 @@ res2:any=[];
 dat1:any=[];
 
 isModalOpen = false;
+handlerMessage = '';
+roleMessage = '';
+
+addlanguageList=[
+  {code:"en",title:"english",text:"english"},
+  {code:"hi",title:"hindi",text:"हिंदी"},
+
+];
+
   constructor(
     private router : Router,
     private formb : FormBuilder,
-    private api : LoginService
-  ) { }
+    private api : LoginService,
+    private translate : TranslateService,
+    // private alertController: ActionSheetController,
+    private alertController: AlertController
+  ) {
+    this.translate.setDefaultLang('en');
+    this.translate.addLangs(['en','hi']);
+   }
 
   ngOnInit() {
 
     this.initForm();
     this.initForm2();
+    // this.presentActionSheet();
 
 
   }
@@ -172,4 +190,44 @@ startTimer() {
     this.router.navigateByUrl(url);
   }
 
+  async presentActionSheet() {
+    const alert = await this.alertController.create({
+      header: 'Choose Your Language',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            this.handlerMessage = 'Alert canceled';
+          },
+        },
+        {
+          text: 'Hindi',
+          role: 'Hindi',
+          handler: () => {
+            this.handlerMessage = 'Hindi';
+          },
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+            // this.submit();
+            // console.log('yes')
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    this.roleMessage = `Dismissed with role: ${role}`;
+  }
+
+  OnlanguageChange(event:any){
+    this.translate.use(event.target.value ?  event.target.value : "en");
+  // this.popovercontroller.dismiss();
+
+    }
 }

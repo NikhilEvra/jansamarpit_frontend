@@ -26,7 +26,22 @@
         "profile":"मेरी प्रोफाइल",
         "uploaded":"सफलतापूर्वक अपलोड किया गया",
         "mycomplaints":"मेरी शिकायतें",
-        "choosevolunteer":"स्वयंसेवक"
+        "choosevolunteer":"स्वयंसेवक",
+        "signup":"साइन अप करें",
+        "didnthaveaccount":"कोई खाता नहीं है ?",
+        "submit":"सबमिट करें",
+        "previous":"पिछला",
+        "next":"अगला",
+        "attachfront":"सामने का फोटो संलग्न करें",
+        "attachback":"पीछे की फ़ोटो संलग्न है",
+        "haveaccount":"खाता मौजूद है ?",
+        "login":"लॉग इन करें",
+        "changelanguage":"भाषा बदलें",
+        "approved":"अनुमत",
+        "active":"सक्रिय",
+        "inactive":"गैर सक्रिय"
+       
+
 
 
     }

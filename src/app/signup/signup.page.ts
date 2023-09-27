@@ -25,7 +25,7 @@ export class SignupPage implements OnInit {
   isModalOpen = false;
 
   currentStep = 1;
-  totalSteps = 3;
+  totalSteps = 4;
 
   homeBanner: any = [{
     url: 'https://evramedia.com/apifolder/catalog/13.png'
@@ -99,7 +99,10 @@ export class SignupPage implements OnInit {
       id:['',Validators.required],
       file:[this.imageSource,Validators.required],
       file2:[this.imageSource2,Validators.required],
-      address:['',Validators.required]
+      address:['',Validators.required],
+      pincode:['',Validators.required],
+      address2:['',Validators.required],
+
 
 
     })

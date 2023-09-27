@@ -11,9 +11,10 @@ export class ComplaintService {
     private api : HttpClient,
   ) { }
 
-  get_complaints():Observable<any>{
-    return this.api.get<any>('http://localhost:3000/api/v1/auth/get_complaints');
+  get_complaints(data:any):Observable<any>{
+    return this.api.post<any>('http://localhost:3000/api/v1/auth/get_complaints' , data);
   }
+
   // :Observable<any> {
   //   return this.api.post<any>('http://localhost:3000/api/v1/auth/login',  phone);
   // }
