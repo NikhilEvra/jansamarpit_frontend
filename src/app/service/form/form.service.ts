@@ -24,4 +24,7 @@ export class FormService {
   get_volunteers(data:any):Observable<any>{
     return this.api.post<any>( 'http://localhost:3000/api/v1/auth/get_volunteer' , data);
   }
+  get_complaint_by_id(data:any):Observable<any>{
+    return this.api.post<any>( 'http://localhost:3000/api/v1/auth/get_complaint_by_id' , data);
+  }
 }

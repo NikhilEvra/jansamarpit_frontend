@@ -19,6 +19,13 @@
     <ion-input type="hidden" formControlName="user_id" placeholder="{{getuserdata.u_id}}" value="{{getuserdata.u_id}}"></ion-input>
 
   <section class="inputbox">
+    <ion-text color="primary" translate>site.topic</ion-text>
+    <ion-item lines="none">
+    <ion-input type="text" placeholder="Enter Topic" formControlName="topic"></ion-input>
+    </ion-item>
+  </section>
+
+  <section class="inputbox">
     <ion-text color="primary" translate>site.priority</ion-text>
     <ion-item lines="none">
       <ion-select interface="popover" formControlName="priority" placeholder="Select Priority ">

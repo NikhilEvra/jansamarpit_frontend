@@ -93,6 +93,7 @@ this.states = State.getAllStates();
       remarks:['',Validators.required],
       file:[this.imageSource],
       user_id:[this.getuserdata.u_id],
+      topic:['',Validators.required]
     })
   }
   getattendance(){

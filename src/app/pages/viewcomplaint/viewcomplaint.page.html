@@ -1,0 +1,51 @@
+<ion-header mode="ios">
+  <ion-toolbar color="primary">
+    <ion-title   >{{idd.id}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #a07a07;background-color:#f1c84b ; margin:10px" *ngFor="let dat of mycomplaints">
+    <ion-row>
+      <ion-col >
+        <h6> 
+          <ion-text color="dark">{{dat.topic}}</ion-text> &nbsp;&nbsp;&nbsp;&nbsp;
+          <button style="padding:5px 8px;color:white;border-radius:10px;font-size:80%"  [ngStyle]="{'background-color': 'red'}"> {{dat.priority}} </button>
+         </h6>
+<!--  
+        <ion-text style="font-size:65%;margin-left:10px;">State : {{dat.state}}  City : {{dat.district}}</ion-text> -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h6><ion-text color="dark">State : {{dat.state}}</ion-text> </h6>
+
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <h6><ion-text color="dark"> City : {{dat.district}}</ion-text> </h6>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button size="small" shape="round"    >{{dat.status}}</ion-button>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <ion-button size="small" shape="round" translate>site.approved</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button fill="clear" size="small" color=dark> 
+          <ion-icon name="time-outline"></ion-icon> &nbsp;
+          {{dat.date}} - {{dat.time}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+</ion-content>

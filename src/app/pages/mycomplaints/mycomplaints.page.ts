@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { ComplaintService } from 'src/app/service/complaints/complaint.service';
 import Swal from 'sweetalert2';
 
@@ -14,6 +15,7 @@ getuserdata: any=[];
 
   constructor(
     private api : ComplaintService,
+    private router : Router
   ) {  if (this.USTEMP) {
     this.getuserdata = JSON.parse(this.USTEMP) ;
   } }
@@ -45,5 +47,14 @@ getuserdata: any=[];
      }
     });
   }
+  redirect(id:any){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        id:id
+      }
+    };
 
+    this.router.navigate(['/viewcomplaint'], navigationExtras);
+  
+  }
 }

@@ -1,5 +1,5 @@
 <ion-tabs>
-  <ion-fab vertical="bottom" horizontal="center" translucent="true"(click)="setOpen(true)" expand="block"  >
+  <ion-fab vertical="bottom" horizontal="center" translucent="true" id="open-modal" expand="block"  >
     <ion-fab-button fill="outline" >
       <ion-icon name="add"></ion-icon>
     </ion-fab-button> 
@@ -7,44 +7,34 @@
 
   <ion-tab-bar slot="bottom" class="ion-no-border">
     <ion-tab-button tab="tab1">
+      <ion-badge color="primary">22k</ion-badge>
       <img src="assets/icon/dashboard.png" style="height: 30px;">
 
       <!-- <ion-label>Home</ion-label> -->
     </ion-tab-button>
     <ion-tab-button tab="tab2" class="comments">
+      <ion-badge color="primary">22k</ion-badge>
       <img src="assets/icon/report.png" style="height: 30px;">
 
       <!-- <ion-label> dd </ion-label> -->
     </ion-tab-button>
     <svg height="50" viewBox="0 0 100 50"  xmlns="http://www.w3.org/2000/svg" ><path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z" fill="red" fill-rule="evenodd"></path></svg>
     <ion-tab-button tab="tab3" class="notifs">
+      <ion-badge color="primary">22k</ion-badge>
       <img src="assets/icon/poll.png" style="height: 30px;">
 
       <!-- <ion-label>Poll's</ion-label> -->
     </ion-tab-button>
     
     <ion-tab-button tab="tab4">
+      <ion-badge color="primary">22k</ion-badge>
       <img src="assets/icon/customer-support.png" style="height: 30px;">
 
     <!-- <ion-label>d</ion-label> -->
     </ion-tab-button>
   </ion-tab-bar>
 
-  <ion-modal
-  trigger="open-modal"
-  [initialBreakpoint]="0.5"
-
-  handleBehavior="cycle"
->
-  <ng-template>
-    <ion-content class="ion-padding"><ion-icon name="close-circle-outline"></ion-icon>
-      <div class="ion-margin-top">
-        <ion-label>Click the handle above to advance to the next breakpoint.</ion-label>
-      </div>
-    </ion-content>
-  </ng-template>
-</ion-modal>
-
+<!-- 
 <ion-modal [isOpen]="isModalOpen" [initialBreakpoint]="0.5"  [backdropDismiss]="false" >
   <ng-template>
     <ion-header >
@@ -67,6 +57,44 @@
 
   <ion-row >
     <ion-col size="6" class="ion-text-center quickLink"  (click)="redirect()">
+      <ion-card class="card"  *ngFor="let dat of quickLink" >
+        <img [src]="dat.icon">
+      </ion-card>
+    </ion-col>
+  
+  </ion-row>
+
+ 
+
+
+    </ion-content>
+  </ng-template>
+</ion-modal> -->
+
+<ion-modal #modal trigger="open-modal"  [initialBreakpoint]="0.5" >
+ 
+
+  <ng-template>
+    <ion-header >
+      <ion-toolbar color="light" color="primary">
+        <ion-title  translate style="text-align: center;">site.volunteer</ion-title>
+        <ion-icon name="close-outline" (click)="modal.dismiss()"></ion-icon>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding" >
+     
+      <ion-row >
+        <ion-col class="ion-text-center quickLink"  >
+        
+          <ion-text class="text" style="font-size: 16px;" color="primary">You havent selected any volunteer yet!<br>
+          click below and select 
+        </ion-text>
+        </ion-col>
+      
+      </ion-row>
+
+  <ion-row >
+    <ion-col size="6" class="ion-text-center quickLink"  (click)="redirect()" (click)="modal.dismiss()">
       <ion-card class="card"  *ngFor="let dat of quickLink" >
         <img [src]="dat.icon">
       </ion-card>

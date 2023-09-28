@@ -52,6 +52,10 @@ const routes: Routes = [
     path: 'volunteer',
     loadChildren: () => import('./pages/volunteer/volunteer.module').then( m => m.VolunteerPageModule)
   },
+  {
+    path: 'viewcomplaint',
+    loadChildren: () => import('./pages/viewcomplaint/viewcomplaint.module').then( m => m.ViewcomplaintPageModule)
+  },
   // {
   //   path: 'tab4',
   //   loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)

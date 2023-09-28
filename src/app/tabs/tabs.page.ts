@@ -18,10 +18,13 @@ isModalOpen = false;
 quickLink: any = [
 
   {
-    icon: 'https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg',
+    icon: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
     name: 'Profile',
   }
-]
+];
+async canDismiss(data?: any, role?: string) {
+  return role !== 'gesture';
+}
     constructor(
       private formb : FormBuilder,
       private api : LoginService,
@@ -31,13 +34,15 @@ quickLink: any = [
     initForm(){  
       this.form = this.formb.group({    
         file: ['', Validators.required],      
-      })
+      });
     }
+
     ngOnInit() {
       this.initForm();
     }
+
     ionViewDidLeave(){
-      console.log('leave')
+      console.log('leave');
     }
     
   opencam(){
@@ -87,10 +92,8 @@ quickLink: any = [
   }
 
   redirect(){
-    // console.log('yes')
+  
     this.router.navigateByUrl('/volunteer');
-
-    this.isModalOpen = false;
     // console.log(this.isModalOpen)
     // if(this.isModalOpen = false){
     //   alert('y')

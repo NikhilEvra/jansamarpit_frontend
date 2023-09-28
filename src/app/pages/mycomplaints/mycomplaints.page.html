@@ -9,20 +9,18 @@
 
 <ion-content>
 
-  <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #a07a07;background-color:#f1c84b  ; margin:10px" *ngFor="let dat of mycomplaints">
+  <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #a07a07;background-color:#f1c84b  ; margin:10px" *ngFor="let dat of mycomplaints"
+>
     <ion-row>
       <ion-col >
-        <h5><ion-text color="dark">{{dat.admin}}</ion-text> </h5>
+        <h6><ion-text color="dark">{{dat.complaint_id}}</ion-text> </h6>
         <button style="padding:5px 8px;color:white;border-radius:10px;font-size:80%"  [ngStyle]="{'background-color': 'red'}"> {{dat.priority}} </button>
         <ion-text style="font-size:65%;margin-left:10px;"> {{dat.date}} - {{dat.time}}</ion-text>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button fill="clear" size="small" color=dark> 
-          <ion-icon name="person-circle-outline" slot=start></ion-icon>
-            {{dat.name}}  
-        </ion-button>
+        <ion-button size="small" shape="round"   (click)="redirect(dat.complaint_id)" translate>site.view</ion-button>
       </ion-col>
       <ion-col class="ion-text-right">
         <ion-button size="small" shape="round" translate>site.approved</ion-button>
@@ -31,8 +29,8 @@
     <ion-row>
       <ion-col>
         <ion-button fill="clear" size="small" color=dark> 
-          <ion-icon name="location-outline" slot="start"></ion-icon>
-            {{dat.state}}  {{dat.district}}
+          <ion-icon name="time-outline"></ion-icon> &nbsp;
+          {{dat.date}} - {{dat.time}}
         </ion-button>
       </ion-col>
     </ion-row>

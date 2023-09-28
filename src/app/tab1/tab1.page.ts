@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 // import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions  } from '@awesome-cordova-plugins/media-capture/ngx';
 import { App } from '@capacitor/app';
-import { Platform, PopoverController } from '@ionic/angular';
+import {Platform, PopoverController } from '@ionic/angular';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -204,6 +204,7 @@ export class Tab1Page {
 
   ];
 
+ 
   img1:any=['https://hist1.latestly.com/wp-content/uploads/2022/09/PM-Modi1.jpg'];
 
   constructor(
@@ -226,7 +227,6 @@ export class Tab1Page {
   }
 
   ngOnInit(){
-
     this.birthday.forEach(function (value:any) {
     // console.log(value);
           if(value.name == 'deepak'){
@@ -266,5 +266,20 @@ export class Tab1Page {
   // this.popovercontroller.dismiss();
 
     }
+    redirect(){
+      // console.log('yes')
+    
+  
+    
+      this.router.navigateByUrl('/volunteer');
+      // console.log(this.isModalOpen)
+      // if(this.isModalOpen = false){
+      //   alert('y')
+      // this.router.navigateByUrl('/volunteer');
+  
+      // }
+  
+    }
 
+   
 }
