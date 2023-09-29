@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormService } from 'src/app/service/form/form.service';
 import Swal from 'sweetalert2';
 
@@ -25,10 +26,19 @@ export class VolunteerPage implements OnInit {
     img:'https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg'
   }];
 
+  USTEMP = localStorage.getItem('user');
+  getuserdata: any=[];
+
+
   volunteerdata:any=[];
   constructor(
-    private api : FormService
-  ) { }
+    private api : FormService,
+    private router : Router
+  ) { 
+    if (this.USTEMP) {
+      this.getuserdata = JSON.parse(this.USTEMP) ;
+    }
+  }
 
   ngOnInit() {
     this.getvolunteers();
@@ -46,7 +56,7 @@ export class VolunteerPage implements OnInit {
         Swal.fire({
           'imageUrl' :'assets/icon/login.gif',
           'imageHeight':'100px', 
-          'title': 'Invalid Phone Number',
+          'title': 'Internal Server Error',
            heightAuto: false , 
            timer: 3000
           });
@@ -54,6 +64,31 @@ export class VolunteerPage implements OnInit {
       complete:() =>{
       
        
+       }
+      });
+
+  }
+
+  select(name:any){
+  
+    const data  =  {"volunteer":name,"u_id":this.getuserdata.u_id};
+    this.api.post_volunteer(data).subscribe({
+      next:(data) =>{
+        console.log(data); 
+       
+      },
+      error:() =>{
+        Swal.fire({
+          'imageUrl' :'assets/icon/login.gif',
+          'imageHeight':'100px', 
+          'title': 'Internal server Error',
+           heightAuto: false , 
+           timer: 3000
+          });
+      },
+      complete:() =>{
+      
+       this.router.navigateByUrl('/app/tabs/tab1')
        }
       });
 

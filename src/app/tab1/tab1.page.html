@@ -1,4 +1,4 @@
-<ion-header mode="ios">
+<ion-header mode="ios" #header>
   <ion-toolbar color="primary">
     <ion-title class="ion-text-center">
       <ion-text translate>site.appname</ion-text>
@@ -24,8 +24,9 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-<ion-content scrollEvents="true" [fullscreen]="true" >
+<!-- scrollEvents="true" (ionScroll)='onContentScroll($event)' --> 
+<!-- scrolling attributes to hide header -->
+<ion-content scrollEvents="true" [fullscreen]="true"  >
  
   <ion-popover trigger="click-trigger" triggerAction="click" >
     <ng-template>
@@ -104,13 +105,15 @@
         site.quicklink1 
       </ion-text>
     </ion-col>
-    <ion-col size="6"  class="ion-text-center quickLink"   >
+    <ion-col size="6"  class="ion-text-center quickLink" (click)="openPage('/app/tabs/tab3')"  >
       <ion-card class="card" style="height: 120px;">
         <img src="https://static.vecteezy.com/system/resources/previews/014/309/418/original/poll-online-vote-icon-outline-style-vector.jpg">
       </ion-card>
       <ion-text class="text" style="font-size: 11px; font-weight: bold;" translate>site.quicklink2</ion-text>
     </ion-col>
   </ion-row>
+
+  
 
   <!-- <div class="br"></div> -->
 

@@ -27,4 +27,10 @@ export class FormService {
   get_complaint_by_id(data:any):Observable<any>{
     return this.api.post<any>( 'http://localhost:3000/api/v1/auth/get_complaint_by_id' , data);
   }
+  post_volunteer(data:any):Observable<any>{
+    return this.api.post<any>( 'http://localhost:3000/api/v1/auth/post_volunteer_by_id' , data);
+  }
+  get_volunteer_by_id(data:any):Observable<any>{
+    return this.api.post<any>( 'http://localhost:3000/api/v1/auth/get_volunteer_by_id' , data);
+  }
 }

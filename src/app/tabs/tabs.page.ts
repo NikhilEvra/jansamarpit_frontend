@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraResultType } from '@capacitor/camera';
 import { LoginService } from '../service/login/login.service';
 import { Router } from '@angular/router';
+import { FormService } from '../service/form/form.service';
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
@@ -13,8 +14,13 @@ export class TabsPage {
   binaryData:any=[];
 
   form! :FormGroup;
-dat:any=[];
-isModalOpen = false;
+  dat:any=[];
+  isModalOpen = false;
+
+USTEMP = localStorage.getItem('user');
+getuserdata: any=[];
+
+
 quickLink: any = [
 
   {
@@ -28,8 +34,13 @@ async canDismiss(data?: any, role?: string) {
     constructor(
       private formb : FormBuilder,
       private api : LoginService,
-      private router : Router
-    ) {}
+      private router : Router,
+      private api2 : FormService
+    ) {
+      if (this.USTEMP) {
+        this.getuserdata = JSON.parse(this.USTEMP) ;
+      }
+    }
    
     initForm(){  
       this.form = this.formb.group({    
@@ -39,6 +50,7 @@ async canDismiss(data?: any, role?: string) {
 
     ngOnInit() {
       this.initForm();
+      this.get_volunteer_by_id();
     }
 
     ionViewDidLeave(){
@@ -103,4 +115,24 @@ async canDismiss(data?: any, role?: string) {
 
   }
 
+  get_volunteer_by_id(){
+    const dat = {"u_id":this.getuserdata.u_id}
+    this.api2.get_volunteer_by_id(dat).subscribe({
+      next:(data:any) =>{
+        console.log(data);
+       
+    
+      },
+      error:() =>{
+       
+      
+      },
+      complete:() =>{
+       
+     
+       
+      }
+    })
+  
+  }
 }

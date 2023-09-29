@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 // import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions  } from '@awesome-cordova-plugins/media-capture/ngx';
 import { App } from '@capacitor/app';
@@ -12,6 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  @ViewChild("header") header: HTMLElement | any;
   homeBanner: any = [{
     url: 'https://images2.minutemediacdn.com/image/upload/c_fill,w_1440,ar_16:9,f_auto,q_auto,g_auto/shape/cover/sport/istock-000039944040-small-ac98584642f4e4c167d378ac500b3485.jpg'
   },{
@@ -193,7 +194,6 @@ export class Tab1Page {
   }]
 
   dataView:any=[];
-  header: any;
 
   USTEMP = localStorage.getItem('user');
 
@@ -213,7 +213,9 @@ export class Tab1Page {
     private translate : TranslateService,
     private popovercontroller : PopoverController,
     // private camera: Camera,
-    public platform: Platform
+    public platform: Platform,
+    public element: ElementRef, 
+    public renderer: Renderer2
     
   ) {
     this.translate.setDefaultLang('en');
@@ -280,6 +282,16 @@ export class Tab1Page {
       // }
   
     }
-
+    ionViewWillEnter() {
+      this.renderer.setStyle(this.header['el'], 'webkitTransition', 'top 700ms');
+    }
+  
+    onContentScroll(event:any) {
+      if (event.detail.scrollTop >= 50) {
+        this.renderer.setStyle(this.header['el'], 'top', '-76px');
+      } else {
+        this.renderer.setStyle(this.header['el'], 'top', '0px');
+      }
+    }
    
 }

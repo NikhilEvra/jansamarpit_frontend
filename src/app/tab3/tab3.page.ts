@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PollService } from '../service/poll/poll.service';
 
 @Component({
   selector: 'app-tab3',
@@ -17,17 +18,17 @@ export class Tab3Page {
     name: 'AAAA',
     status: 'Resolved',
     date: '100',
-    bg: '#B0CCBB',
+    bg: '#f1c84b',
   },{
     name: 'BBBB',
     status: 'Resolved',
     date: '90',
-    bg: '#EFFCFA',
+    bg: '#f1c84b',
   },{
     name: 'CCCC',
     status: 'Resolved',
     date: '45',
-    bg: '#B0CCBB',
+    bg: '#f1c84b',
   }];
 
   title : any;
@@ -60,9 +61,14 @@ export class Tab3Page {
     clg: 'Deen Dayal College'
   }];
 
-  constructor() {}
+  question :any=[];
+  answers:any=[];
+  constructor(
+    private api : PollService
+  ) {}
   ngOnInit() {
     this.chart1();
+    this.get_poll();
     
   }
 
@@ -79,5 +85,49 @@ export class Tab3Page {
       type : 'line'
     };
 
+  }
+
+  get_poll(){
+    this.api.get_question().subscribe({
+      next:(data:any) =>{
+        console.log(data);
+        this.question = data;
+       
+    
+      },
+      error:() =>{
+       
+      
+      },
+      complete:() =>{
+       
+     
+       
+      }
+    })
+  
+  }
+
+  
+  get_answers(){
+    const que = {"q_id" : this.question}
+    this.api.get_question().subscribe({
+      next:(data:any) =>{
+        console.log(data);
+        this.answers = data;
+       
+    
+      },
+      error:() =>{
+       
+      
+      },
+      complete:() =>{
+       
+     
+       
+      }
+    })
+  
   }
 }
