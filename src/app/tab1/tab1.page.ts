@@ -14,19 +14,20 @@ import { TranslateService } from '@ngx-translate/core';
 export class Tab1Page {
   @ViewChild("header") header: HTMLElement | any;
   homeBanner: any = [{
-    url: 'https://images2.minutemediacdn.com/image/upload/c_fill,w_1440,ar_16:9,f_auto,q_auto,g_auto/shape/cover/sport/istock-000039944040-small-ac98584642f4e4c167d378ac500b3485.jpg'
-  },{
-    url: 'https://www.punekarnews.in/wp-content/uploads/2022/03/Politics.jpg'
+    url: 'assets/home_banner/1.png'
+  
+    },{
+    url: 'assets/home_banner/2.png'
   }];
 
   quickLink: any = [
     {
-      icon: 'https://cdn-icons-png.flaticon.com/512/1997/1997427.png',
+      icon: 'assets/icon/1.png',
       name: 'Complaints',
       url: '/mycomplaints'
     },
     {
-      icon: 'https://static.vecteezy.com/system/resources/previews/014/309/418/original/poll-online-vote-icon-outline-style-vector.jpg',
+      icon: 'assets/icon/2.png',
       name: 'Polls',
       url: ''
     },
@@ -43,7 +44,7 @@ export class Tab1Page {
   slideServiceReport = {
     initialSlide: 0,
     slidesPerView: 1.1,
-    autoplay: false
+    autoplay: true
   };
   slideTodaySpl = {
     initialSlide: 0,

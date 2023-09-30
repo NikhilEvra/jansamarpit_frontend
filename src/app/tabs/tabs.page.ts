@@ -20,6 +20,8 @@ export class TabsPage {
 USTEMP = localStorage.getItem('user');
 getuserdata: any=[];
 
+complaintcount:any=[];
+techerror_count:any=[];
 
 quickLink: any = [
 
@@ -51,6 +53,8 @@ async canDismiss(data?: any, role?: string) {
     ngOnInit() {
       this.initForm();
       this.get_volunteer_by_id();
+      this.dashdata();
+      this.dashdata2();
     }
 
     ionViewDidLeave(){
@@ -130,6 +134,45 @@ async canDismiss(data?: any, role?: string) {
       complete:() =>{
        
      
+       
+      }
+    })
+  
+  }
+
+  dashdata(){
+    const uid = {"u_id":this.getuserdata.u_id};
+    this.api.get_dash_data(uid).subscribe({
+      next:(data:any) =>{
+        console.log(data);
+        this.complaintcount = data.message[0].count;
+        
+      
+      },
+      error:() =>{
+             
+      },
+      complete:() =>{
+       
+      }
+    })
+  
+  }
+
+  
+  dashdata2(){
+    const uid = {"u_id":this.getuserdata.u_id};
+    this.api.get_dash_data2(uid).subscribe({
+      next:(data:any) =>{
+        console.log(data);
+        this.techerror_count = data.message[0].count;
+        
+      
+      },
+      error:() =>{
+             
+      },
+      complete:() =>{
        
       }
     })

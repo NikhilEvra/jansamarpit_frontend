@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { FormService } from '../service/form/form.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab4',
@@ -14,6 +15,7 @@ export class Tab4Page implements OnInit {
   getuserdata: any=[];
   constructor(
     private httpapi : FormService,
+    private router : Router,  
     private formb :FormBuilder
   ) { 
     if (this.USTEMP) {
@@ -30,6 +32,8 @@ export class Tab4Page implements OnInit {
     this.form = this.formb.group({
       name:[this.getuserdata.name],
       remark:['',Validators.required],
+      u_id:[this.getuserdata.u_id,Validators.required],
+
     });
   }
 
@@ -59,6 +63,7 @@ export class Tab4Page implements OnInit {
              });
 
              this.form.reset();
+             this.router.navigateByUrl('/app/tabs/tab1')
   
       }
     })

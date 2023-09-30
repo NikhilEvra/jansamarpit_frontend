@@ -14,4 +14,10 @@ export class PollService {
   get_question():Observable<any>{
     return this.http.get<any>('http://localhost:3000/api/v1/auth/get_question')
   }
+  get_question_vs():Observable<any>{
+    return this.http.get<any>('http://localhost:3000/api/v1/auth/get_question_vs')
+  }
+  get_question_yes_no():Observable<any>{
+    return this.http.get<any>('http://localhost:3000/api/v1/auth/get_question_yes_no')
+  }
 }

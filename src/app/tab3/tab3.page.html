@@ -25,18 +25,57 @@
           </ion-col>
         </ion-row>
        
-  <ion-card *ngFor="let dat of comment" style="margin:10px;"  [ngStyle]="{'background-color': dat.bg }">
+  <ion-card  style="margin:10px;"  [ngStyle]="{'background-color': '#f1c84b' }">
     <ion-item lines="none" color="none">
       <ion-label>
-        <h3>{{dat.name}}</h3>
-        <p>{{dat.status}}</p>
+        <h3>{{dat.answer1}}</h3>
+        
       </ion-label>
       <ion-button color="primary" size="small" slot="end">
-        <ion-icon name="thumbs-up-outline"></ion-icon>
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-card>
-
+  <ion-card  style="margin:10px;"  [ngStyle]="{'background-color': '#f1c84b' }">
+    <ion-item lines="none" color="none">
+      <ion-label>
+        <h3>{{dat.answer2}}</h3>
+        
+      </ion-label>
+      <ion-button color="primary" size="small" slot="end">
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>
+  <ion-card  style="margin:10px;"  [ngStyle]="{'background-color': '#f1c84b' }">
+    <ion-item lines="none" color="none">
+      <ion-label>
+        <h3>{{dat.answer3}}</h3>
+        
+      </ion-label>
+      <ion-button color="primary" size="small" slot="end">
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>
+  <ion-card  style="margin:10px;"  [ngStyle]="{'background-color': '#f1c84b' }">
+    <ion-item lines="none" color="none">
+      <ion-label>
+        <h3>{{dat.answer4}}</h3>
+        
+      </ion-label>
+      <ion-button color="primary" size="small" slot="end">
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>
+<!-- 
+  <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #a07a07;background-color:#F2EAFA; margin:10px">
+    <ion-row>
+      <h5><ion-text color="dark">People's Vote</ion-text></h5>
+      <apx-chart [series]="series" [chart]="chart"></apx-chart>
+    </ion-row>
+  </ion-card> -->
        
       </div>
     </ion-slide>
@@ -56,12 +95,107 @@
     </ion-item>
   </ion-card> -->
 
+
+
+  <ion-slides #slides [options]="slideAchivement" pager="false" >
+    <ion-slide *ngFor="let dat of question2">
+      <div style="width:100%;border-radius: 8px;margin:10px;border:1px solid var(--ion-color-medium);margin-top:30px;margin-bottom:30px;box-shadow:2px 0px 9px #a89d9d;position:relative">
+        <img src="assets/homepage/achvement.png" style="height:50px;width:50px;margin-top:-25px">
+        <!-- <ion-row >
+          <ion-col class="ion-text-center">
+            <ion-text color="medium" style="font-size:60%">{{dat.type}}</ion-text><br>
+          </ion-col>
+        </ion-row> -->
+        <ion-row >
+          <ion-col class="ion-text-center">
+            <ion-text color="dark" style="font-size:90%;font-weight: 600;">{{dat.question}}</ion-text><br>
+            <!-- <ion-text color="medium" style="font-size:60%;font-weight: 600;">{{dat.stream}}</ion-text> -->
+          </ion-col>
+        </ion-row>
+       
+  <ion-card  style="margin:10px;"  [ngStyle]="{'background-color': '#f1c84b' }">
+    <ion-item lines="none" color="none">
+      <ion-label>
+        <h3>{{dat.vs1}}</h3>
+        
+      </ion-label>
+      <ion-button color="primary" size="small" slot="end">
+        <ion-icon name="thumbs-up-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>
+  <ion-card  style="margin:10px;"  [ngStyle]="{'background-color': '#f1c84b' }">
+    <ion-item lines="none" color="none">
+      <ion-label>
+        <h3>{{dat.vs2}}</h3>
+        
+      </ion-label>
+      <ion-button color="primary" size="small" slot="end">
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>
+
+
+       
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-slides #slides [options]="slideAchivement" pager="false" >
+    <ion-slide *ngFor="let dat of question3">
+      <div style="width:100%;border-radius: 8px;margin:10px;border:1px solid var(--ion-color-medium);margin-top:30px;margin-bottom:30px;box-shadow:2px 0px 9px #a89d9d;position:relative">
+        <img src="assets/homepage/achvement.png" style="height:50px;width:50px;margin-top:-25px">
+        <!-- <ion-row >
+          <ion-col class="ion-text-center">
+            <ion-text color="medium" style="font-size:60%">{{dat.type}}</ion-text><br>
+          </ion-col>
+        </ion-row> -->
+        <ion-row >
+          <ion-col class="ion-text-center">
+            <ion-text color="dark" style="font-size:90%;font-weight: 600;">{{dat.question}}</ion-text><br>
+            <!-- <ion-text color="medium" style="font-size:60%;font-weight: 600;">{{dat.stream}}</ion-text> -->
+          </ion-col>
+        </ion-row>
+       
+  <ion-card  style="margin:10px;"  [ngStyle]="{'background-color': '#f1c84b' }">
+    <ion-item lines="none" color="none">
+      <ion-label>
+        <h3>Yes</h3>
+        
+      </ion-label>
+      <ion-button color="primary" size="small" slot="end">
+        <ion-icon name="thumbs-up-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>
+  <ion-card  style="margin:10px;"  [ngStyle]="{'background-color': '#f1c84b' }">
+    <ion-item lines="none" color="none">
+      <ion-label>
+        <h3>No</h3>
+        
+      </ion-label>
+      <ion-button color="primary" size="small" slot="end">
+        <ion-icon name="thumbs-down-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>
+
+
+       
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+  
   <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #a07a07;background-color:#F2EAFA; margin:10px">
     <ion-row>
-      <h5><ion-text color="dark">Progress Annually</ion-text></h5>
+      <h5><ion-text color="dark">People's Vote</ion-text></h5>
       <apx-chart [series]="series" [chart]="chart"></apx-chart>
     </ion-row>
   </ion-card>
+
+
 
   <div style="height:150px;width:100%;padding:10px">
     <img src="https://images.moneycontrol.com/static-mcnews/2022/02/Western-UP-Politics-770x433.jpg" style="height:100%;width:100%">

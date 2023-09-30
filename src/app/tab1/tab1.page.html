@@ -73,19 +73,17 @@
       <ion-text color="primary" style="font-size:80%;font-weight:530">12-01-2023 | 10:12am</ion-text>
     </ion-label>
   </ion-item>
+
+
   <ion-slides #slides [options]="slideServiceReport" pager="true" >
     <ion-slide *ngFor="let dat of homeBanner" >
-      <div style="width:100%;height:130px;margin: 5px; ">
+      <div style="width:100%;height:160px;margin: 5px; ">
         <img [src]="dat.url" style="height:100%;width:100%;border-radius: 15px;">
       </div>
     </ion-slide>
   </ion-slides>
 
-  <ion-row>
-    <ion-col class="ion-padding-start">
-      <!-- <ion-text><b>Quick Link</b></ion-text> -->
-    </ion-col>
-  </ion-row>
+
 
   <!-- <ion-row >
     <ion-col size="6" *ngFor="let dat of quickLink" class="ion-text-center quickLink"  (click)="openPage(dat.url)">
@@ -99,7 +97,7 @@
   <ion-row >
     <ion-col size="6"  class="ion-text-center quickLink"  (click)="openPage('/mycomplaints')" >
       <ion-card class="card" style="height: 120px;">
-        <img src="https://cdn-icons-png.flaticon.com/512/1997/1997427.png">
+        <img src="assets/icon/2.png" style="height: 110px;">
       </ion-card>
       <ion-text class="text" style="font-size: 11px; font-weight: bold;" translate>  
         site.quicklink1 
@@ -107,7 +105,7 @@
     </ion-col>
     <ion-col size="6"  class="ion-text-center quickLink" (click)="openPage('/app/tabs/tab3')"  >
       <ion-card class="card" style="height: 120px;">
-        <img src="https://static.vecteezy.com/system/resources/previews/014/309/418/original/poll-online-vote-icon-outline-style-vector.jpg">
+        <img src="assets/icon/1.png" style="height: 110px;">
       </ion-card>
       <ion-text class="text" style="font-size: 11px; font-weight: bold;" translate>site.quicklink2</ion-text>
     </ion-col>

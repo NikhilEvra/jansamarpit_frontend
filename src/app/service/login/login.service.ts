@@ -49,5 +49,12 @@ export class LoginService {
     return this.api.post<any>(environment.apiurl + 'otp-verification'  , data );
 
   }
+  get_dash_data(data:any):Observable<any>{
+    return this.api.post<any>('http://localhost:3000/api/v1/auth/get_dash_data',  data)
+  }
+
+  get_dash_data2(data:any):Observable<any>{
+    return this.api.post<any>('http://localhost:3000/api/v1/auth/get_dash_data2',  data)
+  }
   
 }

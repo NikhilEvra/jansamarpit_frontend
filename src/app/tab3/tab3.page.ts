@@ -63,12 +63,16 @@ export class Tab3Page {
 
   question :any=[];
   answers:any=[];
+  question2:any=[];
+  question3:any=[]
   constructor(
     private api : PollService
   ) {}
   ngOnInit() {
     this.chart1();
     this.get_poll();
+    this.get_vs_poll();
+    this.get_yes_no();
     
   }
 
@@ -79,10 +83,10 @@ export class Tab3Page {
     };
     this.series =[{
       name : 'Present',
-      data : [10,20,12,11,10,20,12,11]
+      data : [10,20,12,77]
     }];
     this.chart = {
-      type : 'line'
+      type : 'bar'
     };
 
   }
@@ -115,6 +119,50 @@ export class Tab3Page {
       next:(data:any) =>{
         console.log(data);
         this.answers = data;
+       
+    
+      },
+      error:() =>{
+       
+      
+      },
+      complete:() =>{
+       
+     
+       
+      }
+    })
+  
+  }
+
+  get_vs_poll(){
+
+    this.api.get_question_vs().subscribe({
+      next:(data:any) =>{
+        console.log(data);
+        this.question2 = data;
+       
+    
+      },
+      error:() =>{
+       
+      
+      },
+      complete:() =>{
+       
+     
+       
+      }
+    })
+  
+  }
+
+  get_yes_no(){
+
+    this.api.get_question_yes_no().subscribe({
+      next:(data:any) =>{
+        console.log(data);
+        this.question3 = data;
        
     
       },
