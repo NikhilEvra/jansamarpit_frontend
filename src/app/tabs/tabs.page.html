@@ -81,7 +81,7 @@
         <ion-icon name="close-outline" (click)="modal.dismiss()"></ion-icon>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding" >
+    <ion-content class="ion-padding" *ngIf="myfun" >
      
       <ion-row >
         <ion-col class="ion-text-center quickLink"  >
@@ -101,11 +101,58 @@
     </ion-col>
   
   </ion-row>
+    </ion-content>
 
- 
+    <ion-content class="ion-padding" *ngIf="myfun2" >
+<!--      
+      <ion-row >
+        <ion-col class="ion-text-center quickLink"  >
+        
+          <ion-text class="text" style="font-size: 16px;" color="primary"  (click)="redirect()" (click)="modal.dismiss()" translate >site.clicktochange
+        </ion-text>
+        </ion-col>
+      
+      </ion-row> -->
 
+  <ion-row >
+  
+
+    <ion-col size="6" class="ion-text-center quickLink" >
+      <ion-card class="card" style="height: 120px;"  >
+        <img src="{{myvolunteer.image}}" style="height: 100%;">
+      </ion-card>
+      <ion-text color="primary">{{myvolunteer.name}}</ion-text>
+
+    </ion-col>
+    <ion-col size="6" class="ion-text-center quickLink"  (click)="redirect()" (click)="modal.dismiss()">
+      <ion-card class="card" style="height: 120px;"  >
+        <img src="https://icons.veryicon.com/png/o/education-technology/alibaba-big-data-oneui/new-page-add.png" style="height: 100%;">
+      </ion-card>
+      <ion-text color="primary"translate >site.clicktochange </ion-text>
+    </ion-col>
+    <!-- <ion-col size="6"  (click)="redirect()" (click)="modal.dismiss()">
+   
+      <ion-item lines="none">
+        <ion-text color="primary">{{myvolunteer.name}}</ion-text>
+      </ion-item>
+      <ion-item   lines="none"> 
+        <ion-text color="primary">{{myvolunteer.state}}</ion-text>
+        
+      </ion-item>
+      <ion-item  lines="none">
+        
+        <ion-text color="primary">{{myvolunteer.city}}</ion-text>
+      </ion-item>
+      
+
+
+
+    </ion-col> -->
+  
+  </ion-row>
 
     </ion-content>
+
   </ng-template>
 </ion-modal>
 </ion-tabs>

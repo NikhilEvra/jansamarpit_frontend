@@ -178,4 +178,8 @@ export class Tab3Page {
     })
   
   }
+
+  action(dat:any){
+    alert(dat)
+  }
 }

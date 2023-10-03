@@ -24,12 +24,17 @@ complaintcount:any=[];
 techerror_count:any=[];
 
 quickLink: any = [
-
   {
     icon: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
     name: 'Profile',
   }
 ];
+
+volunteer:any=[];
+myfun = false;
+myfun2 = true;
+myvolunteer:any=[];
+
 async canDismiss(data?: any, role?: string) {
   return role !== 'gesture';
 }
@@ -55,6 +60,8 @@ async canDismiss(data?: any, role?: string) {
       this.get_volunteer_by_id();
       this.dashdata();
       this.dashdata2();
+
+   
     }
 
     ionViewDidLeave(){
@@ -125,16 +132,21 @@ async canDismiss(data?: any, role?: string) {
       next:(data:any) =>{
         console.log(data);
        
-    
+        this.volunteer =  data;
+        // alert(this.volunteer[0].volunteer)
       },
       error:() =>{
        
       
       },
       complete:() =>{
+    
+        if(!this.volunteer[0].volunteer){ 
+          this.myfun = true;
+          this.myfun2 = false;
+        }
        
-     
-       
+        this.get_volunteer_by_v_id();
       }
     })
   
@@ -178,4 +190,27 @@ async canDismiss(data?: any, role?: string) {
     })
   
   }
+
+  get_volunteer_by_v_id(){
+    const dat1 = {"v_id":this.volunteer[0].volunteer};
+    this.api2.get_volunteer_by_v_id(dat1).subscribe({
+      next:(data:any) =>{
+        console.log(data);
+
+        this.myvolunteer =  data[0];
+        // alert(this.volunteer[0].volunteer)
+      },
+      error:() =>{
+       
+      
+      },
+      complete:() =>{
+         
+
+
+      }
+    })
+  
+  }
+  
 }

@@ -10,7 +10,7 @@
 
 <ion-content>
   <ion-slides #slides [options]="slideAchivement" pager="false" >
-    <ion-slide *ngFor="let dat of question">
+    <ion-slide *ngFor="let dat of question" >
       <div style="width:100%;border-radius: 8px;margin:10px;border:1px solid var(--ion-color-medium);margin-top:30px;margin-bottom:30px;box-shadow:2px 0px 9px #a89d9d;position:relative">
         <img src="assets/homepage/achvement.png" style="height:50px;width:50px;margin-top:-25px">
         <!-- <ion-row >
@@ -25,13 +25,13 @@
           </ion-col>
         </ion-row>
        
-  <ion-card  style="margin:10px;"  [ngStyle]="{'background-color': '#f1c84b' }">
+  <ion-card  style="margin:10px;"  [ngStyle]="{'background-color': '#f1c84b'}">
     <ion-item lines="none" color="none">
       <ion-label>
         <h3>{{dat.answer1}}</h3>
-        
+
       </ion-label>
-      <ion-button color="primary" size="small" slot="end">
+      <ion-button color="primary" size="small" slot="end" (click)="action(dat.answer1)">
         <ion-icon name="checkmark-circle-outline"></ion-icon>
       </ion-button>
     </ion-item>
@@ -42,7 +42,7 @@
         <h3>{{dat.answer2}}</h3>
         
       </ion-label>
-      <ion-button color="primary" size="small" slot="end">
+      <ion-button color="primary" size="small" slot="end" (click)="action(dat.answer2 )">
         <ion-icon name="checkmark-circle-outline"></ion-icon>
       </ion-button>
     </ion-item>

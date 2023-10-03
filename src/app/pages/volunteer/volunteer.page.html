@@ -11,8 +11,8 @@
 
   <ion-row >
     <ion-col size="6" class="ion-text-center quickLink" *ngFor="let dat of volunteerdata" >
-      <ion-card class="card"  (click)="select(dat.name)" >
-        <img [src]="dat.image">
+      <ion-card class="card"  (click)="select(dat.name)" style="height: 150px;">
+        <img [src]="dat.image" style="height: 100%;">
       </ion-card>
       <ion-text class="text" style="font-size: 11px;" color="primary">
         {{dat.name}}

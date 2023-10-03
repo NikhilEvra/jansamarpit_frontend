@@ -33,4 +33,8 @@ export class FormService {
   get_volunteer_by_id(data:any):Observable<any>{
     return this.api.post<any>( 'http://localhost:3000/api/v1/auth/get_volunteer_by_id' , data);
   }
+  get_volunteer_by_v_id(data:any):Observable<any>{
+    return this.api.post<any>( 'http://localhost:3000/api/v1/auth/get_volunteer_by_v_id' , data);
+  }
+
 }

@@ -13,13 +13,15 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class Login1Page implements OnInit {
   loginbanner:any=[{
-    url:'https://img.freepik.com/free-vector/sign-page-abstract-concept-illustration_335657-2242.jpg?w=2000',
+    url:'assets/login/logo-4.jpg',
     heading:'Lets build nation'
-  },{
-    url:'https://img.freepik.com/free-vector/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security-people-entering-login-password-safety-measures_335657-3530.jpg',
-    heading:'Come for '
-
+  
   }
+  // ,{
+  //   url:'https://img.freepik.com/free-vector/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security-people-entering-login-password-safety-measures_335657-3530.jpg',
+  //   heading:'Come for '
+
+  // }
 ];
 
 form!: FormGroup;
