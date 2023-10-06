@@ -30,7 +30,7 @@ getuserdata: any=[];
   this.api.get_complaints(dat).subscribe({
     next:(data) =>{
       console.log(data); 
-      this.mycomplaints = data;  
+      this.mycomplaints = data.message;  
     },
     error:() =>{
       Swal.fire({

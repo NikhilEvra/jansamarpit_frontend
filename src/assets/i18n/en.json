@@ -45,7 +45,9 @@
         "topic":"Topic",
         "selectvolunteer":"You havent selected any volunteer yet!",
         "clickbelow":"click below and select ",
-        "clicktochange":"Click here to change your volunteer"
+        "clicktochange":"Click here to change your volunteer",
+        "date":"Date",
+        "file":"Attachment"
 
 
 

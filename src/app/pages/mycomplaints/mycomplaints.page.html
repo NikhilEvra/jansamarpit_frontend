@@ -23,17 +23,17 @@
         <ion-button size="small" shape="round"   (click)="redirect(dat.complaint_id)" translate>site.view</ion-button>
       </ion-col>
       <ion-col class="ion-text-right">
-        <ion-button size="small" shape="round" translate>site.approved</ion-button>
+        <ion-button size="small" shape="round" >{{dat.status}}</ion-button>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <!-- <ion-row>
       <ion-col>
         <ion-button fill="clear" size="small" color=dark> 
           <ion-icon name="time-outline"></ion-icon> &nbsp;
           {{dat.date}} - {{dat.time}}
         </ion-button>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
   </ion-card>
 
 </ion-content>

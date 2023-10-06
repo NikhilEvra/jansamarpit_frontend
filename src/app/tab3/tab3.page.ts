@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PollService } from '../service/poll/poll.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tab3',
@@ -64,10 +65,18 @@ export class Tab3Page {
   question :any=[];
   answers:any=[];
   question2:any=[];
-  question3:any=[]
+  question3:any=[];
+  USTEMP = localStorage.getItem('user');
+
+  getuserdata: any=[];
   constructor(
     private api : PollService
-  ) {}
+  ) {
+    if (this.USTEMP) {
+      this.getuserdata = JSON.parse(this.USTEMP) ;
+    } 
+
+  }
   ngOnInit() {
     this.chart1();
     this.get_poll();
@@ -179,7 +188,60 @@ export class Tab3Page {
   
   }
 
-  action(dat:any){
-    alert(dat)
+  action(dat:any,que:any){
+    
+    // console.log(dat);
+    // console.log(que);
+    // console.log(this.getuserdata.u_id);
+    const ans = {"u_id": this.getuserdata.u_id, "question": que, "answer": dat}
+    this.api.post_answer(ans).subscribe({
+      next:(data:any) =>{
+        console.log(data);
+      
+    
+      },
+      error:() =>{
+        Swal.fire({
+          'imageUrl' :'assets/icon/login.gif',
+          'imageHeight':'100px', 
+          'title': 'Internal Server Error',
+           heightAuto: false , 
+           timer: 3000
+          });
+      
+      },
+      complete:() =>{
+       
+     
+      }
+    })
+  
   }
+
+  // this.api.get_answer_by_u_id(ans).subscribe({
+  //   next:(data:any) =>{
+  //     console.log(data);
+    
+  
+  //   },
+  //   error:() =>{
+  //     Swal.fire({
+  //       'imageUrl' :'assets/icon/login.gif',
+  //       'imageHeight':'100px', 
+  //       'title': 'Internal Server Error',
+  //        heightAuto: false , 
+  //        timer: 3000
+  //       });
+    
+  //   },
+  //   complete:() =>{
+     
+   
+     
+  //   }
+  // })
+   
+    
+
+ 
 }

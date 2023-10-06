@@ -5,19 +5,68 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
+</ion-header> 
 
 <ion-content>
-
-  <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #a07a07;background-color:#f1c84b ; margin:10px" *ngFor="let dat of mycomplaints">
+  <ion-card style="border:2px solid #a07a07;background-color:#f1c84b ; margin:10px" >
+  <ion-accordion-group [multiple]="true" [value]="['first']" >
+    <ion-accordion  >
+      <ion-item slot="header" value="first" color="warning" >
+        <ion-label translate>site.topic  </ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">{{mycomplaints.priority}}</div>
+    </ion-accordion>
+    <ion-accordion>
+      <ion-item slot="header" color="warning" >
+        <ion-label translate>site.priority</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">{{mycomplaints.priority}}</div>
+    </ion-accordion>
+    <ion-accordion >
+      <ion-item slot="header" color="warning" >
+        <ion-label translate>site.state</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">{{mycomplaints.admin}}</div>
+    </ion-accordion>
+    <ion-accordion >
+      <ion-item slot="header"color="warning"  >
+        <ion-label translate>site.city</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">{{mycomplaints.district}}</div>
+    </ion-accordion>
+    <ion-accordion >
+      <ion-item slot="header" color="warning" >
+        <ion-label translate>site.date </ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">{{mycomplaints.date}}</div>
+    </ion-accordion>
+    <ion-accordion >
+      <ion-item slot="header" color="warning" >
+        <ion-label translate>site.remarks </ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">{{mycomplaints.remarks}}</div>
+    </ion-accordion>
+ 
+    <ion-accordion >
+      <ion-item slot="header" color="warning"  >
+        <ion-label translate>site.file  </ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+     <img src="{{mycomplaints.file}}" style="width: 330px;">
+        
+      </div>
+    </ion-accordion>
+   
+  </ion-accordion-group>
+</ion-card>
+  <!-- <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #a07a07;background-color:#f1c84b ; margin:10px" *ngFor="let dat of mycomplaints">
     <ion-row>
       <ion-col >
         <h6> 
           <ion-text color="dark">{{dat.topic}}</ion-text> &nbsp;&nbsp;&nbsp;&nbsp;
           <button style="padding:5px 8px;color:white;border-radius:10px;font-size:80%"  [ngStyle]="{'background-color': 'red'}"> {{dat.priority}} </button>
          </h6>
-<!--  
-        <ion-text style="font-size:65%;margin-left:10px;">State : {{dat.state}}  City : {{dat.district}}</ion-text> -->
+
       </ion-col>
     </ion-row>
     <ion-row>
@@ -50,6 +99,6 @@
     <ion-row>
      <img src="{{dat.file}}" style="width: 330px;">
     </ion-row>
-  </ion-card>
+  </ion-card> -->
 
 </ion-content>

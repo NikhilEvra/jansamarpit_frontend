@@ -34,7 +34,7 @@ mycomplaints:any=[];
       this.api.get_complaint_by_id(dat).subscribe({
       next:(data) =>{
       console.log(data); 
-      this.mycomplaints = data;
+      this.mycomplaints = data[0];
 
       },
 
