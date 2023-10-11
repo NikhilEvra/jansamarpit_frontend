@@ -42,7 +42,7 @@ export class LoginService {
   }
 
   sendOtp1(phone : any ):Observable<any> {
-    return this.api.post<any>('http://localhost:3000/api/v1/auth/login',  phone);
+    return this.api.post<any>(environment.apiurl + 'login',  phone);
   }
 
   validate_otp(data:any):Observable<any>{
@@ -50,11 +50,11 @@ export class LoginService {
 
   }
   get_dash_data(data:any):Observable<any>{
-    return this.api.post<any>('http://localhost:3000/api/v1/auth/get_dash_data',  data)
+    return this.api.post<any>(environment.apiurl + 'get_dash_data',  data)
   }
 
   get_dash_data2(data:any):Observable<any>{
-    return this.api.post<any>('http://localhost:3000/api/v1/auth/get_dash_data2',  data)
+    return this.api.post<any>(environment.apiurl + 'get_dash_data2',  data)
   }
   
 }

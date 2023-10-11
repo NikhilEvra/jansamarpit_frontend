@@ -31,7 +31,7 @@
         <h3>{{dat.answer1}}</h3>
 
       </ion-label>
-      <ion-button color="tertiary" size="small" slot="end" (click)="action(dat.answer1,dat.question)">
+      <ion-button size="small" slot="end" (click)="action(dat.answer1,dat.question)">
         <ion-icon name="checkmark-circle-outline"></ion-icon>
       </ion-button>
     </ion-item>
@@ -69,6 +69,16 @@
       </ion-button>
     </ion-item>
   </ion-card>
+
+  <ion-card  style="margin:10px;"  color="secondary" *ngIf="hide">
+    <ion-item lines="none" color="none">
+      <ion-label>
+        <h3>{{dat.answer3}}</h3>
+      </ion-label>
+     
+    </ion-item>
+  </ion-card>
+
 <!-- 
   <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #a07a07;background-color:#F2EAFA; margin:10px">
     <ion-row>
@@ -80,6 +90,9 @@
       </div>
     </ion-slide>
   </ion-slides>
+
+
+
 
 
 

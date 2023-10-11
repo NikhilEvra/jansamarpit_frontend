@@ -69,8 +69,10 @@ export class Tab3Page {
   USTEMP = localStorage.getItem('user');
 
   getuserdata: any=[];
+  hide = false;
+ 
   constructor(
-    private api : PollService
+    private api : PollService 
   ) {
     if (this.USTEMP) {
       this.getuserdata = JSON.parse(this.USTEMP) ;
@@ -82,6 +84,8 @@ export class Tab3Page {
     this.get_poll();
     this.get_vs_poll();
     this.get_yes_no();
+    this.get_poll2();
+    this.get_answers();
     
   }
 
@@ -121,10 +125,9 @@ export class Tab3Page {
   
   }
 
-  
   get_answers(){
-    const que = {"q_id" : this.question}
-    this.api.get_question().subscribe({
+    const que = {"u_id" : this.getuserdata.u_id}
+    this.api.get_poll_answers(que).subscribe({
       next:(data:any) =>{
         console.log(data);
         this.answers = data;
@@ -218,6 +221,37 @@ export class Tab3Page {
   
   }
 
+
+  action2(dat:any,que:any){
+    
+    // console.log(dat);
+    // console.log(que);
+    // console.log(this.getuserdata.u_id);
+    const ans = {"u_id": this.getuserdata.u_id, "question": que, "answer": dat}
+    this.api.post_answer(ans).subscribe({
+      next:(data:any) =>{
+        console.log(data);
+      
+    
+      },
+      error:() =>{
+        Swal.fire({
+          'imageUrl' :'assets/icon/login.gif',
+          'imageHeight':'100px', 
+          'title': 'Internal Server Error',
+           heightAuto: false , 
+           timer: 3000
+          });
+      
+      },
+      complete:() =>{
+       this.get_answers()
+     
+      }
+    })
+  
+  }
+
   // this.api.get_answer_by_u_id(ans).subscribe({
   //   next:(data:any) =>{
   //     console.log(data);
@@ -241,7 +275,26 @@ export class Tab3Page {
   //   }
   // })
    
+  get_poll2(){
+    const dat2 = {'u_id':"JAN/2023/23"}
+    this.api.get_question2(dat2).subscribe({
+      next:(data:any) =>{
+        console.log(data);
+        // this.question = data;
+       
     
+      },
+      error:() =>{
+       
+      
+      },
+      complete:() =>{
+       
+     
+      }
+    })
+  
+  }
 
  
 }
