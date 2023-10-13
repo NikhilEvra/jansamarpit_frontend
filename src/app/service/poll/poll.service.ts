@@ -42,4 +42,7 @@ export class PollService {
   get_graph_data():Observable<any>{
     return this.http.get<any>(environment.apiurl + 'get_graph_data');
   }
+  get_answer_by_question(data:any):Observable<any>{
+    return this.http.post(environment.apiurl + 'get_polls_answer_by_question', data)
+  }
 }

@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./pollanswers.page.scss'],
 })
 export class PollanswersPage implements OnInit {
-
+  isModalOpen = false;
   USTEMP = localStorage.getItem('user');
 
   getuserdata: any=[];
@@ -21,7 +21,8 @@ export class PollanswersPage implements OnInit {
   chart : any;
   xaxis:any=[];
   cdata:any= [];
- dat:any=[]
+  dat:any=[];
+  
   slideAchivement = {
     initialSlide: 0,
     slidesPerView: 1.1,
@@ -225,7 +226,7 @@ export class PollanswersPage implements OnInit {
         // console.log(element.data);
        this.dat.push(element.data);
       });
-      console.log([this.cdata[0].data,this.cdata[0].data2])
+      // console.log([this.cdata[0].data,this.cdata[0].data2])
     
       },
       error:() =>{
@@ -239,5 +240,9 @@ export class PollanswersPage implements OnInit {
       }
     })
   
+  }
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
   }
 }

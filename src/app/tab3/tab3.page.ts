@@ -70,7 +70,10 @@ export class Tab3Page {
 
   getuserdata: any=[];
   hide = false;
- 
+  isModalOpen = false;
+  xaxis:any=[];
+  questions:any=[];
+  q:any=[]
   constructor(
     private api : PollService 
   ) {
@@ -101,6 +104,9 @@ export class Tab3Page {
     this.chart = {
       type : 'bar'
     };
+    this.xaxis= {
+      categories: ["A", "B", "C", "D"]
+    }
 
   }
 
@@ -245,7 +251,8 @@ export class Tab3Page {
       
       },
       complete:() =>{
-       this.get_answers()
+       this.get_answers();
+       this.get_data()
      
       }
     })
@@ -295,6 +302,34 @@ export class Tab3Page {
     })
   
   }
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+   
+  }
+  openmodal(dat:any){
+    // this.questions = dat;
+    // console.log(this.questions);
+    this.q = dat;
 
- 
+    this.get_data()
+  }
+
+  get_data(){
+    const data = {"u_id": this.getuserdata.u_id, "question": this.q}
+    this.api.get_answer_by_question(data).subscribe({
+      next:(data:any) =>{
+        console.log(data);
+        this.questions = data[0]
+      
+    
+      },
+      error:() =>{
+      
+      
+      },
+      complete:() =>{
+     
+      }
+    })
+  }
 }
