@@ -64,7 +64,6 @@
     <ion-item lines="none" color="none">
       <ion-label>
         <h3>{{dat.answer4}}</h3>
-        
       </ion-label>
       <ion-button color="primary" size="small" slot="end" (click)="action(dat.answer4,dat.question)">
         <ion-icon name="checkmark-circle-outline"></ion-icon>
@@ -151,14 +150,23 @@
       </ion-button>
     </ion-item>
   </ion-card>
-
+   
+  <ion-card  style="margin:10px;"  (click)="setOpen1(true)" (click)="openmodal(dat.question)" >
+    <ion-item lines="none" color="none">
+      <ion-label>
+        <h3>View Stats</h3>
+        
+      </ion-label>
+     
+    </ion-item>
+  </ion-card>
 
        
       </div>
     </ion-slide>
   </ion-slides>
 
-  <ion-slides #slides [options]="slideAchivement" pager="false" >
+  <ion-slides #slides [options]="slideAchivement" pager="true" >
     <ion-slide *ngFor="let dat of question3">
       <div style="width:100%;border-radius: 8px;margin:10px;border:1px solid var(--ion-color-medium);margin-top:30px;margin-bottom:30px;box-shadow:2px 0px 9px #a89d9d;position:relative">
         <img src="assets/homepage/achvement.png" style="height:50px;width:50px;margin-top:-25px">
@@ -196,20 +204,28 @@
       </ion-button>
     </ion-item>
   </ion-card>
-
+  <ion-card  style="margin:10px;"  (click)="setOpen3(true)" (click)="openmodal(dat.question)" >
+    <ion-item lines="none" color="none">
+      <ion-label>
+        <h3>View Stats</h3>
+        
+      </ion-label>
+     
+    </ion-item>
+  </ion-card>
 
        
       </div>
     </ion-slide>
   </ion-slides>
 
-  
+<!--   
   <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #a07a07;background-color:#F2EAFA; margin:10px">
     <ion-row>
       <h5><ion-text color="dark">People's Vote</ion-text></h5>
       <apx-chart [series]="series" [chart]="chart"></apx-chart>
     </ion-row>
-  </ion-card>
+  </ion-card> -->
 
 
 
@@ -232,7 +248,7 @@
       <ion-content class="ion-padding">
       
             
-            <div >
+            <div *ngIf="hide" >
               <!-- <img src="assets/homepage/achvement.png" style="height:50px;width:50px;margin-top:-25px"> -->
               <!-- <ion-row >
                 <ion-col class="ion-text-center">
@@ -304,7 +320,68 @@
       
         <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #a07a07;background-color:#f0da93; margin:10px">
           <ion-row>
-            <!-- <h5><ion-text color="dark">People's Vote</ion-text></h5> -->
+        
+            <apx-chart [series]="series" [chart]="chart" [xaxis]="xaxis"></apx-chart>
+            
+          </ion-row>
+        </ion-card>
+      
+        
+            </div>
+        
+
+            <div *ngIf="hide2" >
+              <!-- <img src="assets/homepage/achvement.png" style="height:50px;width:50px;margin-top:-25px"> -->
+              <!-- <ion-row >
+                <ion-col class="ion-text-center">
+                  <ion-text color="medium" style="font-size:60%">{{dat.type}}</ion-text><br>
+                </ion-col>
+              </ion-row> -->
+              <ion-row >
+                <ion-col class="ion-text-center">
+      
+                  <ion-text color="dark" style="font-size:90%;font-weight: 600;">{{questions.question}}</ion-text><br>
+                  <!-- <ion-text color="medium" style="font-size:60%;font-weight: 600;">{{dat.stream}}</ion-text> -->
+                </ion-col>
+              </ion-row>
+             
+        <ion-card  style="margin:10px;"  [ngStyle]="{'background-color': '#f1c84b'}">
+          <ion-item lines="none" color="none">
+            <ion-label>
+              <h3 >{{questions.vs1}}</h3>
+      
+            </ion-label>
+            <ion-button size="small" slot="end" (click)="action2(questions.vs1,questions.question)">
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-card>
+        <ion-card  style="margin:10px;"  [ngStyle]="{'background-color': '#f1c84b' }">
+          <ion-item lines="none" color="none">
+            <ion-label>
+              <h3>{{questions.vs2}}</h3>
+              
+            </ion-label>
+            <ion-button color="primary" size="small" slot="end" (click)="action2(questions.vs2,questions.question)">
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-card>
+     
+      
+        <ion-card  style="margin:10px;" color="primary">
+          <ion-item lines="none" color="none">
+            <ion-label>
+              <h3>{{questions.answer}}</h3>
+            </ion-label>
+           
+          </ion-item>
+        </ion-card>
+      
+      
+        <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #a07a07;background-color:#f0da93; margin:10px">
+          <ion-row>
+        
             <apx-chart [series]="series" [chart]="chart" [xaxis]="xaxis"></apx-chart>
             
           </ion-row>
@@ -314,6 +391,66 @@
             </div>
         
        
+            <div *ngIf="hide3" >
+              <!-- <img src="assets/homepage/achvement.png" style="height:50px;width:50px;margin-top:-25px"> -->
+              <!-- <ion-row >
+                <ion-col class="ion-text-center">
+                  <ion-text color="medium" style="font-size:60%">{{dat.type}}</ion-text><br>
+                </ion-col>
+              </ion-row> -->
+              <ion-row >
+                <ion-col class="ion-text-center">
+      
+                  <ion-text color="dark" style="font-size:90%;font-weight: 600;">{{questions.question}}</ion-text><br>
+                  <!-- <ion-text color="medium" style="font-size:60%;font-weight: 600;">{{dat.stream}}</ion-text> -->
+                </ion-col>
+              </ion-row>
+             
+        <ion-card  style="margin:10px;"  [ngStyle]="{'background-color': '#f1c84b'}">
+          <ion-item lines="none" color="none">
+            <ion-label>
+              <h3 >Yes</h3>
+      
+            </ion-label>
+            <ion-button size="small" slot="end" (click)="action2('Yes',questions.question)">
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-card>
+        <ion-card  style="margin:10px;"  [ngStyle]="{'background-color': '#f1c84b' }">
+          <ion-item lines="none" color="none">
+            <ion-label>
+              <h3>No</h3>
+              
+            </ion-label>
+            <ion-button color="primary" size="small" slot="end" (click)="action2('No',questions.question)">
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-card>
+      
+      
+        <ion-card  style="margin:10px;" color="primary">
+          <ion-item lines="none" color="none">
+            <ion-label>
+              <h3>{{questions.answer}}</h3>
+            </ion-label>
+           
+          </ion-item>
+        </ion-card>
+      
+      
+        <ion-card style="padding-bottom:10px;padding-left:10px;border:2px solid #a07a07;background-color:#f0da93; margin:10px">
+          <ion-row>
+        
+            <apx-chart [series]="series" [chart]="chart" [xaxis]="xaxis"></apx-chart>
+            
+          </ion-row>
+        </ion-card>
+      
+        
+            </div>
+        
       
       </ion-content>
     </ng-template>

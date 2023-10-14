@@ -39,7 +39,7 @@ export class Tab3Page {
   slideAchivement = {
     initialSlide: 0,
     slidesPerView: 1.1,
-    autoplay: false
+    autoplay: true
   }
 
   achivemnt: any = [{
@@ -60,7 +60,7 @@ export class Tab3Page {
     name: 'Nikhil Chaudhary',
     stream: 'BCA II Year',
     clg: 'Deen Dayal College'
-  }];
+  }];   
 
   question :any=[];
   answers:any=[];
@@ -70,6 +70,10 @@ export class Tab3Page {
 
   getuserdata: any=[];
   hide = false;
+  hide2 = false;
+  hide3 = false;
+
+
   isModalOpen = false;
   xaxis:any=[];
   questions:any=[];
@@ -304,8 +308,32 @@ export class Tab3Page {
   }
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
+    this.hide = true;
+    this.hide2 = false;
+    this.hide3 = false;
+
+
    
   }
+  setOpen1(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+    this.hide = false;
+    this.hide2 = true;
+    this.hide3 = false;
+
+
+   
+  }
+  setOpen3(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+    this.hide = false;
+    this.hide2 = false;
+    this.hide3 = true;
+
+
+   
+  }
+
   openmodal(dat:any){
     // this.questions = dat;
     // console.log(this.questions);
@@ -319,12 +347,28 @@ export class Tab3Page {
     this.api.get_answer_by_question(data).subscribe({
       next:(data:any) =>{
         console.log(data);
-        this.questions = data[0]
+        if(!data.length ){
+         console.log(data.length);
+        //  alert('yes')
+        Swal.fire({
+                'imageUrl' :'assets/icon/login.gif',
+                'imageHeight':'100px', 
+                'title': 'Please Fill Your Answer First',
+                 heightAuto: false , 
+                 timer: 3000
+                });
+            
+        this.isModalOpen = false;
+
+        }
+        else{
+          this.questions = data[0]
+
+        }
       
     
       },
       error:() =>{
-      
       
       },
       complete:() =>{

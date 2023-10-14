@@ -34,6 +34,7 @@ volunteer:any=[];
 myfun = false;
 myfun2 = true;
 myvolunteer:any=[];
+poll_count:any=[];
 
 async canDismiss(data?: any, role?: string) {
   return role !== 'gesture';
@@ -60,6 +61,7 @@ async canDismiss(data?: any, role?: string) {
       this.get_volunteer_by_id();
       this.dashdata();
       this.dashdata2();
+      this.get_polls_count();
 
    
     }
@@ -213,4 +215,24 @@ async canDismiss(data?: any, role?: string) {
   
   }
   
+
+  get_polls_count(){
+   
+    this.api.polls_count().subscribe({
+      next:(data:any) =>{
+        console.log(data);
+        // this.techerror_count = data.message[0].count;
+        this.poll_count = data.message[0].count;
+        
+      
+      },
+      error:() =>{
+             
+      },
+      complete:() =>{
+       
+      }
+    })
+  
+  }
 }

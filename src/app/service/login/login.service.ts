@@ -56,5 +56,9 @@ export class LoginService {
   get_dash_data2(data:any):Observable<any>{
     return this.api.post<any>(environment.apiurl + 'get_dash_data2',  data)
   }
+
+  polls_count():Observable<any>{
+    return this.api.get<any>(environment.apiurl + 'get_polls_count')
+  }
   
 }
