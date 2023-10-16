@@ -71,10 +71,11 @@
     </ion-item>
   </ion-card>
 
-  <ion-card  style="margin:10px;"  (click)="setOpen(true)" (click)="openmodal(dat.question)" >
+  <ion-card color="primary"  style="margin:10px;"  (click)="setOpen(true)" (click)="openmodal(dat.question,dat.id)" >
     <ion-item lines="none" color="none">
       <ion-label>
-        <h3>View Stats</h3>
+        <h3 translate>site.viewstats</h3>
+
         
       </ion-label>
      
@@ -151,10 +152,11 @@
     </ion-item>
   </ion-card>
    
-  <ion-card  style="margin:10px;"  (click)="setOpen1(true)" (click)="openmodal(dat.question)" >
+  <ion-card color="primary"  style="margin:10px;"  (click)="setOpen1(true)" (click)="openmodal(dat.question,dat.id)" >
     <ion-item lines="none" color="none">
       <ion-label>
-        <h3>View Stats</h3>
+        <h3 translate>site.viewstats</h3>
+
         
       </ion-label>
      
@@ -204,10 +206,10 @@
       </ion-button>
     </ion-item>
   </ion-card>
-  <ion-card  style="margin:10px;"  (click)="setOpen3(true)" (click)="openmodal(dat.question)" >
+  <ion-card color="primary"  style="margin:10px;"  (click)="setOpen3(true)" (click)="openmodal(dat.question,dat.id)" >
     <ion-item lines="none" color="none">
       <ion-label>
-        <h3>View Stats</h3>
+        <h3 translate>site.viewstats</h3>
         
       </ion-label>
      
@@ -239,9 +241,9 @@
     <ng-template>
       <ion-header>
         <ion-toolbar color="primary">
-          <ion-title>Test</ion-title>
+          <ion-title translate>site.viewpoll</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="setOpen(false)">Close</ion-button>
+            <ion-button (click)="setOpen(false)" (click)="setOpen1(false)" (click)="setOpen3(false)">Close</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>

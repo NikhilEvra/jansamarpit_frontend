@@ -27,6 +27,11 @@
 <!-- scrollEvents="true" (ionScroll)='onContentScroll($event)' --> 
 <!-- scrolling attributes to hide header -->
 <ion-content scrollEvents="true" [fullscreen]="true"  >
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
  
   <ion-popover trigger="click-trigger" triggerAction="click" >
     <ng-template>

@@ -42,7 +42,7 @@ export class PollanswersPage implements OnInit {
     this.get_answers();
     this.get_vs_poll();
     this.get_yes_no();
-    this.graph_data();
+    // this.graph_data();
     this.chart1();
 
   }
@@ -216,31 +216,31 @@ export class PollanswersPage implements OnInit {
   }
 
   
-  graph_data(){
-    this.api.get_graph_data().subscribe({
-      next:(data:any) =>{
-        console.log(data);
-       this.cdata = data;
-       this.cdata.forEach((element: any) => {
-        //  console.log(element);
-        // console.log(element.data);
-       this.dat.push(element.data);
-      });
-      // console.log([this.cdata[0].data,this.cdata[0].data2])
+  // graph_data(){
+  //   this.api.get_graph_data().subscribe({
+  //     next:(data:any) =>{
+  //       console.log(data);
+  //      this.cdata = data;
+  //      this.cdata.forEach((element: any) => {
+  //       //  console.log(element);
+  //       // console.log(element.data);
+  //      this.dat.push(element.data);
+  //     });
+  //     // console.log([this.cdata[0].data,this.cdata[0].data2])
     
-      },
-      error:() =>{
+  //     },
+  //     error:() =>{
        
       
-      },
-      complete:() =>{
+  //     },
+  //     complete:() =>{
        
      
        
-      }
-    })
+  //     }
+  //   })
   
-  }
+  // }
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;

@@ -13,13 +13,13 @@ export class PollService {
   ) { }
 
   get_question():Observable<any>{
-    return this.http.get<any>('http://jansamarpit.com/api/v1/auth/get_question')
+    return this.http.get<any>(environment.apiurl +'get_question')
   }
   get_question_vs():Observable<any>{
-    return this.http.get<any>('http://localhost:3000/api/v1/auth/get_question_vs')
+    return this.http.get<any>(environment.apiurl +'get_question_vs')
   }
   get_question_yes_no():Observable<any>{
-    return this.http.get<any>('http://localhost:3000/api/v1/auth/get_question_yes_no')
+    return this.http.get<any>(environment.apiurl +'get_question_yes_no')
   }
   post_answer(data:any):Observable<any>{
     return this.http.post<any>(environment.apiurl + 'post_poll_answer' , data);
@@ -39,8 +39,8 @@ export class PollService {
   get_poll_answers_yesno(data:any):Observable<any>{
     return this.http.post<any>(environment.apiurl + 'get_polls_answer_yesno', data)
   }
-  get_graph_data():Observable<any>{
-    return this.http.get<any>(environment.apiurl + 'get_graph_data');
+  get_graph_data(id:any):Observable<any>{
+    return this.http.post<any>(environment.apiurl + 'get_graph_data' , id);
   }
   get_answer_by_question(data:any):Observable<any>{
     return this.http.post(environment.apiurl + 'get_polls_answer_by_question', data)

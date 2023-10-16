@@ -77,7 +77,9 @@ export class Tab3Page {
   isModalOpen = false;
   xaxis:any=[];
   questions:any=[];
-  q:any=[]
+  q:any=[];
+  cdata:any=[];
+  dat:any=[]
   constructor(
     private api : PollService 
   ) {
@@ -87,12 +89,13 @@ export class Tab3Page {
 
   }
   ngOnInit() {
-    this.chart1();
+    // this.chart1();
     this.get_poll();
     this.get_vs_poll();
     this.get_yes_no();
     this.get_poll2();
     this.get_answers();
+    // this.graph_data();
     
   }
 
@@ -103,7 +106,7 @@ export class Tab3Page {
     };
     this.series =[{
       name : 'Present',
-      data : [10,20,12,77]
+      data : this.dat
     }];
     this.chart = {
       type : 'bar'
@@ -202,10 +205,11 @@ export class Tab3Page {
   }
 
   action(dat:any,que:any){
-    
+
     // console.log(dat);
     // console.log(que);
     // console.log(this.getuserdata.u_id);
+
     const ans = {"u_id": this.getuserdata.u_id, "question": que, "answer": dat}
     this.api.post_answer(ans).subscribe({
       next:(data:any) =>{
@@ -306,40 +310,39 @@ export class Tab3Page {
     })
   
   }
+
   setOpen(isOpen: boolean) {
+    this.dat = [];
     this.isModalOpen = isOpen;
-    this.hide = true;
+    this.hide = true; 
     this.hide2 = false;
     this.hide3 = false;
 
-
-   
   }
   setOpen1(isOpen: boolean) {
+    this.dat = [];
     this.isModalOpen = isOpen;
     this.hide = false;
     this.hide2 = true;
     this.hide3 = false;
-
-
    
   }
   setOpen3(isOpen: boolean) {
+    this.dat = [];
     this.isModalOpen = isOpen;
     this.hide = false;
     this.hide2 = false;
     this.hide3 = true;
 
-
-   
   }
 
-  openmodal(dat:any){
+  openmodal(data:any,id:any){
     // this.questions = dat;
     // console.log(this.questions);
-    this.q = dat;
-
-    this.get_data()
+    this.q = data;
+    this.dat = [];
+    this.graph_data(id);
+    this.get_data();
   }
 
   get_data(){
@@ -375,5 +378,35 @@ export class Tab3Page {
      
       }
     })
+  }
+
+  
+  graph_data(id:any){
+    this.dat = [];
+    const data = {'q_id': id}
+    this.api.get_graph_data(data).subscribe({
+      next:(data:any) =>{
+        console.log(data);
+       this.cdata = data;
+       this.cdata.forEach((element: any) => {
+        //  console.log(element);
+        // console.log(element.data);
+       this.dat.push(element.data);
+      });
+      // console.log([this.cdata[0].data,this.cdata[0].data2])
+    
+      },
+      error:() =>{
+       
+      
+      },
+      complete:() =>{
+       
+    this.chart1();
+     
+       
+      }
+    })
+  
   }
 }
