@@ -36,11 +36,17 @@ export class Tab3Page {
   series:any=[];
   chart : any;
 
-  slideAchivement = {
+  title2 : any;
+  series2:any=[];
+  chart2 : any;
+  xaxis2:any=[];
+
+
+    slideAchivement = {
     initialSlide: 0,
     slidesPerView: 1.1,
     autoplay: true
-  }
+    }
 
   achivemnt: any = [{
     title: 'MLA',
@@ -100,22 +106,7 @@ export class Tab3Page {
   }
 
 
-  chart1() : void{
-    this.title = {
-      text : 'Attendence',
-    };
-    this.series =[{
-      name : 'Present',
-      data : this.dat
-    }];
-    this.chart = {
-      type : 'bar'
-    };
-    this.xaxis= {
-      categories: ["A", "B", "C", "D"]
-    }
-
-  }
+  
 
   get_poll(){
     this.api.get_question().subscribe({
@@ -260,7 +251,7 @@ export class Tab3Page {
       },
       complete:() =>{
        this.get_answers();
-       this.get_data()
+       this.get_data();
      
       }
     })
@@ -291,7 +282,7 @@ export class Tab3Page {
   // })
    
   get_poll2(){
-    const dat2 = {'u_id':"JAN/2023/23"}
+    const dat2 = {'u_id':this.getuserdata.u_id}
     this.api.get_question2(dat2).subscribe({
       next:(data:any) =>{
         console.log(data);
@@ -312,7 +303,7 @@ export class Tab3Page {
   }
 
   setOpen(isOpen: boolean) {
-    this.dat = [];
+   
     this.isModalOpen = isOpen;
     this.hide = true; 
     this.hide2 = false;
@@ -320,7 +311,7 @@ export class Tab3Page {
 
   }
   setOpen1(isOpen: boolean) {
-    this.dat = [];
+    
     this.isModalOpen = isOpen;
     this.hide = false;
     this.hide2 = true;
@@ -328,7 +319,7 @@ export class Tab3Page {
    
   }
   setOpen3(isOpen: boolean) {
-    this.dat = [];
+
     this.isModalOpen = isOpen;
     this.hide = false;
     this.hide2 = false;
@@ -336,11 +327,16 @@ export class Tab3Page {
 
   }
 
+  close(){
+    this.isModalOpen = false;
+    
+  }
+
   openmodal(data:any,id:any){
     // this.questions = dat;
     // console.log(this.questions);
     this.q = data;
-    this.dat = [];
+ 
     this.graph_data(id);
     this.get_data();
   }
@@ -383,16 +379,20 @@ export class Tab3Page {
   
   graph_data(id:any){
     this.dat = [];
-    const data = {'q_id': id}
+    const data = {'q_id' : id};
     this.api.get_graph_data(data).subscribe({
       next:(data:any) =>{
-        console.log(data);
+       console.log(data);
        this.cdata = data;
        this.cdata.forEach((element: any) => {
         //  console.log(element);
         // console.log(element.data);
        this.dat.push(element.data);
-      });
+       console.log(this.dat);
+       });
+       this.chart1();
+
+      //  this.charts();
       // console.log([this.cdata[0].data,this.cdata[0].data2])
     
       },
@@ -402,11 +402,45 @@ export class Tab3Page {
       },
       complete:() =>{
        
-    this.chart1();
-     
-       
+  
       }
     })
   
+  }
+
+  chart1() : void{
+    this.title = {
+      text : 'Attendence',
+    };
+    this.series =[{
+      name : 'Present',
+      data : this.dat
+    }];
+    this.chart = {
+      type : 'bar'
+    };
+    this.xaxis= {
+      categories: ["A", "B", "C", "D"]
+    }
+
+  }
+
+
+  
+  charts() : void{
+    this.title2 = {
+      text : 'Attendence',
+    };
+    this.series2 =[{
+      name : 'Present',
+      data : this.dat
+    }];
+    this.chart2 = {
+      type : 'bar'
+    };
+    this.xaxis2= {
+      categories: ["A", "B"]
+    }
+
   }
 }
