@@ -302,7 +302,7 @@ export class Tab3Page {
   
   }
 
-  setOpen(isOpen: boolean) {
+    setOpen(isOpen: boolean) {
    
     this.isModalOpen = isOpen;
     this.hide = true; 

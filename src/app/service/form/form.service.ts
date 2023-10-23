@@ -18,23 +18,23 @@ export class FormService {
   // }
 
   submit_tech_error(data:any):Observable<any>{
-    return this.api.post<any>( 'http://localhost:3000/api/v1/auth/tech_err' , data);
+    return this.api.post<any>( environment.apiurl + 'tech_err' , data);
   }
 
   get_volunteers(data:any):Observable<any>{
-    return this.api.post<any>( 'http://localhost:3000/api/v1/auth/get_volunteer' , data);
+    return this.api.post<any>(  environment.apiurl + 'get_volunteer' , data);
   }
   get_complaint_by_id(data:any):Observable<any>{
-    return this.api.post<any>( 'http://localhost:3000/api/v1/auth/get_complaint_by_id' , data);
+    return this.api.post<any>(  environment.apiurl + 'get_complaint_by_id' , data);
   }
   post_volunteer(data:any):Observable<any>{
-    return this.api.post<any>( 'http://localhost:3000/api/v1/auth/post_volunteer_by_id' , data);
+    return this.api.post<any>(  environment.apiurl + 'post_volunteer_by_id' , data);
   }
   get_volunteer_by_id(data:any):Observable<any>{
-    return this.api.post<any>( 'http://localhost:3000/api/v1/auth/get_volunteer_by_id' , data);
+    return this.api.post<any>(  environment.apiurl + 'get_volunteer_by_id' , data);
   }
   get_volunteer_by_v_id(data:any):Observable<any>{
-    return this.api.post<any>( 'http://localhost:3000/api/v1/auth/get_volunteer_by_v_id' , data);
+    return this.api.post<any>(  environment.apiurl + 'get_volunteer_by_v_id' , data);
   }
 
 }

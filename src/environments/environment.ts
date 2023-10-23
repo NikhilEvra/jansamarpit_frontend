@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-   apiurl : 'http://localhost:3000/api/v1/auth/',
+  production: true,
+   apiurl : 'http://jansamarpit.com/api/v1/auth/',
   // apiurl : 'https://evramedia.com/apifolder/',
 };
 

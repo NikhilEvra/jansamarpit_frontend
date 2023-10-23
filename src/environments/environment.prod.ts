@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiurl : 'https://jansamarpit.com/api/v1/auth/',
+  apiurl : 'http://jansamarpit.com/api/v1/auth/',
   
 };

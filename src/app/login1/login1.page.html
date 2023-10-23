@@ -29,6 +29,7 @@
     <img src="assets/icon/languages.png" style="height: 30px;">
 
   </ion-button> -->
+  {{envpath}}
   <ion-popover trigger="click-trigger1" triggerAction="click" >
     <ng-template>
       <ion-radio-group  (ionChange)="OnlanguageChange($event)">
@@ -54,7 +55,7 @@
 
   <section class="inputbox">
     <ion-item lines="none">
-      <ion-input type="text" placeholder="Enter Mobile Number" formControlName="phone"></ion-input>
+      <ion-input type="number" placeholder="Enter Mobile Number" formControlName="phone"></ion-input>
     </ion-item>
   </section>
 
@@ -110,5 +111,9 @@
     </ng-template>
   </ion-modal>
   
+<!-- 
+  <ion-item *ngFor="let dat of question">
+   {{dat.name}}
+  </ion-item> -->
 
 </ion-content>

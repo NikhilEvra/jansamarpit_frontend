@@ -42,6 +42,7 @@ export class LoginService {
   }
 
   sendOtp1(phone : any ):Observable<any> {
+    alert(environment.apiurl + 'login');
     return this.api.post<any>(environment.apiurl + 'login',  phone);
   }
 
@@ -60,5 +61,10 @@ export class LoginService {
   polls_count():Observable<any>{
     return this.api.get<any>(environment.apiurl + 'get_polls_count')
   }
+
+  test():Observable<any>{
+    return this.api.get<any>( 'https://evramedia.com/marketingApi/get_employee.php');
+  }
+  
   
 }

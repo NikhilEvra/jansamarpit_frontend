@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
 import { LoginService } from '../service/login/login.service';
 import { ActionSheetController, AlertController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment';
+import { PollService } from '../service/poll/poll.service';
 
 @Component({
   selector: 'app-login1',
@@ -32,6 +34,9 @@ show = false;
 dat :any=[];
 res2:any=[];
 dat1:any=[];
+question:any=[];
+
+envpath:any=[];
 
 isModalOpen = false;
 handlerMessage = '';
@@ -48,6 +53,7 @@ addlanguageList=[
     private formb : FormBuilder,
     private api : LoginService,
     private translate : TranslateService,
+    private api2 : PollService,
     // private alertController: ActionSheetController,
     private alertController: AlertController
   ) {
@@ -59,8 +65,9 @@ addlanguageList=[
 
     this.initForm();
     this.initForm2();
+    this.get_poll();
     // this.presentActionSheet();
-
+this.envpath = environment.apiurl;
 
   }
 
@@ -99,9 +106,12 @@ startTimer() {
 
   // this.router.navigateByUrl('/app/tabs/tab1');
   
-  this.api.sendOtp1(this.form.value).subscribe({
+  const dat = {"phone" : this.form.value.phone};
+  // alert(dat.phone);   
+
+  this.api.sendOtp1(dat).subscribe({
     next:(data) =>{
-      console.log(data);   
+      alert(data);   
       this.res = data;
      
    
@@ -111,7 +121,7 @@ startTimer() {
       Swal.fire({
         'imageUrl' :'assets/icon/login.gif',
         'imageHeight':'100px', 
-        'title': 'Invalid Phone Number',
+        'title': 'Internal Server Error',
          heightAuto: false , 
          timer: 3000
         });
@@ -232,4 +242,26 @@ startTimer() {
   // this.popovercontroller.dismiss();
 
     }
+
+    
+  get_poll(){
+    this.api.test().subscribe({
+      next:(data:any) =>{
+        console.log(data);
+        this.question = data;
+       
+    
+      },
+      error:() =>{
+       
+      alert('No PAth called');
+      },
+      complete:() =>{
+       
+     
+       
+      }
+    })
+  
+  }
 }
